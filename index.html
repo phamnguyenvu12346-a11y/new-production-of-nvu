@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduNova | Nền tảng học tập thông minh</title>
+    <meta
+      name="description"
+      content="Trang web học tập với khóa học trực tuyến, lộ trình cá nhân hóa và nội dung thực tế."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <div class="brand">
+          <span class="brand-mark">E</span>
+          <span>EduNova</span>
+        </div>
+        <nav class="main-nav" aria-label="Điều hướng chính">
+          <a href="#about">Giới thiệu</a>
+          <a href="#courses">Khóa học</a>
+          <a href="#roadmap">Lộ trình</a>
+          <a href="#reviews">Đánh giá</a>
+          <a href="#contact">Liên hệ</a>
+        </nav>
+        <div class="nav-actions">
+          <a class="btn btn-ghost" href="#courses">Khám phá</a>
+          <button class="btn btn-primary" type="button" data-open-signup>Đăng ký</button>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="eyebrow">Nền tảng học tập hiện đại</span>
+            <h1>Học tập hiệu quả hơn với lộ trình cá nhân hóa.</h1>
+            <p>
+              Từ kỹ năng mềm đến công nghệ, EduNova giúp bạn học đúng, tiến bộ đều
+              và xây dựng tương lai nghề nghiệp tốt hơn.
+            </p>
+            <div class="hero-actions">
+              <button class="btn btn-primary" type="button" data-open-signup>Bắt đầu ngay</button>
+              <a class="btn btn-secondary" href="#roadmap">Xem lộ trình</a>
+            </div>
+            <ul class="hero-stats" aria-label="Thống kê nền tảng">
+              <li><strong>15k+</strong><span>Học viên</span></li>
+              <li><strong>120+</strong><span>Khóa học</span></li>
+              <li><strong>94%</strong><span>Hài lòng</span></li>
+            </ul>
+          </div>
+
+          <div class="hero-card-wrap">
+            <div class="hero-card">
+              <div class="card-top">
+                <span class="tag">Bán chạy</span>
+                <span class="dot"></span>
+              </div>
+              <div class="course-preview">
+                <div class="preview-illustration">
+                  <div class="ring large"></div>
+                  <div class="ring medium"></div>
+                  <div class="ring small"></div>
+                </div>
+                <div class="progress-panel">
+                  <p>Tiến độ</p>
+                  <strong>72%</strong>
+                  <div class="progress-bar">
+                    <span></span>
+                  </div>
+                </div>
+              </div>
+              <div class="lesson-info">
+                <div>
+                  <span class="mini-label">Lớp học tiếp theo</span>
+                  <h3>UI/UX Design Masterclass</h3>
+                </div>
+                <button class="join-btn">Vào học</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="logos">
+        <div class="container brands">
+          <span>Google</span>
+          <span>Meta</span>
+          <span>Microsoft</span>
+          <span>Amazon</span>
+          <span>Adobe</span>
+        </div>
+      </section>
+
+      <section id="about" class="features">
+        <div class="container section-heading">
+          <span class="eyebrow">Vì sao chọn EduNova</span>
+          <h2>Trải nghiệm học tập hiệu quả, rõ ràng và trực quan.</h2>
+        </div>
+        <div class="container feature-grid">
+          <article class="feature-card">
+            <div class="icon-box">📚</div>
+            <h3>Bài học thiết kế rõ ràng</h3>
+            <p>Ngắn gọn, dễ hiểu, tập trung vào kiến thức quan trọng và ứng dụng thực tế.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon-box">🎯</div>
+            <h3>Lộ trình cá nhân hóa</h3>
+            <p>Khuyến nghị bài học dựa trên mục tiêu, thời gian và trình độ hiện tại của bạn.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon-box">🤝</div>
+            <h3>Hỗ trợ mentor</h3>
+            <p>Đồng hành qua từng bước học với phản hồi, hướng dẫn và kế hoạch cải thiện.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="courses" class="courses">
+        <div class="container section-heading inline">
+          <div>
+            <span class="eyebrow">Khóa học nổi bật</span>
+            <h2>Chọn con đường học tập phù hợp với bạn.</h2>
+          </div>
+          <div class="filter-tabs" aria-label="Phân loại khóa học">
+            <button class="tab active" data-filter="all">Tất cả</button>
+            <button class="tab" data-filter="design">Thiết kế</button>
+            <button class="tab" data-filter="coding">Lập trình</button>
+            <button class="tab" data-filter="business">Kinh doanh</button>
+          </div>
+        </div>
+
+        <div class="container course-grid">
+          <article class="course-card" data-category="design">
+            <div class="course-image design-bg"></div>
+            <div class="course-body">
+              <div class="course-meta">
+                <span>Design</span>
+                <span>4.9 ★</span>
+              </div>
+              <h3>UI/UX Design cho người mới</h3>
+              <p>Học cách tạo giao diện đẹp, dễ dùng và tối ưu trải nghiệm người dùng.</p>
+              <div class="course-footer">
+                <strong>1.200.000đ</strong>
+                <a href="#contact">Đăng ký</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="coding">
+            <div class="course-image coding-bg"></div>
+            <div class="course-body">
+              <div class="course-meta">
+                <span>Coding</span>
+                <span>4.8 ★</span>
+              </div>
+              <h3>Frontend Development</h3>
+              <p>Thiết kế website, hiểu HTML, CSS, JavaScript và xây dựng giao diện thật.</p>
+              <div class="course-footer">
+                <strong>1.600.000đ</strong>
+                <a href="#contact">Đăng ký</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="course-card" data-category="business">
+            <div class="course-image business-bg"></div>
+            <div class="course-body">
+              <div class="course-meta">
+                <span>Business</span>
+                <span>4.7 ★</span>
+              </div>
+              <h3>Marketing Digital cơ bản</h3>
+              <p>Hiểu cách xây dựng thương hiệu, funnel và tăng trưởng mạnh mẽ trên mạng.</p>
+              <div class="course-footer">
+                <strong>1.100.000đ</strong>
+                <a href="#contact">Đăng ký</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="roadmap" class="roadmap">
+        <div class="container section-heading">
+          <span class="eyebrow">Lộ trình học</span>
+          <h2>Học theo từng giai đoạn rõ ràng, không bị lan man.</h2>
+        </div>
+        <div class="container roadmap-grid">
+          <div class="roadmap-step">
+            <span class="step-number">01</span>
+            <h3>Khởi động</h3>
+            <p>Đánh giá năng lực, mục tiêu và xây dựng nền tảng kiến thức ban đầu.</p>
+          </div>
+          <div class="roadmap-step">
+            <span class="step-number">02</span>
+            <h3>Thực hành</h3>
+            <p>Tham gia bài tập, mini project và phản hồi từ mentor để cải thiện nhanh.</p>
+          </div>
+          <div class="roadmap-step">
+            <span class="step-number">03</span>
+            <h3>Chứng chỉ</h3>
+            <p>Hoàn thành dự án cuối khóa và nhận chứng nhận để nâng profile nghề nghiệp.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="reviews" class="reviews">
+        <div class="container section-heading">
+          <span class="eyebrow">Đánh giá</span>
+          <h2>Học viên đã thấy sự thay đổi rõ rệt.</h2>
+        </div>
+        <div class="container review-grid">
+          <article class="review-card">
+            <p>
+              “Tôi đã học được cách xây dựng dự án thật và cải thiện kỹ năng rất mạnh. Môi trường học rất dễ tiếp cận.”
+            </p>
+            <div class="review-author">
+              <strong>Minh Anh</strong>
+              <span>Designer</span>
+            </div>
+          </article>
+          <article class="review-card">
+            <p>
+              “Lộ trình rõ, bài học vừa đủ, mentor hỗ trợ nhiệt tình. Tôi đã chuyển ngành thành công.”
+            </p>
+            <div class="review-author">
+              <strong>Hoàng Nam</strong>
+              <span>Frontend Dev</span>
+            </div>
+          </article>
+          <article class="review-card">
+            <p>
+              “Cách chia nhỏ kiến thức và thực hành giúp tôi không cảm thấy quá tải khi học.”
+            </p>
+            <div class="review-author">
+              <strong>Thảo Vy</strong>
+              <span>Marketing</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section id="contact" class="cta">
+        <div class="container cta-box">
+          <div>
+            <span class="eyebrow">Bắt đầu hôm nay</span>
+            <h2>Đăng ký để nhận lộ trình học phù hợp nhất.</h2>
+          </div>
+          <button class="btn btn-primary" type="button" data-open-signup>Liên hệ ngay</button>
+        </div>
+      </section>
+    </main>
+
+    <div class="modal-overlay hidden" id="signupModal" aria-hidden="true">
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+        <button class="modal-close" type="button" aria-label="Đóng form đăng ký" data-close-signup>×</button>
+        <div class="modal-header">
+          <span class="eyebrow">Đăng ký học</span>
+          <h3 id="signupTitle">Tạo tài khoản học tập</h3>
+        </div>
+
+        <form id="signupForm" class="signup-form">
+          <div class="form-group">
+            <label for="fullName">Họ và tên</label>
+            <input id="fullName" name="fullName" type="text" placeholder="Nhập họ tên" required />
+          </div>
+
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" placeholder="example@gmail.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="course">Khóa học quan tâm</label>
+            <select id="course" name="course" required>
+              <option value="">Chọn khóa học</option>
+              <option value="UI/UX Design cho người mới">UI/UX Design cho người mới</option>
+              <option value="Frontend Development">Frontend Development</option>
+              <option value="Marketing Digital cơ bản">Marketing Digital cơ bản</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="password">Mật khẩu</label>
+            <input id="password" name="password" type="password" placeholder="Tối thiểu 6 ký tự" minlength="6" required />
+          </div>
+
+          <button class="btn btn-primary submit-btn" type="submit">Đăng ký ngay</button>
+          <p class="form-message" id="formMessage" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div>
+          <div class="brand">
+            <span class="brand-mark">E</span>
+            <span>EduNova</span>
+          </div>
+          <p>Học tập bền vững, tiến bộ không ngừng.</p>
+        </div>
+        <div class="footer-links">
+          <a href="#about">Giới thiệu</a>
+          <a href="#courses">Khóa học</a>
+          <a href="#reviews">Đánh giá</a>
+        </div>
+        <p class="copyright">© <span id="year"></span> EduNova</p>
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
+</html>
