@@ -30,9 +30,14 @@
           <a href="#reviews">Đánh giá</a>
           <a href="#contact">Liên hệ</a>
         </nav>
-        <div class="nav-actions">
+        <div class="nav-actions" id="authActions">
           <a class="btn btn-ghost" href="#courses">Khám phá</a>
-          <button class="btn btn-primary" type="button" data-open-signup>Đăng ký</button>
+          <button class="btn btn-primary" type="button" data-open-signup id="signupBtn">Đăng ký</button>
+          <button class="btn btn-secondary" type="button" data-open-login style="display: none;" id="loginBtn">Đăng nhập</button>
+          <div class="user-profile" style="display: none;" id="userProfile">
+            <span id="userName" class="user-name">Người dùng</span>
+            <button class="btn btn-ghost logout-btn" type="button" id="logoutBtn">Đăng xuất</button>
+          </div>
         </div>
       </div>
     </header>
@@ -362,7 +367,7 @@
       <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
         <button class="modal-close" type="button" aria-label="Đóng form đăng ký" data-close-signup>×</button>
         <div class="modal-header">
-          <span class="eyebrow">Đăng ký học</span>
+          <span class="eyebrow">Chào mừng</span>
           <h3 id="signupTitle">Tạo tài khoản học tập</h3>
         </div>
 
@@ -389,11 +394,63 @@
 
           <div class="form-group">
             <label for="password">Mật khẩu</label>
-            <input id="password" name="password" type="password" placeholder="Tối thiểu 6 ký tự" minlength="6" required />
+            <div class="password-input-group">
+              <input id="password" name="password" type="password" placeholder="Tối thiểu 8 ký tự" minlength="8" required />
+              <button type="button" class="toggle-password" data-target="password">👁️</button>
+            </div>
+            <div class="password-strength" id="passwordStrength"></div>
+          </div>
+
+          <div class="form-group">
+            <label for="confirmPassword">Xác nhận mật khẩu</label>
+            <div class="password-input-group">
+              <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Nhập lại mật khẩu" required />
+              <button type="button" class="toggle-password" data-target="confirmPassword">👁️</button>
+            </div>
+          </div>
+
+          <div class="form-group checkbox">
+            <input id="rememberMe" name="rememberMe" type="checkbox" />
+            <label for="rememberMe">Nhớ tôi trên máy này</label>
           </div>
 
           <button class="btn btn-primary submit-btn" type="submit">Đăng ký ngay</button>
           <p class="form-message" id="formMessage" aria-live="polite"></p>
+          <p class="form-toggle">Đã có tài khoản? <button type="button" id="switchToLogin">Đăng nhập ngay</button></p>
+        </form>
+      </div>
+    </div>
+
+    <div class="modal-overlay hidden" id="loginModal" aria-hidden="true">
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+        <button class="modal-close" type="button" aria-label="Đóng form" data-close-login>×</button>
+        <div class="modal-header">
+          <span class="eyebrow">Chào mừng trở lại</span>
+          <h3 id="loginTitle">Đăng nhập tài khoản</h3>
+        </div>
+
+        <form id="loginForm" class="signup-form">
+          <div class="form-group">
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" name="loginEmail" type="email" placeholder="example@gmail.com" required />
+          </div>
+
+          <div class="form-group">
+            <label for="loginPassword">Mật khẩu</label>
+            <div class="password-input-group">
+              <input id="loginPassword" name="loginPassword" type="password" placeholder="Nhập mật khẩu" required />
+              <button type="button" class="toggle-password" data-target="loginPassword">👁️</button>
+            </div>
+          </div>
+
+          <div class="form-group checkbox">
+            <input id="rememberLogin" name="rememberLogin" type="checkbox" />
+            <label for="rememberLogin">Nhớ tôi trên máy này</label>
+          </div>
+
+          <button class="btn btn-primary submit-btn" type="submit">Đăng nhập</button>
+          <p class="form-message" id="loginFormMessage" aria-live="polite"></p>
+          <p class="form-toggle">Chưa có tài khoản? <button type="button" id="switchToSignup">Đăng ký ngay</button></p>
         </form>
       </div>
     </div>

@@ -181,8 +181,15 @@ document.addEventListener("DOMContentLoaded", () => {
       password: formData.get("password").trim(),
     };
 
-    if (!student.fullName || !student.email || !student.course || student.password.length < 6) {
-      showMessage("Vui lòng điền đúng thông tin và mật khẩu tối thiểu 6 ký tự.", "error");
+    const confirmPassword = formData.get("confirmPassword").trim();
+
+    if (!student.fullName || !student.email || !student.course || student.password.length < 8) {
+      showMessage("Vui lòng điền đúng thông tin và mật khẩu tối thiểu 8 ký tự.", "error");
+      return;
+    }
+
+    if (student.password !== confirmPassword) {
+      showMessage("Mật khẩu xác nhận không khớp. Vui lòng kiểm tra lại.", "error");
       return;
     }
 
@@ -215,6 +222,186 @@ document.addEventListener("DOMContentLoaded", () => {
   if (savedCurrentStudent && dashboardStudentName) {
     dashboardStudentName.textContent = savedCurrentStudent.fullName;
   }
+
+  // ============ Password Strength Indicator ============
+  const passwordInput = document.getElementById("password");
+  const passwordStrength = document.getElementById("passwordStrength");
+  
+  const getPasswordStrength = (password) => {
+    let strength = 0;
+    if (password.length >= 8) strength++;
+    if (/[a-z]/.test(password) && /[A-Z]/.test(password)) strength++;
+    if (/\d/.test(password)) strength++;
+    if (/[!@#$%^&*]/.test(password)) strength++;
+    
+    if (strength <= 1) return "weak";
+    if (strength === 2 || strength === 3) return "medium";
+    return "strong";
+  };
+
+  if (passwordInput) {
+    passwordInput.addEventListener("input", (e) => {
+      if (passwordStrength) {
+        const strength = getPasswordStrength(e.target.value);
+        passwordStrength.className = `password-strength ${strength}`;
+      }
+    });
+  }
+
+  // ============ Toggle Password Visibility ============
+  const toggleButtons = document.querySelectorAll(".toggle-password");
+  toggleButtons.forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      const targetId = btn.dataset.target;
+      const input = document.getElementById(targetId);
+      if (input) {
+        const isPassword = input.type === "password";
+        input.type = isPassword ? "text" : "password";
+        btn.textContent = isPassword ? "👁️‍🗨️" : "👁️";
+      }
+    });
+  });
+
+  // ============ Login Modal ============
+  const loginModal = document.getElementById("loginModal");
+  const loginForm = document.getElementById("loginForm");
+  const loginFormMessage = document.getElementById("loginFormMessage");
+  const loginBtn = document.getElementById("loginBtn");
+  const signupBtn = document.getElementById("signupBtn");
+  const userProfile = document.getElementById("userProfile");
+  const userName = document.getElementById("userName");
+  const logoutBtn = document.getElementById("logoutBtn");
+  
+  const openLoginModal = () => {
+    if (!loginModal) return;
+    loginModal.classList.remove("hidden");
+    loginModal.setAttribute("aria-hidden", "false");
+  };
+
+  const closeLoginModal = () => {
+    if (!loginModal) return;
+    loginModal.classList.add("hidden");
+    loginModal.setAttribute("aria-hidden", "true");
+  };
+
+  // ============ Form Switching ============
+  const switchToLogin = document.getElementById("switchToLogin");
+  const switchToSignup = document.getElementById("switchToSignup");
+  
+  if (switchToLogin) {
+    switchToLogin.addEventListener("click", (e) => {
+      e.preventDefault();
+      closeModal();
+      setTimeout(openLoginModal, 300);
+    });
+  }
+
+  if (switchToSignup) {
+    switchToSignup.addEventListener("click", (e) => {
+      e.preventDefault();
+      closeLoginModal();
+      setTimeout(() => openModal({ currentTarget: { dataset: { course: "" } } }), 300);
+    });
+  }
+
+  // ============ Login Form Handler ============
+  const showLoginMessage = (message, type) => {
+    if (loginFormMessage) {
+      loginFormMessage.textContent = message;
+      loginFormMessage.className = `form-message ${type}`;
+    }
+  };
+
+  if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      
+      const loginEmail = document.getElementById("loginEmail").value.trim();
+      const loginPassword = document.getElementById("loginPassword").value.trim();
+      
+      if (!loginEmail || !loginPassword) {
+        showLoginMessage("Vui lòng điền đầy đủ email và mật khẩu.", "error");
+        return;
+      }
+      
+      const students = JSON.parse(localStorage.getItem("edunovaStudents") || "[]");
+      const student = students.find(
+        (s) => s.email.toLowerCase() === loginEmail.toLowerCase() && s.password === loginPassword
+      );
+      
+      if (!student) {
+        showLoginMessage("Email hoặc mật khẩu không chính xác.", "error");
+        return;
+      }
+      
+      localStorage.setItem("edunovaCurrentStudent", JSON.stringify(student));
+      if (dashboardStudentName) {
+        dashboardStudentName.textContent = student.fullName;
+      }
+      updateSchedule(student.course);
+      
+      showLoginMessage("Đăng nhập thành công!", "success");
+      loginForm.reset();
+      
+      setTimeout(() => {
+        closeLoginModal();
+        updateAuthUI();
+        showLoginMessage("", "success");
+      }, 1500);
+    });
+  }
+
+  // ============ Update Auth UI ============
+  const updateAuthUI = () => {
+    const currentStudent = JSON.parse(localStorage.getItem("edunovaCurrentStudent") || "null");
+    
+    if (currentStudent) {
+      if (signupBtn) signupBtn.style.display = "none";
+      if (loginBtn) loginBtn.style.display = "none";
+      if (userProfile) userProfile.style.display = "flex";
+      if (userName) userName.textContent = currentStudent.fullName;
+    } else {
+      if (signupBtn) signupBtn.style.display = "block";
+      if (loginBtn) loginBtn.style.display = "block";
+      if (userProfile) userProfile.style.display = "none";
+    }
+  };
+
+  // ============ Logout Handler ============
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      if (confirm("Bạn có chắc chắn muốn đăng xuất?")) {
+        localStorage.removeItem("edunovaCurrentStudent");
+        if (dashboardStudentName) {
+          dashboardStudentName.textContent = "Học viên EduNova";
+        }
+        updateAuthUI();
+        updateSchedule("UI/UX Design cho người mới");
+      }
+    });
+  }
+
+  // ============ Login Button Click ============
+  if (loginBtn) {
+    loginBtn.addEventListener("click", openLoginModal);
+  }
+
+  // ============ Login Modal Close Handlers ============
+  const loginCloseButtons = document.querySelectorAll("[data-close-login]");
+  loginCloseButtons.forEach((btn) => {
+    btn.addEventListener("click", closeLoginModal);
+  });
+
+  loginModal?.addEventListener("click", (event) => {
+    if (event.target === loginModal) {
+      closeLoginModal();
+    }
+  });
+
+  // ============ Initial Auth UI Setup ============
+  updateAuthUI();
 
   updateSchedule("UI/UX Design cho người mới");
 });
