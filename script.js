@@ -176,7 +176,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const formData = new FormData(form);
     const student = {
       fullName: formData.get("fullName").trim(),
-      email: formData.get("email").trim(),
+      email: formData.get("email").trim(),`n      accountType: formData.get("accountType") || "student",
       course: formData.get("course").trim(),
       password: formData.get("password").trim(),
     };
@@ -406,3 +406,4 @@ document.addEventListener("DOMContentLoaded", () => {
 
   updateSchedule("UI/UX Design cho người mới");
 });
+

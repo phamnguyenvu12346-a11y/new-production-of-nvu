@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="styles.css" />\n    <link rel="stylesheet" href="account-styles.css" />
   </head>
   <body>
     <header class="site-header">
@@ -380,6 +380,20 @@
           <div class="form-group">
             <label for="email">Email</label>
             <input id="email" name="email" type="email" placeholder="example@gmail.com" required />
+          </div>
+
+          <div class="form-group account-type">
+            <label>Loại tài khoản</label>
+            <div class="radio-group">
+              <label class="radio-label">
+                <input type="radio" name="accountType" value="student" required checked />
+                <span>👨‍🎓 Học sinh</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="accountType" value="teacher" required />
+                <span>👨‍🏫 Giáo viên</span>
+              </label>
+            </div>
           </div>
 
           <div class="form-group">
