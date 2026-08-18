@@ -258,10 +258,11 @@ document.addEventListener("DOMContentLoaded", () => {
       if (input) {
         const isPassword = input.type === "password";
         input.type = isPassword ? "text" : "password";
-        btn.textContent = isPassword ? "👁️‍🗨️" : "👁️";
+        btn.textContent = isPassword ? "🚫" : "👁";
       }
     });
   });
+
 
   // ============ Login Modal ============
   const loginModal = document.getElementById("loginModal");
