@@ -37,7 +37,7 @@
         <div class="nav-actions" id="authActions">
           <a class="btn btn-ghost" href="#courses">Khám phá</a>
           <button class="btn btn-primary" type="button" data-open-signup id="signupBtn">Đăng ký</button>
-          <button class="btn btn-secondary" type="button" data-open-login style="display: none;" id="loginBtn">Đăng nhập</button>
+          <button class="btn btn-secondary" type="button" data-open-login id="loginBtn">Đăng nhập</button>
           <div class="user-profile" style="display: none;" id="userProfile">
             <span id="userRoleBadge" class="role-badge"></span>
             <span id="userName" class="user-name">Người dùng</span>
@@ -429,8 +429,8 @@
 
           <div class="form-group" id="signupCourseGroup">
             <label for="course" id="signupCourseLabel">Khóa học quan tâm / phụ trách</label>
-            <select id="course" name="course" required>
-              <option value="">Chọn khóa học</option>
+            <select id="course" name="course">
+              <option value="">-- Chọn khóa học (hoặc để trống) --</option>
               <option value="UI/UX Design cho người mới">UI/UX Design cho người mới</option>
               <option value="Frontend Development">Frontend Development</option>
               <option value="Marketing Digital cơ bản">Marketing Digital cơ bản</option>
@@ -440,7 +440,7 @@
           <div class="form-group">
             <label for="password">Mật khẩu</label>
             <div class="password-input-group">
-              <input id="password" name="password" type="password" placeholder="Tối thiểu 8 ký tự" minlength="8" required />
+              <input id="password" name="password" type="password" placeholder="Tối thiểu 6 ký tự" minlength="6" required />
               <button type="button" class="toggle-password" data-target="password">👁</button>
             </div>
             <div class="password-strength" id="passwordStrength"></div>
@@ -449,7 +449,7 @@
           <div class="form-group">
             <label for="confirmPassword">Xác nhận mật khẩu</label>
             <div class="password-input-group">
-              <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Nhập lại mật khẩu" required />
+              <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Nhập lại mật khẩu" minlength="6" required />
               <button type="button" class="toggle-password" data-target="confirmPassword">👁</button>
             </div>
           </div>

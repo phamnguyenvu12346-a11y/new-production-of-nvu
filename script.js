@@ -60,40 +60,80 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
-  // Helper functions for LocalStorage
+  // Helper functions for safe LocalStorage access
+  const safeGetJSON = (key, defaultValue) => {
+    try {
+      const data = localStorage.getItem(key);
+      if (!data) return defaultValue;
+      return JSON.parse(data);
+    } catch (e) {
+      console.warn(`Lỗi đọc localStorage key: ${key}`, e);
+      return defaultValue;
+    }
+  };
+
+  const safeSetJSON = (key, value) => {
+    try {
+      localStorage.setItem(key, JSON.stringify(value));
+    } catch (e) {
+      console.error(`Lỗi ghi localStorage key: ${key}`, e);
+    }
+  };
+
   const getStoredCourses = () => {
-    const data = localStorage.getItem("edunovaCourses");
-    if (!data) {
-      localStorage.setItem("edunovaCourses", JSON.stringify(DEFAULT_COURSES));
+    const courses = safeGetJSON("edunovaCourses", null);
+    if (!courses || !Array.isArray(courses) || courses.length === 0) {
+      safeSetJSON("edunovaCourses", DEFAULT_COURSES);
       return DEFAULT_COURSES;
     }
-    return JSON.parse(data);
+    return courses;
   };
 
   const saveStoredCourses = (courses) => {
-    localStorage.setItem("edunovaCourses", JSON.stringify(courses));
+    safeSetJSON("edunovaCourses", courses);
   };
 
   const getStoredAssignments = () => {
-    const data = localStorage.getItem("edunovaAssignments");
-    if (!data) {
-      localStorage.setItem("edunovaAssignments", JSON.stringify(DEFAULT_ASSIGNMENTS));
+    const assignments = safeGetJSON("edunovaAssignments", null);
+    if (!assignments || !Array.isArray(assignments) || assignments.length === 0) {
+      safeSetJSON("edunovaAssignments", DEFAULT_ASSIGNMENTS);
       return DEFAULT_ASSIGNMENTS;
     }
-    return JSON.parse(data);
+    return assignments;
   };
 
   const saveStoredAssignments = (assignments) => {
-    localStorage.setItem("edunovaAssignments", JSON.stringify(assignments));
+    safeSetJSON("edunovaAssignments", assignments);
   };
 
   const getStoredSubmissions = () => {
-    const data = localStorage.getItem("edunovaSubmissions");
-    return data ? JSON.parse(data) : [];
+    const data = safeGetJSON("edunovaSubmissions", []);
+    return Array.isArray(data) ? data : [];
   };
 
   const saveStoredSubmissions = (submissions) => {
-    localStorage.setItem("edunovaSubmissions", JSON.stringify(submissions));
+    safeSetJSON("edunovaSubmissions", submissions);
+  };
+
+  const getStoredUsers = () => {
+    const data = safeGetJSON("edunovaStudents", []);
+    return Array.isArray(data) ? data : [];
+  };
+
+  const saveStoredUsers = (users) => {
+    safeSetJSON("edunovaStudents", users);
+  };
+
+  const getCurrentUser = () => {
+    return safeGetJSON("edunovaCurrentStudent", null);
+  };
+
+  const setCurrentUser = (user) => {
+    if (user) {
+      safeSetJSON("edunovaCurrentStudent", user);
+    } else {
+      localStorage.removeItem("edunovaCurrentStudent");
+    }
   };
 
   // ============ Schedule Map ============
@@ -337,6 +377,10 @@ document.addEventListener("DOMContentLoaded", () => {
       courseSelect.value = selectedCourse;
       updateSchedule(selectedCourse);
     }
+    if (formMessage) {
+      formMessage.textContent = "";
+      formMessage.className = "form-message";
+    }
     openModalElement(signupModal);
   };
 
@@ -359,51 +403,98 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // Clear message on input
+  signupForm?.querySelectorAll("input, select")?.forEach((el) => {
+    el.addEventListener("input", () => {
+      if (formMessage && formMessage.textContent) {
+        formMessage.textContent = "";
+        formMessage.className = "form-message";
+      }
+    });
+  });
+
   // Signup Submit Handler
   signupForm?.addEventListener("submit", (e) => {
     e.preventDefault();
-    const formData = new FormData(signupForm);
-    const user = {
-      fullName: formData.get("fullName").trim(),
-      email: formData.get("email").trim(),
-      accountType: formData.get("accountType") || "student",
-      course: formData.get("course")?.trim() || "",
-      password: formData.get("password").trim()
+
+    const fullNameInput = document.getElementById("fullName");
+    const emailInput = document.getElementById("email");
+    const passwordInput = document.getElementById("password");
+    const confirmPasswordInput = document.getElementById("confirmPassword");
+    const accountTypeChecked = document.querySelector('input[name="accountType"]:checked');
+    const courseInput = document.getElementById("course");
+
+    const fullName = (fullNameInput?.value || "").trim();
+    const email = (emailInput?.value || "").trim();
+    const password = (passwordInput?.value || "").trim();
+    const confirmPassword = (confirmPasswordInput?.value || "").trim();
+    const accountType = accountTypeChecked ? accountTypeChecked.value : "student";
+    const course = (courseInput?.value || "").trim() || "UI/UX Design cho người mới";
+
+    // 1. Validation
+    if (!fullName) {
+      showMessage("Vui lòng nhập họ và tên của bạn.", "error");
+      fullNameInput?.focus();
+      return;
+    }
+
+    if (!email || !email.includes("@")) {
+      showMessage("Vui lòng nhập địa chỉ email hợp lệ.", "error");
+      emailInput?.focus();
+      return;
+    }
+
+    if (!password || password.length < 6) {
+      showMessage("Mật khẩu cần tối thiểu 6 ký tự.", "error");
+      passwordInput?.focus();
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      showMessage("Mật khẩu xác nhận không khớp. Vui lòng kiểm tra lại.", "error");
+      confirmPasswordInput?.focus();
+      return;
+    }
+
+    // 2. Check duplicate email
+    const existingUsers = getStoredUsers();
+    const isDuplicate = existingUsers.some(
+      (u) => u && typeof u.email === "string" && u.email.trim().toLowerCase() === email.toLowerCase()
+    );
+
+    if (isDuplicate) {
+      showMessage("Email này đã được đăng ký. Vui lòng dùng email khác hoặc Đăng nhập.", "error");
+      return;
+    }
+
+    // 3. Create and Save User
+    const newUser = {
+      id: `user-${Date.now()}`,
+      fullName,
+      email,
+      accountType, // "student" or "teacher"
+      course,
+      password,
+      registeredAt: new Date().toISOString()
     };
 
-    const confirmPassword = formData.get("confirmPassword").trim();
+    existingUsers.push(newUser);
+    saveStoredUsers(existingUsers);
+    setCurrentUser(newUser);
 
-    if (!user.fullName || !user.email || user.password.length < 8) {
-      showMessage("Vui lòng điền đúng thông tin và mật khẩu tối thiểu 8 ký tự.", "error");
-      return;
-    }
-
-    if (user.password !== confirmPassword) {
-      showMessage("Mật khẩu xác nhận không khớp. Vui lòng kiểm tra lại.", "error");
-      return;
-    }
-
-    const existingUsers = JSON.parse(localStorage.getItem("edunovaStudents") || "[]");
-    const sameEmail = existingUsers.some((item) => item.email.toLowerCase() === user.email.toLowerCase());
-
-    if (sameEmail) {
-      showMessage("Email này đã được đăng ký. Vui lòng dùng email khác.", "error");
-      return;
-    }
-
-    existingUsers.push(user);
-    localStorage.setItem("edunovaStudents", JSON.stringify(existingUsers));
-    localStorage.setItem("edunovaCurrentStudent", JSON.stringify(user));
-
-    showMessage("Đăng ký thành công! Đang chuyển tiếp...", "success");
+    // 4. Success UI
+    showMessage("🎉 Đăng ký thành công! Đang tự động đăng nhập...", "success");
     signupForm.reset();
+
+    updateAuthUI();
+    if (newUser.course) {
+      updateSchedule(newUser.course);
+    }
 
     setTimeout(() => {
       closeModalElement(signupModal);
       showMessage("", "success");
-      updateAuthUI();
-      if (user.course) updateSchedule(user.course);
-    }, 1200);
+    }, 1000);
   });
 
   // ============ Login Modal ============
@@ -425,7 +516,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  const openLoginModal = () => openModalElement(loginModal);
+  const openLoginModal = () => {
+    if (loginFormMessage) {
+      loginFormMessage.textContent = "";
+      loginFormMessage.className = "form-message";
+    }
+    openModalElement(loginModal);
+  };
   const closeLoginModal = () => closeModalElement(loginModal);
 
   if (loginBtn) loginBtn.addEventListener("click", openLoginModal);
@@ -452,21 +549,35 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Clear login message on input
+  loginForm?.querySelectorAll("input")?.forEach((el) => {
+    el.addEventListener("input", () => {
+      if (loginFormMessage && loginFormMessage.textContent) {
+        loginFormMessage.textContent = "";
+        loginFormMessage.className = "form-message";
+      }
+    });
+  });
+
   // Login Form Submit
   if (loginForm) {
     loginForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const loginEmail = document.getElementById("loginEmail").value.trim();
-      const loginPassword = document.getElementById("loginPassword").value.trim();
+      const loginEmail = (document.getElementById("loginEmail")?.value || "").trim();
+      const loginPassword = (document.getElementById("loginPassword")?.value || "").trim();
 
       if (!loginEmail || !loginPassword) {
         showLoginMessage("Vui lòng điền đầy đủ email và mật khẩu.", "error");
         return;
       }
 
-      const users = JSON.parse(localStorage.getItem("edunovaStudents") || "[]");
+      const users = getStoredUsers();
       const matchedUser = users.find(
-        (u) => u.email.toLowerCase() === loginEmail.toLowerCase() && u.password === loginPassword
+        (u) =>
+          u &&
+          typeof u.email === "string" &&
+          u.email.toLowerCase() === loginEmail.toLowerCase() &&
+          u.password === loginPassword
       );
 
       if (!matchedUser) {
@@ -474,26 +585,29 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      localStorage.setItem("edunovaCurrentStudent", JSON.stringify(matchedUser));
-      showLoginMessage("Đăng nhập thành công!", "success");
+      setCurrentUser(matchedUser);
+      showLoginMessage("🎉 Đăng nhập thành công!", "success");
       loginForm.reset();
+
+      updateAuthUI();
+      if (matchedUser.course) {
+        updateSchedule(matchedUser.course);
+      }
 
       setTimeout(() => {
         closeLoginModal();
         showLoginMessage("", "success");
-        updateAuthUI();
-        if (matchedUser.course) updateSchedule(matchedUser.course);
-      }, 1000);
+      }, 800);
     });
   }
 
   // ============ Password Strength & Visibility ============
-  const passwordInput = document.getElementById("password");
+  const passwordInputEl = document.getElementById("password");
   const passwordStrength = document.getElementById("passwordStrength");
 
   const getPasswordStrength = (pwd) => {
     let strength = 0;
-    if (pwd.length >= 8) strength++;
+    if (pwd.length >= 6) strength++;
     if (/[a-z]/.test(pwd) && /[A-Z]/.test(pwd)) strength++;
     if (/\d/.test(pwd)) strength++;
     if (/[!@#$%^&*]/.test(pwd)) strength++;
@@ -502,10 +616,15 @@ document.addEventListener("DOMContentLoaded", () => {
     return "strong";
   };
 
-  if (passwordInput) {
-    passwordInput.addEventListener("input", (e) => {
+  if (passwordInputEl) {
+    passwordInputEl.addEventListener("input", (e) => {
       if (passwordStrength) {
-        const strength = getPasswordStrength(e.target.value);
+        const val = e.target.value;
+        if (!val) {
+          passwordStrength.className = "password-strength";
+          return;
+        }
+        const strength = getPasswordStrength(val);
         passwordStrength.className = `password-strength ${strength}`;
       }
     });
@@ -539,7 +658,13 @@ document.addEventListener("DOMContentLoaded", () => {
   const createCourseForm = document.getElementById("createCourseForm");
   const createCourseMessage = document.getElementById("createCourseMessage");
 
-  const openCreateCourse = () => openModalElement(createCourseModal);
+  const openCreateCourse = () => {
+    if (createCourseMessage) {
+      createCourseMessage.textContent = "";
+      createCourseMessage.className = "form-message";
+    }
+    openModalElement(createCourseModal);
+  };
   const closeCreateCourse = () => closeModalElement(createCourseModal);
 
   if (openCreateCourseBtn) openCreateCourseBtn.addEventListener("click", openCreateCourse);
@@ -553,11 +678,11 @@ document.addEventListener("DOMContentLoaded", () => {
   if (createCourseForm) {
     createCourseForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const currentUser = JSON.parse(localStorage.getItem("edunovaCurrentStudent") || "{}");
-      const title = document.getElementById("newCourseTitle").value.trim();
-      const category = document.getElementById("newCourseCategory").value;
-      const price = document.getElementById("newCoursePrice").value.trim();
-      const desc = document.getElementById("newCourseDesc").value.trim();
+      const currentUser = getCurrentUser() || {};
+      const title = (document.getElementById("newCourseTitle")?.value || "").trim();
+      const category = document.getElementById("newCourseCategory")?.value || "coding";
+      const price = (document.getElementById("newCoursePrice")?.value || "").trim();
+      const desc = (document.getElementById("newCourseDesc")?.value || "").trim();
 
       if (!title || !price || !desc) {
         if (createCourseMessage) {
@@ -584,7 +709,7 @@ document.addEventListener("DOMContentLoaded", () => {
       saveStoredCourses(courses);
 
       if (createCourseMessage) {
-        createCourseMessage.textContent = "Tạo khóa học thành công!";
+        createCourseMessage.textContent = "🎉 Tạo khóa học thành công!";
         createCourseMessage.className = "form-message success";
       }
 
@@ -596,7 +721,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         closeCreateCourse();
         if (createCourseMessage) createCourseMessage.textContent = "";
-      }, 1200);
+      }, 1000);
     });
   }
 
@@ -610,6 +735,10 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const openCreateAssignment = () => {
     populateCourseDropdowns();
+    if (createAssignmentMessage) {
+      createAssignmentMessage.textContent = "";
+      createAssignmentMessage.className = "form-message";
+    }
     openModalElement(createAssignmentModal);
   };
   const closeCreateAssignment = () => closeModalElement(createAssignmentModal);
@@ -625,12 +754,12 @@ document.addEventListener("DOMContentLoaded", () => {
   if (createAssignmentForm) {
     createAssignmentForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const currentUser = JSON.parse(localStorage.getItem("edunovaCurrentStudent") || "{}");
-      const title = document.getElementById("assignmentTitle").value.trim();
-      const course = document.getElementById("assignmentCourse").value;
-      const deadline = document.getElementById("assignmentDeadline").value;
-      const desc = document.getElementById("assignmentDesc").value.trim();
-      const link = document.getElementById("assignmentLink").value.trim();
+      const currentUser = getCurrentUser() || {};
+      const title = (document.getElementById("assignmentTitle")?.value || "").trim();
+      const course = document.getElementById("assignmentCourse")?.value;
+      const deadline = document.getElementById("assignmentDeadline")?.value;
+      const desc = (document.getElementById("assignmentDesc")?.value || "").trim();
+      const link = (document.getElementById("assignmentLink")?.value || "").trim();
 
       if (!title || !course || !deadline || !desc) {
         if (createAssignmentMessage) {
@@ -657,7 +786,7 @@ document.addEventListener("DOMContentLoaded", () => {
       saveStoredAssignments(assignments);
 
       if (createAssignmentMessage) {
-        createAssignmentMessage.textContent = "Giao bài tập thành công!";
+        createAssignmentMessage.textContent = "🎉 Giao bài tập thành công!";
         createAssignmentMessage.className = "form-message success";
       }
 
@@ -668,13 +797,12 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         closeCreateAssignment();
         if (createAssignmentMessage) createAssignmentMessage.textContent = "";
-      }, 1200);
+      }, 1000);
     });
   }
 
   // ============ Render Teacher Dashboard ============
   const renderTeacherDashboard = () => {
-    const currentUser = JSON.parse(localStorage.getItem("edunovaCurrentStudent") || "{}");
     const courses = getStoredCourses();
     const assignments = getStoredAssignments();
     const submissions = getStoredSubmissions();
@@ -864,6 +992,11 @@ document.addEventListener("DOMContentLoaded", () => {
       `;
     }
 
+    if (submitAssignmentMessage) {
+      submitAssignmentMessage.textContent = "";
+      submitAssignmentMessage.className = "form-message";
+    }
+
     openModalElement(submitAssignmentModal);
   };
 
@@ -878,10 +1011,10 @@ document.addEventListener("DOMContentLoaded", () => {
   if (submitAssignmentForm) {
     submitAssignmentForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const currentUser = JSON.parse(localStorage.getItem("edunovaCurrentStudent") || "{}");
-      const assignmentId = submitAssignmentId.value;
-      const submissionUrl = document.getElementById("submissionUrl").value.trim();
-      const submissionNote = document.getElementById("submissionNote").value.trim();
+      const currentUser = getCurrentUser() || {};
+      const assignmentId = submitAssignmentId?.value;
+      const submissionUrl = (document.getElementById("submissionUrl")?.value || "").trim();
+      const submissionNote = (document.getElementById("submissionNote")?.value || "").trim();
 
       if (!submissionUrl) {
         if (submitAssignmentMessage) {
@@ -894,7 +1027,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const submissions = getStoredSubmissions();
       // Remove any existing submission by this student for this assignment
       const filtered = submissions.filter(
-        (s) => !(s.assignmentId === assignmentId && s.studentEmail === currentUser.email)
+        (s) => !(s.assignmentId === assignmentId && s.studentEmail === (currentUser.email || ""))
       );
 
       const newSubmission = {
@@ -911,7 +1044,7 @@ document.addEventListener("DOMContentLoaded", () => {
       saveStoredSubmissions(filtered);
 
       if (submitAssignmentMessage) {
-        submitAssignmentMessage.textContent = "Nộp bài thành công! Giảng viên sẽ sớm nhận được.";
+        submitAssignmentMessage.textContent = "🎉 Nộp bài thành công! Giảng viên sẽ sớm nhận được.";
         submitAssignmentMessage.className = "form-message success";
       }
 
@@ -922,7 +1055,7 @@ document.addEventListener("DOMContentLoaded", () => {
       setTimeout(() => {
         closeModalElement(submitAssignmentModal);
         if (submitAssignmentMessage) submitAssignmentMessage.textContent = "";
-      }, 1400);
+      }, 1000);
     });
   }
 
@@ -930,17 +1063,19 @@ document.addEventListener("DOMContentLoaded", () => {
   const renderStudentAssignments = () => {
     const studentAssignmentList = document.getElementById("studentAssignmentList");
     const studentPendingAssignmentsCount = document.getElementById("studentPendingAssignmentsCount");
-    const currentUser = JSON.parse(localStorage.getItem("edunovaCurrentStudent") || "{}");
+    const currentUser = getCurrentUser() || {};
     const assignments = getStoredAssignments();
     const submissions = getStoredSubmissions();
 
     if (!studentAssignmentList) return;
 
-    // Filter relevant assignments (match student course or show all if general)
+    // Filter relevant assignments
     const userCourse = currentUser.course || "";
     let relevantAssignments = assignments;
     if (userCourse) {
-      const matched = assignments.filter((a) => a.course.toLowerCase() === userCourse.toLowerCase());
+      const matched = assignments.filter(
+        (a) => a && a.course && a.course.toLowerCase() === userCourse.toLowerCase()
+      );
       if (matched.length > 0) relevantAssignments = matched;
     }
 
@@ -996,7 +1131,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ============ Update Auth UI (Role Based) ============
   const updateAuthUI = () => {
-    const currentUser = JSON.parse(localStorage.getItem("edunovaCurrentStudent") || "null");
+    const currentUser = getCurrentUser();
     const dashboardStudentName = document.getElementById("dashboardStudentName");
 
     if (currentUser) {
@@ -1033,8 +1168,8 @@ document.addEventListener("DOMContentLoaded", () => {
         renderStudentAssignments();
       }
     } else {
-      if (signupBtn) signupBtn.style.display = "block";
-      if (loginBtn) loginBtn.style.display = "block";
+      if (signupBtn) signupBtn.style.display = "";
+      if (loginBtn) loginBtn.style.display = "";
       if (userProfile) userProfile.style.display = "none";
       if (userRoleBadge) userRoleBadge.style.display = "none";
       if (teacherDashboard) teacherDashboard.style.display = "none";
@@ -1051,7 +1186,7 @@ document.addEventListener("DOMContentLoaded", () => {
     logoutBtn.addEventListener("click", (e) => {
       e.preventDefault();
       if (confirm("Bạn có chắc chắn muốn đăng xuất?")) {
-        localStorage.removeItem("edunovaCurrentStudent");
+        setCurrentUser(null);
         updateAuthUI();
         updateSchedule("UI/UX Design cho người mới");
       }
@@ -1077,7 +1212,7 @@ document.addEventListener("DOMContentLoaded", () => {
   populateCourseDropdowns();
   updateAuthUI();
 
-  const savedUser = JSON.parse(localStorage.getItem("edunovaCurrentStudent") || "null");
+  const savedUser = getCurrentUser();
   if (savedUser && savedUser.course) {
     updateSchedule(savedUser.course);
   } else {
