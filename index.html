@@ -14,7 +14,8 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />\n    <link rel="stylesheet" href="account-styles.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="account-styles.css" />
   </head>
   <body>
     <header class="site-header">
@@ -27,6 +28,9 @@
           <a href="#about">Giới thiệu</a>
           <a href="#courses">Khóa học</a>
           <a href="#roadmap">Lộ trình</a>
+          <a href="#schedule">Lịch học</a>
+          <a href="#teacherDashboard" id="navTeacherLink" style="display: none;">Quản lý Giảng dạy</a>
+          <a href="#studentDashboard" id="navStudentLink" style="display: none;">Bảng điều khiển</a>
           <a href="#reviews">Đánh giá</a>
           <a href="#contact">Liên hệ</a>
         </nav>
@@ -35,6 +39,7 @@
           <button class="btn btn-primary" type="button" data-open-signup id="signupBtn">Đăng ký</button>
           <button class="btn btn-secondary" type="button" data-open-login style="display: none;" id="loginBtn">Đăng nhập</button>
           <div class="user-profile" style="display: none;" id="userProfile">
+            <span id="userRoleBadge" class="role-badge"></span>
             <span id="userName" class="user-name">Người dùng</span>
             <button class="btn btn-ghost logout-btn" type="button" id="logoutBtn">Đăng xuất</button>
           </div>
@@ -77,7 +82,7 @@
                 </div>
                 <div class="progress-panel">
                   <p>Tiến độ</p>
-                  <strong>72%</strong>
+                  <strong id="heroProgressValue">72%</strong>
                   <div class="progress-bar">
                     <span></span>
                   </div>
@@ -86,9 +91,9 @@
               <div class="lesson-info">
                 <div>
                   <span class="mini-label">Lớp học tiếp theo</span>
-                  <h3>UI/UX Design Masterclass</h3>
+                  <h3 id="heroNextCourse">UI/UX Design Masterclass</h3>
                 </div>
-                <button class="join-btn">Vào học</button>
+                <button class="join-btn" type="button">Vào học</button>
               </div>
             </div>
           </div>
@@ -143,54 +148,8 @@
           </div>
         </div>
 
-        <div class="container course-grid">
-          <article class="course-card" data-category="design">
-            <div class="course-image design-bg"></div>
-            <div class="course-body">
-              <div class="course-meta">
-                <span>Design</span>
-                <span>4.9 ★</span>
-              </div>
-              <h3>UI/UX Design cho người mới</h3>
-              <p>Học cách tạo giao diện đẹp, dễ dùng và tối ưu trải nghiệm người dùng.</p>
-              <div class="course-footer">
-                <strong>1.200.000đ</strong>
-                <a href="#contact" data-open-signup data-course="UI/UX Design cho người mới">Đăng ký</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="course-card" data-category="coding">
-            <div class="course-image coding-bg"></div>
-            <div class="course-body">
-              <div class="course-meta">
-                <span>Coding</span>
-                <span>4.8 ★</span>
-              </div>
-              <h3>Frontend Development</h3>
-              <p>Thiết kế website, hiểu HTML, CSS, JavaScript và xây dựng giao diện thật.</p>
-              <div class="course-footer">
-                <strong>1.600.000đ</strong>
-                <a href="#contact" data-open-signup data-course="Frontend Development">Đăng ký</a>
-              </div>
-            </div>
-          </article>
-
-          <article class="course-card" data-category="business">
-            <div class="course-image business-bg"></div>
-            <div class="course-body">
-              <div class="course-meta">
-                <span>Business</span>
-                <span>4.7 ★</span>
-              </div>
-              <h3>Marketing Digital cơ bản</h3>
-              <p>Hiểu cách xây dựng thương hiệu, funnel và tăng trưởng mạnh mẽ trên mạng.</p>
-              <div class="course-footer">
-                <strong>1.100.000đ</strong>
-                <a href="#contact" data-open-signup data-course="Marketing Digital cơ bản">Đăng ký</a>
-              </div>
-            </div>
-          </article>
+        <div class="container course-grid" id="courseGrid">
+          <!-- Dynamic courses rendered by JavaScript -->
         </div>
       </section>
 
@@ -218,7 +177,7 @@
         </div>
       </section>
 
-      <section class="schedule">
+      <section id="schedule" class="schedule">
         <div class="container section-heading">
           <span class="eyebrow">Thời khóa biểu</span>
           <h2>Lịch học của bạn trong tuần.</h2>
@@ -235,7 +194,81 @@
         </div>
       </section>
 
-      <section class="dashboard">
+      <!-- Teacher Dashboard Section -->
+      <section id="teacherDashboard" class="teacher-dashboard-section" style="display: none;">
+        <div class="container section-heading inline">
+          <div>
+            <span class="eyebrow">Khu vực Giảng viên</span>
+            <h2>Bảng điều khiển & Quản lý dạy học</h2>
+          </div>
+          <div class="teacher-actions">
+            <button class="btn btn-primary" type="button" id="openCreateCourseBtn">
+              <span>➕</span> Tạo khóa học mới
+            </button>
+            <button class="btn btn-secondary" type="button" id="openCreateAssignmentBtn">
+              <span>📝</span> Giao bài tập mới
+            </button>
+          </div>
+        </div>
+
+        <!-- Metric overview -->
+        <div class="container teacher-stats-grid">
+          <div class="stat-card">
+            <div class="stat-icon">🎓</div>
+            <div class="stat-info">
+              <strong id="teacherCoursesCount">0</strong>
+              <span>Khóa học phụ trách</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">📋</div>
+            <div class="stat-info">
+              <strong id="teacherAssignmentsCount">0</strong>
+              <span>Bài tập đã giao</span>
+            </div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-icon">📥</div>
+            <div class="stat-info">
+              <strong id="teacherSubmissionsCount">0</strong>
+              <span>Lượt bài nộp của học sinh</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="container teacher-grid-layout">
+          <!-- Assignments Management Panel -->
+          <div class="teacher-panel">
+            <div class="panel-header">
+              <div>
+                <h3>Danh sách bài tập đã giao</h3>
+                <p>Theo dõi hạn nộp và bài làm của học sinh</p>
+              </div>
+              <button class="btn btn-primary small-btn" type="button" id="quickAssignBtn">+ Giao bài</button>
+            </div>
+            <div class="assignment-list" id="teacherAssignmentList">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Courses Management Panel -->
+          <div class="teacher-panel">
+            <div class="panel-header">
+              <div>
+                <h3>Khóa học do bạn giảng dạy</h3>
+                <p>Quản lý các khóa học trong hệ thống</p>
+              </div>
+              <button class="btn btn-secondary small-btn" type="button" id="quickCreateCourseBtn">+ Tạo khóa</button>
+            </div>
+            <div class="teacher-course-list" id="teacherCourseList">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Student Dashboard Section -->
+      <section id="studentDashboard" class="dashboard">
         <div class="container section-heading">
           <span class="eyebrow">Bảng điều khiển</span>
           <h2>Học tập của bạn trong ngày.</h2>
@@ -264,8 +297,8 @@
                 <span>khóa đang học</span>
               </div>
               <div>
-                <strong>08</strong>
-                <span>bài đã học</span>
+                <strong id="studentPendingAssignmentsCount">0</strong>
+                <span>bài tập cần làm</span>
               </div>
             </div>
           </div>
@@ -303,14 +336,11 @@
 
           <div class="dashboard-panel">
             <div class="panel-header compact">
-              <h3>Buổi học tiếp theo</h3>
+              <h3>Bài tập được giao</h3>
             </div>
 
-            <div class="lesson-box">
-              <span class="lesson-tag">Sắp tới</span>
-              <h4 id="dashboardNextLesson">Wireframe</h4>
-              <p id="dashboardNextTime">Thứ 2 · 08:00 - 10:00</p>
-              <button class="btn btn-primary small-btn" type="button">Vào học</button>
+            <div class="student-assignment-box" id="studentAssignmentList">
+              <!-- Populated by JS -->
             </div>
           </div>
         </div>
@@ -363,6 +393,7 @@
       </section>
     </main>
 
+    <!-- Sign Up Modal -->
     <div class="modal-overlay hidden" id="signupModal" aria-hidden="true">
       <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
         <button class="modal-close" type="button" aria-label="Đóng form đăng ký" data-close-signup>×</button>
@@ -396,8 +427,8 @@
             </div>
           </div>
 
-          <div class="form-group">
-            <label for="course">Khóa học quan tâm</label>
+          <div class="form-group" id="signupCourseGroup">
+            <label for="course" id="signupCourseLabel">Khóa học quan tâm / phụ trách</label>
             <select id="course" name="course" required>
               <option value="">Chọn khóa học</option>
               <option value="UI/UX Design cho người mới">UI/UX Design cho người mới</option>
@@ -435,6 +466,7 @@
       </div>
     </div>
 
+    <!-- Login Modal -->
     <div class="modal-overlay hidden" id="loginModal" aria-hidden="true">
       <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
         <button class="modal-close" type="button" aria-label="Đóng form" data-close-login>×</button>
@@ -466,6 +498,138 @@
           <p class="form-message" id="loginFormMessage" aria-live="polite"></p>
           <p class="form-toggle">Chưa có tài khoản? <button type="button" id="switchToSignup">Đăng ký ngay</button></p>
         </form>
+      </div>
+    </div>
+
+    <!-- Create Course Modal (Teacher) -->
+    <div class="modal-overlay hidden" id="createCourseModal" aria-hidden="true">
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="createCourseTitle">
+        <button class="modal-close" type="button" aria-label="Đóng form" data-close-create-course>×</button>
+        <div class="modal-header">
+          <span class="eyebrow">Giảng viên EduNova</span>
+          <h3 id="createCourseTitle">Tạo khóa học mới</h3>
+        </div>
+
+        <form id="createCourseForm" class="signup-form">
+          <div class="form-group">
+            <label for="newCourseTitle">Tên khóa học</label>
+            <input id="newCourseTitle" name="newCourseTitle" type="text" placeholder="Vd: Lập trình Python ứng dụng AI" required />
+          </div>
+
+          <div class="form-group">
+            <label for="newCourseCategory">Danh mục</label>
+            <select id="newCourseCategory" name="newCourseCategory" required>
+              <option value="coding">Lập trình (Coding)</option>
+              <option value="design">Thiết kế (Design)</option>
+              <option value="business">Kinh doanh (Business)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="newCoursePrice">Học phí</label>
+            <input id="newCoursePrice" name="newCoursePrice" type="text" placeholder="Vd: 1.500.000đ" required />
+          </div>
+
+          <div class="form-group">
+            <label for="newCourseDesc">Mô tả ngắn khóa học</label>
+            <textarea id="newCourseDesc" name="newCourseDesc" rows="3" placeholder="Mô tả nội dung trọng tâm và kết quả đạt được..." required></textarea>
+          </div>
+
+          <button class="btn btn-primary submit-btn" type="submit">Xuất bản khóa học</button>
+          <p class="form-message" id="createCourseMessage" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Create Assignment Modal (Teacher) -->
+    <div class="modal-overlay hidden" id="createAssignmentModal" aria-hidden="true">
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="createAssignmentTitle">
+        <button class="modal-close" type="button" aria-label="Đóng form" data-close-create-assignment>×</button>
+        <div class="modal-header">
+          <span class="eyebrow">Giao bài cho học viên</span>
+          <h3 id="createAssignmentTitle">Tạo bài tập mới</h3>
+        </div>
+
+        <form id="createAssignmentForm" class="signup-form">
+          <div class="form-group">
+            <label for="assignmentTitle">Tiêu đề bài tập</label>
+            <input id="assignmentTitle" name="assignmentTitle" type="text" placeholder="Vd: Thiết kế Wireframe Landing Page EduNova" required />
+          </div>
+
+          <div class="form-group">
+            <label for="assignmentCourse">Khóa học áp dụng</label>
+            <select id="assignmentCourse" name="assignmentCourse" required>
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="assignmentDeadline">Hạn nộp bài (Deadline)</label>
+            <input id="assignmentDeadline" name="assignmentDeadline" type="date" required />
+          </div>
+
+          <div class="form-group">
+            <label for="assignmentDesc">Yêu cầu & Hướng dẫn làm bài</label>
+            <textarea id="assignmentDesc" name="assignmentDesc" rows="4" placeholder="Mô tả chi tiết yêu cầu bài làm, tiêu chí chấm điểm..." required></textarea>
+          </div>
+
+          <div class="form-group">
+            <label for="assignmentLink">Link tài liệu / Đề bài mẫu (tuỳ chọn)</label>
+            <input id="assignmentLink" name="assignmentLink" type="url" placeholder="https://drive.google.com/..." />
+          </div>
+
+          <button class="btn btn-primary submit-btn" type="submit">Giao bài tập</button>
+          <p class="form-message" id="createAssignmentMessage" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- Submit Assignment Modal (Student) -->
+    <div class="modal-overlay hidden" id="submitAssignmentModal" aria-hidden="true">
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="submitAssignmentTitle">
+        <button class="modal-close" type="button" aria-label="Đóng form" data-close-submit-assignment>×</button>
+        <div class="modal-header">
+          <span class="eyebrow">Nộp bài tập</span>
+          <h3 id="submitAssignmentTitle">Nộp bài làm</h3>
+          <p id="submitAssignmentCourseName" style="color: var(--muted); font-size: 0.9rem; margin-top: 4px;"></p>
+        </div>
+
+        <form id="submitAssignmentForm" class="signup-form">
+          <input type="hidden" id="submitAssignmentId" name="assignmentId" />
+          
+          <div class="assignment-instruction-box" id="submitAssignmentInstruction">
+            <!-- Instruction text -->
+          </div>
+
+          <div class="form-group">
+            <label for="submissionUrl">Link bài làm (GitHub, Figma, Google Drive...)</label>
+            <input id="submissionUrl" name="submissionUrl" type="url" placeholder="https://..." required />
+          </div>
+
+          <div class="form-group">
+            <label for="submissionNote">Ghi chú cho giáo viên</label>
+            <textarea id="submissionNote" name="submissionNote" rows="3" placeholder="Ghi chú thêm về phần bài làm của bạn..."></textarea>
+          </div>
+
+          <button class="btn btn-primary submit-btn" type="submit">Gửi bài làm</button>
+          <p class="form-message" id="submitAssignmentMessage" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
+    <!-- View Submissions Modal (Teacher) -->
+    <div class="modal-overlay hidden" id="viewSubmissionsModal" aria-hidden="true">
+      <div class="modal-dialog modal-large" role="dialog" aria-modal="true" aria-labelledby="viewSubmissionsTitle">
+        <button class="modal-close" type="button" aria-label="Đóng" data-close-view-submissions>×</button>
+        <div class="modal-header">
+          <span class="eyebrow">Danh sách bài nộp</span>
+          <h3 id="viewSubmissionsTitle">Chi tiết bài nộp học viên</h3>
+          <p id="viewSubmissionsSubTitle" style="color: var(--muted); font-size: 0.9rem; margin-top: 4px;"></p>
+        </div>
+
+        <div class="submissions-container" id="submissionsListContainer">
+          <!-- Populated by JS -->
+        </div>
       </div>
     </div>
 
