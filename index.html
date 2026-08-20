@@ -91,7 +91,7 @@
               <div class="lesson-info">
                 <div>
                   <span class="mini-label">Lớp học tiếp theo</span>
-                  <h3 id="heroNextCourse">UI/UX Design Masterclass</h3>
+                  <h3 id="heroNextCourse">Toán học & Luyện thi THPT</h3>
                 </div>
                 <button class="join-btn" type="button">Vào học</button>
               </div>
@@ -137,14 +137,14 @@
       <section id="courses" class="courses">
         <div class="container section-heading inline">
           <div>
-            <span class="eyebrow">Khóa học nổi bật</span>
-            <h2>Chọn con đường học tập phù hợp với bạn.</h2>
+            <span class="eyebrow">Môn học phổ thông & Luyện thi</span>
+            <h2>Chọn môn học bạn muốn nâng cao kết quả.</h2>
           </div>
-          <div class="filter-tabs" aria-label="Phân loại khóa học">
-            <button class="tab active" data-filter="all">Tất cả</button>
-            <button class="tab" data-filter="design">Thiết kế</button>
-            <button class="tab" data-filter="coding">Lập trình</button>
-            <button class="tab" data-filter="business">Kinh doanh</button>
+          <div class="filter-tabs" aria-label="Phân loại môn học">
+            <button class="tab active" data-filter="all">Tất cả (9 môn)</button>
+            <button class="tab" data-filter="natural">Khoa học Tự nhiên</button>
+            <button class="tab" data-filter="social">Khoa học Xã hội</button>
+            <button class="tab" data-filter="tech_lang">Ngoại ngữ & Tin học</button>
           </div>
         </div>
 
@@ -428,12 +428,18 @@
           </div>
 
           <div class="form-group" id="signupCourseGroup">
-            <label for="course" id="signupCourseLabel">Khóa học quan tâm / phụ trách</label>
+            <label for="course" id="signupCourseLabel">Môn học quan tâm / phụ trách</label>
             <select id="course" name="course">
-              <option value="">-- Chọn khóa học (hoặc để trống) --</option>
-              <option value="UI/UX Design cho người mới">UI/UX Design cho người mới</option>
-              <option value="Frontend Development">Frontend Development</option>
-              <option value="Marketing Digital cơ bản">Marketing Digital cơ bản</option>
+              <option value="">-- Chọn môn học (hoặc để trống) --</option>
+              <option value="Toán học - Đại số & Hình học không gian">📐 Toán học</option>
+              <option value="Vật lý - Cơ học & Sóng điện từ">⚡ Vật lý</option>
+              <option value="Hóa học - Vô cơ & Hữu cơ trọng tâm">🧪 Hóa học</option>
+              <option value="Sinh học - Di truyền & Quần thể sinh thái">🧬 Sinh học</option>
+              <option value="Ngữ văn - Kỹ năng Đọc hiểu & Nghị luận xã hội">📖 Ngữ văn</option>
+              <option value="Tiếng Anh - Ngữ pháp & Luyện thi THPT / IELTS">🌍 Tiếng Anh</option>
+              <option value="Lịch sử - Lịch sử Việt Nam & Thế giới hiện đại">🏛️ Lịch sử</option>
+              <option value="Địa lý - Địa lý tự nhiên & Kinh tế Việt Nam">🗺️ Địa lý</option>
+              <option value="Tin học - Lập trình Python & Tư duy thuật toán">💻 Tin học</option>
             </select>
           </div>
 
@@ -517,11 +523,11 @@
           </div>
 
           <div class="form-group">
-            <label for="newCourseCategory">Danh mục</label>
+            <label for="newCourseCategory">Phân loại môn học</label>
             <select id="newCourseCategory" name="newCourseCategory" required>
-              <option value="coding">Lập trình (Coding)</option>
-              <option value="design">Thiết kế (Design)</option>
-              <option value="business">Kinh doanh (Business)</option>
+              <option value="natural">Khoa học Tự nhiên (Toán, Lý, Hóa, Sinh)</option>
+              <option value="social">Khoa học Xã hội (Văn, Sử, Địa)</option>
+              <option value="tech_lang">Ngoại ngữ & Tin học (Anh, Tin)</option>
             </select>
           </div>
 

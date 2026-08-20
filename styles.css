@@ -483,6 +483,47 @@ select {
 
 .course-image {
   height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 3.6rem;
+  user-select: none;
+}
+
+.math-bg {
+  background: linear-gradient(135deg, #e0e7ff, #c7d2fe);
+}
+
+.physics-bg {
+  background: linear-gradient(135deg, #cffafe, #a5f3fc);
+}
+
+.chemistry-bg {
+  background: linear-gradient(135deg, #fef3c7, #fde68a);
+}
+
+.biology-bg {
+  background: linear-gradient(135deg, #dcfce7, #bbf7d0);
+}
+
+.literature-bg {
+  background: linear-gradient(135deg, #ffe4e6, #fecdd3);
+}
+
+.english-bg {
+  background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+}
+
+.history-bg {
+  background: linear-gradient(135deg, #ffedd5, #fed7aa);
+}
+
+.geography-bg {
+  background: linear-gradient(135deg, #ecfccb, #d9f99d);
+}
+
+.it-bg {
+  background: linear-gradient(135deg, #ccfbf1, #99f6e4);
 }
 
 .design-bg {
