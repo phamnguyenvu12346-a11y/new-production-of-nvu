@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
     year.textContent = new Date().getFullYear();
   }
 
-  // ============ 9 Phổ Biến: Toán, Lý, Hóa, Sinh, Văn, Anh, Sử, Địa, Tin ============
+  // ============ 9 Môn Học Phổ Biến: Toán, Lý, Hóa, Sinh, Văn, Anh, Sử, Địa, Tin ============
   const DEFAULT_COURSES = [
     {
       id: "course-math",
@@ -108,6 +108,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
+  // ============ Danh sách Đề bài tập mẫu ============
   const DEFAULT_ASSIGNMENTS = [
     {
       id: "assign-math-1",
@@ -147,6 +148,78 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
+  // ============ Danh sách Tài liệu & Video Bài giảng mẫu ============
+  const DEFAULT_MATERIALS = [
+    {
+      id: "mat-math-1",
+      title: "Chuyên đề Video: Khảo sát sự biến thiên & Đồ thị hàm số",
+      course: "Toán học - Đại số & Hình học không gian",
+      type: "video",
+      url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+      summary: "1. Đạo hàm và xét dấu y'\n2. Tìm cực trị và tiệm cận đứng, tiệm cận ngang\n3. Lập bảng biến thiên và vẽ đồ thị hàm bậc 3, bậc 4 trùng phương, phân thức bậc nhất.",
+      teacherName: "Thầy Hùng (Chuyên Toán)",
+      createdAt: new Date().toLocaleDateString("vi-VN")
+    },
+    {
+      id: "mat-phys-1",
+      title: "Tài liệu Tổng hợp: 50 Công thức Dao động điều hòa & Sóng cơ",
+      course: "Vật lý - Cơ học & Sóng điện từ",
+      type: "document",
+      url: "https://drive.google.com",
+      summary: "Tổng hợp toàn bộ công thức cốt lõi: Chu kỳ, tần số, phương trình li độ, vận tốc, gia tốc, động năng, thế năng và năng lượng toàn phần con lắc lò xo.",
+      teacherName: "Thầy Tuấn (Vật lý)",
+      createdAt: new Date().toLocaleDateString("vi-VN")
+    },
+    {
+      id: "mat-lit-1",
+      title: "Đề cương Ôn tập: 10 Dạng đề Nghị luận Xã hội 200 chữ đạt điểm cao",
+      course: "Ngữ văn - Kỹ năng Đọc hiểu & Nghị luận xã hội",
+      type: "exam",
+      url: "https://drive.google.com",
+      summary: "Hướng dẫn cấu trúc 4 phần chuẩn: Nêu vấn đề, Giải thích - Phân tích chứng minh, Bàn luận mở rộng - Phản đề, Bài học nhận thức và hành động.",
+      teacherName: "Cô Mai (Ngữ văn)",
+      createdAt: new Date().toLocaleDateString("vi-VN")
+    },
+    {
+      id: "mat-eng-1",
+      title: "Chuyên đề Video: Chinh phục 12 Thì trong Tiếng Anh & Mẹo làm bài",
+      course: "Tiếng Anh - Ngữ pháp & Luyện thi THPT / IELTS",
+      type: "video",
+      url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
+      summary: "Hệ thống hóa 12 thì qua trục thời gian (Quá khứ - Hiện tại - Tương lai), cách phân biệt Hiện tại hoàn thành vs Quá khứ đơn, cùng mẹo nhận biết dấu hiệu thời gian.",
+      teacherName: "Thầy David & Cô Linh",
+      createdAt: new Date().toLocaleDateString("vi-VN")
+    },
+    {
+      id: "mat-it-1",
+      title: "Slide Bài giảng: Cấu trúc Dữ liệu & Thuật toán cơ bản với Python",
+      course: "Tin học - Lập trình Python & Tư duy thuật toán",
+      type: "document",
+      url: "https://github.com",
+      summary: "Slide gồm 6 phần: Cú pháp Python, Rẽ nhánh if-else, Vòng lặp for/while, Cấu trúc List/Tuple/Dictionary, Hàm & Giải thuật tìm kiếm nhị phân.",
+      teacherName: "Thầy Minh (Tin học)",
+      createdAt: new Date().toLocaleDateString("vi-VN")
+    }
+  ];
+
+  // Helper chuyển đổi link YouTube sang Embed URL
+  const getEmbedUrl = (url) => {
+    if (!url) return "";
+    try {
+      if (url.includes("youtube.com/watch?v=")) {
+        const videoId = url.split("v=")[1]?.split("&")[0];
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+      }
+      if (url.includes("youtu.be/")) {
+        const videoId = url.split("youtu.be/")[1]?.split("?")[0];
+        return videoId ? `https://www.youtube.com/embed/${videoId}` : url;
+      }
+    } catch (e) {
+      return url;
+    }
+    return url;
+  };
+
   // Helper functions for safe LocalStorage access
   const safeGetJSON = (key, defaultValue) => {
     try {
@@ -169,7 +242,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const getStoredCourses = () => {
     const courses = safeGetJSON("edunovaCourses", null);
-    // Tự động chuyển đổi nếu chưa có hoặc đang chứa dữ liệu cũ
     const isOldCourses =
       Array.isArray(courses) &&
       courses.length > 0 &&
@@ -203,6 +275,19 @@ document.addEventListener("DOMContentLoaded", () => {
     safeSetJSON("edunovaAssignments", assignments);
   };
 
+  const getStoredMaterials = () => {
+    const materials = safeGetJSON("edunovaMaterials", null);
+    if (!materials || !Array.isArray(materials) || materials.length === 0) {
+      safeSetJSON("edunovaMaterials", DEFAULT_MATERIALS);
+      return DEFAULT_MATERIALS;
+    }
+    return materials;
+  };
+
+  const saveStoredMaterials = (materials) => {
+    safeSetJSON("edunovaMaterials", materials);
+  };
+
   const getStoredSubmissions = () => {
     const data = safeGetJSON("edunovaSubmissions", []);
     return Array.isArray(data) ? data : [];
@@ -233,7 +318,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
-  // ============ Schedule Map (Thời khóa biểu môn học) ============
+  // ============ Schedule Map (Thời khóa biểu) ============
   const scheduleMap = {
     "Toán học - Đại số & Hình học không gian": {
       title: "Toán học - Đại số & Hình học không gian",
@@ -460,11 +545,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-  // Populate Course Dropdowns (for signup & assign homework)
+  // Populate Course Dropdowns (for signup, assignments, materials & settings)
   const populateCourseDropdowns = () => {
     const courses = getStoredCourses();
     const courseSelect = document.getElementById("course");
     const assignmentCourseSelect = document.getElementById("assignmentCourse");
+    const materialCourseSelect = document.getElementById("materialCourse");
+    const settingsCourseSelect = document.getElementById("settingsCourse");
 
     const optionsHtml = [
       '<option value="">-- Chọn môn học --</option>',
@@ -481,6 +568,18 @@ document.addEventListener("DOMContentLoaded", () => {
       const currentVal = assignmentCourseSelect.value;
       assignmentCourseSelect.innerHTML = optionsHtml;
       if (currentVal) assignmentCourseSelect.value = currentVal;
+    }
+
+    if (materialCourseSelect) {
+      const currentVal = materialCourseSelect.value;
+      materialCourseSelect.innerHTML = optionsHtml;
+      if (currentVal) materialCourseSelect.value = currentVal;
+    }
+
+    if (settingsCourseSelect) {
+      const currentVal = settingsCourseSelect.value;
+      settingsCourseSelect.innerHTML = optionsHtml;
+      if (currentVal) settingsCourseSelect.value = currentVal;
     }
   };
 
@@ -626,7 +725,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: `user-${Date.now()}`,
       fullName,
       email,
-      accountType, // "student" or "teacher"
+      accountType,
       course,
       password,
       registeredAt: new Date().toISOString()
@@ -755,10 +854,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // ============ Password Strength & Visibility ============
-  const passwordInputEl = document.getElementById("password");
-  const passwordStrength = document.getElementById("passwordStrength");
-
+  // ============ Password Strength & Visibility Helpers ============
   const getPasswordStrength = (pwd) => {
     let strength = 0;
     if (pwd.length >= 6) strength++;
@@ -770,19 +866,24 @@ document.addEventListener("DOMContentLoaded", () => {
     return "strong";
   };
 
-  if (passwordInputEl) {
-    passwordInputEl.addEventListener("input", (e) => {
-      if (passwordStrength) {
+  const setupPasswordInput = (inputId, strengthId) => {
+    const input = document.getElementById(inputId);
+    const strengthEl = document.getElementById(strengthId);
+    if (input && strengthEl) {
+      input.addEventListener("input", (e) => {
         const val = e.target.value;
         if (!val) {
-          passwordStrength.className = "password-strength";
+          strengthEl.className = "password-strength";
           return;
         }
-        const strength = getPasswordStrength(val);
-        passwordStrength.className = `password-strength ${strength}`;
-      }
-    });
-  }
+        const str = getPasswordStrength(val);
+        strengthEl.className = `password-strength ${str}`;
+      });
+    }
+  };
+
+  setupPasswordInput("password", "passwordStrength");
+  setupPasswordInput("newPassword", "newPasswordStrength");
 
   const toggleButtons = document.querySelectorAll(".toggle-password");
   toggleButtons.forEach((btn) => {
@@ -880,7 +981,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Create Assignment Modal Elements
+  // ============ Create Assignment Modal Elements ============
   const createAssignmentModal = document.getElementById("createAssignmentModal");
   const openCreateAssignmentBtn = document.getElementById("openCreateAssignmentBtn");
   const quickAssignBtn = document.getElementById("quickAssignBtn");
@@ -956,20 +1057,443 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ============ Create Material Modal (Tài liệu / Video) ============
+  const createMaterialModal = document.getElementById("createMaterialModal");
+  const openCreateMaterialBtn = document.getElementById("openCreateMaterialBtn");
+  const quickCreateMaterialBtn = document.getElementById("quickCreateMaterialBtn");
+  const closeCreateMaterialBtns = document.querySelectorAll("[data-close-create-material]");
+  const createMaterialForm = document.getElementById("createMaterialForm");
+  const createMaterialMessage = document.getElementById("createMaterialMessage");
+
+  const openCreateMaterial = () => {
+    populateCourseDropdowns();
+    if (createMaterialMessage) {
+      createMaterialMessage.textContent = "";
+      createMaterialMessage.className = "form-message";
+    }
+    openModalElement(createMaterialModal);
+  };
+  const closeCreateMaterial = () => closeModalElement(createMaterialModal);
+
+  if (openCreateMaterialBtn) openCreateMaterialBtn.addEventListener("click", openCreateMaterial);
+  if (quickCreateMaterialBtn) quickCreateMaterialBtn.addEventListener("click", openCreateMaterial);
+  closeCreateMaterialBtns.forEach((btn) => btn.addEventListener("click", closeCreateMaterial));
+  createMaterialModal?.addEventListener("click", (e) => {
+    if (e.target === createMaterialModal) closeCreateMaterial();
+  });
+
+  // Handle Create Material Form Submit
+  if (createMaterialForm) {
+    createMaterialForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const currentUser = getCurrentUser() || {};
+      const title = (document.getElementById("materialTitle")?.value || "").trim();
+      const course = document.getElementById("materialCourse")?.value;
+      const type = document.getElementById("materialType")?.value || "video";
+      const url = (document.getElementById("materialUrl")?.value || "").trim();
+      const summary = (document.getElementById("materialSummary")?.value || "").trim();
+
+      if (!title || !course || !url || !summary) {
+        if (createMaterialMessage) {
+          createMaterialMessage.textContent = "Vui lòng điền đủ thông tin tiêu đề, môn học, link học liệu và tóm tắt lý thuyết.";
+          createMaterialMessage.className = "form-message error";
+        }
+        return;
+      }
+
+      const materials = getStoredMaterials();
+      const newMaterial = {
+        id: `mat-${Date.now()}`,
+        title,
+        course,
+        type,
+        url,
+        summary,
+        teacherName: currentUser.fullName || "Giảng viên EduNova",
+        createdByEmail: currentUser.email || "",
+        createdAt: new Date().toLocaleDateString("vi-VN")
+      };
+
+      materials.unshift(newMaterial);
+      saveStoredMaterials(materials);
+
+      if (createMaterialMessage) {
+        createMaterialMessage.textContent = "🎉 Đăng tải học liệu thành công!";
+        createMaterialMessage.className = "form-message success";
+      }
+
+      createMaterialForm.reset();
+      renderTeacherDashboard();
+      renderStudentMaterials();
+
+      setTimeout(() => {
+        closeCreateMaterial();
+        if (createMaterialMessage) createMaterialMessage.textContent = "";
+      }, 1000);
+    });
+  }
+
+  // ============ View Material Modal (Video Player & Reader) ============
+  const viewMaterialModal = document.getElementById("viewMaterialModal");
+  const closeViewMaterialBtns = document.querySelectorAll("[data-close-view-material]");
+  const viewMaterialTitle = document.getElementById("viewMaterialTitle");
+  const viewMaterialCourseName = document.getElementById("viewMaterialCourseName");
+  const viewMaterialCategoryBadge = document.getElementById("viewMaterialCategoryBadge");
+  const materialVideoWrapper = document.getElementById("materialVideoWrapper");
+  const materialVideoIframe = document.getElementById("materialVideoIframe");
+  const materialSummaryContent = document.getElementById("materialSummaryContent");
+  const materialDirectLink = document.getElementById("materialDirectLink");
+
+  const openViewMaterial = (materialId) => {
+    const materials = getStoredMaterials();
+    const mat = materials.find((m) => m.id === materialId);
+    if (!mat) return;
+
+    if (viewMaterialTitle) viewMaterialTitle.textContent = mat.title;
+    if (viewMaterialCourseName) viewMaterialCourseName.textContent = `Môn học: ${mat.course} | Giảng viên: ${mat.teacherName || "EduNova"}`;
+    if (viewMaterialCategoryBadge) {
+      viewMaterialCategoryBadge.textContent =
+        mat.type === "video" ? "🎥 Video bài giảng" : mat.type === "document" ? "📄 Tài liệu lý thuyết" : "📝 Đề thi & Đề cương";
+    }
+    if (materialSummaryContent) materialSummaryContent.textContent = mat.summary;
+
+    if (materialDirectLink) {
+      materialDirectLink.href = mat.url;
+      materialDirectLink.textContent = mat.type === "video" ? "📺 Mở video trên YouTube" : "📥 Tải/Mở tài liệu";
+    }
+
+    if (mat.type === "video" && (mat.url.includes("youtube") || mat.url.includes("youtu.be"))) {
+      if (materialVideoIframe) materialVideoIframe.src = getEmbedUrl(mat.url);
+      if (materialVideoWrapper) materialVideoWrapper.classList.remove("hidden");
+    } else {
+      if (materialVideoIframe) materialVideoIframe.src = "";
+      if (materialVideoWrapper) materialVideoWrapper.classList.add("hidden");
+    }
+
+    openModalElement(viewMaterialModal);
+  };
+
+  const closeViewMaterial = () => {
+    if (materialVideoIframe) materialVideoIframe.src = "";
+    closeModalElement(viewMaterialModal);
+  };
+
+  closeViewMaterialBtns.forEach((btn) => btn.addEventListener("click", closeViewMaterial));
+  viewMaterialModal?.addEventListener("click", (e) => {
+    if (e.target === viewMaterialModal) closeViewMaterial();
+  });
+
+  // ============ Account Settings Modal Logic ============
+  const settingsModal = document.getElementById("settingsModal");
+  const settingsBtn = document.getElementById("settingsBtn");
+  const footerSettingsLink = document.getElementById("footerSettingsLink");
+  const closeSettingsBtns = document.querySelectorAll("[data-close-settings]");
+  const tabBtnProfile = document.getElementById("tabBtnProfile");
+  const tabBtnSecurity = document.getElementById("tabBtnSecurity");
+  const profileTabContent = document.getElementById("profileTabContent");
+  const securityTabContent = document.getElementById("securityTabContent");
+  const updateProfileForm = document.getElementById("updateProfileForm");
+  const changePasswordForm = document.getElementById("changePasswordForm");
+  const profileFormMessage = document.getElementById("profileFormMessage");
+  const securityFormMessage = document.getElementById("securityFormMessage");
+  const copyIdBtn = document.getElementById("copyIdBtn");
+
+  const openSettingsModal = () => {
+    const currentUser = getCurrentUser();
+    if (!currentUser) {
+      openLoginModal();
+      return;
+    }
+
+    populateCourseDropdowns();
+
+    // Fill profile info
+    const settingsDisplayFullName = document.getElementById("settingsDisplayFullName");
+    const settingsRoleBadge = document.getElementById("settingsRoleBadge");
+    const settingsUserId = document.getElementById("settingsUserId");
+    const settingsAvatar = document.getElementById("settingsAvatar");
+    const settingsFullName = document.getElementById("settingsFullName");
+    const settingsEmail = document.getElementById("settingsEmail");
+    const settingsRole = document.getElementById("settingsRole");
+    const settingsCourse = document.getElementById("settingsCourse");
+    const settingsCourseLabel = document.getElementById("settingsCourseLabel");
+    const settingsJoinedDate = document.getElementById("settingsJoinedDate");
+
+    const isTeacher = currentUser.accountType === "teacher";
+    const userRoleText = isTeacher ? "👨‍🏫 Giáo viên" : "👨‍🎓 Học sinh";
+    const userDisplayId = currentUser.id ? (currentUser.id.startsWith("user-") ? `EDU-${currentUser.id.replace("user-", "").slice(-6)}` : currentUser.id) : "EDU-000000";
+
+    if (settingsDisplayFullName) settingsDisplayFullName.textContent = currentUser.fullName;
+    if (settingsAvatar) settingsAvatar.textContent = isTeacher ? "👨‍🏫" : "👨‍🎓";
+    if (settingsRoleBadge) {
+      settingsRoleBadge.textContent = userRoleText;
+      settingsRoleBadge.className = `role-badge ${isTeacher ? "teacher" : "student"}`;
+    }
+    if (settingsUserId) settingsUserId.textContent = userDisplayId;
+    if (settingsFullName) settingsFullName.value = currentUser.fullName;
+    if (settingsEmail) settingsEmail.value = currentUser.email;
+    if (settingsRole) settingsRole.value = isTeacher ? "Giáo viên giảng dạy" : "Học sinh học tập";
+    if (settingsCourse && currentUser.course) settingsCourse.value = currentUser.course;
+    if (settingsCourseLabel) settingsCourseLabel.textContent = isTeacher ? "Môn học phụ trách giảng dạy" : "Môn học đang quan tâm";
+    if (settingsJoinedDate) {
+      settingsJoinedDate.value = currentUser.registeredAt
+        ? new Date(currentUser.registeredAt).toLocaleDateString("vi-VN")
+        : "Đã kích hoạt";
+    }
+
+    // Reset messages
+    if (profileFormMessage) {
+      profileFormMessage.textContent = "";
+      profileFormMessage.className = "form-message";
+    }
+    if (securityFormMessage) {
+      securityFormMessage.textContent = "";
+      securityFormMessage.className = "form-message";
+    }
+
+    // Switch to profile tab by default
+    switchSettingsTab("profile");
+
+    openModalElement(settingsModal);
+  };
+
+  const closeSettingsModal = () => closeModalElement(settingsModal);
+
+  const switchSettingsTab = (tab) => {
+    if (tab === "profile") {
+      tabBtnProfile?.classList.add("active");
+      tabBtnSecurity?.classList.remove("active");
+      if (profileTabContent) profileTabContent.style.display = "block";
+      if (securityTabContent) securityTabContent.style.display = "none";
+    } else {
+      tabBtnSecurity?.classList.add("active");
+      tabBtnProfile?.classList.remove("active");
+      if (profileTabContent) profileTabContent.style.display = "none";
+      if (securityTabContent) securityTabContent.style.display = "block";
+    }
+  };
+
+  tabBtnProfile?.addEventListener("click", () => switchSettingsTab("profile"));
+  tabBtnSecurity?.addEventListener("click", () => switchSettingsTab("security"));
+
+  if (settingsBtn) settingsBtn.addEventListener("click", openSettingsModal);
+  if (footerSettingsLink) {
+    footerSettingsLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      openSettingsModal();
+    });
+  }
+  closeSettingsBtns.forEach((btn) => btn.addEventListener("click", closeSettingsModal));
+  settingsModal?.addEventListener("click", (e) => {
+    if (e.target === settingsModal) closeSettingsModal();
+  });
+
+  // Copy ID button
+  if (copyIdBtn) {
+    copyIdBtn.addEventListener("click", () => {
+      const settingsUserId = document.getElementById("settingsUserId");
+      if (settingsUserId) {
+        navigator.clipboard?.writeText(settingsUserId.textContent).then(() => {
+          const originalText = copyIdBtn.textContent;
+          copyIdBtn.textContent = "✓ Đã copy!";
+          setTimeout(() => {
+            copyIdBtn.textContent = originalText;
+          }, 1500);
+        });
+      }
+    });
+  }
+
+  // Update Profile Form Submit
+  if (updateProfileForm) {
+    updateProfileForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const currentUser = getCurrentUser();
+      if (!currentUser) return;
+
+      const newFullName = (document.getElementById("settingsFullName")?.value || "").trim();
+      const newCourse = document.getElementById("settingsCourse")?.value || currentUser.course;
+
+      if (!newFullName) {
+        if (profileFormMessage) {
+          profileFormMessage.textContent = "Vui lòng nhập họ và tên hợp lệ.";
+          profileFormMessage.className = "form-message error";
+        }
+        return;
+      }
+
+      currentUser.fullName = newFullName;
+      currentUser.course = newCourse;
+
+      // Update in stored users array
+      const users = getStoredUsers();
+      const userIndex = users.findIndex(
+        (u) => u && typeof u.email === "string" && u.email.toLowerCase() === currentUser.email.toLowerCase()
+      );
+      if (userIndex !== -1) {
+        users[userIndex].fullName = newFullName;
+        users[userIndex].course = newCourse;
+        saveStoredUsers(users);
+      }
+
+      setCurrentUser(currentUser);
+      updateAuthUI();
+      if (newCourse) updateSchedule(newCourse);
+
+      const settingsDisplayFullName = document.getElementById("settingsDisplayFullName");
+      if (settingsDisplayFullName) settingsDisplayFullName.textContent = newFullName;
+
+      if (profileFormMessage) {
+        profileFormMessage.textContent = "🎉 Cập nhật thông tin tài khoản thành công!";
+        profileFormMessage.className = "form-message success";
+      }
+
+      setTimeout(() => {
+        if (profileFormMessage) profileFormMessage.textContent = "";
+      }, 2500);
+    });
+  }
+
+  // Change Password Form Submit
+  if (changePasswordForm) {
+    changePasswordForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const currentUser = getCurrentUser();
+      if (!currentUser) return;
+
+      const currentPassword = (document.getElementById("currentPassword")?.value || "").trim();
+      const newPassword = (document.getElementById("newPassword")?.value || "").trim();
+      const confirmNewPassword = (document.getElementById("confirmNewPassword")?.value || "").trim();
+
+      if (currentPassword !== currentUser.password) {
+        if (securityFormMessage) {
+          securityFormMessage.textContent = "Mật khẩu hiện tại không đúng. Vui lòng kiểm tra lại.";
+          securityFormMessage.className = "form-message error";
+        }
+        return;
+      }
+
+      if (!newPassword || newPassword.length < 6) {
+        if (securityFormMessage) {
+          securityFormMessage.textContent = "Mật khẩu mới phải có tối thiểu 6 ký tự.";
+          securityFormMessage.className = "form-message error";
+        }
+        return;
+      }
+
+      if (newPassword !== confirmNewPassword) {
+        if (securityFormMessage) {
+          securityFormMessage.textContent = "Mật khẩu xác nhận không khớp.";
+          securityFormMessage.className = "form-message error";
+        }
+        return;
+      }
+
+      currentUser.password = newPassword;
+
+      const users = getStoredUsers();
+      const userIndex = users.findIndex(
+        (u) => u && typeof u.email === "string" && u.email.toLowerCase() === currentUser.email.toLowerCase()
+      );
+      if (userIndex !== -1) {
+        users[userIndex].password = newPassword;
+        saveStoredUsers(users);
+      }
+
+      setCurrentUser(currentUser);
+
+      if (securityFormMessage) {
+        securityFormMessage.textContent = "🎉 Đổi mật khẩu thành công!";
+        securityFormMessage.className = "form-message success";
+      }
+
+      changePasswordForm.reset();
+
+      setTimeout(() => {
+        if (securityFormMessage) securityFormMessage.textContent = "";
+      }, 2500);
+    });
+  }
+
   // ============ Render Teacher Dashboard ============
   const renderTeacherDashboard = () => {
     const courses = getStoredCourses();
     const assignments = getStoredAssignments();
+    const materials = getStoredMaterials();
     const submissions = getStoredSubmissions();
 
     // Stats
     const teacherCoursesCount = document.getElementById("teacherCoursesCount");
     const teacherAssignmentsCount = document.getElementById("teacherAssignmentsCount");
+    const teacherMaterialsCount = document.getElementById("teacherMaterialsCount");
     const teacherSubmissionsCount = document.getElementById("teacherSubmissionsCount");
 
     if (teacherCoursesCount) teacherCoursesCount.textContent = courses.length;
     if (teacherAssignmentsCount) teacherAssignmentsCount.textContent = assignments.length;
+    if (teacherMaterialsCount) teacherMaterialsCount.textContent = materials.length;
     if (teacherSubmissionsCount) teacherSubmissionsCount.textContent = submissions.length;
+
+    // Render Materials List for Teacher
+    const teacherMaterialList = document.getElementById("teacherMaterialList");
+    if (teacherMaterialList) {
+      if (materials.length === 0) {
+        teacherMaterialList.innerHTML = `
+          <div class="empty-state">
+            <span>📚</span>
+            <p>Chưa có tài liệu hoặc video nào được đăng. Hãy bấm "+ Đăng bài" để chia sẻ bài giảng.</p>
+          </div>
+        `;
+      } else {
+        teacherMaterialList.innerHTML = materials
+          .map((mat) => {
+            const typeLabel =
+              mat.type === "video" ? "🎥 Video" : mat.type === "document" ? "📄 Tài liệu" : "📝 Đề thi";
+            const typeClass = mat.type || "video";
+
+            return `
+              <div class="material-item" data-id="${mat.id}">
+                <div class="material-top">
+                  <h4 class="material-title">${mat.title}</h4>
+                  <span class="type-chip ${typeClass}">${typeLabel}</span>
+                </div>
+                <div class="assignment-meta">
+                  <span class="badge-course">📚 ${mat.course}</span>
+                  <span style="font-size: 0.8rem; color: var(--muted);">📅 ${mat.createdAt || "Hôm nay"}</span>
+                </div>
+                <p class="material-summary-preview">${mat.summary}</p>
+                <div class="assignment-footer-actions">
+                  <span style="color: var(--primary); font-size: 0.84rem; font-weight: 600;">👨‍🏫 ${mat.teacherName || "Giáo viên"}</span>
+                  <div class="action-btn-group">
+                    <button class="btn-icon-text view-mat-btn" data-id="${mat.id}">👁 Xem học liệu</button>
+                    <button class="btn-icon-text danger delete-mat-btn" data-id="${mat.id}">🗑 Xóa</button>
+                  </div>
+                </div>
+              </div>
+            `;
+          })
+          .join("");
+
+        // Attach view & delete events
+        teacherMaterialList.querySelectorAll(".view-mat-btn").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            const matId = e.currentTarget.dataset.id;
+            openViewMaterial(matId);
+          });
+        });
+
+        teacherMaterialList.querySelectorAll(".delete-mat-btn").forEach((btn) => {
+          btn.addEventListener("click", (e) => {
+            const matId = e.currentTarget.dataset.id;
+            if (confirm("Bạn có chắc chắn muốn xóa tài liệu/video bài giảng này không?")) {
+              const currentMaterials = getStoredMaterials().filter((m) => m.id !== matId);
+              saveStoredMaterials(currentMaterials);
+              renderTeacherDashboard();
+              renderStudentMaterials();
+            }
+          });
+        });
+      }
+    }
 
     // Render Assignment List for Teacher
     const teacherAssignmentList = document.getElementById("teacherAssignmentList");
@@ -1012,7 +1536,6 @@ document.addEventListener("DOMContentLoaded", () => {
           })
           .join("");
 
-        // Attach delete assignment events
         teacherAssignmentList.querySelectorAll(".delete-assignment-btn").forEach((btn) => {
           btn.addEventListener("click", (e) => {
             const assignId = e.currentTarget.dataset.id;
@@ -1025,7 +1548,6 @@ document.addEventListener("DOMContentLoaded", () => {
           });
         });
 
-        // Attach view submissions events
         teacherAssignmentList.querySelectorAll(".view-submissions-btn").forEach((btn) => {
           btn.addEventListener("click", (e) => {
             const assignId = e.currentTarget.dataset.id;
@@ -1180,7 +1702,6 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       const submissions = getStoredSubmissions();
-      // Remove any existing submission by this student for this assignment
       const filtered = submissions.filter(
         (s) => !(s.assignmentId === assignmentId && s.studentEmail === (currentUser.email || ""))
       );
@@ -1213,6 +1734,69 @@ document.addEventListener("DOMContentLoaded", () => {
       }, 1000);
     });
   }
+
+  // Render Student Materials (Tài liệu lý thuyết & Video bài giảng phía học sinh)
+  const renderStudentMaterials = () => {
+    const studentMaterialList = document.getElementById("studentMaterialList");
+    const studentMaterialsCount = document.getElementById("studentMaterialsCount");
+    const currentUser = getCurrentUser() || {};
+    const materials = getStoredMaterials();
+
+    if (!studentMaterialList) return;
+
+    const userCourse = currentUser.course || "";
+    let relevantMaterials = materials;
+    if (userCourse) {
+      const matched = materials.filter(
+        (m) => m && m.course && m.course.toLowerCase() === userCourse.toLowerCase()
+      );
+      if (matched.length > 0) relevantMaterials = matched;
+    }
+
+    if (relevantMaterials.length === 0) {
+      studentMaterialList.innerHTML = `
+        <div class="empty-state" style="padding: 16px;">
+          <p>Chưa có video bài giảng hoặc tài liệu lý thuyết nào cho môn học này.</p>
+        </div>
+      `;
+    } else {
+      studentMaterialList.innerHTML = relevantMaterials
+        .map((mat) => {
+          const typeLabel =
+            mat.type === "video" ? "🎥 Video bài giảng" : mat.type === "document" ? "📄 Tài liệu lý thuyết" : "📝 Đề thi & Đề cương";
+          const typeClass = mat.type || "video";
+
+          return `
+            <div class="student-material-item">
+              <div class="student-material-header">
+                <h4>${mat.title}</h4>
+                <span class="type-chip ${typeClass}">${typeLabel}</span>
+              </div>
+              <div class="assignment-meta" style="font-size: 0.8rem;">
+                <span class="badge-course">${mat.course}</span>
+                <span style="color: var(--muted); font-size: 0.78rem;">👨‍🏫 ${mat.teacherName || "EduNova"}</span>
+              </div>
+              <button class="btn btn-secondary small-btn view-student-mat-btn" data-id="${mat.id}" style="margin-top: 4px; align-self: flex-start;">
+                ${mat.type === "video" ? "▶ Xem bài giảng" : "📖 Đọc tài liệu"}
+              </button>
+            </div>
+          `;
+        })
+        .join("");
+
+      studentMaterialList.querySelectorAll(".view-student-mat-btn").forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          const matId = e.currentTarget.dataset.id;
+          openViewMaterial(matId);
+        });
+      });
+    }
+
+    if (studentMaterialsCount) {
+      const count = relevantMaterials.length;
+      studentMaterialsCount.textContent = `${count < 10 ? "0" + count : count}`;
+    }
+  };
 
   // Render Student Assignments in Dashboard
   const renderStudentAssignments = () => {
@@ -1260,7 +1844,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </span>
               </div>
               <div class="assignment-meta" style="font-size: 0.8rem;">
-                <span class="badge-course">📚 ${assign.course}</span>
+                <span class="badge-course">${assign.course}</span>
                 <span class="badge-deadline active">📅 Hạn: ${assign.deadline}</span>
               </div>
               <button class="btn btn-primary small-btn submit-task-btn" data-id="${assign.id}" style="margin-top: 4px; align-self: flex-start;">
@@ -1320,6 +1904,7 @@ document.addEventListener("DOMContentLoaded", () => {
         if (navTeacherLink) navTeacherLink.style.display = "none";
         if (navStudentLink) navStudentLink.style.display = "inline-block";
         if (dashboardStudentName) dashboardStudentName.textContent = currentUser.fullName;
+        renderStudentMaterials();
         renderStudentAssignments();
       }
     } else {
@@ -1332,6 +1917,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (navTeacherLink) navTeacherLink.style.display = "none";
       if (navStudentLink) navStudentLink.style.display = "none";
       if (dashboardStudentName) dashboardStudentName.textContent = "Học sinh EduNova";
+      renderStudentMaterials();
       renderStudentAssignments();
     }
   };
@@ -1357,8 +1943,17 @@ document.addEventListener("DOMContentLoaded", () => {
         createCourseModal,
         createAssignmentModal,
         submitAssignmentModal,
-        viewSubmissionsModal
-      ].forEach((m) => closeModalElement(m));
+        viewSubmissionsModal,
+        createMaterialModal,
+        viewMaterialModal,
+        settingsModal
+      ].forEach((m) => {
+        if (m === viewMaterialModal) {
+          closeViewMaterial();
+        } else {
+          closeModalElement(m);
+        }
+      });
     }
   });
 

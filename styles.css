@@ -925,27 +925,118 @@ select {
 }
 
 .site-footer {
-  padding: 24px 0 36px;
+  background: #ffffff;
+  border-top: 1px solid var(--line);
+  margin-top: 60px;
 }
 
-.footer-inner {
+.footer-main-grid {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 36px;
+  padding: 60px 0 40px;
+}
+
+.brand-col .brand {
+  margin-bottom: 8px;
+}
+
+.footer-tagline {
+  font-size: 0.9rem;
+  color: var(--muted);
+  margin: 10px 0 16px;
+  line-height: 1.6;
+}
+
+.footer-contact-info {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 0.86rem;
+  color: var(--muted);
+}
+
+.footer-col h4 {
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0 0 16px;
+  letter-spacing: -0.01em;
+}
+
+.footer-links-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  font-size: 0.88rem;
+}
+
+.footer-links-list a {
+  color: var(--muted);
+  transition: all 0.2s ease;
+}
+
+.footer-links-list a:hover {
+  color: var(--primary);
+  transform: translateX(3px);
+  display: inline-block;
+}
+
+.footer-bottom-bar {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-  padding-top: 24px;
+  padding: 22px 0 30px;
   border-top: 1px solid var(--line);
-}
-
-.footer-inner p {
-  margin: 0;
+  font-size: 0.86rem;
   color: var(--muted);
+  flex-wrap: wrap;
+  gap: 14px;
 }
 
-.footer-links {
+.footer-social-links {
   display: flex;
-  gap: 18px;
+  align-items: center;
+  gap: 12px;
+}
+
+.footer-social-links a {
   color: var(--muted);
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 8px;
+  background: var(--surface-soft);
+  font-size: 0.82rem;
+  transition: all 0.2s ease;
+}
+
+.footer-social-links a:hover {
+  color: var(--primary-dark);
+  background: #dfe8ff;
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .footer-main-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer-main-grid {
+    grid-template-columns: 1fr;
+    gap: 28px;
+  }
+  .footer-bottom-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .modal-overlay {
