@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "natural",
       price: "499.000đ",
       rating: "4.9 ★",
-      desc: "Nắm vững lý thuyết trọng tâm, phương pháp giải nhanh trắc nghiệm và tư duy logic các dạng bài thi THPT.",
+      desc: "Đại số, hình học không gian và phương pháp giải nhanh trắc nghiệm.",
       bgClass: "math-bg",
       icon: "📐",
       author: "Thầy Hùng (Chuyên Toán)"
@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "natural",
       price: "450.000đ",
       rating: "4.8 ★",
-      desc: "Giải thích hiện tượng thực tế, nắm chắc định luật Vật lý và thành thạo bài tập từ cơ bản đến nâng cao.",
+      desc: "Cơ học, sóng điện từ và kỹ năng làm bài trắc nghiệm thực tế.",
       bgClass: "physics-bg",
       icon: "⚡",
       author: "Thầy Tuấn (Vật lý EduNova)"
@@ -35,7 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "natural",
       price: "450.000đ",
       rating: "4.9 ★",
-      desc: "Phương pháp cân bằng phản ứng, sơ đồ chuyển hóa hóa học và kỹ năng giải nhanh bài tập định lượng.",
+      desc: "Hóa vô cơ, hữu cơ và phương pháp giải nhanh bài tập trọng tâm.",
       bgClass: "chemistry-bg",
       icon: "🧪",
       author: "Cô Lan (Hóa học)"
@@ -46,7 +46,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "natural",
       price: "399.000đ",
       rating: "4.8 ★",
-      desc: "Hệ thống hóa quy luật di truyền Menđen, cấu trúc ADN tế bào và sinh thái học một cách dễ nhớ.",
+      desc: "Quy luật di truyền, cấu trúc tế bào và sinh thái học.",
       bgClass: "biology-bg",
       icon: "🧬",
       author: "Cô Hương (Sinh học)"
@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "social",
       price: "420.000đ",
       rating: "4.9 ★",
-      desc: "Bí quyết phân tích tác phẩm văn học sâu sắc, cách triển khai đoạn văn nghị luận 200 chữ đạt điểm cao.",
+      desc: "Kỹ năng đọc hiểu và viết đoạn nghị luận 200 chữ đạt điểm cao.",
       bgClass: "literature-bg",
       icon: "📖",
       author: "Cô Mai (Ngữ văn)"
@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "tech_lang",
       price: "550.000đ",
       rating: "5.0 ★",
-      desc: "Xây chắc nền tảng ngữ pháp, 3.000 từ vựng cốt lõi, chiến thuật đọc hiểu và phát âm chuẩn quốc tế.",
+      desc: "Ngữ pháp cốt lõi, từ vựng trọng tâm và chiến thuật thi THPT.",
       bgClass: "english-bg",
       icon: "🌍",
       author: "Thầy David & Cô Linh"
@@ -79,7 +79,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "social",
       price: "380.000đ",
       rating: "4.8 ★",
-      desc: "Học lịch sử bằng sơ đồ tư duy dòng thời gian, ghi nhớ sự kiện logic và phân tích nguyên nhân ý nghĩa.",
+      desc: "Sơ đồ tư duy lịch sử Việt Nam và thế giới hiện đại.",
       bgClass: "history-bg",
       icon: "🏛️",
       author: "Thầy Hưng (Lịch sử)"
@@ -90,7 +90,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "social",
       price: "380.000đ",
       rating: "4.7 ★",
-      desc: "Thành thạo kỹ năng đọc Atlat Địa lý Việt Nam, phân tích biểu đồ số liệu và các vùng kinh tế trọng điểm.",
+      desc: "Kỹ năng đọc Atlat, phân tích biểu đồ và các vùng kinh tế.",
       bgClass: "geography-bg",
       icon: "🗺️",
       author: "Cô Trâm (Địa lý)"
@@ -101,7 +101,7 @@ document.addEventListener("DOMContentLoaded", () => {
       category: "tech_lang",
       price: "499.000đ",
       rating: "4.9 ★",
-      desc: "Làm quen với tư duy lập trình, thuật toán cơ bản, xử lý mảng và giải quyết bài toán thực tế bằng Python.",
+      desc: "Lập trình Python căn bản, cấu trúc dữ liệu và giải thuật.",
       bgClass: "it-bg",
       icon: "💻",
       author: "Thầy Minh (Tin học)"
