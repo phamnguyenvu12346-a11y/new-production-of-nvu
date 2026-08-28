@@ -25,17 +25,16 @@
           <span>EduNova</span>
         </div>
         <nav class="main-nav" aria-label="Điều hướng chính">
-          <a href="#about">Giới thiệu</a>
-          <a href="#courses">Khóa học</a>
+          <a href="#courses">Môn học</a>
+          <a href="#about">Ưu điểm</a>
           <a href="#roadmap">Lộ trình</a>
           <a href="#schedule">Lịch học</a>
-          <a href="#teacherDashboard" id="navTeacherLink" style="display: none;">Quản lý Giảng dạy</a>
-          <a href="#studentDashboard" id="navStudentLink" style="display: none;">Bảng điều khiển</a>
+          <a href="#teacherDashboard" id="navTeacherLink" style="display: none;">Quản lý Dạy học</a>
+          <a href="#studentDashboard" id="navStudentLink" style="display: none;">Góc học tập</a>
           <a href="#reviews">Đánh giá</a>
-          <a href="#contact">Liên hệ</a>
         </nav>
         <div class="nav-actions" id="authActions">
-          <a class="btn btn-ghost" href="#courses">Khám phá</a>
+          <a class="btn btn-ghost" href="#courses">Môn học</a>
           <button class="btn btn-primary" type="button" data-open-signup id="signupBtn">Đăng ký</button>
           <button class="btn btn-secondary" type="button" data-open-login id="loginBtn">Đăng nhập</button>
           <div class="user-profile" style="display: none;" id="userProfile">
@@ -49,29 +48,30 @@
     </header>
 
     <main>
+      <!-- Hero Section -->
       <section class="hero">
         <div class="container hero-grid">
           <div class="hero-copy">
-            <span class="eyebrow">EduNova</span>
-            <h1>Học tập chủ động. Tương lai rộng mở.</h1>
+            <span class="eyebrow">EduNova 4.0</span>
+            <h1>Học thông minh. Bứt phá điểm số.</h1>
             <p>
-              Lộ trình cá nhân hoá giúp bạn tiếp thu kiến thức nhanh chóng và hiệu quả.
+              Nền tảng học tập & luyện thi trực tuyến 9 môn phổ thông chuẩn hóa.
             </p>
             <div class="hero-actions">
               <button class="btn btn-primary" type="button" data-open-signup>Bắt đầu ngay</button>
-              <a class="btn btn-secondary" href="#roadmap">Xem lộ trình</a>
+              <a class="btn btn-secondary" href="#courses">Xem 9 môn học</a>
             </div>
             <ul class="hero-stats" aria-label="Thống kê nền tảng">
               <li><strong>15k+</strong><span>Học viên</span></li>
-              <li><strong>120+</strong><span>Khóa học</span></li>
-              <li><strong>94%</strong><span>Hài lòng</span></li>
+              <li><strong>9 Môn</strong><span>Trọng tâm</span></li>
+              <li><strong>100%</strong><span>Online</span></li>
             </ul>
           </div>
 
           <div class="hero-card-wrap">
             <div class="hero-card">
               <div class="card-top">
-                <span class="tag">Bán chạy</span>
+                <span class="tag">Nổi bật</span>
                 <span class="dot"></span>
               </div>
               <div class="course-preview">
@@ -90,7 +90,7 @@
               </div>
               <div class="lesson-info">
                 <div>
-                  <span class="mini-label">Lớp học tiếp theo</span>
+                  <span class="mini-label">Bài học tiếp theo</span>
                   <h3 id="heroNextCourse">Toán học & Luyện thi THPT</h3>
                 </div>
                 <button class="join-btn" type="button">Vào học</button>
@@ -100,51 +100,18 @@
         </div>
       </section>
 
-      <section class="logos">
-        <div class="container brands">
-          <span>Google</span>
-          <span>Meta</span>
-          <span>Microsoft</span>
-          <span>Amazon</span>
-          <span>Adobe</span>
-        </div>
-      </section>
-
-      <section id="about" class="features">
-        <div class="container section-heading">
-          <span class="eyebrow">Điểm nổi bật</span>
-          <h2>Học tập hiệu quả & trực quan</h2>
-        </div>
-        <div class="container feature-grid">
-          <article class="feature-card">
-            <div class="icon-box">📚</div>
-            <h3>Bài học tinh gọn</h3>
-            <p>Tập trung kiến thức cốt lõi, dễ hiểu.</p>
-          </article>
-          <article class="feature-card">
-            <div class="icon-box">🎯</div>
-            <h3>Lộ trình cá nhân</h3>
-            <p>Tối ưu theo mục tiêu và trình độ của bạn.</p>
-          </article>
-          <article class="feature-card">
-            <div class="icon-box">🤝</div>
-            <h3>Mentor đồng hành</h3>
-            <p>Hỗ trợ giải đáp và định hướng liên tục.</p>
-          </article>
-        </div>
-      </section>
-
+      <!-- Courses Section (Brought Up Directly After Hero) -->
       <section id="courses" class="courses">
         <div class="container section-heading inline">
           <div>
-            <span class="eyebrow">Khóa học</span>
-            <h2>Khám phá các môn học</h2>
+            <span class="eyebrow">Môn học</span>
+            <h2>9 Môn học trọng tâm</h2>
           </div>
           <div class="filter-tabs" aria-label="Phân loại môn học">
             <button class="tab active" data-filter="all">Tất cả (9 môn)</button>
-            <button class="tab" data-filter="natural">Khoa học Tự nhiên</button>
-            <button class="tab" data-filter="social">Khoa học Xã hội</button>
-            <button class="tab" data-filter="tech_lang">Ngoại ngữ & Tin học</button>
+            <button class="tab" data-filter="natural">Tự nhiên</button>
+            <button class="tab" data-filter="social">Xã hội</button>
+            <button class="tab" data-filter="tech_lang">Ngoại ngữ & Tin</button>
           </div>
         </div>
 
@@ -153,40 +120,67 @@
         </div>
       </section>
 
+      <!-- Features / Highlights Section -->
+      <section id="about" class="features">
+        <div class="container section-heading">
+          <span class="eyebrow">Ưu điểm</span>
+          <h2>Học tập hiệu quả & trực quan</h2>
+        </div>
+        <div class="container feature-grid">
+          <article class="feature-card">
+            <div class="icon-box">🎯</div>
+            <h3>Lộ trình chuẩn</h3>
+            <p>Tối ưu theo từng mục tiêu điểm số.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon-box">🎥</div>
+            <h3>Học liệu trực quan</h3>
+            <p>Video bài giảng & tóm tắt lý thuyết.</p>
+          </article>
+          <article class="feature-card">
+            <div class="icon-box">⚡</div>
+            <h3>Luyện đề & Bài tập</h3>
+            <p>Đề thi thử kèm lời giải chi tiết.</p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Roadmap Section -->
       <section id="roadmap" class="roadmap">
         <div class="container section-heading">
-          <span class="eyebrow">Lộ trình học</span>
-          <h2>Phát triển theo từng giai đoạn</h2>
+          <span class="eyebrow">Lộ trình</span>
+          <h2>3 bước bứt phá kết quả</h2>
         </div>
         <div class="container roadmap-grid">
           <div class="roadmap-step">
             <span class="step-number">01</span>
             <h3>Khởi động</h3>
-            <p>Xây dựng nền tảng vững chắc.</p>
+            <p>Nắm vững kiến thức trọng tâm.</p>
           </div>
           <div class="roadmap-step">
             <span class="step-number">02</span>
-            <h3>Thực hành</h3>
-            <p>Làm bài tập và dự án thực tế.</p>
+            <h3>Luyện tập</h3>
+            <p>Làm bài tập & chữa chi tiết.</p>
           </div>
           <div class="roadmap-step">
             <span class="step-number">03</span>
-            <h3>Chứng chỉ</h3>
-            <p>Chứng nhận hoàn thành môn học.</p>
+            <h3>Về đích</h3>
+            <p>Thi thử & bứt phá điểm số.</p>
           </div>
         </div>
       </section>
 
+      <!-- Schedule Section -->
       <section id="schedule" class="schedule">
         <div class="container section-heading">
           <span class="eyebrow">Lịch học</span>
-          <h2>Thời khóa biểu tuần này</h2>
+          <h2>Thời khóa biểu trong tuần</h2>
         </div>
 
         <div class="container schedule-layout">
           <div class="schedule-card overview-card">
             <p class="card-label">Tuần này</p>
-            <h3 id="scheduleCourseTitle">UI/UX Design cho người mới</h3>
+            <h3 id="scheduleCourseTitle">Toán học - Đại số & Hình học</h3>
             <ul id="scheduleSummary"></ul>
           </div>
 
@@ -826,7 +820,7 @@
       </div>
     </div>
 
-    <!-- Enhanced Professional Footer -->
+    <!-- Modern Minimal Footer -->
     <footer class="site-footer">
       <div class="container footer-main-grid">
         <!-- Col 1: Brand & Contact Info -->
@@ -835,17 +829,17 @@
             <span class="brand-mark">E</span>
             <span>EduNova</span>
           </div>
-          <p class="footer-tagline">Nền tảng học tập thông minh & luyện thi toàn diện từ lớp 1 đến lớp 12 và THPT Quốc gia với công nghệ cá nhân hóa lộ trình.</p>
+          <p class="footer-tagline">Nền tảng học tập & luyện thi trực tuyến 9 môn phổ thông.</p>
           <ul class="footer-contact-info">
-            <li>📍 <strong>Địa chỉ:</strong> Tòa nhà EduNova Tower, Cầu Giấy, Hà Nội & Quận 1, TP.HCM</li>
-            <li>📞 <strong>Hotline:</strong> 1900 6868 (8:00 - 21:30 hàng ngày)</li>
-            <li>✉️ <strong>Email:</strong> support@edunova.edu.vn</li>
+            <li>📍 Hà Nội & TP. Hồ Chí Minh</li>
+            <li>📞 Hotline: 1900 6868</li>
+            <li>✉️ support@edunova.edu.vn</li>
           </ul>
         </div>
 
         <!-- Col 2: 9 Subjects List -->
         <div class="footer-col">
-          <h4>9 Môn Học Phổ Biến</h4>
+          <h4>9 Môn học</h4>
           <ul class="footer-links-list">
             <li><a href="#courses">📐 Toán học</a></li>
             <li><a href="#courses">⚡ Vật lý</a></li>
@@ -855,33 +849,31 @@
             <li><a href="#courses">🌍 Tiếng Anh</a></li>
             <li><a href="#courses">🏛️ Lịch sử</a></li>
             <li><a href="#courses">🗺️ Địa lý</a></li>
-            <li><a href="#courses">💻 Tin học lập trình</a></li>
+            <li><a href="#courses">💻 Tin học</a></li>
           </ul>
         </div>
 
         <!-- Col 3: Quick Navigation -->
         <div class="footer-col">
-          <h4>Khám Phá & Tiện Ích</h4>
+          <h4>Khám phá</h4>
           <ul class="footer-links-list">
-            <li><a href="#about">Giới thiệu nền tảng</a></li>
             <li><a href="#courses">Danh sách môn học</a></li>
-            <li><a href="#roadmap">Lộ trình học tập</a></li>
-            <li><a href="#schedule">Thời khóa biểu tuần</a></li>
-            <li><a href="#reviews">Đánh giá từ học viên</a></li>
-            <li><a href="#contact">Đăng ký tư vấn lộ trình</a></li>
+            <li><a href="#about">Ưu điểm nổi bật</a></li>
+            <li><a href="#roadmap">Lộ trình 3 bước</a></li>
+            <li><a href="#schedule">Lịch học trong tuần</a></li>
+            <li><a href="#reviews">Đánh giá học viên</a></li>
             <li><a href="#" id="footerSettingsLink">⚙️ Cài đặt tài khoản</a></li>
           </ul>
         </div>
 
         <!-- Col 4: Support & Policy -->
         <div class="footer-col">
-          <h4>Hỗ Trợ & Chính Sách</h4>
+          <h4>Hỗ trợ</h4>
           <ul class="footer-links-list">
-            <li><a href="#contact">Hướng dẫn dành cho học sinh</a></li>
-            <li><a href="#contact">Dành cho giáo viên & Mentor</a></li>
-            <li><a href="#about">Quy chế hoạt động đào tạo</a></li>
+            <li><a href="#contact">Hướng dẫn học sinh</a></li>
+            <li><a href="#contact">Dành cho giáo viên</a></li>
             <li><a href="#about">Điều khoản sử dụng</a></li>
-            <li><a href="#about">Chính sách bảo mật dữ liệu</a></li>
+            <li><a href="#about">Chính sách bảo mật</a></li>
           </ul>
         </div>
       </div>
