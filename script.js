@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", () => {
+﻿document.addEventListener("DOMContentLoaded", () => {
   // ============ Year in Footer ============
   const year = document.getElementById("year");
   if (year) {
@@ -108,12 +108,13 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   ];
 
-  // ============ Danh sách Đề bài tập mẫu ============
+  // ============ Danh sách Đề bài tập tự luận mẫu ============
   const DEFAULT_ASSIGNMENTS = [
     {
       id: "assign-math-1",
       title: "Giải phương trình lượng giác và khảo sát hàm bậc 3",
       course: "Toán học - Đại số & Hình học không gian",
+      grade: "12",
       deadline: "2026-09-15",
       desc: "Làm bài tập trắc nghiệm 20 câu chương Hàm số và vẽ đồ thị hàm số bậc 3 trên vở, chụp ảnh hoặc nộp file PDF.",
       link: "https://drive.google.com",
@@ -123,6 +124,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: "assign-eng-1",
       title: "Luyện đọc hiểu Reading Comprehension Unit 3",
       course: "Tiếng Anh - Ngữ pháp & Luyện thi THPT / IELTS",
+      grade: "12",
       deadline: "2026-09-18",
       desc: "Hoàn thành 3 đoạn văn Reading Comprehension về chủ đề Môi trường và ghi chép tối thiểu 15 từ vựng mới.",
       link: "https://drive.google.com",
@@ -132,6 +134,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: "assign-lit-1",
       title: "Viết đoạn văn 200 chữ: Tinh thần tự học trong kỷ nguyên số",
       course: "Ngữ văn - Kỹ năng Đọc hiểu & Nghị luận xã hội",
+      grade: "12",
       deadline: "2026-09-20",
       desc: "Viết đoạn văn nghị luận xã hội khoảng 200 chữ nêu suy nghĩ của em về tầm quan trọng của việc chủ động tự học.",
       link: "",
@@ -141,6 +144,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: "assign-it-1",
       title: "Viết chương trình Python tìm số nguyên tố và sắp xếp mảng",
       course: "Tin học - Lập trình Python & Tư duy thuật toán",
+      grade: "12",
       deadline: "2026-09-22",
       desc: "Sử dụng Python viết hàm kiểm tra số nguyên tố và hàm sắp xếp mảng tăng dần. Nộp link GitHub hoặc file .py.",
       link: "https://github.com",
@@ -154,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: "mat-math-1",
       title: "Chuyên đề Video: Khảo sát sự biến thiên & Đồ thị hàm số",
       course: "Toán học - Đại số & Hình học không gian",
+      grade: "12",
       type: "video",
       url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
       summary: "1. Đạo hàm và xét dấu y'\n2. Tìm cực trị và tiệm cận đứng, tiệm cận ngang\n3. Lập bảng biến thiên và vẽ đồ thị hàm bậc 3, bậc 4 trùng phương, phân thức bậc nhất.",
@@ -164,6 +169,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: "mat-phys-1",
       title: "Tài liệu Tổng hợp: 50 Công thức Dao động điều hòa & Sóng cơ",
       course: "Vật lý - Cơ học & Sóng điện từ",
+      grade: "12",
       type: "document",
       url: "https://drive.google.com",
       summary: "Tổng hợp toàn bộ công thức cốt lõi: Chu kỳ, tần số, phương trình li độ, vận tốc, gia tốc, động năng, thế năng và năng lượng toàn phần con lắc lò xo.",
@@ -174,6 +180,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: "mat-lit-1",
       title: "Đề cương Ôn tập: 10 Dạng đề Nghị luận Xã hội 200 chữ đạt điểm cao",
       course: "Ngữ văn - Kỹ năng Đọc hiểu & Nghị luận xã hội",
+      grade: "12",
       type: "exam",
       url: "https://drive.google.com",
       summary: "Hướng dẫn cấu trúc 4 phần chuẩn: Nêu vấn đề, Giải thích - Phân tích chứng minh, Bàn luận mở rộng - Phản đề, Bài học nhận thức và hành động.",
@@ -184,6 +191,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: "mat-eng-1",
       title: "Chuyên đề Video: Chinh phục 12 Thì trong Tiếng Anh & Mẹo làm bài",
       course: "Tiếng Anh - Ngữ pháp & Luyện thi THPT / IELTS",
+      grade: "12",
       type: "video",
       url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
       summary: "Hệ thống hóa 12 thì qua trục thời gian (Quá khứ - Hiện tại - Tương lai), cách phân biệt Hiện tại hoàn thành vs Quá khứ đơn, cùng mẹo nhận biết dấu hiệu thời gian.",
@@ -194,6 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
       id: "mat-it-1",
       title: "Slide Bài giảng: Cấu trúc Dữ liệu & Thuật toán cơ bản với Python",
       course: "Tin học - Lập trình Python & Tư duy thuật toán",
+      grade: "12",
       type: "document",
       url: "https://github.com",
       summary: "Slide gồm 6 phần: Cú pháp Python, Rẽ nhánh if-else, Vòng lặp for/while, Cấu trúc List/Tuple/Dictionary, Hàm & Giải thuật tìm kiếm nhị phân.",
@@ -201,7 +210,214 @@ document.addEventListener("DOMContentLoaded", () => {
       createdAt: new Date().toLocaleDateString("vi-VN")
     }
   ];
+  // ============ Danh sách Đề Thi / Luyện Tập Trắc Nghiệm Online ============
+  const DEFAULT_QUIZZES = [
+    {
+      id: "quiz-math-12-1",
+      title: "Kiểm tra 15 phút: Cực trị & Sự biến thiên Hàm số",
+      course: "Toán học - Đại số & Hình học không gian",
+      grade: "12",
+      duration: 15,
+      teacherName: "Thầy Hùng (Chuyên Toán)",
+      questions: [
+        {
+          id: "q1",
+          question: "Hàm số y = x³ - 3x² + 2 đạt cực đại tại điểm nào?",
+          options: ["x = 0", "x = 2", "x = -1", "x = 1"],
+          answerIndex: 0,
+          explanation: "y' = 3x² - 6x = 3x(x - 2). y' đổi dấu từ (+) sang (-) qua x = 0 nên đạt cực đại tại x = 0."
+        },
+        {
+          id: "q2",
+          question: "Đồ thị hàm số y = (2x - 1) / (x + 1) có đường tiệm cận ngang là:",
+          options: ["y = 2", "x = -1", "y = -1", "x = 2"],
+          answerIndex: 0,
+          explanation: "Tiệm cận ngang là y = lim(x->∞) (2x - 1)/(x + 1) = 2/1 = 2."
+        },
+        {
+          id: "q3",
+          question: "Số điểm cực trị của hàm số y = x⁴ - 2x² + 3 là:",
+          options: ["3", "1", "2", "0"],
+          answerIndex: 0,
+          explanation: "y' = 4x³ - 4x = 4x(x² - 1) = 0 có 3 nghiệm phân biệt x = 0, x = 1, x = -1."
+        },
+        {
+          id: "q4",
+          question: "Giá trị lớn nhất của hàm số f(x) = x³ - 3x trên đoạn [0; 2] là:",
+          options: ["2", "0", "-2", "4"],
+          answerIndex: 0,
+          explanation: "f'(x) = 3x² - 3 = 0 => x = 1 ∈ [0; 2]. Ta có f(0) = 0, f(1) = -2, f(2) = 2. Vậy Max = 2."
+        },
+        {
+          id: "q5",
+          question: "Khối đa diện đều loại {3; 3} có bao nhiêu mặt?",
+          options: ["4 mặt (Tứ diện đều)", "6 mặt (Lập phương)", "8 mặt (Bát diện)", "12 mặt"],
+          answerIndex: 0,
+          explanation: "Khối {3; 3} là tứ diện đều, gồm 4 mặt là các tam giác đều."
+        }
+      ]
+    },
+    {
+      id: "quiz-eng-12-1",
+      title: "Kiểm tra 15 phút: 12 Thì & Mệnh đề quan hệ",
+      course: "Tiếng Anh - Ngữ pháp & Luyện thi THPT / IELTS",
+      grade: "12",
+      duration: 15,
+      teacherName: "Cô Linh (Tiếng Anh)",
+      questions: [
+        {
+          id: "q1",
+          question: "By the time we arrived at the cinema, the movie ______.",
+          options: ["had already started", "has already started", "started", "was starting"],
+          answerIndex: 0,
+          explanation: "Hành động xảy ra trước một thời điểm trong quá khứ ('By the time + V-ed') dùng Quá khứ hoàn thành (had + V3/ed)."
+        },
+        {
+          id: "q2",
+          question: "The teacher ______ lectures are always inspiring won the best educator award.",
+          options: ["whose", "who", "whom", "which"],
+          answerIndex: 0,
+          explanation: "Dùng 'whose' để chỉ sở hữu ('whose lectures' = các bài giảng của giáo viên đó)."
+        },
+        {
+          id: "q3",
+          question: "If I ______ harder last semester, I would have passed the scholarship exam.",
+          options: ["had studied", "studied", "study", "would study"],
+          answerIndex: 0,
+          explanation: "Câu điều kiện loại 3 (vế if dùng Had + V3/ed, vế chính dùng Would have + V3/ed)."
+        },
+        {
+          id: "q4",
+          question: "She is the woman ______ I spoke to yesterday on the phone.",
+          options: ["whom", "whose", "which", "where"],
+          answerIndex: 0,
+          explanation: "'whom' làm tân ngữ chỉ người sau giới từ to (to whom / whom I spoke to)."
+        },
+        {
+          id: "q5",
+          question: "Look at those dark clouds! It ______ rain soon.",
+          options: ["is going to", "will", "is raining", "must"],
+          answerIndex: 0,
+          explanation: "Dự đoán có bằng chứng ở hiện tại (dark clouds) dùng cấu trúc 'be going to'."
+        }
+      ]
+    },
+    {
+      id: "quiz-phys-12-1",
+      title: "Luyện tập: Dao động điều hòa & Con lắc lò xo",
+      course: "Vật lý - Cơ học & Sóng điện từ",
+      grade: "12",
+      duration: 15,
+      teacherName: "Thầy Tuấn (Vật lý)",
+      questions: [
+        {
+          id: "q1",
+          question: "Công thức tính chu kỳ dao động của con lắc lò xo là:",
+          options: ["T = 2π√(m/k)", "T = 2π√(k/m)", "T = 2π√(g/l)", "T = 2π√(l/g)"],
+          answerIndex: 0,
+          explanation: "Chu kỳ con lắc lò xo là T = 2π√(m/k)."
+        },
+        {
+          id: "q2",
+          question: "Trong dao động điều hòa, gia tốc a biến thiên:",
+          options: ["Ngược pha với li độ x", "Cùng pha với li độ x", "Sớm pha π/2 so với vận tốc", "Trễ pha π so với vận tốc"],
+          answerIndex: 0,
+          explanation: "Ta có a = -ω²x, do đó gia tốc a luôn ngược pha với li độ x."
+        },
+        {
+          id: "q3",
+          question: "Khi vật đi qua vị trí cân bằng thì:",
+          options: ["Vận tốc đạt độ lớn cực đại, gia tốc bằng 0", "Vận tốc bằng 0, gia tốc cực đại", "Thế năng cực đại", "Cơ năng bằng 0"],
+          answerIndex: 0,
+          explanation: "Tại VTCB (x = 0): |v| = vmax = ωA, a = 0, thế năng Wt = 0, động năng Wd cực đại."
+        }
+      ]
+    },
+    {
+      id: "quiz-math-9-1",
+      title: "Ôn thi vào 10: Rút gọn biểu thức & Phương trình bậc 2",
+      course: "Toán học - Đại số & Hình học không gian",
+      grade: "9",
+      duration: 15,
+      teacherName: "Thầy Hùng (Toán THCS)",
+      questions: [
+        {
+          id: "q1",
+          question: "Phương trình x² - 5x + 6 = 0 có hai nghiệm là:",
+          options: ["x1 = 2, x2 = 3", "x1 = -2, x2 = -3", "x1 = 1, x2 = 6", "x1 = -1, x2 = -6"],
+          answerIndex: 0,
+          explanation: "Δ = 25 - 24 = 1. Nghiệm x1 = (5+1)/2 = 3, x2 = (5-1)/2 = 2."
+        },
+        {
+          id: "q2",
+          question: "Biểu thức √(x - 3) xác định khi và chỉ khi:",
+          options: ["x ≥ 3", "x > 3", "x ≤ 3", "x < 3"],
+          answerIndex: 0,
+          explanation: "Căn bậc hai xác định khi biểu thức dưới căn không âm: x - 3 ≥ 0 <=> x ≥ 3."
+        }
+      ]
+    }
+  ];
 
+  // ============ Ngân Hàng Câu Hỏi Tra Cứu (Question Bank) ============
+  const DEFAULT_QUESTIONS = [
+    {
+      id: "qna-1",
+      keyword: "hàm số cực trị đạo hàm tiệm cận khảo sát",
+      subject: "Toán học",
+      grade: "12",
+      question: "Cách tìm các điểm cực trị và đường tiệm cận của hàm số y = f(x)?",
+      solution: "1. Đạo hàm y' = f'(x) và giải phương trình y' = 0.\n2. Lập bảng biến thiên: Nếu y' đổi dấu từ (+) sang (-) thì hàm số đạt Cực Đại; từ (-) sang (+) thì đạt Cực Tiểu.\n3. Tiệm cận đứng: x = a nếu lim(x->a) f(x) = ±∞.\n4. Tiệm cận ngang: y = b nếu lim(x->±∞) f(x) = b."
+    },
+    {
+      id: "qna-2",
+      keyword: "dao động điều hòa chu kỳ con lắc lò xo vận tốc gia tốc",
+      subject: "Vật lý",
+      grade: "12",
+      question: "Công thức tính chu kỳ, vận tốc cực đại và năng lượng con lắc lò xo?",
+      solution: "• Phương trình dao động: x = A cos(ωt + φ)\n• Vận tốc: v = x' = -ωA sin(ωt + φ) => vmax = ωA (tại VTCB)\n• Gia tốc: a = v' = -ω²x => amax = ω²A (tại biên)\n• Chu kỳ: T = 2π/ω = 2π√(m/k)\n• Cơ năng toàn phần: W = 1/2 kA² = 1/2 mω²A² (bảo toàn)."
+    },
+    {
+      id: "qna-3",
+      keyword: "este phản ứng xà phòng hóa thủy phân hóa học hữu cơ",
+      subject: "Hóa học",
+      grade: "12",
+      question: "Phản ứng xà phòng hóa este là gì và công thức tổng quát?",
+      solution: "• Este đơn chức: RCOOR' + NaOH --(t°)--> RCOONa (muối) + R'OH (ancol)\n• Đặc điểm: Phản ứng một chiều, xảy ra hoàn toàn khi đun nóng trong môi trường kiềm.\n• Lưu ý: Este của phenol tạo ra 2 muối và nước: RCOOC6H5 + 2NaOH -> RCOONa + C6H5ONa + H2O."
+    },
+    {
+      id: "qna-4",
+      keyword: "mệnh đề quan hệ relative clause who whom which whose that",
+      subject: "Tiếng Anh",
+      grade: "12",
+      question: "Cách phân biệt Who, Whom, Which, Whose và That trong Tiếng Anh?",
+      solution: "• WHO: Thay thế danh từ chỉ người làm Chủ ngữ (e.g., The man who helped me).\n• WHOM: Thay thế danh từ chỉ người làm Tân ngữ (e.g., The girl whom I met).\n• WHICH: Thay thế danh từ chỉ đồ vật/con vật (e.g., The book which is on the table).\n• WHOSE: Chỉ quan hệ sở hữu cho người hoặc vật (e.g., The student whose bag is red).\n• THAT: Có thể thay thế cho Who/Whom/Which trong mệnh đề xác định (không đứng sau dấu phẩy hoặc giới từ)."
+    },
+    {
+      id: "qna-5",
+      keyword: "nghị luận xã hội đoạn văn 200 chữ ngữ văn cấu trúc",
+      subject: "Ngữ văn",
+      grade: "12",
+      question: "Cấu trúc 4 bước viết đoạn văn Nghị luận xã hội 200 chữ đạt điểm tối đa?",
+      solution: "1. Mở đoạn (1-2 câu): Nêu trực tiếp vấn đề cần nghị luận.\n2. Giải thích & Bàn luận (5-7 câu): Giải thích ý nghĩa từ khóa; đưa ra 2-3 luận điểm chứng minh kèm dẫn chứng thực tế thuyết phục.\n3. Mở rộng & Phản đề (2 câu): Phê phán thái độ/hành vi trái ngược hoặc nêu góc nhìn đa chiều.\n4. Bài học hành động (1-2 câu): Rút ra bài học nhận thức và hành động cụ thể cho bản thân."
+    },
+    {
+      id: "qna-6",
+      keyword: "python danh sách list vòng lặp hàm thuật toán sắp xếp",
+      subject: "Tin học",
+      grade: "12",
+      question: "Cách khai báo mảng, duyệt vòng lặp và viết hàm kiểm tra số nguyên tố trong Python?",
+      solution: "def is_prime(n):\n    if n < 2:\n        return False\n    for i in range(2, int(n**0.5) + 1):\n        if n % i == 0:\n            return False\n    return True\n\n# Ví dụ sử dụng:\nnumbers = [2, 3, 4, 5, 10, 13]\nprimes = [x for x in numbers if is_prime(x)]\nprint('Số nguyên tố:', primes) # [2, 3, 5, 13]"
+    },
+    {
+      id: "qna-7",
+      keyword: "định lý viet phương trình bậc 2 toán lớp 9 ôn thi vào 10",
+      subject: "Toán học",
+      grade: "9",
+      question: "Định lý Vi-ét cho phương trình bậc hai ax² + bx + c = 0 (a ≠ 0)?",
+      solution: "Nếu phương trình có 2 nghiệm x1, x2 (khi Δ ≥ 0):\n• Tổng hai nghiệm: S = x1 + x2 = -b / a\n• Tích hai nghiệm: P = x1 * x2 = c / a\n• Ứng dụng: Nhẩm nghiệm (a + b + c = 0 => x1 = 1, x2 = c/a; a - b + c = 0 => x1 = -1, x2 = -c/a) và tìm hai số khi biết tổng và tích."
+    }
+  ];
   // Helper chuyển đổi link YouTube sang Embed URL
   const getEmbedUrl = (url) => {
     if (!url) return "";
@@ -242,12 +458,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const getStoredCourses = () => {
     const courses = safeGetJSON("edunovaCourses", null);
-    const isOldCourses =
-      Array.isArray(courses) &&
-      courses.length > 0 &&
-      courses.some((c) => c.title === "UI/UX Design cho người mới" || c.title === "Frontend Development");
-
-    if (!courses || !Array.isArray(courses) || courses.length === 0 || isOldCourses) {
+    if (!courses || !Array.isArray(courses) || courses.length === 0) {
       safeSetJSON("edunovaCourses", DEFAULT_COURSES);
       return DEFAULT_COURSES;
     }
@@ -260,11 +471,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const getStoredAssignments = () => {
     const assignments = safeGetJSON("edunovaAssignments", null);
-    const isOldAssignments =
-      Array.isArray(assignments) &&
-      assignments.some((a) => a.title.includes("Wireframe") || a.title.includes("Todo List"));
-
-    if (!assignments || !Array.isArray(assignments) || assignments.length === 0 || isOldAssignments) {
+    if (!assignments || !Array.isArray(assignments) || assignments.length === 0) {
       safeSetJSON("edunovaAssignments", DEFAULT_ASSIGNMENTS);
       return DEFAULT_ASSIGNMENTS;
     }
@@ -286,6 +493,38 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const saveStoredMaterials = (materials) => {
     safeSetJSON("edunovaMaterials", materials);
+  };
+
+  const getStoredQuizzes = () => {
+    const quizzes = safeGetJSON("edunovaQuizzes", null);
+    if (!quizzes || !Array.isArray(quizzes) || quizzes.length === 0) {
+      safeSetJSON("edunovaQuizzes", DEFAULT_QUIZZES);
+      return DEFAULT_QUIZZES;
+    }
+    return quizzes;
+  };
+
+  const saveStoredQuizzes = (quizzes) => {
+    safeSetJSON("edunovaQuizzes", quizzes);
+  };
+
+  const getStoredGrades = () => {
+    const data = safeGetJSON("edunovaGrades", [
+      {
+        id: "grade-init-1",
+        quizTitle: "Kiểm tra 15 phút: Cực trị & Sự biến thiên Hàm số",
+        type: "quiz",
+        score: "9.0",
+        maxScore: "10",
+        feedback: "Làm bài rất tốt! Nắm vững điều kiện đổi dấu đạo hàm.",
+        date: new Date().toLocaleDateString("vi-VN")
+      }
+    ]);
+    return Array.isArray(data) ? data : [];
+  };
+
+  const saveStoredGrades = (grades) => {
+    safeSetJSON("edunovaGrades", grades);
   };
 
   const getStoredSubmissions = () => {
@@ -400,84 +639,65 @@ document.addEventListener("DOMContentLoaded", () => {
         "🧠 2 buổi chấm chữa bài chi tiết"
       ],
       timetable: [
-        { day: "Thứ 2", lesson: "12 Thì & Cấu trúc câu nâng cao", time: "08:00 - 10:00" },
-        { day: "Thứ 3", lesson: "Từ vựng theo chủ đề & Collocations", time: "09:00 - 11:00" },
-        { day: "Thứ 4", lesson: "Kỹ năng làm bài Reading", time: "13:30 - 15:30" },
-        { day: "Thứ 5", lesson: "Ngữ âm & Trọng âm chuẩn xác", time: "14:00 - 16:00" },
-        { day: "Thứ 6", lesson: "Giải đề thi Tiếng Anh", time: "10:00 - 11:30" }
+        { day: "Thứ 2", lesson: "Tổng ôn 12 Thì & Mệnh đề", time: "18:00 - 19:30" },
+        { day: "Thứ 3", lesson: "Chiến thuật Reading Comprehension", time: "19:30 - 21:00" },
+        { day: "Thứ 4", lesson: "Ngữ âm & Trọng âm cốt lõi", time: "18:00 - 19:30" },
+        { day: "Thứ 5", lesson: "Từ vựng theo chủ đề THPT", time: "19:30 - 21:00" },
+        { day: "Thứ 6", lesson: "Giải đề thi thử THPT Quốc gia", time: "20:00 - 21:30" }
       ],
       progress: 85,
-      nextLesson: "12 Thì & Cấu trúc câu nâng cao",
-      nextTime: "Thứ 2 · 08:00 - 10:00"
+      nextLesson: "Tổng ôn 12 Thì & Mệnh đề",
+      nextTime: "Thứ 2 · 18:00 - 19:30"
     },
     "Tin học - Lập trình Python & Tư duy thuật toán": {
       title: "Tin học - Lập trình Python & Tư duy thuật toán",
       summary: [
-        "⚡ 5 buổi coding online",
-        "📘 4 buổi bài tập thuật toán",
+        "⚡ 4 buổi cú pháp & mảng",
+        "📘 3 buổi thuật toán & bài tập",
         "🧠 2 buổi review code"
       ],
       timetable: [
-        { day: "Thứ 2", lesson: "Cú pháp Python & Kiểu dữ liệu", time: "08:00 - 10:00" },
-        { day: "Thứ 3", lesson: "Vòng lặp & Cấu trúc rẽ nhánh", time: "09:00 - 11:00" },
-        { day: "Thứ 4", lesson: "Mảng, List & Xử lý chuỗi", time: "13:30 - 15:30" },
-        { day: "Thứ 5", lesson: "Thuật toán tìm kiếm & Sắp xếp", time: "14:00 - 16:00" },
-        { day: "Thứ 6", lesson: "Mini Project giải toán Python", time: "10:00 - 11:30" }
+        { day: "Thứ 2", lesson: "Cấu trúc dữ liệu List & Dict", time: "19:00 - 21:00" },
+        { day: "Thứ 4", lesson: "Thuật toán sắp xếp & tìm kiếm", time: "19:00 - 21:00" },
+        { day: "Thứ 6", lesson: "Thực hành giải bài tập tự động", time: "19:00 - 21:00" }
       ],
       progress: 75,
-      nextLesson: "Cú pháp Python & Kiểu dữ liệu",
-      nextTime: "Thứ 2 · 08:00 - 10:00"
+      nextLesson: "Cấu trúc dữ liệu List & Dict",
+      nextTime: "Thứ 2 · 19:00 - 21:00"
     }
   };
 
-  const updateSchedule = (courseName) => {
+  const updateSchedule = (courseTitle) => {
+    const selectedCourse = scheduleMap[courseTitle] || scheduleMap["Toán học - Đại số & Hình học không gian"];
     const scheduleCourseTitle = document.getElementById("scheduleCourseTitle");
     const scheduleSummary = document.getElementById("scheduleSummary");
     const scheduleTimetable = document.getElementById("scheduleTimetable");
-    const dashboardCourseName = document.getElementById("dashboardCourseName");
-    const dashboardProgressValue = document.getElementById("dashboardProgressValue");
-    const dashboardNextLesson = document.getElementById("dashboardNextLesson");
-    const dashboardNextTime = document.getElementById("dashboardNextTime");
+    const heroProgressValue = document.getElementById("heroProgressValue");
+    const heroNextCourse = document.getElementById("heroNextCourse");
 
-    if (!scheduleCourseTitle || !scheduleSummary || !scheduleTimetable) return;
+    if (scheduleCourseTitle) scheduleCourseTitle.textContent = selectedCourse.title;
+    if (heroNextCourse) heroNextCourse.textContent = selectedCourse.nextLesson;
+    if (heroProgressValue) heroProgressValue.textContent = `${selectedCourse.progress}%`;
 
-    let selectedCourse = scheduleMap[courseName];
-    if (!selectedCourse) {
-      selectedCourse = {
-        title: courseName || "Môn học EduNova",
-        summary: ["⚡ 5 buổi học chuyên sâu", "📘 3 buổi luyện giải đề thi", "🧠 2 buổi mentor 1-on-1"],
-        timetable: [
-          { day: "Thứ 2", lesson: "Lý thuyết & Khái niệm nền tảng", time: "08:00 - 10:00" },
-          { day: "Thứ 3", lesson: "Các dạng bài tập trọng tâm", time: "09:00 - 11:00" },
-          { day: "Thứ 4", lesson: "Luyện kỹ năng giải nhanh", time: "13:30 - 15:30" },
-          { day: "Thứ 5", lesson: "Làm đề thi thử tổng hợp", time: "14:00 - 16:00" },
-          { day: "Thứ 6", lesson: "Sửa bài & Tổng kết kiến thức", time: "10:00 - 11:30" }
-        ],
-        progress: 65,
-        nextLesson: "Lý thuyết & Khái niệm nền tảng",
-        nextTime: "Thứ 2 · 08:00 - 10:00"
-      };
+    if (scheduleSummary) {
+      scheduleSummary.innerHTML = selectedCourse.summary.map((item) => `<li>${item}</li>`).join("");
     }
 
-    scheduleCourseTitle.textContent = selectedCourse.title;
-    scheduleSummary.innerHTML = selectedCourse.summary.map((item) => `<li><span>•</span> ${item}</li>`).join("");
-
-    scheduleTimetable.innerHTML = selectedCourse.timetable
-      .map(
-        (item, index) => `
-          <div class="day ${index === 0 ? "active" : ""}">
-            <span>${item.day}</span>
-            <strong>${item.lesson}</strong>
-            <small>${item.time}</small>
-          </div>
-        `
-      )
-      .join("");
-
-    if (dashboardCourseName) dashboardCourseName.textContent = selectedCourse.title;
-    if (dashboardProgressValue) dashboardProgressValue.textContent = `${selectedCourse.progress}%`;
-    if (dashboardNextLesson) dashboardNextLesson.textContent = selectedCourse.nextLesson;
-    if (dashboardNextTime) dashboardNextTime.textContent = selectedCourse.nextTime;
+    if (scheduleTimetable) {
+      scheduleTimetable.innerHTML = selectedCourse.timetable
+        .map(
+          (item, idx) => `
+            <div class="day ${idx === 0 ? "active" : ""}">
+              <div>
+                <strong>${item.day}</strong>
+                <span>${item.lesson}</span>
+              </div>
+              <small>${item.time}</small>
+            </div>
+          `
+        )
+        .join("");
+    }
   };
 
   // ============ Render Courses Dynamically ============
@@ -495,7 +715,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (filteredCourses.length === 0) {
       courseGrid.innerHTML = `
-        <div class="empty-state" style="grid-column: 1 / -1;">
+        <div class="empty-state" style="grid-column: 1 / -1; text-align: center; padding: 30px;">
           <span>🔍</span>
           <p>Chưa có môn học nào trong danh mục này.</p>
         </div>
@@ -539,62 +759,72 @@ document.addEventListener("DOMContentLoaded", () => {
       })
       .join("");
 
-    // Reattach signup click events
     courseGrid.querySelectorAll("[data-open-signup]").forEach((button) => {
       button.addEventListener("click", openSignupModal);
     });
   };
 
-  // Populate Course Dropdowns (for signup, assignments, materials & settings)
+  // Populate Course Dropdowns
   const populateCourseDropdowns = () => {
     const courses = getStoredCourses();
-    const courseSelect = document.getElementById("course");
-    const assignmentCourseSelect = document.getElementById("assignmentCourse");
-    const materialCourseSelect = document.getElementById("materialCourse");
-    const settingsCourseSelect = document.getElementById("settingsCourse");
+    const courseSelects = [
+      document.getElementById("course"),
+      document.getElementById("assignmentCourse"),
+      document.getElementById("materialCourse"),
+      document.getElementById("newQuizCourse"),
+      document.getElementById("settingsCourse")
+    ];
 
-    const optionsHtml = [
-      '<option value="">-- Chọn môn học --</option>',
-      ...courses.map((c) => `<option value="${c.title}">${c.icon || "📚"} ${c.title}</option>`)
-    ].join("");
-
-    if (courseSelect) {
-      const currentVal = courseSelect.value;
-      courseSelect.innerHTML = optionsHtml;
-      if (currentVal) courseSelect.value = currentVal;
-    }
-
-    if (assignmentCourseSelect) {
-      const currentVal = assignmentCourseSelect.value;
-      assignmentCourseSelect.innerHTML = optionsHtml;
-      if (currentVal) assignmentCourseSelect.value = currentVal;
-    }
-
-    if (materialCourseSelect) {
-      const currentVal = materialCourseSelect.value;
-      materialCourseSelect.innerHTML = optionsHtml;
-      if (currentVal) materialCourseSelect.value = currentVal;
-    }
-
-    if (settingsCourseSelect) {
-      const currentVal = settingsCourseSelect.value;
-      settingsCourseSelect.innerHTML = optionsHtml;
-      if (currentVal) settingsCourseSelect.value = currentVal;
-    }
+    courseSelects.forEach((select) => {
+      if (!select) return;
+      const currentValue = select.value;
+      select.innerHTML = '<option value="">-- Chọn môn học --</option>';
+      courses.forEach((c) => {
+        const option = document.createElement("option");
+        option.value = c.title;
+        option.textContent = `${c.icon || "📚"} ${c.title}`;
+        select.appendChild(option);
+      });
+      if (currentValue) select.value = currentValue;
+    });
   };
 
-  // Filter Tabs Event
-  const tabs = document.querySelectorAll(".tab");
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", () => {
-      tabs.forEach((item) => item.classList.remove("active"));
-      tab.classList.add("active");
-      currentCategoryFilter = tab.dataset.filter || "all";
+  const filterTabs = document.querySelectorAll(".filter-tabs .tab");
+  filterTabs.forEach((tab) => {
+    tab.addEventListener("click", (e) => {
+      filterTabs.forEach((t) => t.classList.remove("active"));
+      e.currentTarget.classList.add("active");
+      currentCategoryFilter = e.currentTarget.dataset.filter || "all";
       renderCourses();
     });
   });
+  // ============ Modals Elements ============
+  const signupModal = document.getElementById("signupModal");
+  const loginModal = document.getElementById("loginModal");
+  const createCourseModal = document.getElementById("createCourseModal");
+  const createAssignmentModal = document.getElementById("createAssignmentModal");
+  const submitAssignmentModal = document.getElementById("submitAssignmentModal");
+  const viewSubmissionsModal = document.getElementById("viewSubmissionsModal");
+  const createMaterialModal = document.getElementById("createMaterialModal");
+  const viewMaterialModal = document.getElementById("viewMaterialModal");
+  const takeQuizModal = document.getElementById("takeQuizModal");
+  const createQuizModal = document.getElementById("createQuizModal");
+  const settingsModal = document.getElementById("settingsModal");
 
-  // ============ Modals Management Helpers ============
+  const signupBtn = document.getElementById("signupBtn");
+  const loginBtn = document.getElementById("loginBtn");
+  const userProfile = document.getElementById("userProfile");
+  const userName = document.getElementById("userName");
+  const userRoleBadge = document.getElementById("userRoleBadge");
+  const logoutBtn = document.getElementById("logoutBtn");
+  const settingsBtn = document.getElementById("settingsBtn");
+  const footerSettingsLink = document.getElementById("footerSettingsLink");
+
+  const teacherDashboard = document.getElementById("teacherDashboard");
+  const studentDashboard = document.getElementById("studentDashboard");
+  const navTeacherLink = document.getElementById("navTeacherLink");
+  const navStudentLink = document.getElementById("navStudentLink");
+
   const openModalElement = (modal) => {
     if (!modal) return;
     modal.classList.remove("hidden");
@@ -607,501 +837,805 @@ document.addEventListener("DOMContentLoaded", () => {
     modal.setAttribute("aria-hidden", "true");
   };
 
-  // ============ Signup Modal ============
-  const signupModal = document.getElementById("signupModal");
-  const signupForm = document.getElementById("signupForm");
-  const formMessage = document.getElementById("formMessage");
-  const courseSelect = document.getElementById("course");
-  const signupBtns = document.querySelectorAll("[data-open-signup]");
-  const closeSignupBtns = document.querySelectorAll("[data-close-signup]");
-
-  const showMessage = (msg, type) => {
-    if (formMessage) {
-      formMessage.textContent = msg;
-      formMessage.className = `form-message ${type}`;
-    }
-  };
-
-  const openSignupModal = (event) => {
-    if (!signupModal) return;
-    const trigger = event?.currentTarget;
-    const selectedCourse = trigger?.dataset?.course;
-    if (selectedCourse && courseSelect) {
-      courseSelect.value = selectedCourse;
-      updateSchedule(selectedCourse);
-    }
-    if (formMessage) {
-      formMessage.textContent = "";
-      formMessage.className = "form-message";
-    }
+  // Open Signup / Login
+  const openSignupModal = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
     openModalElement(signupModal);
+    closeModalElement(loginModal);
   };
 
-  signupBtns.forEach((btn) => btn.addEventListener("click", openSignupModal));
-  closeSignupBtns.forEach((btn) => btn.addEventListener("click", () => closeModalElement(signupModal)));
-
-  signupModal?.addEventListener("click", (e) => {
-    if (e.target === signupModal) closeModalElement(signupModal);
-  });
-
-  // Radio button change in Signup Modal (adjust labels)
-  const accountTypeRadios = document.querySelectorAll('input[name="accountType"]');
-  const signupCourseLabel = document.getElementById("signupCourseLabel");
-  accountTypeRadios.forEach((radio) => {
-    radio.addEventListener("change", (e) => {
-      if (signupCourseLabel) {
-        signupCourseLabel.textContent =
-          e.target.value === "teacher" ? "Môn học / Chuyên môn giảng dạy" : "Môn học quan tâm";
-      }
-    });
-  });
-
-  // Clear message on input
-  signupForm?.querySelectorAll("input, select")?.forEach((el) => {
-    el.addEventListener("input", () => {
-      if (formMessage && formMessage.textContent) {
-        formMessage.textContent = "";
-        formMessage.className = "form-message";
-      }
-    });
-  });
-
-  // Signup Submit Handler
-  signupForm?.addEventListener("submit", (e) => {
-    e.preventDefault();
-
-    const fullNameInput = document.getElementById("fullName");
-    const emailInput = document.getElementById("email");
-    const passwordInput = document.getElementById("password");
-    const confirmPasswordInput = document.getElementById("confirmPassword");
-    const accountTypeChecked = document.querySelector('input[name="accountType"]:checked');
-    const courseInput = document.getElementById("course");
-
-    const fullName = (fullNameInput?.value || "").trim();
-    const email = (emailInput?.value || "").trim();
-    const password = (passwordInput?.value || "").trim();
-    const confirmPassword = (confirmPasswordInput?.value || "").trim();
-    const accountType = accountTypeChecked ? accountTypeChecked.value : "student";
-    const course = (courseInput?.value || "").trim() || "Toán học - Đại số & Hình học không gian";
-
-    // 1. Validation
-    if (!fullName) {
-      showMessage("Vui lòng nhập họ và tên của bạn.", "error");
-      fullNameInput?.focus();
-      return;
-    }
-
-    if (!email || !email.includes("@")) {
-      showMessage("Vui lòng nhập địa chỉ email hợp lệ.", "error");
-      emailInput?.focus();
-      return;
-    }
-
-    if (!password || password.length < 6) {
-      showMessage("Mật khẩu cần tối thiểu 6 ký tự.", "error");
-      passwordInput?.focus();
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      showMessage("Mật khẩu xác nhận không khớp. Vui lòng kiểm tra lại.", "error");
-      confirmPasswordInput?.focus();
-      return;
-    }
-
-    // 2. Check duplicate email
-    const existingUsers = getStoredUsers();
-    const isDuplicate = existingUsers.some(
-      (u) => u && typeof u.email === "string" && u.email.trim().toLowerCase() === email.toLowerCase()
-    );
-
-    if (isDuplicate) {
-      showMessage("Email này đã được đăng ký. Vui lòng dùng email khác hoặc Đăng nhập.", "error");
-      return;
-    }
-
-    // 3. Create and Save User
-    const newUser = {
-      id: `user-${Date.now()}`,
-      fullName,
-      email,
-      accountType,
-      course,
-      password,
-      registeredAt: new Date().toISOString()
-    };
-
-    existingUsers.push(newUser);
-    saveStoredUsers(existingUsers);
-    setCurrentUser(newUser);
-
-    // 4. Success UI
-    showMessage("🎉 Đăng ký thành công! Đang tự động đăng nhập...", "success");
-    signupForm.reset();
-
-    updateAuthUI();
-    if (newUser.course) {
-      updateSchedule(newUser.course);
-    }
-
-    setTimeout(() => {
-      closeModalElement(signupModal);
-      showMessage("", "success");
-    }, 1000);
-  });
-
-  // ============ Login Modal ============
-  const loginModal = document.getElementById("loginModal");
-  const loginForm = document.getElementById("loginForm");
-  const loginFormMessage = document.getElementById("loginFormMessage");
-  const loginBtn = document.getElementById("loginBtn");
-  const signupBtn = document.getElementById("signupBtn");
-  const userProfile = document.getElementById("userProfile");
-  const userName = document.getElementById("userName");
-  const userRoleBadge = document.getElementById("userRoleBadge");
-  const logoutBtn = document.getElementById("logoutBtn");
-  const closeLoginBtns = document.querySelectorAll("[data-close-login]");
-
-  const showLoginMessage = (message, type) => {
-    if (loginFormMessage) {
-      loginFormMessage.textContent = message;
-      loginFormMessage.className = `form-message ${type}`;
-    }
-  };
-
-  const openLoginModal = () => {
-    if (loginFormMessage) {
-      loginFormMessage.textContent = "";
-      loginFormMessage.className = "form-message";
-    }
+  const openLoginModal = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
     openModalElement(loginModal);
+    closeModalElement(signupModal);
   };
-  const closeLoginModal = () => closeModalElement(loginModal);
 
+  if (signupBtn) signupBtn.addEventListener("click", openSignupModal);
   if (loginBtn) loginBtn.addEventListener("click", openLoginModal);
-  closeLoginBtns.forEach((btn) => btn.addEventListener("click", closeLoginModal));
-  loginModal?.addEventListener("click", (e) => {
-    if (e.target === loginModal) closeLoginModal();
-  });
+  document.querySelectorAll("[data-open-signup]").forEach((btn) => btn.addEventListener("click", openSignupModal));
+  document.querySelectorAll("[data-open-login]").forEach((btn) => btn.addEventListener("click", openLoginModal));
 
-  // Switch form links
   const switchToLogin = document.getElementById("switchToLogin");
   const switchToSignup = document.getElementById("switchToSignup");
-  if (switchToLogin) {
-    switchToLogin.addEventListener("click", (e) => {
-      e.preventDefault();
-      closeModalElement(signupModal);
-      setTimeout(openLoginModal, 250);
-    });
-  }
-  if (switchToSignup) {
-    switchToSignup.addEventListener("click", (e) => {
-      e.preventDefault();
-      closeLoginModal();
-      setTimeout(() => openSignupModal(), 250);
-    });
-  }
+  if (switchToLogin) switchToLogin.addEventListener("click", openLoginModal);
+  if (switchToSignup) switchToSignup.addEventListener("click", openSignupModal);
 
-  // Clear login message on input
-  loginForm?.querySelectorAll("input")?.forEach((el) => {
-    el.addEventListener("input", () => {
-      if (loginFormMessage && loginFormMessage.textContent) {
-        loginFormMessage.textContent = "";
-        loginFormMessage.className = "form-message";
+  document.querySelectorAll("[data-close-signup]").forEach((b) => b.addEventListener("click", () => closeModalElement(signupModal)));
+  document.querySelectorAll("[data-close-login]").forEach((b) => b.addEventListener("click", () => closeModalElement(loginModal)));
+  document.querySelectorAll("[data-close-create-course]").forEach((b) => b.addEventListener("click", () => closeModalElement(createCourseModal)));
+  document.querySelectorAll("[data-close-create-assignment]").forEach((b) => b.addEventListener("click", () => closeModalElement(createAssignmentModal)));
+  document.querySelectorAll("[data-close-submit-assignment]").forEach((b) => b.addEventListener("click", () => closeModalElement(submitAssignmentModal)));
+  document.querySelectorAll("[data-close-view-submissions]").forEach((b) => b.addEventListener("click", () => closeModalElement(viewSubmissionsModal)));
+  document.querySelectorAll("[data-close-create-material]").forEach((b) => b.addEventListener("click", () => closeModalElement(createMaterialModal)));
+  document.querySelectorAll("[data-close-view-material]").forEach((b) => b.addEventListener("click", () => closeModalElement(viewMaterialModal)));
+  document.querySelectorAll("[data-close-take-quiz]").forEach((b) => b.addEventListener("click", () => closeTakeQuiz()));
+  document.querySelectorAll("[data-close-create-quiz]").forEach((b) => b.addEventListener("click", () => closeModalElement(createQuizModal)));
+  document.querySelectorAll("[data-close-settings]").forEach((b) => b.addEventListener("click", () => closeModalElement(settingsModal)));
+
+  // Open Settings Modal
+  const openSettingsModal = () => {
+    const user = getCurrentUser();
+    if (!user) {
+      openLoginModal();
+      return;
+    }
+    const settingsAvatar = document.getElementById("settingsAvatar");
+    const settingsDisplayFullName = document.getElementById("settingsDisplayFullName");
+    const settingsRoleBadge = document.getElementById("settingsRoleBadge");
+    const settingsUserId = document.getElementById("settingsUserId");
+    const settingsFullName = document.getElementById("settingsFullName");
+    const settingsEmail = document.getElementById("settingsEmail");
+    const settingsRole = document.getElementById("settingsRole");
+    const settingsGrade = document.getElementById("settingsGrade");
+    const settingsCourse = document.getElementById("settingsCourse");
+    const settingsJoinedDate = document.getElementById("settingsJoinedDate");
+
+    const isTeacher = user.accountType === "teacher";
+    if (settingsAvatar) settingsAvatar.textContent = isTeacher ? "👨‍🏫" : "👨‍🎓";
+    if (settingsDisplayFullName) settingsDisplayFullName.textContent = user.fullName || "Người dùng";
+    if (settingsRoleBadge) {
+      settingsRoleBadge.textContent = isTeacher ? "Giáo viên giảng dạy" : "Học sinh học tập";
+      settingsRoleBadge.className = `role-badge ${isTeacher ? "teacher" : "student"}`;
+    }
+
+    const shortId = user.id ? `EDU-${user.id.replace(/\D/g, "").slice(-6) || "888666"}` : "EDU-888666";
+    if (settingsUserId) settingsUserId.textContent = shortId;
+    if (settingsFullName) settingsFullName.value = user.fullName || "";
+    if (settingsEmail) settingsEmail.value = user.email || "";
+    if (settingsRole) settingsRole.value = isTeacher ? "Giáo viên giảng dạy" : "Học sinh học tập";
+    if (settingsGrade) settingsGrade.value = user.grade || "12";
+    if (settingsCourse) settingsCourse.value = user.course || "";
+    if (settingsJoinedDate) settingsJoinedDate.value = user.registeredAt || new Date().toLocaleDateString("vi-VN");
+
+    switchSettingsTab("profile");
+    openModalElement(settingsModal);
+  };
+
+  if (settingsBtn) settingsBtn.addEventListener("click", openSettingsModal);
+  if (footerSettingsLink) footerSettingsLink.addEventListener("click", (e) => { e.preventDefault(); openSettingsModal(); });
+
+  // Settings Tab Switching
+  const switchSettingsTab = (tabName) => {
+    const tabs = ["profile", "security", "help"];
+    tabs.forEach((t) => {
+      const btn = document.getElementById(`tabBtn${t.charAt(0).toUpperCase() + t.slice(1)}`);
+      const content = document.getElementById(`${t}TabContent`);
+      if (btn && content) {
+        if (t === tabName) {
+          btn.classList.add("active");
+          content.style.display = "block";
+        } else {
+          btn.classList.remove("active");
+          content.style.display = "none";
+        }
       }
+    });
+  };
+
+  document.querySelectorAll(".settings-tab-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      const tab = e.currentTarget.dataset.tab;
+      switchSettingsTab(tab);
     });
   });
 
-  // Login Form Submit
-  if (loginForm) {
-    loginForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const loginEmail = (document.getElementById("loginEmail")?.value || "").trim();
-      const loginPassword = (document.getElementById("loginPassword")?.value || "").trim();
+  // Copy ID button
+  const copyIdBtn = document.getElementById("copyIdBtn");
+  if (copyIdBtn) {
+    copyIdBtn.addEventListener("click", () => {
+      const idText = document.getElementById("settingsUserId")?.textContent || "";
+      if (navigator.clipboard && idText) {
+        navigator.clipboard.writeText(idText);
+        copyIdBtn.textContent = "✓ Đã copy!";
+        setTimeout(() => { copyIdBtn.textContent = "📋 Copy"; }, 2000);
+      }
+    });
+  }
 
-      if (!loginEmail || !loginPassword) {
-        showLoginMessage("Vui lòng điền đầy đủ email và mật khẩu.", "error");
+  // Update Profile Form Submit
+  const updateProfileForm = document.getElementById("updateProfileForm");
+  if (updateProfileForm) {
+    updateProfileForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const currentUser = getCurrentUser();
+      if (!currentUser) return;
+
+      const newFullName = document.getElementById("settingsFullName")?.value.trim();
+      const newGrade = document.getElementById("settingsGrade")?.value;
+      const newCourse = document.getElementById("settingsCourse")?.value;
+      const msg = document.getElementById("profileFormMessage");
+
+      currentUser.fullName = newFullName;
+      currentUser.grade = newGrade || "12";
+      currentUser.course = newCourse;
+
+      const users = getStoredUsers();
+      const idx = users.findIndex((u) => u.email === currentUser.email);
+      if (idx !== -1) {
+        users[idx] = { ...users[idx], fullName: newFullName, grade: newGrade, course: newCourse };
+        saveStoredUsers(users);
+      }
+      setCurrentUser(currentUser);
+      updateAuthUI();
+
+      if (msg) {
+        msg.textContent = "✓ Cập nhật thông tin thành công!";
+        msg.className = "form-message success";
+        setTimeout(() => { msg.textContent = ""; }, 3000);
+      }
+    });
+  }
+
+  // Change Password Form Submit
+  const changePasswordForm = document.getElementById("changePasswordForm");
+  if (changePasswordForm) {
+    changePasswordForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const currentUser = getCurrentUser();
+      if (!currentUser) return;
+
+      const curPass = document.getElementById("currentPassword")?.value;
+      const newPass = document.getElementById("newPassword")?.value;
+      const confirmPass = document.getElementById("confirmNewPassword")?.value;
+      const msg = document.getElementById("securityFormMessage");
+
+      if (curPass !== currentUser.password) {
+        if (msg) {
+          msg.textContent = "Mật khẩu hiện tại không chính xác!";
+          msg.className = "form-message error";
+        }
+        return;
+      }
+      if (newPass !== confirmPass) {
+        if (msg) {
+          msg.textContent = "Mật khẩu mới không trùng khớp!";
+          msg.className = "form-message error";
+        }
+        return;
+      }
+
+      currentUser.password = newPass;
+      const users = getStoredUsers();
+      const idx = users.findIndex((u) => u.email === currentUser.email);
+      if (idx !== -1) {
+        users[idx].password = newPass;
+        saveStoredUsers(users);
+      }
+      setCurrentUser(currentUser);
+
+      if (msg) {
+        msg.textContent = "✓ Đổi mật khẩu thành công!";
+        msg.className = "form-message success";
+        changePasswordForm.reset();
+        setTimeout(() => { msg.textContent = ""; }, 3000);
+      }
+    });
+  }
+
+  // Signup Form Handler
+  const signupForm = document.getElementById("signupForm");
+  if (signupForm) {
+    signupForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const fullName = document.getElementById("fullName").value.trim();
+      const email = document.getElementById("email").value.trim().toLowerCase();
+      const accountType = signupForm.querySelector('input[name="accountType"]:checked')?.value || "student";
+      const grade = document.getElementById("signupGrade")?.value || "12";
+      const course = document.getElementById("course").value;
+      const password = document.getElementById("password").value;
+      const confirmPassword = document.getElementById("confirmPassword").value;
+      const formMessage = document.getElementById("formMessage");
+
+      if (password !== confirmPassword) {
+        formMessage.textContent = "Mật khẩu xác nhận không trùng khớp!";
+        formMessage.className = "form-message error";
         return;
       }
 
       const users = getStoredUsers();
-      const matchedUser = users.find(
-        (u) =>
-          u &&
-          typeof u.email === "string" &&
-          u.email.toLowerCase() === loginEmail.toLowerCase() &&
-          u.password === loginPassword
-      );
-
-      if (!matchedUser) {
-        showLoginMessage("Email hoặc mật khẩu không chính xác.", "error");
+      if (users.some((u) => u.email === email)) {
+        formMessage.textContent = "Email này đã được đăng ký tài khoản!";
+        formMessage.className = "form-message error";
         return;
       }
 
-      setCurrentUser(matchedUser);
-      showLoginMessage("🎉 Đăng nhập thành công!", "success");
-      loginForm.reset();
+      const newUser = {
+        id: `user-${Date.now()}`,
+        fullName,
+        email,
+        accountType,
+        grade,
+        course,
+        password,
+        registeredAt: new Date().toLocaleDateString("vi-VN")
+      };
 
-      updateAuthUI();
-      if (matchedUser.course) {
-        updateSchedule(matchedUser.course);
-      }
+      users.push(newUser);
+      saveStoredUsers(users);
+      setCurrentUser(newUser);
+
+      formMessage.textContent = "✓ Đăng ký thành công! Đang chuyển hướng...";
+      formMessage.className = "form-message success";
 
       setTimeout(() => {
-        closeLoginModal();
-        showLoginMessage("", "success");
+        closeModalElement(signupModal);
+        signupForm.reset();
+        formMessage.textContent = "";
+        updateAuthUI();
+        if (course) updateSchedule(course);
+      }, 1000);
+    });
+  }
+
+  // Login Form Handler
+  const loginForm = document.getElementById("loginForm");
+  if (loginForm) {
+    loginForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const email = document.getElementById("loginEmail").value.trim().toLowerCase();
+      const password = document.getElementById("loginPassword").value;
+      const msg = document.getElementById("loginFormMessage");
+
+      const users = getStoredUsers();
+      const user = users.find((u) => u.email === email && u.password === password);
+
+      if (!user) {
+        msg.textContent = "Email hoặc mật khẩu không chính xác!";
+        msg.className = "form-message error";
+        return;
+      }
+
+      setCurrentUser(user);
+      msg.textContent = "✓ Đăng nhập thành công!";
+      msg.className = "form-message success";
+
+      setTimeout(() => {
+        closeModalElement(loginModal);
+        loginForm.reset();
+        msg.textContent = "";
+        updateAuthUI();
+        if (user.course) updateSchedule(user.course);
       }, 800);
     });
   }
 
-  // ============ Password Strength & Visibility Helpers ============
-  const getPasswordStrength = (pwd) => {
-    let strength = 0;
-    if (pwd.length >= 6) strength++;
-    if (/[a-z]/.test(pwd) && /[A-Z]/.test(pwd)) strength++;
-    if (/\d/.test(pwd)) strength++;
-    if (/[!@#$%^&*]/.test(pwd)) strength++;
-    if (strength <= 1) return "weak";
-    if (strength === 2 || strength === 3) return "medium";
-    return "strong";
-  };
+  // Toggle password visibility
+  document.querySelectorAll(".toggle-password").forEach((button) => {
+    button.addEventListener("click", () => {
+      const targetId = button.getAttribute("data-target");
+      const targetInput = document.getElementById(targetId);
+      if (targetInput) {
+        targetInput.type = targetInput.type === "password" ? "text" : "password";
+      }
+    });
+  });
+  // ============ Interactive Quiz Engine (Làm bài trắc nghiệm) ============
+  let activeQuiz = null;
+  let quizTimerInterval = null;
+  let quizTimeRemaining = 0;
+  let userQuizAnswers = {};
 
-  const setupPasswordInput = (inputId, strengthId) => {
-    const input = document.getElementById(inputId);
-    const strengthEl = document.getElementById(strengthId);
-    if (input && strengthEl) {
-      input.addEventListener("input", (e) => {
-        const val = e.target.value;
-        if (!val) {
-          strengthEl.className = "password-strength";
-          return;
-        }
-        const str = getPasswordStrength(val);
-        strengthEl.className = `password-strength ${str}`;
+  const openTakeQuiz = (quizId) => {
+    const quizzes = getStoredQuizzes();
+    activeQuiz = quizzes.find((q) => q.id === quizId) || quizzes[0];
+    if (!activeQuiz) return;
+
+    userQuizAnswers = {};
+    const takeQuizTitle = document.getElementById("takeQuizTitle");
+    const takeQuizMetaText = document.getElementById("takeQuizMetaText");
+    const takeQuizCategoryBadge = document.getElementById("takeQuizCategoryBadge");
+    const quizQuestionsContainer = document.getElementById("quizQuestionsContainer");
+    const quizResultBox = document.getElementById("quizResultBox");
+    const quizFooterActions = document.getElementById("quizFooterActions");
+
+    if (takeQuizTitle) takeQuizTitle.textContent = activeQuiz.title;
+    if (takeQuizCategoryBadge) takeQuizCategoryBadge.textContent = `⚡ ${activeQuiz.course || "Trắc nghiệm"}`;
+    if (takeQuizMetaText) takeQuizMetaText.textContent = `Khối lớp: Lớp ${activeQuiz.grade || "12"} · Thời gian: ${activeQuiz.duration || 15} phút · Số câu: ${activeQuiz.questions ? activeQuiz.questions.length : 5} câu`;
+
+    if (quizResultBox) quizResultBox.classList.add("hidden");
+    if (quizFooterActions) quizFooterActions.style.display = "block";
+
+    // Render questions
+    if (quizQuestionsContainer) {
+      quizQuestionsContainer.innerHTML = (activeQuiz.questions || [])
+        .map((q, qIndex) => `
+          <div class="quiz-question-card" id="quizQuestion_${q.id}">
+            <h4 class="quiz-question-title">Câu ${qIndex + 1}: ${q.question}</h4>
+            <div class="quiz-options-group">
+              ${(q.options || [])
+                .map(
+                  (opt, optIndex) => `
+                    <label class="quiz-option-label" data-qid="${q.id}" data-optindex="${optIndex}">
+                      <input type="radio" name="quiz_opt_${q.id}" value="${optIndex}" style="accent-color: var(--primary, #4361ee);" />
+                      <span><strong>${String.fromCharCode(65 + optIndex)}.</strong> ${opt}</span>
+                    </label>
+                  `
+                )
+                .join("")}
+            </div>
+            <div class="quiz-explanation-box hidden" id="explanation_${q.id}">
+              <strong>💡 Lời giải chi tiết:</strong> ${q.explanation || "Chưa có giải thích"}
+            </div>
+          </div>
+        `)
+        .join("");
+
+      // Radio selection events
+      quizQuestionsContainer.querySelectorAll(".quiz-option-label").forEach((lbl) => {
+        lbl.addEventListener("click", () => {
+          const qid = lbl.dataset.qid;
+          const optIdx = parseInt(lbl.dataset.optindex);
+          userQuizAnswers[qid] = optIdx;
+          lbl.parentElement.querySelectorAll(".quiz-option-label").forEach((l) => l.classList.remove("selected"));
+          lbl.classList.add("selected");
+        });
       });
     }
+
+    // Start Timer
+    quizTimeRemaining = (activeQuiz.duration || 15) * 60;
+    updateQuizTimerDisplay();
+    clearInterval(quizTimerInterval);
+    quizTimerInterval = setInterval(() => {
+      quizTimeRemaining--;
+      updateQuizTimerDisplay();
+      if (quizTimeRemaining <= 0) {
+        clearInterval(quizTimerInterval);
+        submitQuiz();
+      }
+    }, 1000);
+
+    openModalElement(takeQuizModal);
   };
 
-  setupPasswordInput("password", "passwordStrength");
-  setupPasswordInput("newPassword", "newPasswordStrength");
+  const updateQuizTimerDisplay = () => {
+    const quizTimerText = document.getElementById("quizTimerText");
+    if (!quizTimerText) return;
+    const mins = Math.floor(quizTimeRemaining / 60);
+    const secs = quizTimeRemaining % 60;
+    quizTimerText.textContent = `${mins < 10 ? "0" + mins : mins}:${secs < 10 ? "0" + secs : secs}`;
+  };
 
-  const toggleButtons = document.querySelectorAll(".toggle-password");
-  toggleButtons.forEach((btn) => {
-    btn.addEventListener("click", (e) => {
-      e.preventDefault();
-      const targetId = btn.dataset.target;
-      const input = document.getElementById(targetId);
-      if (input) {
-        const isPassword = input.type === "password";
-        input.type = isPassword ? "text" : "password";
-        btn.textContent = isPassword ? "🚫" : "👁";
+  const submitQuiz = () => {
+    if (!activeQuiz) return;
+    clearInterval(quizTimerInterval);
+
+    let correctCount = 0;
+    const totalCount = (activeQuiz.questions || []).length || 1;
+
+    (activeQuiz.questions || []).forEach((q) => {
+      const chosen = userQuizAnswers[q.id];
+      const qCard = document.getElementById(`quizQuestion_${q.id}`);
+      const explBox = document.getElementById(`explanation_${q.id}`);
+
+      if (explBox) explBox.classList.remove("hidden");
+
+      if (qCard) {
+        qCard.querySelectorAll(".quiz-option-label").forEach((lbl) => {
+          const optIdx = parseInt(lbl.dataset.optindex);
+          if (optIdx === q.answerIndex) {
+            lbl.classList.add("correct");
+          } else if (optIdx === chosen) {
+            lbl.classList.add("incorrect");
+          }
+        });
+      }
+
+      if (chosen === q.answerIndex) {
+        correctCount++;
       }
     });
-  });
 
-  // ============ Teacher Dashboard Logic ============
-  const teacherDashboard = document.getElementById("teacherDashboard");
-  const studentDashboard = document.getElementById("studentDashboard");
-  const navTeacherLink = document.getElementById("navTeacherLink");
-  const navStudentLink = document.getElementById("navStudentLink");
+    const score10 = ((correctCount / totalCount) * 10).toFixed(1);
+    const percentage = Math.round((correctCount / totalCount) * 100);
 
-  // Create Course Modal Elements
-  const createCourseModal = document.getElementById("createCourseModal");
-  const openCreateCourseBtn = document.getElementById("openCreateCourseBtn");
-  const quickCreateCourseBtn = document.getElementById("quickCreateCourseBtn");
-  const closeCreateCourseBtns = document.querySelectorAll("[data-close-create-course]");
-  const createCourseForm = document.getElementById("createCourseForm");
-  const createCourseMessage = document.getElementById("createCourseMessage");
+    // Save to Gradebook
+    const grades = getStoredGrades();
+    grades.unshift({
+      id: `grade-${Date.now()}`,
+      quizTitle: activeQuiz.title,
+      type: "quiz",
+      score: score10,
+      maxScore: "10",
+      grade: activeQuiz.grade || "12",
+      subject: activeQuiz.course || "Trắc nghiệm",
+      feedback: score10 >= 8 ? "Rất xuất sắc! Nắm vững toàn bộ kiến thức cốt lõi." : score10 >= 6.5 ? "Khá tốt! Cần xem lại các câu giải thích để tối ưu điểm số." : "Cần ôn tập lại lý thuyết chuyên đề này.",
+      date: new Date().toLocaleDateString("vi-VN")
+    });
+    saveStoredGrades(grades);
 
-  const openCreateCourse = () => {
-    if (createCourseMessage) {
-      createCourseMessage.textContent = "";
-      createCourseMessage.className = "form-message";
+    // Show Result Box
+    const quizResultBox = document.getElementById("quizResultBox");
+    const quizResultScore = document.getElementById("quizResultScore");
+    const quizResultPercentage = document.getElementById("quizResultPercentage");
+    const quizResultFeedback = document.getElementById("quizResultFeedback");
+    const quizFooterActions = document.getElementById("quizFooterActions");
+
+    if (quizResultScore) quizResultScore.textContent = `${score10}/10`;
+    if (quizResultPercentage) quizResultPercentage.textContent = `${percentage}% (${correctCount}/${totalCount} câu đúng)`;
+    if (quizResultFeedback) {
+      quizResultFeedback.textContent = score10 >= 8 ? "🎉 Chúc mừng bạn đạt điểm Giỏi! Kết quả đã tự động lưu vào Bảng điểm." : "👍 Bạn đã hoàn thành bài thi! Kết quả đã được lưu vào Bảng điểm.";
     }
-    openModalElement(createCourseModal);
+
+    if (quizResultBox) quizResultBox.classList.remove("hidden");
+    if (quizFooterActions) quizFooterActions.style.display = "none";
+
+    renderStudentGradebook();
   };
-  const closeCreateCourse = () => closeModalElement(createCourseModal);
 
-  if (openCreateCourseBtn) openCreateCourseBtn.addEventListener("click", openCreateCourse);
-  if (quickCreateCourseBtn) quickCreateCourseBtn.addEventListener("click", openCreateCourse);
-  closeCreateCourseBtns.forEach((btn) => btn.addEventListener("click", closeCreateCourse));
-  createCourseModal?.addEventListener("click", (e) => {
-    if (e.target === createCourseModal) closeCreateCourse();
-  });
+  const closeTakeQuiz = () => {
+    clearInterval(quizTimerInterval);
+    closeModalElement(takeQuizModal);
+  };
 
-  // Handle Create Course Form Submit
-  if (createCourseForm) {
-    createCourseForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const currentUser = getCurrentUser() || {};
-      const title = (document.getElementById("newCourseTitle")?.value || "").trim();
-      const category = document.getElementById("newCourseCategory")?.value || "natural";
-      const price = (document.getElementById("newCoursePrice")?.value || "").trim();
-      const desc = (document.getElementById("newCourseDesc")?.value || "").trim();
+  const btnSubmitQuiz = document.getElementById("btnSubmitQuiz");
+  if (btnSubmitQuiz) btnSubmitQuiz.addEventListener("click", submitQuiz);
 
-      if (!title || !price || !desc) {
-        if (createCourseMessage) {
-          createCourseMessage.textContent = "Vui lòng nhập đầy đủ thông tin môn học.";
-          createCourseMessage.className = "form-message error";
-        }
-        return;
-      }
-
-      const courses = getStoredCourses();
-      const newCourse = {
-        id: `course-${Date.now()}`,
-        title,
-        category,
-        price,
-        rating: "5.0 ★",
-        desc,
-        bgClass: `${category === "natural" ? "math-bg" : category === "social" ? "literature-bg" : "it-bg"}`,
-        icon: category === "natural" ? "📐" : category === "social" ? "📖" : "💻",
-        author: currentUser.fullName || "Giảng viên EduNova",
-        createdByEmail: currentUser.email || ""
-      };
-
-      courses.unshift(newCourse);
-      saveStoredCourses(courses);
-
-      if (createCourseMessage) {
-        createCourseMessage.textContent = "🎉 Tạo môn học thành công!";
-        createCourseMessage.className = "form-message success";
-      }
-
-      createCourseForm.reset();
-      renderCourses();
-      populateCourseDropdowns();
-      renderTeacherDashboard();
-
-      setTimeout(() => {
-        closeCreateCourse();
-        if (createCourseMessage) createCourseMessage.textContent = "";
-      }, 1000);
+  const btnReviewQuizAnswers = document.getElementById("btnReviewQuizAnswers");
+  if (btnReviewQuizAnswers) {
+    btnReviewQuizAnswers.addEventListener("click", () => {
+      const container = document.getElementById("quizQuestionsContainer");
+      if (container) container.scrollIntoView({ behavior: "smooth" });
     });
   }
 
-  // ============ Create Assignment Modal Elements ============
-  const createAssignmentModal = document.getElementById("createAssignmentModal");
-  const openCreateAssignmentBtn = document.getElementById("openCreateAssignmentBtn");
-  const quickAssignBtn = document.getElementById("quickAssignBtn");
-  const closeCreateAssignmentBtns = document.querySelectorAll("[data-close-create-assignment]");
-  const createAssignmentForm = document.getElementById("createAssignmentForm");
-  const createAssignmentMessage = document.getElementById("createAssignmentMessage");
+  // Render Student Quizzes Tab
+  const renderStudentQuizzes = () => {
+    const studentQuizList = document.getElementById("studentQuizList");
+    if (!studentQuizList) return;
 
-  const openCreateAssignment = () => {
-    populateCourseDropdowns();
-    if (createAssignmentMessage) {
-      createAssignmentMessage.textContent = "";
-      createAssignmentMessage.className = "form-message";
-    }
-    openModalElement(createAssignmentModal);
+    const currentUser = getCurrentUser();
+    const activeGrade = currentUser?.grade || document.getElementById("dashboardGradeSelect")?.value || "12";
+    const quizzes = getStoredQuizzes();
+
+    let filtered = quizzes.filter((q) => String(q.grade) === String(activeGrade));
+    if (filtered.length === 0) filtered = quizzes;
+
+    studentQuizList.innerHTML = filtered
+      .map(
+        (quiz) => `
+          <div class="quiz-card">
+            <div>
+              <div class="quiz-card-top">
+                <span class="type-chip exam">Lớp ${quiz.grade || "12"}</span>
+                <span class="badge-course">${quiz.course ? quiz.course.split("-")[0].trim() : "Môn học"}</span>
+              </div>
+              <h4>${quiz.title}</h4>
+              <div class="quiz-meta-info">
+                <span>⏱ ${quiz.duration || 15} phút</span>
+                <span>•</span>
+                <span>📋 ${quiz.questions ? quiz.questions.length : 5} câu hỏi</span>
+                <span>•</span>
+                <span>👨‍🏫 ${quiz.teacherName || "Giáo viên"}</span>
+              </div>
+            </div>
+            <div class="quiz-card-footer">
+              <span style="font-size: 0.82rem; font-weight: 700; color: #10b981;">⚡ Tự động chấm</span>
+              <button class="btn btn-primary small-btn start-quiz-btn" data-id="${quiz.id}">Bắt đầu làm bài</button>
+            </div>
+          </div>
+        `
+      )
+      .join("");
+
+    studentQuizList.querySelectorAll(".start-quiz-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const qid = e.currentTarget.dataset.id;
+        openTakeQuiz(qid);
+      });
+    });
   };
-  const closeCreateAssignment = () => closeModalElement(createAssignmentModal);
 
-  if (openCreateAssignmentBtn) openCreateAssignmentBtn.addEventListener("click", openCreateAssignment);
-  if (quickAssignBtn) quickAssignBtn.addEventListener("click", openCreateAssignment);
-  closeCreateAssignmentBtns.forEach((btn) => btn.addEventListener("click", closeCreateAssignment));
-  createAssignmentModal?.addEventListener("click", (e) => {
-    if (e.target === createAssignmentModal) closeCreateAssignment();
-  });
+  // Render Student Gradebook
+  const renderStudentGradebook = () => {
+    const container = document.getElementById("studentGradebookContainer");
+    if (!container) return;
 
-  // Handle Create Assignment Form Submit
-  if (createAssignmentForm) {
-    createAssignmentForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const currentUser = getCurrentUser() || {};
-      const title = (document.getElementById("assignmentTitle")?.value || "").trim();
-      const course = document.getElementById("assignmentCourse")?.value;
-      const deadline = document.getElementById("assignmentDeadline")?.value;
-      const desc = (document.getElementById("assignmentDesc")?.value || "").trim();
-      const link = (document.getElementById("assignmentLink")?.value || "").trim();
+    const grades = getStoredGrades();
+    if (grades.length === 0) {
+      container.innerHTML = `
+        <div style="text-align: center; padding: 40px 20px; color: var(--text-muted);">
+          <span style="font-size: 2.5rem; display: block; margin-bottom: 8px;">📊</span>
+          <p style="margin: 0; font-weight: 600;">Bạn chưa có bài kiểm tra nào được ghi nhận.</p>
+          <small>Hãy hoàn thành các bài trắc nghiệm ở tab <strong>Luyện tập & Kiểm tra</strong> để xem điểm số tại đây.</small>
+        </div>
+      `;
+      return;
+    }
 
-      if (!title || !course || !deadline || !desc) {
-        if (createAssignmentMessage) {
-          createAssignmentMessage.textContent = "Vui lòng điền đủ tiêu đề, môn học, hạn nộp và yêu cầu.";
-          createAssignmentMessage.className = "form-message error";
+    container.innerHTML = `
+      <div class="gradebook-table-wrapper">
+        <table class="gradebook-table">
+          <thead>
+            <tr>
+              <th>Tên bài kiểm tra / Bài nộp</th>
+              <th>Loại bài</th>
+              <th>Điểm số</th>
+              <th>Xếp loại</th>
+              <th>Nhận xét của Giáo viên / Hệ thống</th>
+              <th>Ngày làm</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${grades
+              .map((g) => {
+                const num = parseFloat(g.score) || 0;
+                const badgeClass = num >= 8 ? "excellent" : num >= 6.5 ? "good" : "average";
+                const rankText = num >= 8.5 ? "Giỏi" : num >= 6.5 ? "Khá" : "Đạt";
+
+                return `
+                  <tr>
+                    <td><strong>${g.quizTitle || g.assignmentTitle || "Bài kiểm tra"}</strong></td>
+                    <td><span class="type-chip ${g.type === "quiz" ? "exam" : "document"}">${g.type === "quiz" ? "Trắc nghiệm" : "Tự luận"}</span></td>
+                    <td><strong style="font-size: 1.1rem; color: var(--primary, #4361ee);">${g.score}/${g.maxScore || "10"}</strong></td>
+                    <td><span class="grade-badge ${badgeClass}">${rankText}</span></td>
+                    <td style="color: var(--text-muted); font-size: 0.85rem;">${g.feedback || "Đã hoàn thành"}</td>
+                    <td style="color: var(--text-muted); font-size: 0.82rem;">${g.date || "Hôm nay"}</td>
+                  </tr>
+                `;
+              })
+              .join("")}
+          </tbody>
+        </table>
+      </div>
+    `;
+  };
+
+  // Render Question Bank (Tra Cứu Câu Hỏi)
+  const renderQuestionBank = (keyword = "", subjectFilter = "all") => {
+    const qnaResultsList = document.getElementById("qnaResultsList");
+    if (!qnaResultsList) return;
+
+    let questions = DEFAULT_QUESTIONS;
+    const kw = keyword.toLowerCase().trim();
+
+    if (kw) {
+      questions = questions.filter((q) =>
+        q.question.toLowerCase().includes(kw) ||
+        q.keyword.toLowerCase().includes(kw) ||
+        q.solution.toLowerCase().includes(kw)
+      );
+    }
+
+    if (subjectFilter !== "all") {
+      questions = questions.filter((q) => q.subject.toLowerCase().includes(subjectFilter.toLowerCase()));
+    }
+
+    if (questions.length === 0) {
+      qnaResultsList.innerHTML = `
+        <div style="text-align: center; padding: 30px; color: var(--text-muted);">
+          <span>🔍</span>
+          <p>Không tìm thấy câu hỏi phù hợp với từ khóa "${keyword}". Vui lòng thử từ khóa khác.</p>
+        </div>
+      `;
+      return;
+    }
+
+    qnaResultsList.innerHTML = questions
+      .map(
+        (q, idx) => `
+          <div class="qna-card">
+            <div class="qna-card-top">
+              <span class="badge-course">${q.subject} · Lớp ${q.grade}</span>
+              <span style="font-size: 0.78rem; color: var(--text-muted);">Mã: ${q.id}</span>
+            </div>
+            <h4 class="qna-question-text">Câu hỏi ${idx + 1}: ${q.question}</h4>
+            <button type="button" class="qna-solution-toggle" data-target="sol_${q.id}">
+              📖 Xem hướng dẫn giải chi tiết ▼
+            </button>
+            <div class="qna-solution-content hidden" id="sol_${q.id}">
+              ${q.solution}
+            </div>
+          </div>
+        `
+      )
+      .join("");
+
+    qnaResultsList.querySelectorAll(".qna-solution-toggle").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        const targetId = btn.dataset.target;
+        const targetContent = document.getElementById(targetId);
+        if (targetContent) {
+          const isHidden = targetContent.classList.contains("hidden");
+          if (isHidden) {
+            targetContent.classList.remove("hidden");
+            btn.textContent = "📖 Thu gọn lời giải ▲";
+          } else {
+            targetContent.classList.add("hidden");
+            btn.textContent = "📖 Xem hướng dẫn giải chi tiết ▼";
+          }
         }
-        return;
+      });
+    });
+  };
+
+  const btnSearchQnA = document.getElementById("btnSearchQnA");
+  const qnaSearchKeyword = document.getElementById("qnaSearchKeyword");
+  const qnaSubjectFilter = document.getElementById("qnaSubjectFilter");
+
+  if (btnSearchQnA) {
+    btnSearchQnA.addEventListener("click", () => {
+      const kw = qnaSearchKeyword?.value || "";
+      const subj = qnaSubjectFilter?.value || "all";
+      renderQuestionBank(kw, subj);
+    });
+  }
+
+  if (qnaSearchKeyword) {
+    qnaSearchKeyword.addEventListener("input", (e) => {
+      const kw = e.target.value;
+      const subj = qnaSubjectFilter?.value || "all";
+      renderQuestionBank(kw, subj);
+    });
+  }
+
+  if (qnaSubjectFilter) {
+    qnaSubjectFilter.addEventListener("change", (e) => {
+      const subj = e.target.value;
+      const kw = qnaSearchKeyword?.value || "";
+      renderQuestionBank(kw, subj);
+    });
+  }
+  // ============ Student Dashboard Tab Switching ============
+  document.querySelectorAll(".student-tab-btn").forEach((btn) => {
+    btn.addEventListener("click", (e) => {
+      document.querySelectorAll(".student-tab-btn").forEach((b) => b.classList.remove("active"));
+      document.querySelectorAll(".student-tab-panel").forEach((p) => (p.style.display = "none"));
+
+      btn.classList.add("active");
+      const targetId = btn.dataset.targetTab;
+      const targetPanel = document.getElementById(targetId);
+      if (targetPanel) {
+        targetPanel.style.display = "block";
       }
 
-      const assignments = getStoredAssignments();
-      const newAssignment = {
-        id: `assign-${Date.now()}`,
+      if (targetId === "tabStudentQuizzes") renderStudentQuizzes();
+      if (targetId === "tabStudentGradebook") renderStudentGradebook();
+      if (targetId === "tabStudentQnA") renderQuestionBank();
+      if (targetId === "tabStudentMaterials") renderStudentMaterials();
+      if (targetId === "tabStudentAssignments") renderStudentAssignments();
+    });
+  });
+
+  // Grade Selector in Dashboard
+  const dashboardGradeSelect = document.getElementById("dashboardGradeSelect");
+  if (dashboardGradeSelect) {
+    dashboardGradeSelect.addEventListener("change", (e) => {
+      const selectedGrade = e.target.value;
+      const currentUser = getCurrentUser();
+      if (currentUser) {
+        currentUser.grade = selectedGrade;
+        setCurrentUser(currentUser);
+        const users = getStoredUsers();
+        const idx = users.findIndex((u) => u.email === currentUser.email);
+        if (idx !== -1) {
+          users[idx].grade = selectedGrade;
+          saveStoredUsers(users);
+        }
+      }
+      const studentGradePill = document.getElementById("studentGradePill");
+      if (studentGradePill) studentGradePill.textContent = `🎓 Lớp ${selectedGrade}`;
+
+      renderStudentQuizzes();
+      renderStudentMaterials();
+      renderStudentAssignments();
+      renderQuestionBank();
+    });
+  }
+
+  // ============ Teacher Dashboard: Create Quiz Handler ============
+  const openCreateQuizBtn = document.getElementById("openCreateQuizBtn");
+  const quickCreateQuizBtn = document.getElementById("quickCreateQuizBtn");
+  if (openCreateQuizBtn) openCreateQuizBtn.addEventListener("click", () => openModalElement(createQuizModal));
+  if (quickCreateQuizBtn) quickCreateQuizBtn.addEventListener("click", () => openModalElement(createQuizModal));
+
+  const createQuizForm = document.getElementById("createQuizForm");
+  if (createQuizForm) {
+    createQuizForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const title = document.getElementById("newQuizTitle")?.value.trim();
+      const course = document.getElementById("newQuizCourse")?.value;
+      const grade = document.getElementById("newQuizGrade")?.value || "12";
+      const duration = parseInt(document.getElementById("newQuizDuration")?.value) || 15;
+      const raw = document.getElementById("newQuizQuestionsRaw")?.value.trim();
+      const msg = document.getElementById("createQuizMessage");
+
+      const currentUser = getCurrentUser();
+      const teacherName = currentUser?.fullName || "Giáo viên EduNova";
+
+      const lines = raw.split("\n").filter((l) => l.trim().length > 0);
+      const questions = lines.map((line, idx) => {
+        const parts = line.split("|").map((p) => p.trim());
+        const qText = parts[0] || `Câu hỏi ${idx + 1}`;
+        const options = parts.slice(1, 5).map((p) => p.replace(/^[A-D]:\s*/, "")) || ["Đáp án A", "Đáp án B", "Đáp án C", "Đáp án D"];
+        while (options.length < 4) options.push(`Đáp án ${String.fromCharCode(65 + options.length)}`);
+        return {
+          id: `q_${Date.now()}_${idx}`,
+          question: qText,
+          options,
+          answerIndex: 0,
+          explanation: "Lời giải chi tiết do giáo viên hướng dẫn."
+        };
+      });
+
+      if (questions.length === 0) {
+        questions.push({
+          id: `q_${Date.now()}_0`,
+          question: "Khảo sát hàm số đạt cực trị khi đạo hàm đổi dấu?",
+          options: ["Đúng", "Sai", "Chỉ đúng với hàm bậc 2", "Chỉ đúng với hàm bậc 3"],
+          answerIndex: 0,
+          explanation: "Đạo hàm đổi dấu qua điểm x0 là điều kiện đủ để hàm số đạt cực trị."
+        });
+      }
+
+      const newQuiz = {
+        id: `quiz-${Date.now()}`,
         title,
         course,
-        deadline,
-        desc,
-        link,
-        teacherName: currentUser.fullName || "Giảng viên EduNova",
-        createdByEmail: currentUser.email || "",
-        createdAt: new Date().toISOString()
+        grade,
+        duration,
+        teacherName,
+        questions
       };
 
-      assignments.unshift(newAssignment);
-      saveStoredAssignments(assignments);
+      const quizzes = getStoredQuizzes();
+      quizzes.unshift(newQuiz);
+      saveStoredQuizzes(quizzes);
 
-      if (createAssignmentMessage) {
-        createAssignmentMessage.textContent = "🎉 Giao bài tập thành công!";
-        createAssignmentMessage.className = "form-message success";
+      if (msg) {
+        msg.textContent = "✓ Đã tạo đề kiểm tra trắc nghiệm thành công!";
+        msg.className = "form-message success";
       }
 
-      createAssignmentForm.reset();
-      renderTeacherDashboard();
-      renderStudentAssignments();
-
       setTimeout(() => {
-        closeCreateAssignment();
-        if (createAssignmentMessage) createAssignmentMessage.textContent = "";
+        closeModalElement(createQuizModal);
+        createQuizForm.reset();
+        if (msg) msg.textContent = "";
+        renderTeacherDashboard();
       }, 1000);
     });
   }
 
-  // ============ Create Material Modal (Tài liệu / Video) ============
-  const createMaterialModal = document.getElementById("createMaterialModal");
+  // ============ Teacher Dashboard: Create Material Handler ============
   const openCreateMaterialBtn = document.getElementById("openCreateMaterialBtn");
   const quickCreateMaterialBtn = document.getElementById("quickCreateMaterialBtn");
-  const closeCreateMaterialBtns = document.querySelectorAll("[data-close-create-material]");
+  if (openCreateMaterialBtn) openCreateMaterialBtn.addEventListener("click", () => openModalElement(createMaterialModal));
+  if (quickCreateMaterialBtn) quickCreateMaterialBtn.addEventListener("click", () => openModalElement(createMaterialModal));
+
   const createMaterialForm = document.getElementById("createMaterialForm");
-  const createMaterialMessage = document.getElementById("createMaterialMessage");
-
-  const openCreateMaterial = () => {
-    populateCourseDropdowns();
-    if (createMaterialMessage) {
-      createMaterialMessage.textContent = "";
-      createMaterialMessage.className = "form-message";
-    }
-    openModalElement(createMaterialModal);
-  };
-  const closeCreateMaterial = () => closeModalElement(createMaterialModal);
-
-  if (openCreateMaterialBtn) openCreateMaterialBtn.addEventListener("click", openCreateMaterial);
-  if (quickCreateMaterialBtn) quickCreateMaterialBtn.addEventListener("click", openCreateMaterial);
-  closeCreateMaterialBtns.forEach((btn) => btn.addEventListener("click", closeCreateMaterial));
-  createMaterialModal?.addEventListener("click", (e) => {
-    if (e.target === createMaterialModal) closeCreateMaterial();
-  });
-
-  // Handle Create Material Form Submit
   if (createMaterialForm) {
     createMaterialForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const currentUser = getCurrentUser() || {};
-      const title = (document.getElementById("materialTitle")?.value || "").trim();
+      const title = document.getElementById("materialTitle")?.value.trim();
       const course = document.getElementById("materialCourse")?.value;
       const type = document.getElementById("materialType")?.value || "video";
-      const url = (document.getElementById("materialUrl")?.value || "").trim();
-      const summary = (document.getElementById("materialSummary")?.value || "").trim();
+      const url = document.getElementById("materialUrl")?.value.trim();
+      const summary = document.getElementById("materialSummary")?.value.trim();
+      const msg = document.getElementById("createMaterialMessage");
 
-      if (!title || !course || !url || !summary) {
-        if (createMaterialMessage) {
-          createMaterialMessage.textContent = "Vui lòng điền đủ thông tin tiêu đề, môn học, link học liệu và tóm tắt lý thuyết.";
-          createMaterialMessage.className = "form-message error";
-        }
-        return;
-      }
+      const currentUser = getCurrentUser();
+      const teacherName = currentUser?.fullName || "Giáo viên EduNova";
 
-      const materials = getStoredMaterials();
       const newMaterial = {
         id: `mat-${Date.now()}`,
         title,
@@ -1109,769 +1643,442 @@ document.addEventListener("DOMContentLoaded", () => {
         type,
         url,
         summary,
-        teacherName: currentUser.fullName || "Giảng viên EduNova",
-        createdByEmail: currentUser.email || "",
+        teacherName,
         createdAt: new Date().toLocaleDateString("vi-VN")
       };
 
+      const materials = getStoredMaterials();
       materials.unshift(newMaterial);
       saveStoredMaterials(materials);
 
-      if (createMaterialMessage) {
-        createMaterialMessage.textContent = "🎉 Đăng tải học liệu thành công!";
-        createMaterialMessage.className = "form-message success";
+      if (msg) {
+        msg.textContent = "✓ Đã đăng tải học liệu thành công!";
+        msg.className = "form-message success";
       }
 
-      createMaterialForm.reset();
-      renderTeacherDashboard();
-      renderStudentMaterials();
-
       setTimeout(() => {
-        closeCreateMaterial();
-        if (createMaterialMessage) createMaterialMessage.textContent = "";
+        closeModalElement(createMaterialModal);
+        createMaterialForm.reset();
+        if (msg) msg.textContent = "";
+        renderTeacherDashboard();
       }, 1000);
     });
   }
 
-  // ============ View Material Modal (Video Player & Reader) ============
-  const viewMaterialModal = document.getElementById("viewMaterialModal");
-  const closeViewMaterialBtns = document.querySelectorAll("[data-close-view-material]");
-  const viewMaterialTitle = document.getElementById("viewMaterialTitle");
-  const viewMaterialCourseName = document.getElementById("viewMaterialCourseName");
-  const viewMaterialCategoryBadge = document.getElementById("viewMaterialCategoryBadge");
-  const materialVideoWrapper = document.getElementById("materialVideoWrapper");
-  const materialVideoIframe = document.getElementById("materialVideoIframe");
-  const materialSummaryContent = document.getElementById("materialSummaryContent");
-  const materialDirectLink = document.getElementById("materialDirectLink");
+  // ============ Teacher Dashboard: Create Assignment Handler ============
+  const openCreateAssignmentBtn = document.getElementById("openCreateAssignmentBtn");
+  const quickAssignBtn = document.getElementById("quickAssignBtn");
+  if (openCreateAssignmentBtn) openCreateAssignmentBtn.addEventListener("click", () => openModalElement(createAssignmentModal));
+  if (quickAssignBtn) quickAssignBtn.addEventListener("click", () => openModalElement(createAssignmentModal));
 
+  const createAssignmentForm = document.getElementById("createAssignmentForm");
+  if (createAssignmentForm) {
+    createAssignmentForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const title = document.getElementById("assignmentTitle")?.value.trim();
+      const course = document.getElementById("assignmentCourse")?.value;
+      const deadline = document.getElementById("assignmentDeadline")?.value;
+      const desc = document.getElementById("assignmentDesc")?.value.trim();
+      const link = document.getElementById("assignmentLink")?.value.trim();
+      const msg = document.getElementById("createAssignmentMessage");
+
+      const currentUser = getCurrentUser();
+      const teacherName = currentUser?.fullName || "Giáo viên EduNova";
+
+      const newAssignment = {
+        id: `assign-${Date.now()}`,
+        title,
+        course,
+        deadline,
+        desc,
+        link,
+        teacherName
+      };
+
+      const assignments = getStoredAssignments();
+      assignments.unshift(newAssignment);
+      saveStoredAssignments(assignments);
+
+      if (msg) {
+        msg.textContent = "✓ Đã giao bài tập thành công!";
+        msg.className = "form-message success";
+      }
+
+      setTimeout(() => {
+        closeModalElement(createAssignmentModal);
+        createAssignmentForm.reset();
+        if (msg) msg.textContent = "";
+        renderTeacherDashboard();
+      }, 1000);
+    });
+  }
+
+  // ============ Teacher Dashboard: Create Course Handler ============
+  const openCreateCourseBtn = document.getElementById("openCreateCourseBtn");
+  const quickCreateCourseBtn = document.getElementById("quickCreateCourseBtn");
+  if (openCreateCourseBtn) openCreateCourseBtn.addEventListener("click", () => openModalElement(createCourseModal));
+  if (quickCreateCourseBtn) quickCreateCourseBtn.addEventListener("click", () => openModalElement(createCourseModal));
+
+  const createCourseForm = document.getElementById("createCourseForm");
+  if (createCourseForm) {
+    createCourseForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const title = document.getElementById("newCourseTitle")?.value.trim();
+      const category = document.getElementById("newCourseCategory")?.value || "natural";
+      const price = document.getElementById("newCoursePrice")?.value.trim();
+      const desc = document.getElementById("newCourseDesc")?.value.trim();
+      const msg = document.getElementById("createCourseMessage");
+
+      const bgMap = { natural: "math-bg", social: "literature-bg", tech_lang: "it-bg" };
+      const iconMap = { natural: "🔬", social: "📖", tech_lang: "💻" };
+
+      const currentUser = getCurrentUser();
+      const author = currentUser?.fullName ? `${currentUser.fullName} (Giáo viên)` : "Giáo viên EduNova";
+
+      const newCourse = {
+        id: `course-${Date.now()}`,
+        title,
+        category,
+        price,
+        rating: "5.0 ★",
+        desc,
+        bgClass: bgMap[category] || "math-bg",
+        icon: iconMap[category] || "📚",
+        author
+      };
+
+      const courses = getStoredCourses();
+      courses.unshift(newCourse);
+      saveStoredCourses(courses);
+
+      if (msg) {
+        msg.textContent = "✓ Xuất bản môn học thành công!";
+        msg.className = "form-message success";
+      }
+
+      setTimeout(() => {
+        closeModalElement(createCourseModal);
+        createCourseForm.reset();
+        if (msg) msg.textContent = "";
+        renderCourses();
+        populateCourseDropdowns();
+        renderTeacherDashboard();
+      }, 1000);
+    });
+  }
+
+  // ============ View Material Modal ============
   const openViewMaterial = (materialId) => {
     const materials = getStoredMaterials();
     const mat = materials.find((m) => m.id === materialId);
     if (!mat) return;
 
+    const viewMaterialTitle = document.getElementById("viewMaterialTitle");
+    const viewMaterialCourseName = document.getElementById("viewMaterialCourseName");
+    const viewMaterialCategoryBadge = document.getElementById("viewMaterialCategoryBadge");
+    const materialVideoWrapper = document.getElementById("materialVideoWrapper");
+    const materialVideoIframe = document.getElementById("materialVideoIframe");
+    const materialSummaryContent = document.getElementById("materialSummaryContent");
+    const materialDirectLink = document.getElementById("materialDirectLink");
+
     if (viewMaterialTitle) viewMaterialTitle.textContent = mat.title;
-    if (viewMaterialCourseName) viewMaterialCourseName.textContent = `Môn học: ${mat.course} | Giảng viên: ${mat.teacherName || "EduNova"}`;
+    if (viewMaterialCourseName) viewMaterialCourseName.textContent = `Môn: ${mat.course} · GV: ${mat.teacherName || "EduNova"}`;
     if (viewMaterialCategoryBadge) {
-      viewMaterialCategoryBadge.textContent =
-        mat.type === "video" ? "🎥 Video bài giảng" : mat.type === "document" ? "📄 Tài liệu lý thuyết" : "📝 Đề thi & Đề cương";
-    }
-    if (materialSummaryContent) materialSummaryContent.textContent = mat.summary;
-
-    if (materialDirectLink) {
-      materialDirectLink.href = mat.url;
-      materialDirectLink.textContent = mat.type === "video" ? "📺 Mở video trên YouTube" : "📥 Tải/Mở tài liệu";
+      viewMaterialCategoryBadge.textContent = mat.type === "video" ? "🎥 Video Bài Giảng" : mat.type === "exam" ? "📝 Đề Thi & Đề Cương" : "📄 Tài Liệu Lý Thuyết";
     }
 
-    if (mat.type === "video" && (mat.url.includes("youtube") || mat.url.includes("youtu.be"))) {
-      if (materialVideoIframe) materialVideoIframe.src = getEmbedUrl(mat.url);
+    if (mat.type === "video" && mat.url) {
+      const embed = getEmbedUrl(mat.url);
+      if (materialVideoIframe) materialVideoIframe.src = embed;
       if (materialVideoWrapper) materialVideoWrapper.classList.remove("hidden");
     } else {
       if (materialVideoIframe) materialVideoIframe.src = "";
       if (materialVideoWrapper) materialVideoWrapper.classList.add("hidden");
     }
 
+    if (materialSummaryContent) materialSummaryContent.textContent = mat.summary || "Chưa có tóm tắt.";
+    if (materialDirectLink) {
+      materialDirectLink.href = mat.url || "#";
+      materialDirectLink.style.display = mat.url ? "inline-flex" : "none";
+    }
+
     openModalElement(viewMaterialModal);
   };
 
-  const closeViewMaterial = () => {
-    if (materialVideoIframe) materialVideoIframe.src = "";
-    closeModalElement(viewMaterialModal);
-  };
-
-  closeViewMaterialBtns.forEach((btn) => btn.addEventListener("click", closeViewMaterial));
-  viewMaterialModal?.addEventListener("click", (e) => {
-    if (e.target === viewMaterialModal) closeViewMaterial();
-  });
-
-  // ============ Account Settings Modal Logic ============
-  const settingsModal = document.getElementById("settingsModal");
-  const settingsBtn = document.getElementById("settingsBtn");
-  const footerSettingsLink = document.getElementById("footerSettingsLink");
-  const closeSettingsBtns = document.querySelectorAll("[data-close-settings]");
-  const tabBtnProfile = document.getElementById("tabBtnProfile");
-  const tabBtnSecurity = document.getElementById("tabBtnSecurity");
-  const profileTabContent = document.getElementById("profileTabContent");
-  const securityTabContent = document.getElementById("securityTabContent");
-  const updateProfileForm = document.getElementById("updateProfileForm");
-  const changePasswordForm = document.getElementById("changePasswordForm");
-  const profileFormMessage = document.getElementById("profileFormMessage");
-  const securityFormMessage = document.getElementById("securityFormMessage");
-  const copyIdBtn = document.getElementById("copyIdBtn");
-
-  const openSettingsModal = () => {
-    const currentUser = getCurrentUser();
-    if (!currentUser) {
-      openLoginModal();
-      return;
-    }
-
-    populateCourseDropdowns();
-
-    // Fill profile info
-    const settingsDisplayFullName = document.getElementById("settingsDisplayFullName");
-    const settingsRoleBadge = document.getElementById("settingsRoleBadge");
-    const settingsUserId = document.getElementById("settingsUserId");
-    const settingsAvatar = document.getElementById("settingsAvatar");
-    const settingsFullName = document.getElementById("settingsFullName");
-    const settingsEmail = document.getElementById("settingsEmail");
-    const settingsRole = document.getElementById("settingsRole");
-    const settingsCourse = document.getElementById("settingsCourse");
-    const settingsCourseLabel = document.getElementById("settingsCourseLabel");
-    const settingsJoinedDate = document.getElementById("settingsJoinedDate");
-
-    const isTeacher = currentUser.accountType === "teacher";
-    const userRoleText = isTeacher ? "👨‍🏫 Giáo viên" : "👨‍🎓 Học sinh";
-    const userDisplayId = currentUser.id ? (currentUser.id.startsWith("user-") ? `EDU-${currentUser.id.replace("user-", "").slice(-6)}` : currentUser.id) : "EDU-000000";
-
-    if (settingsDisplayFullName) settingsDisplayFullName.textContent = currentUser.fullName;
-    if (settingsAvatar) settingsAvatar.textContent = isTeacher ? "👨‍🏫" : "👨‍🎓";
-    if (settingsRoleBadge) {
-      settingsRoleBadge.textContent = userRoleText;
-      settingsRoleBadge.className = `role-badge ${isTeacher ? "teacher" : "student"}`;
-    }
-    if (settingsUserId) settingsUserId.textContent = userDisplayId;
-    if (settingsFullName) settingsFullName.value = currentUser.fullName;
-    if (settingsEmail) settingsEmail.value = currentUser.email;
-    if (settingsRole) settingsRole.value = isTeacher ? "Giáo viên giảng dạy" : "Học sinh học tập";
-    if (settingsCourse && currentUser.course) settingsCourse.value = currentUser.course;
-    if (settingsCourseLabel) settingsCourseLabel.textContent = isTeacher ? "Môn học phụ trách giảng dạy" : "Môn học đang quan tâm";
-    if (settingsJoinedDate) {
-      settingsJoinedDate.value = currentUser.registeredAt
-        ? new Date(currentUser.registeredAt).toLocaleDateString("vi-VN")
-        : "Đã kích hoạt";
-    }
-
-    // Reset messages
-    if (profileFormMessage) {
-      profileFormMessage.textContent = "";
-      profileFormMessage.className = "form-message";
-    }
-    if (securityFormMessage) {
-      securityFormMessage.textContent = "";
-      securityFormMessage.className = "form-message";
-    }
-
-    // Switch to profile tab by default
-    switchSettingsTab("profile");
-
-    openModalElement(settingsModal);
-  };
-
-  const closeSettingsModal = () => closeModalElement(settingsModal);
-
-  const switchSettingsTab = (tab) => {
-    if (tab === "profile") {
-      tabBtnProfile?.classList.add("active");
-      tabBtnSecurity?.classList.remove("active");
-      if (profileTabContent) profileTabContent.style.display = "block";
-      if (securityTabContent) securityTabContent.style.display = "none";
-    } else {
-      tabBtnSecurity?.classList.add("active");
-      tabBtnProfile?.classList.remove("active");
-      if (profileTabContent) profileTabContent.style.display = "none";
-      if (securityTabContent) securityTabContent.style.display = "block";
-    }
-  };
-
-  tabBtnProfile?.addEventListener("click", () => switchSettingsTab("profile"));
-  tabBtnSecurity?.addEventListener("click", () => switchSettingsTab("security"));
-
-  if (settingsBtn) settingsBtn.addEventListener("click", openSettingsModal);
-  if (footerSettingsLink) {
-    footerSettingsLink.addEventListener("click", (e) => {
-      e.preventDefault();
-      openSettingsModal();
-    });
-  }
-  closeSettingsBtns.forEach((btn) => btn.addEventListener("click", closeSettingsModal));
-  settingsModal?.addEventListener("click", (e) => {
-    if (e.target === settingsModal) closeSettingsModal();
-  });
-
-  // Copy ID button
-  if (copyIdBtn) {
-    copyIdBtn.addEventListener("click", () => {
-      const settingsUserId = document.getElementById("settingsUserId");
-      if (settingsUserId) {
-        navigator.clipboard?.writeText(settingsUserId.textContent).then(() => {
-          const originalText = copyIdBtn.textContent;
-          copyIdBtn.textContent = "✓ Đã copy!";
-          setTimeout(() => {
-            copyIdBtn.textContent = originalText;
-          }, 1500);
-        });
-      }
-    });
-  }
-
-  // Update Profile Form Submit
-  if (updateProfileForm) {
-    updateProfileForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const currentUser = getCurrentUser();
-      if (!currentUser) return;
-
-      const newFullName = (document.getElementById("settingsFullName")?.value || "").trim();
-      const newCourse = document.getElementById("settingsCourse")?.value || currentUser.course;
-
-      if (!newFullName) {
-        if (profileFormMessage) {
-          profileFormMessage.textContent = "Vui lòng nhập họ và tên hợp lệ.";
-          profileFormMessage.className = "form-message error";
-        }
-        return;
-      }
-
-      currentUser.fullName = newFullName;
-      currentUser.course = newCourse;
-
-      // Update in stored users array
-      const users = getStoredUsers();
-      const userIndex = users.findIndex(
-        (u) => u && typeof u.email === "string" && u.email.toLowerCase() === currentUser.email.toLowerCase()
-      );
-      if (userIndex !== -1) {
-        users[userIndex].fullName = newFullName;
-        users[userIndex].course = newCourse;
-        saveStoredUsers(users);
-      }
-
-      setCurrentUser(currentUser);
-      updateAuthUI();
-      if (newCourse) updateSchedule(newCourse);
-
-      const settingsDisplayFullName = document.getElementById("settingsDisplayFullName");
-      if (settingsDisplayFullName) settingsDisplayFullName.textContent = newFullName;
-
-      if (profileFormMessage) {
-        profileFormMessage.textContent = "🎉 Cập nhật thông tin tài khoản thành công!";
-        profileFormMessage.className = "form-message success";
-      }
-
-      setTimeout(() => {
-        if (profileFormMessage) profileFormMessage.textContent = "";
-      }, 2500);
-    });
-  }
-
-  // Change Password Form Submit
-  if (changePasswordForm) {
-    changePasswordForm.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const currentUser = getCurrentUser();
-      if (!currentUser) return;
-
-      const currentPassword = (document.getElementById("currentPassword")?.value || "").trim();
-      const newPassword = (document.getElementById("newPassword")?.value || "").trim();
-      const confirmNewPassword = (document.getElementById("confirmNewPassword")?.value || "").trim();
-
-      if (currentPassword !== currentUser.password) {
-        if (securityFormMessage) {
-          securityFormMessage.textContent = "Mật khẩu hiện tại không đúng. Vui lòng kiểm tra lại.";
-          securityFormMessage.className = "form-message error";
-        }
-        return;
-      }
-
-      if (!newPassword || newPassword.length < 6) {
-        if (securityFormMessage) {
-          securityFormMessage.textContent = "Mật khẩu mới phải có tối thiểu 6 ký tự.";
-          securityFormMessage.className = "form-message error";
-        }
-        return;
-      }
-
-      if (newPassword !== confirmNewPassword) {
-        if (securityFormMessage) {
-          securityFormMessage.textContent = "Mật khẩu xác nhận không khớp.";
-          securityFormMessage.className = "form-message error";
-        }
-        return;
-      }
-
-      currentUser.password = newPassword;
-
-      const users = getStoredUsers();
-      const userIndex = users.findIndex(
-        (u) => u && typeof u.email === "string" && u.email.toLowerCase() === currentUser.email.toLowerCase()
-      );
-      if (userIndex !== -1) {
-        users[userIndex].password = newPassword;
-        saveStoredUsers(users);
-      }
-
-      setCurrentUser(currentUser);
-
-      if (securityFormMessage) {
-        securityFormMessage.textContent = "🎉 Đổi mật khẩu thành công!";
-        securityFormMessage.className = "form-message success";
-      }
-
-      changePasswordForm.reset();
-
-      setTimeout(() => {
-        if (securityFormMessage) securityFormMessage.textContent = "";
-      }, 2500);
-    });
-  }
-
-  // ============ Render Teacher Dashboard ============
-  const renderTeacherDashboard = () => {
-    const courses = getStoredCourses();
+  // ============ Submit Assignment Modal ============
+  const openSubmitAssignment = (assignId) => {
     const assignments = getStoredAssignments();
-    const materials = getStoredMaterials();
-    const submissions = getStoredSubmissions();
+    const assign = assignments.find((a) => a.id === assignId);
+    if (!assign) return;
 
-    // Stats
-    const teacherCoursesCount = document.getElementById("teacherCoursesCount");
-    const teacherAssignmentsCount = document.getElementById("teacherAssignmentsCount");
-    const teacherMaterialsCount = document.getElementById("teacherMaterialsCount");
-    const teacherSubmissionsCount = document.getElementById("teacherSubmissionsCount");
+    const submitAssignmentId = document.getElementById("submitAssignmentId");
+    const submitAssignmentCourseName = document.getElementById("submitAssignmentCourseName");
+    const submitAssignmentInstruction = document.getElementById("submitAssignmentInstruction");
 
-    if (teacherCoursesCount) teacherCoursesCount.textContent = courses.length;
-    if (teacherAssignmentsCount) teacherAssignmentsCount.textContent = assignments.length;
-    if (teacherMaterialsCount) teacherMaterialsCount.textContent = materials.length;
-    if (teacherSubmissionsCount) teacherSubmissionsCount.textContent = submissions.length;
-
-    // Render Materials List for Teacher
-    const teacherMaterialList = document.getElementById("teacherMaterialList");
-    if (teacherMaterialList) {
-      if (materials.length === 0) {
-        teacherMaterialList.innerHTML = `
-          <div class="empty-state">
-            <span>📚</span>
-            <p>Chưa có tài liệu hoặc video nào được đăng. Hãy bấm "+ Đăng bài" để chia sẻ bài giảng.</p>
-          </div>
-        `;
-      } else {
-        teacherMaterialList.innerHTML = materials
-          .map((mat) => {
-            const typeLabel =
-              mat.type === "video" ? "🎥 Video" : mat.type === "document" ? "📄 Tài liệu" : "📝 Đề thi";
-            const typeClass = mat.type || "video";
-
-            return `
-              <div class="material-item" data-id="${mat.id}">
-                <div class="material-top">
-                  <h4 class="material-title">${mat.title}</h4>
-                  <span class="type-chip ${typeClass}">${typeLabel}</span>
-                </div>
-                <div class="assignment-meta">
-                  <span class="badge-course">📚 ${mat.course}</span>
-                  <span style="font-size: 0.8rem; color: var(--muted);">📅 ${mat.createdAt || "Hôm nay"}</span>
-                </div>
-                <p class="material-summary-preview">${mat.summary}</p>
-                <div class="assignment-footer-actions">
-                  <span style="color: var(--primary); font-size: 0.84rem; font-weight: 600;">👨‍🏫 ${mat.teacherName || "Giáo viên"}</span>
-                  <div class="action-btn-group">
-                    <button class="btn-icon-text view-mat-btn" data-id="${mat.id}">👁 Xem học liệu</button>
-                    <button class="btn-icon-text danger delete-mat-btn" data-id="${mat.id}">🗑 Xóa</button>
-                  </div>
-                </div>
-              </div>
-            `;
-          })
-          .join("");
-
-        // Attach view & delete events
-        teacherMaterialList.querySelectorAll(".view-mat-btn").forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            const matId = e.currentTarget.dataset.id;
-            openViewMaterial(matId);
-          });
-        });
-
-        teacherMaterialList.querySelectorAll(".delete-mat-btn").forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            const matId = e.currentTarget.dataset.id;
-            if (confirm("Bạn có chắc chắn muốn xóa tài liệu/video bài giảng này không?")) {
-              const currentMaterials = getStoredMaterials().filter((m) => m.id !== matId);
-              saveStoredMaterials(currentMaterials);
-              renderTeacherDashboard();
-              renderStudentMaterials();
-            }
-          });
-        });
-      }
-    }
-
-    // Render Assignment List for Teacher
-    const teacherAssignmentList = document.getElementById("teacherAssignmentList");
-    if (teacherAssignmentList) {
-      if (assignments.length === 0) {
-        teacherAssignmentList.innerHTML = `
-          <div class="empty-state">
-            <span>📝</span>
-            <p>Chưa có bài tập nào được giao. Hãy bấm "Giao bài" để tạo bài tập đầu tiên.</p>
-          </div>
-        `;
-      } else {
-        teacherAssignmentList.innerHTML = assignments
-          .map((assign) => {
-            const assignSubmissions = submissions.filter((s) => s.assignmentId === assign.id);
-            const isExpired = new Date(assign.deadline) < new Date(new Date().toDateString());
-
-            return `
-              <div class="assignment-item" data-id="${assign.id}">
-                <div class="assignment-top">
-                  <h4 class="assignment-title">${assign.title}</h4>
-                  <span class="badge-deadline ${isExpired ? "" : "active"}">
-                    ${isExpired ? "⏰ Hết hạn" : "⏳ Hạn: " + assign.deadline}
-                  </span>
-                </div>
-                <div class="assignment-meta">
-                  <span class="badge-course">📚 ${assign.course}</span>
-                  ${assign.link ? `<a href="${assign.link}" target="_blank" rel="noopener" style="color: var(--primary); font-size: 0.82rem;">🔗 Tài liệu</a>` : ""}
-                </div>
-                <p class="assignment-desc-text">${assign.desc}</p>
-                <div class="assignment-footer-actions">
-                  <span class="submissions-count-badge">📥 ${assignSubmissions.length} bài đã nộp</span>
-                  <div class="action-btn-group">
-                    <button class="btn-icon-text view-submissions-btn" data-id="${assign.id}">👁 Xem bài nộp (${assignSubmissions.length})</button>
-                    <button class="btn-icon-text danger delete-assignment-btn" data-id="${assign.id}">🗑 Xóa</button>
-                  </div>
-                </div>
-              </div>
-            `;
-          })
-          .join("");
-
-        teacherAssignmentList.querySelectorAll(".delete-assignment-btn").forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            const assignId = e.currentTarget.dataset.id;
-            if (confirm("Bạn có chắc chắn muốn xóa bài tập này không?")) {
-              const currentAssignments = getStoredAssignments().filter((a) => a.id !== assignId);
-              saveStoredAssignments(currentAssignments);
-              renderTeacherDashboard();
-              renderStudentAssignments();
-            }
-          });
-        });
-
-        teacherAssignmentList.querySelectorAll(".view-submissions-btn").forEach((btn) => {
-          btn.addEventListener("click", (e) => {
-            const assignId = e.currentTarget.dataset.id;
-            openSubmissionsModal(assignId);
-          });
-        });
-      }
-    }
-
-    // Render Teacher Courses List
-    const teacherCourseList = document.getElementById("teacherCourseList");
-    if (teacherCourseList) {
-      teacherCourseList.innerHTML = courses
-        .map((course) => `
-          <div class="teacher-course-item">
-            <div class="teacher-course-info">
-              <strong>${course.icon || "📚"} ${course.title}</strong>
-              <span>${course.category === "natural" ? "Tự nhiên" : course.category === "social" ? "Xã hội" : "Ngoại ngữ & Tin"} · ${course.price} · ${course.rating || "5.0 ★"}</span>
-            </div>
-            <div>
-              <button class="btn-icon-text danger delete-course-btn" data-id="${course.id}">🗑</button>
-            </div>
-          </div>
-        `)
-        .join("");
-
-      teacherCourseList.querySelectorAll(".delete-course-btn").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          const courseId = e.currentTarget.dataset.id;
-          if (confirm("Bạn có chắc chắn muốn gỡ môn học này?")) {
-            const currentCourses = getStoredCourses().filter((c) => c.id !== courseId);
-            saveStoredCourses(currentCourses);
-            renderCourses();
-            populateCourseDropdowns();
-            renderTeacherDashboard();
-          }
-        });
-      });
-    }
-  };
-
-  // ============ View Submissions Modal Logic ============
-  const viewSubmissionsModal = document.getElementById("viewSubmissionsModal");
-  const closeViewSubmissionsBtns = document.querySelectorAll("[data-close-view-submissions]");
-  const viewSubmissionsSubTitle = document.getElementById("viewSubmissionsSubTitle");
-  const submissionsListContainer = document.getElementById("submissionsListContainer");
-
-  const openSubmissionsModal = (assignmentId) => {
-    const assignments = getStoredAssignments();
-    const assignment = assignments.find((a) => a.id === assignmentId);
-    const submissions = getStoredSubmissions().filter((s) => s.assignmentId === assignmentId);
-
-    if (viewSubmissionsSubTitle && assignment) {
-      viewSubmissionsSubTitle.textContent = `Môn học: ${assignment.course} | Bài tập: ${assignment.title}`;
-    }
-
-    if (submissionsListContainer) {
-      if (submissions.length === 0) {
-        submissionsListContainer.innerHTML = `
-          <div class="empty-state">
-            <span>📥</span>
-            <p>Chưa có học sinh nào nộp bài cho bài tập này.</p>
-          </div>
-        `;
-      } else {
-        submissionsListContainer.innerHTML = submissions
-          .map(
-            (sub) => `
-            <div class="submission-card">
-              <div class="submission-card-header">
-                <strong>👨‍🎓 ${sub.studentName} (${sub.studentEmail})</strong>
-                <time>🕒 ${sub.submittedAt}</time>
-              </div>
-              <div class="submission-link-box">
-                <span>Link bài làm:</span>
-                <a href="${sub.url}" target="_blank" rel="noopener">🔗 ${sub.url}</a>
-              </div>
-              ${sub.note ? `<div class="submission-notes"><strong>Ghi chú:</strong> ${sub.note}</div>` : ""}
-            </div>
-          `
-          )
-          .join("");
-      }
-    }
-
-    openModalElement(viewSubmissionsModal);
-  };
-
-  closeViewSubmissionsBtns.forEach((btn) => {
-    btn.addEventListener("click", () => closeModalElement(viewSubmissionsModal));
-  });
-  viewSubmissionsModal?.addEventListener("click", (e) => {
-    if (e.target === viewSubmissionsModal) closeModalElement(viewSubmissionsModal);
-  });
-
-  // ============ Student Assignment & Submission Logic ============
-  const submitAssignmentModal = document.getElementById("submitAssignmentModal");
-  const closeSubmitAssignmentBtns = document.querySelectorAll("[data-close-submit-assignment]");
-  const submitAssignmentForm = document.getElementById("submitAssignmentForm");
-  const submitAssignmentTitle = document.getElementById("submitAssignmentTitle");
-  const submitAssignmentCourseName = document.getElementById("submitAssignmentCourseName");
-  const submitAssignmentInstruction = document.getElementById("submitAssignmentInstruction");
-  const submitAssignmentId = document.getElementById("submitAssignmentId");
-  const submitAssignmentMessage = document.getElementById("submitAssignmentMessage");
-
-  const openSubmitAssignment = (assignmentId) => {
-    const assignments = getStoredAssignments();
-    const assignment = assignments.find((a) => a.id === assignmentId);
-    if (!assignment) return;
-
-    if (submitAssignmentId) submitAssignmentId.value = assignment.id;
-    if (submitAssignmentTitle) submitAssignmentTitle.textContent = `Nộp bài: ${assignment.title}`;
-    if (submitAssignmentCourseName) submitAssignmentCourseName.textContent = `Môn học: ${assignment.course}`;
+    if (submitAssignmentId) submitAssignmentId.value = assign.id;
+    if (submitAssignmentCourseName) submitAssignmentCourseName.textContent = `Môn: ${assign.course} · Hạn nộp: ${assign.deadline || "Không giới hạn"}`;
     if (submitAssignmentInstruction) {
       submitAssignmentInstruction.innerHTML = `
-        <strong>Yêu cầu đề bài:</strong>
-        <p style="margin: 6px 0 0;">${assignment.desc}</p>
-        ${assignment.link ? `<p style="margin: 6px 0 0;"><a href="${assignment.link}" target="_blank" rel="noopener" style="color: var(--primary); font-weight: 600;">🔗 Mở tài liệu đề bài</a></p>` : ""}
+        <strong>📝 Đề bài: ${assign.title}</strong>
+        <p style="margin: 6px 0 0; color: var(--text-muted); font-size: 0.88rem;">${assign.desc}</p>
+        ${assign.link ? `<a href="${assign.link}" target="_blank" style="display: inline-block; margin-top: 6px; font-size: 0.85rem; color: var(--primary);">🔗 Xem tài liệu đính kèm</a>` : ""}
       `;
-    }
-
-    if (submitAssignmentMessage) {
-      submitAssignmentMessage.textContent = "";
-      submitAssignmentMessage.className = "form-message";
     }
 
     openModalElement(submitAssignmentModal);
   };
 
-  closeSubmitAssignmentBtns.forEach((btn) => {
-    btn.addEventListener("click", () => closeModalElement(submitAssignmentModal));
-  });
-  submitAssignmentModal?.addEventListener("click", (e) => {
-    if (e.target === submitAssignmentModal) closeModalElement(submitAssignmentModal);
-  });
-
-  // Submit Assignment Form Handler
+  const submitAssignmentForm = document.getElementById("submitAssignmentForm");
   if (submitAssignmentForm) {
     submitAssignmentForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      const currentUser = getCurrentUser() || {};
-      const assignmentId = submitAssignmentId?.value;
-      const submissionUrl = (document.getElementById("submissionUrl")?.value || "").trim();
-      const submissionNote = (document.getElementById("submissionNote")?.value || "").trim();
+      const assignId = document.getElementById("submitAssignmentId")?.value;
+      const url = document.getElementById("submissionUrl")?.value.trim();
+      const note = document.getElementById("submissionNote")?.value.trim();
+      const msg = document.getElementById("submitAssignmentMessage");
 
-      if (!submissionUrl) {
-        if (submitAssignmentMessage) {
-          submitAssignmentMessage.textContent = "Vui lòng nhập link bài làm của bạn.";
-          submitAssignmentMessage.className = "form-message error";
-        }
-        return;
-      }
+      const currentUser = getCurrentUser();
+      const studentName = currentUser?.fullName || "Học sinh";
+      const studentEmail = currentUser?.email || "student@edunova.edu.vn";
 
-      const submissions = getStoredSubmissions();
-      const filtered = submissions.filter(
-        (s) => !(s.assignmentId === assignmentId && s.studentEmail === (currentUser.email || ""))
-      );
+      const assignments = getStoredAssignments();
+      const assign = assignments.find((a) => a.id === assignId);
 
       const newSubmission = {
         id: `sub-${Date.now()}`,
-        assignmentId,
-        studentName: currentUser.fullName || "Học sinh EduNova",
-        studentEmail: currentUser.email || "student@edunova.com",
-        url: submissionUrl,
-        note: submissionNote,
-        submittedAt: new Date().toLocaleString("vi-VN")
+        assignmentId: assignId,
+        assignmentTitle: assign ? assign.title : "Bài tập",
+        course: assign ? assign.course : "",
+        studentName,
+        studentEmail,
+        submissionUrl: url,
+        note,
+        submittedAt: new Date().toLocaleDateString("vi-VN"),
+        grade: "Chờ chấm",
+        feedback: "Giáo viên đang xem xét bài làm của bạn."
       };
 
-      filtered.unshift(newSubmission);
-      saveStoredSubmissions(filtered);
+      const subs = getStoredSubmissions();
+      subs.unshift(newSubmission);
+      saveStoredSubmissions(subs);
 
-      if (submitAssignmentMessage) {
-        submitAssignmentMessage.textContent = "🎉 Nộp bài thành công! Giảng viên sẽ sớm nhận được.";
-        submitAssignmentMessage.className = "form-message success";
+      // Add to gradebook history
+      const grades = getStoredGrades();
+      grades.unshift({
+        id: `grade-sub-${Date.now()}`,
+        quizTitle: assign ? assign.title : "Bài tập tự luận",
+        type: "assignment",
+        score: "Chờ chấm",
+        maxScore: "10",
+        feedback: "Đã gửi bài thành công. Chờ giáo viên chấm.",
+        date: new Date().toLocaleDateString("vi-VN")
+      });
+      saveStoredGrades(grades);
+
+      if (msg) {
+        msg.textContent = "✓ Nộp bài thành công! Giáo viên sẽ sớm phản hồi.";
+        msg.className = "form-message success";
       }
-
-      submitAssignmentForm.reset();
-      renderStudentAssignments();
-      renderTeacherDashboard();
 
       setTimeout(() => {
         closeModalElement(submitAssignmentModal);
-        if (submitAssignmentMessage) submitAssignmentMessage.textContent = "";
+        submitAssignmentForm.reset();
+        if (msg) msg.textContent = "";
+        renderStudentAssignments();
+        renderStudentGradebook();
       }, 1000);
     });
   }
 
-  // Render Student Materials (Tài liệu lý thuyết & Video bài giảng phía học sinh)
-  const renderStudentMaterials = () => {
-    const studentMaterialList = document.getElementById("studentMaterialList");
-    const studentMaterialsCount = document.getElementById("studentMaterialsCount");
-    const currentUser = getCurrentUser() || {};
+  // ============ Render Teacher Dashboard ============
+  const renderTeacherDashboard = () => {
+    const teacherCoursesCount = document.getElementById("teacherCoursesCount");
+    const teacherQuizzesCount = document.getElementById("teacherQuizzesCount");
+    const teacherMaterialsCount = document.getElementById("teacherMaterialsCount");
+    const teacherSubmissionsCount = document.getElementById("teacherSubmissionsCount");
+    const teacherQuizList = document.getElementById("teacherQuizList");
+    const teacherMaterialList = document.getElementById("teacherMaterialList");
+    const teacherAssignmentList = document.getElementById("teacherAssignmentList");
+    const teacherCourseList = document.getElementById("teacherCourseList");
+
+    const courses = getStoredCourses();
+    const quizzes = getStoredQuizzes();
     const materials = getStoredMaterials();
-
-    if (!studentMaterialList) return;
-
-    const userCourse = currentUser.course || "";
-    let relevantMaterials = materials;
-    if (userCourse) {
-      const matched = materials.filter(
-        (m) => m && m.course && m.course.toLowerCase() === userCourse.toLowerCase()
-      );
-      if (matched.length > 0) relevantMaterials = matched;
-    }
-
-    if (relevantMaterials.length === 0) {
-      studentMaterialList.innerHTML = `
-        <div class="empty-state" style="padding: 16px;">
-          <p>Chưa có video bài giảng hoặc tài liệu lý thuyết nào cho môn học này.</p>
-        </div>
-      `;
-    } else {
-      studentMaterialList.innerHTML = relevantMaterials
-        .map((mat) => {
-          const typeLabel =
-            mat.type === "video" ? "🎥 Video bài giảng" : mat.type === "document" ? "📄 Tài liệu lý thuyết" : "📝 Đề thi & Đề cương";
-          const typeClass = mat.type || "video";
-
-          return `
-            <div class="student-material-item">
-              <div class="student-material-header">
-                <h4>${mat.title}</h4>
-                <span class="type-chip ${typeClass}">${typeLabel}</span>
-              </div>
-              <div class="assignment-meta" style="font-size: 0.8rem;">
-                <span class="badge-course">${mat.course}</span>
-                <span style="color: var(--muted); font-size: 0.78rem;">👨‍🏫 ${mat.teacherName || "EduNova"}</span>
-              </div>
-              <button class="btn btn-secondary small-btn view-student-mat-btn" data-id="${mat.id}" style="margin-top: 4px; align-self: flex-start;">
-                ${mat.type === "video" ? "▶ Xem bài giảng" : "📖 Đọc tài liệu"}
-              </button>
-            </div>
-          `;
-        })
-        .join("");
-
-      studentMaterialList.querySelectorAll(".view-student-mat-btn").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          const matId = e.currentTarget.dataset.id;
-          openViewMaterial(matId);
-        });
-      });
-    }
-
-    if (studentMaterialsCount) {
-      const count = relevantMaterials.length;
-      studentMaterialsCount.textContent = `${count < 10 ? "0" + count : count}`;
-    }
-  };
-
-  // Render Student Assignments in Dashboard
-  const renderStudentAssignments = () => {
-    const studentAssignmentList = document.getElementById("studentAssignmentList");
-    const studentPendingAssignmentsCount = document.getElementById("studentPendingAssignmentsCount");
-    const currentUser = getCurrentUser() || {};
     const assignments = getStoredAssignments();
     const submissions = getStoredSubmissions();
 
-    if (!studentAssignmentList) return;
+    if (teacherCoursesCount) teacherCoursesCount.textContent = courses.length;
+    if (teacherQuizzesCount) teacherQuizzesCount.textContent = quizzes.length;
+    if (teacherMaterialsCount) teacherMaterialsCount.textContent = materials.length;
+    if (teacherSubmissionsCount) teacherSubmissionsCount.textContent = submissions.length;
 
-    // Filter relevant assignments
-    const userCourse = currentUser.course || "";
-    let relevantAssignments = assignments;
-    if (userCourse) {
-      const matched = assignments.filter(
-        (a) => a && a.course && a.course.toLowerCase() === userCourse.toLowerCase()
-      );
-      if (matched.length > 0) relevantAssignments = matched;
-    }
-
-    let pendingCount = 0;
-
-    if (relevantAssignments.length === 0) {
-      studentAssignmentList.innerHTML = `
-        <div class="empty-state" style="padding: 16px;">
-          <p>Hiện chưa có bài tập nào được giao cho môn học này.</p>
-        </div>
-      `;
-    } else {
-      studentAssignmentList.innerHTML = relevantAssignments
-        .map((assign) => {
-          const isSubmitted = submissions.some(
-            (s) => s.assignmentId === assign.id && s.studentEmail === currentUser.email
-          );
-
-          if (!isSubmitted) pendingCount++;
-
-          return `
-            <div class="student-task-item">
-              <div class="student-task-header">
-                <h4>${assign.title}</h4>
-                <span class="status-chip ${isSubmitted ? "submitted" : "pending"}">
-                  ${isSubmitted ? "✓ Đã nộp" : "⏳ Chưa nộp"}
-                </span>
+    // Render Quizzes in Teacher View
+    if (teacherQuizList) {
+      teacherQuizList.innerHTML = quizzes
+        .map(
+          (q) => `
+            <div class="assignment-item">
+              <div class="assignment-top">
+                <h4 class="assignment-title">${q.title}</h4>
+                <span class="type-chip exam">Lớp ${q.grade || "12"}</span>
               </div>
-              <div class="assignment-meta" style="font-size: 0.8rem;">
-                <span class="badge-course">${assign.course}</span>
-                <span class="badge-deadline active">📅 Hạn: ${assign.deadline}</span>
+              <div class="assignment-meta">
+                <span class="badge-course">${q.course ? q.course.split("-")[0].trim() : "Môn học"}</span>
+                <span>⏱ ${q.duration || 15} phút</span>
+                <span>• ${q.questions ? q.questions.length : 5} câu hỏi</span>
               </div>
-              <button class="btn btn-primary small-btn submit-task-btn" data-id="${assign.id}" style="margin-top: 4px; align-self: flex-start;">
-                ${isSubmitted ? "Cập nhật bài nộp" : "Nộp bài ngay"}
-              </button>
             </div>
-          `;
-        })
+          `
+        )
         .join("");
-
-      studentAssignmentList.querySelectorAll(".submit-task-btn").forEach((btn) => {
-        btn.addEventListener("click", (e) => {
-          const assignId = e.currentTarget.dataset.id;
-          openSubmitAssignment(assignId);
-        });
-      });
     }
 
-    if (studentPendingAssignmentsCount) {
-      studentPendingAssignmentsCount.textContent = `${pendingCount < 10 ? "0" + pendingCount : pendingCount}`;
+    // Render Materials in Teacher View
+    if (teacherMaterialList) {
+      teacherMaterialList.innerHTML = materials
+        .map(
+          (mat) => `
+            <div class="material-item">
+              <div class="material-top">
+                <h4 class="material-title">${mat.title}</h4>
+                <span class="type-chip ${mat.type}">${mat.type === "video" ? "🎥 Video" : mat.type === "exam" ? "📝 Đề thi" : "📄 Tài liệu"}</span>
+              </div>
+              <div class="assignment-meta">
+                <span class="badge-course">${mat.course ? mat.course.split("-")[0].trim() : "Môn học"}</span>
+                <span>${mat.createdAt || "Gần đây"}</span>
+              </div>
+            </div>
+          `
+        )
+        .join("");
+    }
+
+    // Render Assignments in Teacher View
+    if (teacherAssignmentList) {
+      teacherAssignmentList.innerHTML = assignments
+        .map(
+          (assign) => `
+            <div class="assignment-item">
+              <div class="assignment-top">
+                <h4 class="assignment-title">${assign.title}</h4>
+                <span class="badge-deadline active">Hạn: ${assign.deadline || "Không giới hạn"}</span>
+              </div>
+              <div class="assignment-meta">
+                <span class="badge-course">${assign.course ? assign.course.split("-")[0].trim() : "Môn học"}</span>
+              </div>
+            </div>
+          `
+        )
+        .join("");
+    }
+
+    // Render Courses in Teacher View
+    if (teacherCourseList) {
+      teacherCourseList.innerHTML = courses
+        .map(
+          (c) => `
+            <div class="assignment-item" style="flex-direction: row; justify-content: space-between; align-items: center;">
+              <div style="display: flex; align-items: center; gap: 10px;">
+                <span style="font-size: 1.5rem;">${c.icon || "📚"}</span>
+                <div>
+                  <h4 style="margin: 0; font-size: 0.95rem;">${c.title}</h4>
+                  <small style="color: var(--text-muted);">${c.author || "EduNova"} · ${c.price}</small>
+                </div>
+              </div>
+              <span class="badge-course">${c.category === "natural" ? "Tự nhiên" : c.category === "social" ? "Xã hội" : "Ngoại ngữ & Tin"}</span>
+            </div>
+          `
+        )
+        .join("");
     }
   };
 
-  // ============ Update Auth UI (Role Based) ============
+  // ============ Render Student Materials Tab ============
+  const renderStudentMaterials = () => {
+    const studentMaterialList = document.getElementById("studentMaterialList");
+    if (!studentMaterialList) return;
+
+    const materials = getStoredMaterials();
+    const currentUser = getCurrentUser();
+
+    let filtered = materials;
+    if (currentUser && currentUser.course) {
+      const match = materials.filter((m) => m.course === currentUser.course);
+      if (match.length > 0) filtered = match;
+    }
+
+    studentMaterialList.innerHTML = filtered
+      .map(
+        (mat) => `
+          <div class="student-material-item">
+            <div class="student-material-header">
+              <h4>${mat.title}</h4>
+              <span class="type-chip ${mat.type}">${mat.type === "video" ? "🎥 Video bài giảng" : mat.type === "exam" ? "📝 Đề ôn tập" : "📄 Tài liệu"}</span>
+            </div>
+            <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">${mat.summary ? mat.summary.slice(0, 90) + "..." : "Tóm tắt bài học"}</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">GV: ${mat.teacherName || "EduNova"}</span>
+              <button class="btn btn-secondary small-btn view-mat-btn" data-id="${mat.id}">Học ngay</button>
+            </div>
+          </div>
+        `
+      )
+      .join("");
+
+    studentMaterialList.querySelectorAll(".view-mat-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const mid = e.currentTarget.dataset.id;
+        openViewMaterial(mid);
+      });
+    });
+  };
+
+  // ============ Render Student Assignments Tab ============
+  const renderStudentAssignments = () => {
+    const studentAssignmentList = document.getElementById("studentAssignmentList");
+    if (!studentAssignmentList) return;
+
+    const assignments = getStoredAssignments();
+    const submissions = getStoredSubmissions();
+    const currentUser = getCurrentUser();
+
+    studentAssignmentList.innerHTML = assignments
+      .map((assign) => {
+        const isSubmitted = submissions.some((s) => s.assignmentId === assign.id && s.studentEmail === currentUser?.email);
+
+        return `
+          <div class="student-material-item">
+            <div class="student-material-header">
+              <h4>${assign.title}</h4>
+              <span class="badge-deadline ${isSubmitted ? "active" : ""}">${isSubmitted ? "✓ Đã nộp bài" : `Hạn: ${assign.deadline || "Tới hạn"}`}</span>
+            </div>
+            <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">${assign.desc ? assign.desc.slice(0, 100) + "..." : ""}</p>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
+              <span style="font-size: 0.78rem; color: var(--text-muted);">${assign.course ? assign.course.split("-")[0].trim() : ""}</span>
+              <button class="btn btn-primary small-btn submit-task-btn" data-id="${assign.id}">
+                ${isSubmitted ? "Cập nhật bài" : "Nộp bài ngay"}
+              </button>
+            </div>
+          </div>
+        `;
+      })
+      .join("");
+
+    studentAssignmentList.querySelectorAll(".submit-task-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const assignId = e.currentTarget.dataset.id;
+        openSubmitAssignment(assignId);
+      });
+    });
+  };
+
+  // ============ Update Auth UI ============
   const updateAuthUI = () => {
     const currentUser = getCurrentUser();
     const dashboardStudentName = document.getElementById("dashboardStudentName");
+    const studentGradePill = document.getElementById("studentGradePill");
+    const studentCoursePill = document.getElementById("studentCoursePill");
+    const dashboardGradeSelect = document.getElementById("dashboardGradeSelect");
 
     if (currentUser) {
       if (signupBtn) signupBtn.style.display = "none";
@@ -1904,6 +2111,13 @@ document.addEventListener("DOMContentLoaded", () => {
         if (navTeacherLink) navTeacherLink.style.display = "none";
         if (navStudentLink) navStudentLink.style.display = "inline-block";
         if (dashboardStudentName) dashboardStudentName.textContent = currentUser.fullName;
+        if (studentGradePill) studentGradePill.textContent = `🎓 Lớp ${currentUser.grade || "12"}`;
+        if (studentCoursePill) studentCoursePill.textContent = currentUser.course ? currentUser.course.split("-")[0].trim() : "Tất cả môn";
+        if (dashboardGradeSelect) dashboardGradeSelect.value = currentUser.grade || "12";
+
+        renderStudentQuizzes();
+        renderStudentGradebook();
+        renderQuestionBank();
         renderStudentMaterials();
         renderStudentAssignments();
       }
@@ -1917,6 +2131,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (navTeacherLink) navTeacherLink.style.display = "none";
       if (navStudentLink) navStudentLink.style.display = "none";
       if (dashboardStudentName) dashboardStudentName.textContent = "Học sinh EduNova";
+      if (studentGradePill) studentGradePill.textContent = "🎓 Lớp 12";
+      if (studentCoursePill) studentCoursePill.textContent = "Tất cả môn";
+      if (dashboardGradeSelect) dashboardGradeSelect.value = "12";
+
+      renderStudentQuizzes();
+      renderStudentGradebook();
+      renderQuestionBank();
       renderStudentMaterials();
       renderStudentAssignments();
     }
@@ -1934,7 +2155,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Keyboard accessibility (Escape key to close any modal)
+  // Keyboard accessibility
   document.addEventListener("keydown", (e) => {
     if (e.key === "Escape") {
       [
@@ -1946,11 +2167,13 @@ document.addEventListener("DOMContentLoaded", () => {
         viewSubmissionsModal,
         createMaterialModal,
         viewMaterialModal,
+        takeQuizModal,
+        createQuizModal,
         settingsModal
       ].forEach((m) => {
-        if (m === viewMaterialModal) {
-          closeViewMaterial();
-        } else {
+        if (m === takeQuizModal) {
+          closeTakeQuiz();
+        } else if (m) {
           closeModalElement(m);
         }
       });

@@ -196,11 +196,14 @@
             <h2>Bảng điều khiển & Quản lý dạy học</h2>
           </div>
           <div class="teacher-actions">
-            <button class="btn btn-primary" type="button" id="openCreateMaterialBtn">
+            <button class="btn btn-primary" type="button" id="openCreateQuizBtn">
+              <span>⚡</span> Tạo đề trắc nghiệm
+            </button>
+            <button class="btn btn-secondary" type="button" id="openCreateMaterialBtn">
               <span>📚</span> Đăng bài giảng / Lý thuyết
             </button>
             <button class="btn btn-secondary" type="button" id="openCreateAssignmentBtn">
-              <span>📝</span> Giao bài tập mới
+              <span>📝</span> Giao bài tập
             </button>
             <button class="btn btn-ghost" type="button" id="openCreateCourseBtn">
               <span>➕</span> Tạo môn học
@@ -218,17 +221,17 @@
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-icon">📚</div>
+            <div class="stat-icon">⚡</div>
             <div class="stat-info">
-              <strong id="teacherMaterialsCount">0</strong>
-              <span>Tài liệu & Video bài giảng</span>
+              <strong id="teacherQuizzesCount">0</strong>
+              <span>Đề thi trắc nghiệm</span>
             </div>
           </div>
           <div class="stat-card">
-            <div class="stat-icon">📋</div>
+            <div class="stat-icon">📚</div>
             <div class="stat-info">
-              <strong id="teacherAssignmentsCount">0</strong>
-              <span>Bài tập đã giao</span>
+              <strong id="teacherMaterialsCount">0</strong>
+              <span>Tài liệu & Video</span>
             </div>
           </div>
           <div class="stat-card">
@@ -241,14 +244,28 @@
         </div>
 
         <div class="container teacher-grid-layout">
+          <!-- Quizzes Management Panel -->
+          <div class="teacher-panel">
+            <div class="panel-header">
+              <div>
+                <h3>Đề kiểm tra & Luyện tập trắc nghiệm</h3>
+                <p>Quản lý các bài trắc nghiệm tính giờ trực tuyến</p>
+              </div>
+              <button class="btn btn-primary small-btn" type="button" id="quickCreateQuizBtn">+ Tạo đề</button>
+            </div>
+            <div class="quiz-list" id="teacherQuizList">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
           <!-- Materials Management Panel -->
           <div class="teacher-panel">
             <div class="panel-header">
               <div>
-                <h3>Kho tài liệu lý thuyết & Video bài giảng</h3>
-                <p>Quản lý tài liệu học tập, đề thi và video giảng dạy</p>
+                <h3>Tài liệu lý thuyết & Video</h3>
+                <p>Quản lý tài liệu học tập và video giảng dạy</p>
               </div>
-              <button class="btn btn-primary small-btn" type="button" id="quickCreateMaterialBtn">+ Đăng bài</button>
+              <button class="btn btn-secondary small-btn" type="button" id="quickCreateMaterialBtn">+ Đăng bài</button>
             </div>
             <div class="materials-list" id="teacherMaterialList">
               <!-- Rendered by JS -->
@@ -259,8 +276,8 @@
           <div class="teacher-panel">
             <div class="panel-header">
               <div>
-                <h3>Danh sách bài tập đã giao</h3>
-                <p>Theo dõi hạn nộp và bài làm của học sinh</p>
+                <h3>Danh sách bài tập tự luận</h3>
+                <p>Theo dõi hạn nộp và bài làm học sinh</p>
               </div>
               <button class="btn btn-secondary small-btn" type="button" id="quickAssignBtn">+ Giao bài</button>
             </div>
@@ -270,11 +287,11 @@
           </div>
 
           <!-- Courses Management Panel -->
-          <div class="teacher-panel" style="grid-column: 1 / -1;">
+          <div class="teacher-panel">
             <div class="panel-header">
               <div>
-                <h3>Môn học do bạn giảng dạy</h3>
-                <p>Quản lý các môn học hiển thị trên trang chủ</p>
+                <h3>Môn học giảng dạy</h3>
+                <p>Quản lý các môn học trên hệ thống</p>
               </div>
               <button class="btn btn-ghost small-btn" type="button" id="quickCreateCourseBtn">+ Tạo môn</button>
             </div>
@@ -286,56 +303,143 @@
       </section>
 
       <!-- Student Dashboard Section -->
-      <section id="studentDashboard" class="dashboard">
-        <div class="container section-heading">
-          <span class="eyebrow">Bảng điều khiển</span>
-          <h2>Học tập của bạn trong ngày.</h2>
-        </div>
-
-        <div class="container dashboard-grid">
-          <div class="dashboard-panel highlight-panel">
-            <div class="panel-header">
-              <div>
-                <p class="panel-kicker">Xin chào</p>
-                <h3 id="dashboardStudentName">Học sinh EduNova</h3>
-              </div>
-              <span class="status-badge">Online</span>
-            </div>
-
-            <div class="progress-ring">
-              <div class="ring-center">
-                <strong id="dashboardProgressValue">78%</strong>
-                <span>hoàn thành</span>
+      <section id="studentDashboard" class="dashboard" style="display: none;">
+        <div class="container">
+          <!-- Student Profile & Grade Switcher Banner -->
+          <div class="student-profile-banner">
+            <div class="student-profile-left">
+              <div class="student-avatar-badge" id="studentDashboardAvatar">👨‍🎓</div>
+              <div class="student-info-text">
+                <div class="student-name-row">
+                  <h2 id="dashboardStudentName">Học sinh EduNova</h2>
+                  <span class="status-badge">Đang học</span>
+                </div>
+                <div class="student-meta-tags">
+                  <span class="student-grade-pill" id="studentGradePill">🎓 Lớp 12</span>
+                  <span class="student-course-pill" id="studentCoursePill">📐 Toán học</span>
+                </div>
               </div>
             </div>
 
-            <div class="quick-metrics">
-              <div>
-                <strong id="studentMaterialsCount">0</strong>
-                <span>bài giảng & lý thuyết</span>
-              </div>
-              <div>
-                <strong id="studentPendingAssignmentsCount">0</strong>
-                <span>bài tập cần làm</span>
-              </div>
+            <!-- Grade Quick Selector -->
+            <div class="student-grade-switcher">
+              <label for="dashboardGradeSelect">Khối lớp:</label>
+              <select id="dashboardGradeSelect" class="grade-select-dropdown">
+                <option value="12">Lớp 12 (Luyện thi THPT)</option>
+                <option value="11">Lớp 11</option>
+                <option value="10">Lớp 10</option>
+                <option value="9">Lớp 9 (Thi vào 10)</option>
+                <option value="8">Lớp 8</option>
+                <option value="7">Lớp 7</option>
+                <option value="6">Lớp 6</option>
+                <option value="5">Lớp 5</option>
+                <option value="4">Lớp 4</option>
+                <option value="3">Lớp 3</option>
+                <option value="2">Lớp 2</option>
+                <option value="1">Lớp 1</option>
+              </select>
             </div>
           </div>
 
-          <div class="dashboard-panel">
-            <div class="panel-header compact">
-              <h3>Tài liệu & Video bài giảng</h3>
+          <!-- Student Navigation Tabs -->
+          <div class="student-nav-tabs">
+            <button class="student-tab-btn active" data-target-tab="tabStudentQuizzes">
+              ⚡ Luyện tập & Kiểm tra
+            </button>
+            <button class="student-tab-btn" data-target-tab="tabStudentGradebook">
+              📊 Bảng điểm & Lịch sử
+            </button>
+            <button class="student-tab-btn" data-target-tab="tabStudentQnA">
+              🔍 Tra cứu câu hỏi
+            </button>
+            <button class="student-tab-btn" data-target-tab="tabStudentMaterials">
+              📚 Bài giảng & Lý thuyết
+            </button>
+            <button class="student-tab-btn" data-target-tab="tabStudentAssignments">
+              📝 Bài tập được giao
+            </button>
+          </div>
+
+          <!-- Tab 1: Interactive Quizzes / Tests -->
+          <div class="student-tab-panel active" id="tabStudentQuizzes">
+            <div class="tab-panel-header">
+              <div>
+                <h3>Đề kiểm tra & Luyện tập trắc nghiệm trực tuyến</h3>
+                <p>Làm bài trực tiếp trên web, tính giờ tự động và chấm điểm tức thì</p>
+              </div>
+            </div>
+            <div class="quiz-grid" id="studentQuizList">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Tab 2: Gradebook & Submission History -->
+          <div class="student-tab-panel" id="tabStudentGradebook" style="display: none;">
+            <div class="tab-panel-header">
+              <div>
+                <h3>Bảng điểm & Lịch sử kết quả học tập</h3>
+                <p>Tổng hợp điểm số các bài kiểm tra trắc nghiệm và bài tập tự luận</p>
+              </div>
+            </div>
+            <div class="gradebook-container" id="studentGradebookContainer">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Tab 3: Question Bank Lookup (Tra cứu câu hỏi & Lời giải) -->
+          <div class="student-tab-panel" id="tabStudentQnA" style="display: none;">
+            <div class="tab-panel-header">
+              <div>
+                <h3>Tra cứu câu hỏi & Hướng dẫn giải</h3>
+                <p>Tìm kiếm câu hỏi trọng tâm, công thức và phương pháp giải chi tiết</p>
+              </div>
             </div>
 
+            <div class="qna-search-box">
+              <div class="qna-search-inputs">
+                <input type="text" id="qnaSearchKeyword" placeholder="Nhập từ khóa (Vd: hàm số, định luật Ohm, phương trình, câu điều kiện...)" />
+                <select id="qnaSubjectFilter">
+                  <option value="all">Tất cả môn học</option>
+                  <option value="Toán học">Toán học</option>
+                  <option value="Vật lý">Vật lý</option>
+                  <option value="Hóa học">Hóa học</option>
+                  <option value="Sinh học">Sinh học</option>
+                  <option value="Ngữ văn">Ngữ văn</option>
+                  <option value="Tiếng Anh">Tiếng Anh</option>
+                  <option value="Lịch sử">Lịch sử</option>
+                  <option value="Địa lý">Địa lý</option>
+                  <option value="Tin học">Tin học</option>
+                </select>
+                <button type="button" class="btn btn-primary" id="btnSearchQnA">🔍 Tìm kiếm</button>
+              </div>
+            </div>
+
+            <div class="qna-results-list" id="qnaResultsList">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Tab 4: Materials & Theory Videos -->
+          <div class="student-tab-panel" id="tabStudentMaterials" style="display: none;">
+            <div class="tab-panel-header">
+              <div>
+                <h3>Kho học liệu & Video bài giảng</h3>
+                <p>Tài liệu tóm tắt kiến thức lý thuyết và bài giảng của giáo viên</p>
+              </div>
+            </div>
             <div class="student-materials-box" id="studentMaterialList">
               <!-- Populated by JS -->
             </div>
           </div>
 
-          <div class="dashboard-panel">
-            <div class="panel-header compact">
-              <h3>Bài tập được giao</h3>
+          <!-- Tab 5: Homework Assignments -->
+          <div class="student-tab-panel" id="tabStudentAssignments" style="display: none;">
+            <div class="tab-panel-header">
+              <div>
+                <h3>Bài tập tự luận được giao</h3>
+                <p>Nộp link bài làm và nhận phản hồi, nhận xét từ giáo viên</p>
+              </div>
             </div>
-
             <div class="student-assignment-box" id="studentAssignmentList">
               <!-- Populated by JS -->
             </div>
@@ -429,6 +533,24 @@
                 <span>👨‍🏫 Giáo viên</span>
               </label>
             </div>
+          </div>
+
+          <div class="form-group" id="signupGradeGroup">
+            <label for="signupGrade">Khối lớp (Lớp 1 đến Lớp 12)</label>
+            <select id="signupGrade" name="grade">
+              <option value="12" selected>🎓 Lớp 12 (Luyện thi THPT)</option>
+              <option value="11">📘 Lớp 11</option>
+              <option value="10">📗 Lớp 10</option>
+              <option value="9">📙 Lớp 9 (Thi vào 10)</option>
+              <option value="8">📖 Lớp 8</option>
+              <option value="7">📖 Lớp 7</option>
+              <option value="6">📖 Lớp 6</option>
+              <option value="5">🎒 Lớp 5</option>
+              <option value="4">🎒 Lớp 4</option>
+              <option value="3">🎒 Lớp 3</option>
+              <option value="2">🎒 Lớp 2</option>
+              <option value="1">🎒 Lớp 1</option>
+            </select>
           </div>
 
           <div class="form-group" id="signupCourseGroup">
@@ -721,6 +843,103 @@
       </div>
     </div>
 
+    <!-- Take Quiz Modal (Interactive Player) -->
+    <div class="modal-overlay hidden" id="takeQuizModal" aria-hidden="true">
+      <div class="modal-dialog modal-large" role="dialog" aria-modal="true" aria-labelledby="takeQuizTitle">
+        <button class="modal-close" type="button" aria-label="Đóng bài thi" data-close-take-quiz>×</button>
+        <div class="modal-header quiz-modal-header">
+          <div>
+            <span class="eyebrow" id="takeQuizCategoryBadge">⚡ Bài kiểm tra trực tuyến</span>
+            <h3 id="takeQuizTitle">Đề thi trắc nghiệm</h3>
+            <p id="takeQuizMetaText" style="color: var(--text-muted); font-size: 0.88rem; margin-top: 4px;"></p>
+          </div>
+          <div class="quiz-timer-box" id="quizTimerBox">
+            <span class="timer-icon">⏱</span>
+            <span class="timer-value" id="quizTimerText">15:00</span>
+          </div>
+        </div>
+
+        <div class="quiz-body" id="quizQuestionsContainer">
+          <!-- Question cards dynamically rendered by JS -->
+        </div>
+
+        <!-- Quiz Result Summary (Shown after submit) -->
+        <div class="quiz-result-card hidden" id="quizResultBox">
+          <div class="quiz-result-score-circle">
+            <span class="score-number" id="quizResultScore">0/10</span>
+            <span class="score-label" id="quizResultPercentage">0%</span>
+          </div>
+          <h4 id="quizResultTitle">Kết quả bài làm</h4>
+          <p id="quizResultFeedback" style="color: var(--text-muted); font-size: 0.92rem;"></p>
+          <div class="quiz-result-actions">
+            <button class="btn btn-secondary small-btn" type="button" id="btnReviewQuizAnswers">🔍 Xem đáp án chi tiết</button>
+            <button class="btn btn-primary small-btn" type="button" data-close-take-quiz>Đóng</button>
+          </div>
+        </div>
+
+        <div class="quiz-footer-actions" id="quizFooterActions">
+          <button class="btn btn-primary submit-btn" type="button" id="btnSubmitQuiz">Nộp bài kiểm tra</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Create Quiz Modal (Teacher) -->
+    <div class="modal-overlay hidden" id="createQuizModal" aria-hidden="true">
+      <div class="modal-dialog modal-large" role="dialog" aria-modal="true" aria-labelledby="createQuizTitle">
+        <button class="modal-close" type="button" aria-label="Đóng" data-close-create-quiz>×</button>
+        <div class="modal-header">
+          <span class="eyebrow">Giảng viên EduNova</span>
+          <h3 id="createQuizTitle">Tạo đề kiểm tra / Luyện tập trắc nghiệm</h3>
+        </div>
+
+        <form id="createQuizForm" class="signup-form">
+          <div class="form-group">
+            <label for="newQuizTitle">Tiêu đề bài kiểm tra</label>
+            <input id="newQuizTitle" name="title" type="text" placeholder="Vd: Kiểm tra 15 phút: Đại số & Giải tích chương 1" required />
+          </div>
+
+          <div class="form-group">
+            <label for="newQuizCourse">Môn học</label>
+            <select id="newQuizCourse" name="course" required>
+              <!-- Populated dynamically -->
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="newQuizGrade">Khối lớp áp dụng</label>
+            <select id="newQuizGrade" name="grade" required>
+              <option value="12" selected>Lớp 12</option>
+              <option value="11">Lớp 11</option>
+              <option value="10">Lớp 10</option>
+              <option value="9">Lớp 9</option>
+              <option value="8">Lớp 8</option>
+              <option value="7">Lớp 7</option>
+              <option value="6">Lớp 6</option>
+              <option value="5">Lớp 5</option>
+              <option value="4">Lớp 4</option>
+              <option value="3">Lớp 3</option>
+              <option value="2">Lớp 2</option>
+              <option value="1">Lớp 1</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="newQuizDuration">Thời gian làm bài (Phút)</label>
+            <input id="newQuizDuration" name="duration" type="number" min="5" max="120" value="15" required />
+          </div>
+
+          <div class="form-group">
+            <label>Danh sách câu hỏi mẫu (JSON hoặc định dạng câu hỏi)</label>
+            <textarea id="newQuizQuestionsRaw" rows="6" placeholder="Câu 1: ... | A: ... | B: ... | C: ... | D: ... | Đáp án: A&#10;Câu 2: ... | A: ... | B: ... | C: ... | D: ... | Đáp án: B" required></textarea>
+            <small style="color: var(--text-muted); font-size: 0.8rem;">Hệ thống sẽ tự động phân tích và tạo bài trắc nghiệm.</small>
+          </div>
+
+          <button class="btn btn-primary submit-btn" type="submit">Xuất bản đề thi</button>
+          <p class="form-message" id="createQuizMessage" aria-live="polite"></p>
+        </form>
+      </div>
+    </div>
+
     <!-- Account Settings Modal -->
     <div class="modal-overlay hidden" id="settingsModal" aria-hidden="true">
       <div class="modal-dialog modal-large" role="dialog" aria-modal="true" aria-labelledby="settingsTitle">
@@ -733,6 +952,7 @@
         <div class="settings-tabs">
           <button class="settings-tab-btn active" type="button" id="tabBtnProfile" data-tab="profile">👤 Thông tin cá nhân</button>
           <button class="settings-tab-btn" type="button" id="tabBtnSecurity" data-tab="security">🔒 Đổi mật khẩu</button>
+          <button class="settings-tab-btn" type="button" id="tabBtnHelp" data-tab="help">❓ Trợ giúp & Hỗ trợ</button>
         </div>
 
         <!-- Profile Tab -->
@@ -766,6 +986,24 @@
             <div class="form-group">
               <label for="settingsRole">Vai trò hệ thống</label>
               <input id="settingsRole" name="role" type="text" readonly style="background: #f1f5f9; cursor: not-allowed; opacity: 0.85;" />
+            </div>
+
+            <div class="form-group" id="settingsGradeGroup">
+              <label for="settingsGrade">Khối lớp (Lớp 1 đến Lớp 12)</label>
+              <select id="settingsGrade" name="grade">
+                <option value="12">🎓 Lớp 12 (Luyện thi THPT)</option>
+                <option value="11">📘 Lớp 11</option>
+                <option value="10">📗 Lớp 10</option>
+                <option value="9">📙 Lớp 9 (Thi vào 10)</option>
+                <option value="8">📖 Lớp 8</option>
+                <option value="7">📖 Lớp 7</option>
+                <option value="6">📖 Lớp 6</option>
+                <option value="5">🎒 Lớp 5</option>
+                <option value="4">🎒 Lớp 4</option>
+                <option value="3">🎒 Lớp 3</option>
+                <option value="2">🎒 Lớp 2</option>
+                <option value="1">🎒 Lớp 1</option>
+              </select>
             </div>
 
             <div class="form-group">
@@ -816,6 +1054,44 @@
             <button class="btn btn-primary submit-btn" type="submit">Cập nhật mật khẩu</button>
             <p class="form-message" id="securityFormMessage" aria-live="polite"></p>
           </form>
+        </div>
+
+        <!-- Help & Support Tab -->
+        <div class="settings-tab-content" id="helpTabContent" style="display: none;">
+          <div class="help-section">
+            <h4 style="margin: 0 0 12px; font-size: 1.05rem; color: var(--text);">❓ Câu hỏi thường gặp (FAQ)</h4>
+            
+            <div class="faq-list">
+              <details class="faq-item" open>
+                <summary>⚡ Làm thế nào để làm bài kiểm tra & xem bảng điểm?</summary>
+                <p>Bạn vào <strong>Góc học tập</strong> -> Tab <strong>Luyện tập & Kiểm tra</strong>, chọn đề và bấm <strong>Làm bài</strong>. Sau khi nộp bài, điểm số sẽ tự động lưu vào tab <strong>Bảng điểm & Lịch sử</strong>.</p>
+              </details>
+
+              <details class="faq-item">
+                <summary>📝 Cách nộp bài tập tự luận cho giáo viên?</summary>
+                <p>Vào tab <strong>Bài tập được giao</strong>, chọn bài tập cần nộp, dán đường link bài làm (Google Drive, PDF, GitHub...) và bấm <strong>Gửi bài làm</strong>. Giáo viên sẽ chấm và phản hồi nhận xét trực tiếp.</p>
+              </details>
+
+              <details class="faq-item">
+                <summary>🔍 Làm sao để tra cứu câu hỏi và công thức?</summary>
+                <p>Bạn chuyển sang tab <strong>Tra cứu câu hỏi</strong>, nhập từ khóa tìm kiếm (Ví dụ: hàm số, định luật Ohm...) để xem ngay lời giải và hướng dẫn từng bước.</p>
+              </details>
+
+              <details class="faq-item">
+                <summary>🎓 Cách đổi khối lớp từ Lớp 1 đến Lớp 12?</summary>
+                <p>Bạn có thể đổi nhanh tại thanh chọn <strong>Khối lớp</strong> ở đầu Bảng điều khiển học sinh, hoặc vào <strong>Cài đặt tài khoản -> Thông tin cá nhân</strong> và chọn lại khối lớp của mình.</p>
+              </details>
+            </div>
+
+            <div class="support-contact-card" style="margin-top: 20px;">
+              <h5 style="margin: 0 0 6px; font-size: 0.95rem;">📞 Cần hỗ trợ trực tiếp?</h5>
+              <p style="margin: 0 0 10px; font-size: 0.85rem; color: var(--text-muted);">Đội ngũ tư vấn và hỗ trợ học tập EduNova luôn sẵn sàng 24/7:</p>
+              <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+                <a href="tel:19006868" class="btn btn-secondary small-btn">📞 Hotline: 1900 6868</a>
+                <a href="mailto:support@edunova.edu.vn" class="btn btn-secondary small-btn">✉️ support@edunova.edu.vn</a>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
