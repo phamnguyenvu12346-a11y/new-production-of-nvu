@@ -59,6 +59,12 @@
       </div>
     </div>
 
+    <!-- Main Menu Interactive Particle Grid Canvas (Persistent Background) -->
+    <canvas id="mainMenuParticleCanvas" class="main-menu-particle-canvas"></canvas>
+
+    <!-- Global Toast Notification -->
+    <div id="globalToast" class="global-toast hidden" role="status" aria-live="polite"></div>
+
     <header class="site-header">
       <div class="container nav">
         <div class="brand">
@@ -385,19 +391,19 @@
           <!-- Student Navigation Tabs -->
           <div class="student-nav-tabs">
             <button class="student-tab-btn active" data-target-tab="tabStudentQuizzes">
-              ⚡ Luyện tập & Kiểm tra
+              ⚡ Bài kiểm tra
             </button>
             <button class="student-tab-btn" data-target-tab="tabStudentGradebook">
-              📊 Bảng điểm & Lịch sử
+              📊 Bảng điểm
             </button>
             <button class="student-tab-btn" data-target-tab="tabStudentQnA">
-              🔍 Tra cứu câu hỏi
+              🔍 Tra cứu
             </button>
             <button class="student-tab-btn" data-target-tab="tabStudentMaterials">
-              📚 Bài giảng & Lý thuyết
+              📚 Bài giảng
             </button>
             <button class="student-tab-btn" data-target-tab="tabStudentAssignments">
-              📝 Bài tập được giao
+              📝 Bài tập
             </button>
           </div>
 
@@ -405,8 +411,8 @@
           <div class="student-tab-panel active" id="tabStudentQuizzes">
             <div class="tab-panel-header">
               <div>
-                <h3>Đề kiểm tra & Luyện tập trắc nghiệm trực tuyến</h3>
-                <p>Làm bài trực tiếp trên web, tính giờ tự động và chấm điểm tức thì</p>
+                <h3>Đề thi & Luyện tập</h3>
+                <p>Làm bài trực tuyến, tính giờ và tự động chấm điểm</p>
               </div>
             </div>
             <div class="quiz-grid" id="studentQuizList">
@@ -418,8 +424,8 @@
           <div class="student-tab-panel" id="tabStudentGradebook" style="display: none;">
             <div class="tab-panel-header">
               <div>
-                <h3>Bảng điểm & Lịch sử kết quả học tập</h3>
-                <p>Tổng hợp điểm số các bài kiểm tra trắc nghiệm và bài tập tự luận</p>
+                <h3>Bảng điểm</h3>
+                <p>Lịch sử điểm số các bài kiểm tra đã làm</p>
               </div>
             </div>
             <div class="gradebook-container" id="studentGradebookContainer">
@@ -431,8 +437,8 @@
           <div class="student-tab-panel" id="tabStudentQnA" style="display: none;">
             <div class="tab-panel-header">
               <div>
-                <h3>Tra cứu câu hỏi & Hướng dẫn giải</h3>
-                <p>Tìm kiếm câu hỏi trọng tâm, công thức và phương pháp giải chi tiết</p>
+                <h3>Tra cứu câu hỏi</h3>
+                <p>Tìm kiếm công thức và phương pháp giải nhanh</p>
               </div>
             </div>
 
@@ -464,8 +470,8 @@
           <div class="student-tab-panel" id="tabStudentMaterials" style="display: none;">
             <div class="tab-panel-header">
               <div>
-                <h3>Kho học liệu & Video bài giảng</h3>
-                <p>Tài liệu tóm tắt kiến thức lý thuyết và bài giảng của giáo viên</p>
+                <h3>Bài giảng & Lý thuyết</h3>
+                <p>Tài liệu tóm tắt kiến thức trọng tâm</p>
               </div>
             </div>
             <div class="student-materials-box" id="studentMaterialList">
@@ -477,8 +483,8 @@
           <div class="student-tab-panel" id="tabStudentAssignments" style="display: none;">
             <div class="tab-panel-header">
               <div>
-                <h3>Bài tập tự luận được giao</h3>
-                <p>Nộp link bài làm và nhận phản hồi, nhận xét từ giáo viên</p>
+                <h3>Bài tập về nhà</h3>
+                <p>Danh sách bài tập và nộp bài làm</p>
               </div>
             </div>
             <div class="student-assignment-box" id="studentAssignmentList">
@@ -895,9 +901,6 @@
             <span class="pulse-dot"></span>
             <strong>🔒 Chế độ thi toàn màn hình bảo mật</strong>
           </div>
-          <button type="button" class="fullscreen-toggle-btn" id="btnToggleFullscreenQuiz" title="Bật/Tắt chế độ toàn màn hình">
-            🖥️ Toàn màn hình
-          </button>
         </div>
 
         <div class="modal-header quiz-modal-header">

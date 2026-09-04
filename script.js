@@ -178,6 +178,125 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
+  // ============ Main Menu Persistent Interactive Particle Grid ============
+  const mainMenuCanvas = document.getElementById("mainMenuParticleCanvas");
+  if (mainMenuCanvas && mainMenuCanvas.getContext) {
+    const ctx = mainMenuCanvas.getContext("2d");
+    let width = (mainMenuCanvas.width = window.innerWidth);
+    let height = (mainMenuCanvas.height = window.innerHeight);
+
+    const mouse = { x: null, y: null, radius: 140 };
+
+    window.addEventListener("mousemove", (e) => {
+      mouse.x = e.clientX;
+      mouse.y = e.clientY;
+    });
+
+    window.addEventListener("mouseleave", () => {
+      mouse.x = null;
+      mouse.y = null;
+    });
+
+    window.addEventListener("resize", () => {
+      width = mainMenuCanvas.width = window.innerWidth;
+      height = mainMenuCanvas.height = window.innerHeight;
+    });
+
+    const count = Math.min(65, Math.max(30, Math.floor((width * height) / 22000)));
+    const particles = [];
+
+    for (let i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.6,
+        vy: (Math.random() - 0.5) * 0.6,
+        radius: Math.random() * 1.5 + 1,
+        baseColor: "rgba(124, 58, 237, ",
+      });
+    }
+
+    const animateMainMenuParticles = () => {
+      ctx.clearRect(0, 0, width, height);
+
+      for (let i = 0; i < particles.length; i++) {
+        const p = particles[i];
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0 || p.x > width) p.vx *= -1;
+        if (p.y < 0 || p.y > height) p.vy *= -1;
+
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = mouse.x - p.x;
+          const dy = mouse.y - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouse.radius) {
+            const force = (mouse.radius - dist) / mouse.radius;
+            p.x -= (dx / dist) * force * 1.2;
+            p.y -= (dy / dist) * force * 1.2;
+          }
+        }
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = p.baseColor + "0.45)";
+        ctx.fill();
+
+        for (let j = i + 1; j < particles.length; j++) {
+          const p2 = particles[j];
+          const dx = p.x - p2.x;
+          const dy = p.y - p2.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          const maxDist = 110;
+
+          if (dist < maxDist) {
+            const alpha = (1 - dist / maxDist) * 0.15;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(p2.x, p2.y);
+            ctx.strokeStyle = `rgba(124, 58, 237, ${alpha})`;
+            ctx.lineWidth = 0.8;
+            ctx.stroke();
+          }
+        }
+
+        if (mouse.x !== null && mouse.y !== null) {
+          const dx = p.x - mouse.x;
+          const dy = p.y - mouse.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+          if (dist < mouse.radius) {
+            const alpha = (1 - dist / mouse.radius) * 0.25;
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(mouse.x, mouse.y);
+            ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
+            ctx.lineWidth = 1;
+            ctx.stroke();
+          }
+        }
+      }
+
+      requestAnimationFrame(animateMainMenuParticles);
+    };
+
+    requestAnimationFrame(animateMainMenuParticles);
+  }
+
+  // ============ Global Toast Helper ============
+  let toastTimer = null;
+  const showToast = (message, duration = 4500) => {
+    const toast = document.getElementById("globalToast");
+    if (!toast) return;
+    toast.textContent = message;
+    toast.classList.remove("hidden", "toast-fade");
+    if (toastTimer) clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => {
+      toast.classList.add("toast-fade");
+      setTimeout(() => toast.classList.add("hidden"), 300);
+    }, duration);
+  };
+
   // ============ 9 Môn Học Phổ Biến: Toán, Lý, Hóa, Sinh, Văn, Anh, Sử, Địa, Tin ============
   const DEFAULT_COURSES = [
     {
@@ -1377,7 +1496,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     openModalElement(takeQuizModal);
 
-    // Request Fullscreen after modal opens
+    // Request Fullscreen automatically after modal opens
     setTimeout(() => {
       const quizDialog = document.querySelector(".quiz-fullscreen-dialog");
       if (quizDialog && quizDialog.requestFullscreen) {
@@ -1385,34 +1504,8 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (document.documentElement.requestFullscreen) {
         document.documentElement.requestFullscreen().catch(() => {});
       }
-      updateFullscreenBtn();
-    }, 300);
+    }, 250);
   };
-
-  // Fullscreen toggle for quiz
-  const updateFullscreenBtn = () => {
-    const btn = document.getElementById("btnToggleFullscreenQuiz");
-    if (!btn) return;
-    if (document.fullscreenElement) {
-      btn.innerHTML = "🖥️ Thoát toàn màn hình";
-    } else {
-      btn.innerHTML = "🖥️ Toàn màn hình";
-    }
-  };
-
-  const btnToggleFullscreenQuiz = document.getElementById("btnToggleFullscreenQuiz");
-  if (btnToggleFullscreenQuiz) {
-    btnToggleFullscreenQuiz.addEventListener("click", () => {
-      if (document.fullscreenElement) {
-        document.exitFullscreen().catch(() => {});
-      } else {
-        const quizDialog = document.querySelector(".quiz-fullscreen-dialog") || document.documentElement;
-        quizDialog.requestFullscreen().catch(() => {});
-      }
-    });
-  }
-
-  document.addEventListener("fullscreenchange", updateFullscreenBtn);
 
   const updateQuizTimerDisplay = () => {
     const quizTimerText = document.getElementById("quizTimerText");
@@ -1429,7 +1522,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let correctCount = 0;
     const totalCount = (activeQuiz.questions || []).length || 1;
 
-    // Only count correct answers — DO NOT reveal explanations or highlight answers
+    // Only count correct answers — NO solutions or answers revealed
     (activeQuiz.questions || []).forEach((q) => {
       const chosen = userQuizAnswers[q.id];
       if (chosen === q.answerIndex) {
@@ -1450,28 +1543,34 @@ document.addEventListener("DOMContentLoaded", () => {
       maxScore: "10",
       grade: activeQuiz.grade || "12",
       subject: activeQuiz.course || "Trắc nghiệm",
-      feedback: score10 >= 8 ? "Rất xuất sắc! Nắm vững toàn bộ kiến thức trọng tâm." : score10 >= 6.5 ? "Khá tốt! Tiếp tục rèn luyện để đạt điểm tối đa." : "Cần ôn tập thêm lý thuyết chuyên đề này.",
+      feedback: score10 >= 8 ? "Xuất sắc! Nắm vững toàn bộ kiến thức trọng tâm." : score10 >= 6.5 ? "Khá tốt! Tiếp tục rèn luyện để đạt điểm tối đa." : "Cần ôn tập thêm lý thuyết chuyên đề này.",
       date: new Date().toLocaleDateString("vi-VN")
     });
     saveStoredGrades(grades);
 
-    // Show Result Box (No explanations or solution keys shown)
-    const quizResultBox = document.getElementById("quizResultBox");
-    const quizResultScore = document.getElementById("quizResultScore");
-    const quizResultPercentage = document.getElementById("quizResultPercentage");
-    const quizResultFeedback = document.getElementById("quizResultFeedback");
-    const quizFooterActions = document.getElementById("quizFooterActions");
-
-    if (quizResultScore) quizResultScore.textContent = `${score10}/10`;
-    if (quizResultPercentage) quizResultPercentage.textContent = `${percentage}% (${correctCount}/${totalCount} câu đúng)`;
-    if (quizResultFeedback) {
-      quizResultFeedback.textContent = score10 >= 8 ? "🎉 Chúc mừng bạn đạt điểm Giỏi! Kết quả đã tự động lưu vào Bảng điểm." : "👍 Bạn đã hoàn thành bài thi! Kết quả đã được lưu vào Bảng điểm.";
+    // Tự động thoát toàn màn hình
+    if (document.fullscreenElement) {
+      document.exitFullscreen().catch(() => {});
     }
 
-    if (quizResultBox) quizResultBox.classList.remove("hidden");
-    if (quizFooterActions) quizFooterActions.style.display = "none";
+    // Tự động thoát modal làm bài
+    closeModalElement(takeQuizModal);
 
+    // Tự động chuyển sang tab Bảng điểm
     renderStudentGradebook();
+    const gradebookTabBtn = document.querySelector('.student-tab-btn[data-target-tab="tabStudentGradebook"]');
+    if (gradebookTabBtn) {
+      gradebookTabBtn.click();
+    }
+
+    // Hiển thị thông báo kết quả tức thì
+    showToast(`🎉 Nộp bài thành công! Điểm: ${score10}/10 (${percentage}%). Đã lưu vào Bảng điểm.`);
+
+    // Cuộn nhẹ tới góc học tập
+    const studentDashboard = document.getElementById("studentDashboard");
+    if (studentDashboard) {
+      studentDashboard.scrollIntoView({ behavior: "smooth" });
+    }
   };
 
   const closeTakeQuiz = () => {
@@ -1494,7 +1593,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Render Student Quizzes Tab
+  // Render Student Quizzes Tab (Gọn gàng, ít chữ, dễ thao tác)
   const renderStudentQuizzes = () => {
     const studentQuizList = document.getElementById("studentQuizList");
     if (!studentQuizList) return;
@@ -1519,14 +1618,13 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="quiz-meta-info">
                 <span>⏱ ${quiz.duration || 15} phút</span>
                 <span>•</span>
-                <span>📋 ${quiz.questions ? quiz.questions.length : 5} câu hỏi</span>
-                <span>•</span>
-                <span>👨‍🏫 ${quiz.teacherName || "Giáo viên"}</span>
+                <span>📋 ${quiz.questions ? quiz.questions.length : 5} câu</span>
               </div>
             </div>
             <div class="quiz-card-footer">
-              <span style="font-size: 0.82rem; font-weight: 700; color: #10b981;">⚡ Tự động chấm</span>
-              <button class="btn btn-primary small-btn start-quiz-btn" data-id="${quiz.id}">Bắt đầu làm bài</button>
+              <button class="btn btn-primary small-btn start-quiz-btn" data-id="${quiz.id}" style="width: 100%; justify-content: center;">
+                <span>⚡ Bắt đầu làm bài</span>
+              </button>
             </div>
           </div>
         `
