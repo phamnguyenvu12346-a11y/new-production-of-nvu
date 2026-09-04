@@ -1,0 +1,218 @@
+﻿<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EduNova | Đăng nhập / Đăng ký</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+      :root{--v:#7c3aed;--vd:#6d28d9;--ind:#6366f1;--g50:#f8f7ff;--g100:#f1f0fe;--g200:#e8e6fd;--g400:#9ca3af;--g600:#4b5563;--g800:#1f2937}
+      body{font-family:'Plus Jakarta Sans','Inter',sans-serif;background:var(--g50);min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
+      #authParticleCanvas{position:fixed;inset:0;z-index:0;pointer-events:none}
+      .wrap{position:relative;z-index:10;width:100%;max-width:460px;padding:16px}
+      .card{background:rgba(255,255,255,0.96);backdrop-filter:blur(18px);border:1px solid rgba(124,58,237,0.12);border-radius:22px;box-shadow:0 20px 60px rgba(124,58,237,0.15);overflow:hidden;animation:up .45s cubic-bezier(.22,1,.36,1) both}
+      @keyframes up{from{opacity:0;transform:translateY(28px) scale(.97)}to{opacity:1;transform:translateY(0) scale(1)}}
+      .brand{display:flex;align-items:center;gap:10px;padding:24px 28px 0}
+      .bmark{width:36px;height:36px;background:linear-gradient(135deg,var(--v),var(--ind));border-radius:10px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:16px;box-shadow:0 4px 14px rgba(124,58,237,.35)}
+      .bname{font-size:20px;font-weight:800;background:linear-gradient(135deg,var(--v),var(--ind));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+      .back-btn{margin-left:auto;background:none;border:none;cursor:pointer;font-size:13px;color:var(--g400);display:flex;align-items:center;gap:4px;font-family:inherit;padding:4px 8px;border-radius:6px;transition:color .2s}
+      .back-btn:hover{color:var(--v);background:var(--g100)}
+      .tabs{display:flex;gap:4px;margin:20px 28px 0;background:var(--g100);border-radius:12px;padding:4px}
+      .tab{flex:1;padding:9px 0;background:none;border:none;cursor:pointer;font-size:13.5px;font-weight:600;color:var(--g400);border-radius:9px;font-family:inherit;transition:all .22s}
+      .tab.active{background:#fff;color:var(--v);box-shadow:0 2px 10px rgba(124,58,237,.12)}
+      .body{padding:20px 28px 28px}
+      .panel{display:none}.panel.active{display:block}
+      .demo-box{background:linear-gradient(135deg,#faf5ff,#f0f4ff);border:1px solid rgba(124,58,237,.15);border-radius:12px;padding:12px 14px;margin-bottom:16px}
+      .demo-lbl{font-size:11.5px;font-weight:600;color:var(--v);display:block;margin-bottom:8px;text-transform:uppercase;letter-spacing:.5px}
+      .demo-btns{display:flex;gap:8px;flex-wrap:wrap}
+      .btn-demo{flex:1;min-width:120px;padding:8px 10px;background:#fff;border:1.5px solid rgba(124,58,237,.25);border-radius:9px;cursor:pointer;font-size:12.5px;font-weight:600;color:var(--g800);font-family:inherit;text-align:center;transition:all .2s}
+      .btn-demo:hover{border-color:var(--v);color:var(--v);background:#faf5ff}
+      .divider{display:flex;align-items:center;gap:10px;margin:14px 0 16px}
+      .divider::before,.divider::after{content:'';flex:1;height:1px;background:var(--g200)}
+      .divider span{font-size:12px;color:var(--g400);white-space:nowrap}
+      .fg{margin-bottom:14px}
+      .fg label{display:block;font-size:13px;font-weight:600;color:var(--g800);margin-bottom:5px}
+      .fg input,.fg select{width:100%;padding:10px 14px;border:1.5px solid var(--g200);border-radius:10px;font-size:13.5px;font-family:inherit;color:var(--g800);background:#fff;transition:border-color .2s,box-shadow .2s;outline:none}
+      .fg input:focus,.fg select:focus{border-color:var(--v);box-shadow:0 0 0 3px rgba(124,58,237,.1)}
+      .pw-wrap{position:relative}.pw-wrap input{padding-right:42px}
+      .tpw{position:absolute;right:12px;top:50%;transform:translateY(-50%);background:none;border:none;cursor:pointer;font-size:15px;color:var(--g400);transition:color .2s;padding:2px}
+      .tpw:hover{color:var(--v)}
+      .rg{display:flex;gap:10px}
+      .rl{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:9px 12px;border:1.5px solid var(--g200);border-radius:10px;cursor:pointer;font-size:13px;font-weight:600;color:var(--g600);transition:all .2s}
+      .rl input{display:none}
+      .rl:has(input:checked){border-color:var(--v);background:#faf5ff;color:var(--v)}
+      .btn-sub{width:100%;padding:12px;background:linear-gradient(135deg,var(--v),var(--ind));color:#fff;border:none;border-radius:11px;font-size:14.5px;font-weight:700;cursor:pointer;font-family:inherit;margin-top:6px;box-shadow:0 4px 18px rgba(124,58,237,.3);letter-spacing:.2px;transition:all .22s}
+      .btn-sub:hover{transform:translateY(-1px);box-shadow:0 8px 24px rgba(124,58,237,.4)}
+      .fmsg{font-size:12.5px;font-weight:500;margin-top:10px;padding:8px 12px;border-radius:8px;display:none}
+      .fmsg.error{background:#fff0f0;color:#dc2626;display:block}
+      .fmsg.success{background:#f0fdf4;color:#16a34a;display:block}
+      #sOverlay{display:none;position:fixed;inset:0;z-index:999;background:rgba(255,255,255,.96);flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;animation:fi .3s ease}
+      #sOverlay.show{display:flex}
+      @keyframes fi{from{opacity:0}to{opacity:1}}
+      .s-icon{font-size:56px}
+      .s-title{font-size:22px;font-weight:800;color:var(--g800)}
+      .s-sub{font-size:14px;color:var(--g400)}
+      .s-bar{width:180px;height:4px;background:var(--g200);border-radius:99px;overflow:hidden;margin-top:8px}
+      .s-prog{height:100%;background:linear-gradient(90deg,var(--v),var(--ind));border-radius:99px;animation:lb 1.4s ease forwards}
+      @keyframes lb{from{width:0}to{width:100%}}
+    </style>
+  </head>
+  <body>
+    <canvas id="authParticleCanvas"></canvas>
+    <div class="wrap">
+      <div class="card">
+        <div class="brand">
+          <div class="bmark">E</div>
+          <span class="bname">EduNova</span>
+          <button class="back-btn" onclick="window.location.href='index.html'">&#8592; Trang chủ</button>
+        </div>
+        <div class="tabs">
+          <button class="tab active" id="tabLogin" onclick="switchTab('login')">&#128273; Đăng nhập</button>
+          <button class="tab" id="tabSignup" onclick="switchTab('signup')">&#9997;&#65039; Đăng ký</button>
+        </div>
+        <div class="body">
+          <!-- LOGIN -->
+          <div class="panel active" id="panelLogin">
+            <div class="demo-box">
+              <span class="demo-lbl">&#9889; Đăng nhập nhanh một chạm</span>
+              <div class="demo-btns">
+                <button class="btn-demo" onclick="quickLogin('student')">&#128104;&#8205;&#127979; Học sinh (Demo)</button>
+                <button class="btn-demo" onclick="quickLogin('teacher')">&#128104;&#8205;&#127979; Giáo viên (Demo)</button>
+              </div>
+            </div>
+            <div class="divider"><span>hoặc dùng email cá nhân</span></div>
+            <form id="loginForm" onsubmit="handleLogin(event)">
+              <div class="fg"><label for="loginEmail">Email</label><input id="loginEmail" type="email" placeholder="example@gmail.com" required /></div>
+              <div class="fg"><label for="loginPassword">Mật khẩu</label><div class="pw-wrap"><input id="loginPassword" type="password" placeholder="Nhập mật khẩu" required /><button type="button" class="tpw" onclick="togglePw('loginPassword')">&#128065;</button></div></div>
+              <button class="btn-sub" type="submit">Đăng nhập ngay</button>
+              <p class="fmsg" id="loginMsg"></p>
+            </form>
+          </div>
+          <!-- SIGNUP -->
+          <div class="panel" id="panelSignup">
+            <form id="signupForm" onsubmit="handleSignup(event)">
+              <div class="fg"><label for="fullName">Họ và tên</label><input id="fullName" type="text" placeholder="Nguyễn Văn A" required /></div>
+              <div class="fg"><label for="email">Email</label><input id="email" type="email" placeholder="example@gmail.com" required /></div>
+              <div class="fg"><label>Vai trò</label><div class="rg"><label class="rl"><input type="radio" name="accountType" value="student" checked />&#128104;&#8205;&#127979; Học sinh</label><label class="rl"><input type="radio" name="accountType" value="teacher" />&#128104;&#8205;&#127979; Giáo viên</label></div></div>
+              <div class="fg" id="gradeGroup"><label for="signupGrade">Khối lớp</label><select id="signupGrade"><option value="12">Lớp 12</option><option value="11">Lớp 11</option><option value="10">Lớp 10</option><option value="9">Lớp 9</option><option value="8">Lớp 8</option><option value="7">Lớp 7</option><option value="6">Lớp 6</option><option value="5">Lớp 5</option><option value="4">Lớp 4</option><option value="3">Lớp 3</option><option value="2">Lớp 2</option><option value="1">Lớp 1</option></select></div>
+              <div class="fg"><label for="course" id="courseLabel">Môn học trọng tâm</label><select id="course"><option value="Toán học - Đại số &amp; Hình học không gian">Toán học</option><option value="Vật lý - Cơ học &amp; Sóng điện từ">Vật lý</option><option value="Hóa học - Vô cơ &amp; Hữu cơ trọng tâm">Hóa học</option><option value="Sinh học - Di truyền &amp; Quần thể sinh thái">Sinh học</option><option value="Ngữ văn - Kỹ năng Đọc hiểu &amp; Nghị luận xã hội">Ngữ văn</option><option value="Tiếng Anh - Ngữ pháp &amp; Luyện thi THPT / IELTS">Tiếng Anh</option><option value="Lịch sử - Lịch sử Việt Nam &amp; Thế giới hiện đại">Lịch sử</option><option value="Địa lý - Địa lý tự nhiên &amp; Kinh tế Việt Nam">Địa lý</option><option value="Tin học - Lập trình Python &amp; Tư duy thuật toán">Tin học</option></select></div>
+              <div class="fg"><label for="password">Mật khẩu</label><div class="pw-wrap"><input id="password" type="password" placeholder="Tối thiểu 6 ký tự" minlength="6" required /><button type="button" class="tpw" onclick="togglePw('password')">&#128065;</button></div></div>
+              <div class="fg"><label for="confirmPassword">Xác nhận mật khẩu</label><div class="pw-wrap"><input id="confirmPassword" type="password" placeholder="Nhập lại mật khẩu" minlength="6" required /><button type="button" class="tpw" onclick="togglePw('confirmPassword')">&#128065;</button></div></div>
+              <button class="btn-sub" type="submit">Tạo tài khoản</button>
+              <p class="fmsg" id="signupMsg"></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div id="sOverlay">
+      <div class="s-icon" id="sIcon">&#127881;</div>
+      <div class="s-title" id="sTitle">Thành công!</div>
+      <div class="s-sub" id="sSub">Đang chuyển về trang chủ...</div>
+      <div class="s-bar"><div class="s-prog"></div></div>
+    </div>
+
+    <script>
+      const USERS_KEY='edunova_users',CURR_KEY='edunova_current_user';
+      function getUsers(){try{return JSON.parse(localStorage.getItem(USERS_KEY))||[];}catch{return[];}}
+      function saveUsers(u){localStorage.setItem(USERS_KEY,JSON.stringify(u));}
+      function setCurrentUser(u){localStorage.setItem(CURR_KEY,u?JSON.stringify(u):'');}
+      function switchTab(t){
+        document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+        document.getElementById('tab'+(t==='login'?'Login':'Signup')).classList.add('active');
+        document.getElementById('panel'+(t==='login'?'Login':'Signup')).classList.add('active');
+      }
+      const p=new URLSearchParams(location.search).get('tab');
+      if(p==='signup')switchTab('signup');
+      document.querySelectorAll('input[name="accountType"]').forEach(r=>{
+        r.addEventListener('change',e=>{
+          const isTea=e.target.value==='teacher';
+          document.getElementById('gradeGroup').style.display=isTea?'none':'';
+          document.getElementById('courseLabel').textContent=isTea?'Môn học giảng dạy':'Môn học trọng tâm';
+        });
+      });
+      function togglePw(id){const i=document.getElementById(id);i.type=i.type==='password'?'text':'password';}
+      function showSuccess(icon,title,sub){
+        document.getElementById('sIcon').textContent=icon;
+        document.getElementById('sTitle').textContent=title;
+        document.getElementById('sSub').textContent=sub;
+        document.getElementById('sOverlay').classList.add('show');
+        setTimeout(()=>window.location.href='index.html',1500);
+      }
+      function quickLogin(role){
+        const users=getUsers();
+        let u=users.find(x=>x.accountType===role&&x.email.includes('edunova'));
+        if(!u){
+          u=role==='student'
+            ?{id:'demo-student',fullName:'Mỹ Anh (Demo)',email:'minhanh@edunova.vn',accountType:'student',grade:'12',course:'Toán học - Đại số & Hình học không gian',password:'demo123',registeredAt:'01/01/2025'}
+            :{id:'demo-teacher',fullName:'Thầy Tuấn (Demo)',email:'thaytuan@edunova.vn',accountType:'teacher',grade:'12',course:'Toán học - Đại số & Hình học không gian',password:'demo123',registeredAt:'01/01/2025'};
+          users.push(u);saveUsers(users);
+        }
+        setCurrentUser(u);
+        showSuccess('👋','Chào mừng, '+u.fullName+'!','Đang chuyển về trang chủ...');
+      }
+      function handleLogin(e){
+        e.preventDefault();
+        const em=document.getElementById('loginEmail').value.trim().toLowerCase();
+        const pw=document.getElementById('loginPassword').value;
+        const msg=document.getElementById('loginMsg');
+        const user=getUsers().find(u=>u.email===em&&u.password===pw);
+        if(!user){msg.textContent='Email hoặc mật khẩu không chính xác!';msg.className='fmsg error';return;}
+        msg.className='fmsg';msg.textContent='';
+        setCurrentUser(user);
+        showSuccess('✅','Đăng nhập thành công!','Chào mừng bạn trở lại, '+user.fullName+'!');
+      }
+      function handleSignup(e){
+        e.preventDefault();
+        const fn=document.getElementById('fullName').value.trim();
+        const em=document.getElementById('email').value.trim().toLowerCase();
+        const role=document.querySelector('input[name="accountType"]:checked')?.value||'student';
+        const grade=document.getElementById('signupGrade')?.value||'12';
+        const course=document.getElementById('course').value;
+        const pw=document.getElementById('password').value;
+        const cpw=document.getElementById('confirmPassword').value;
+        const msg=document.getElementById('signupMsg');
+        if(pw!==cpw){msg.textContent='Mật khẩu xác nhận không trùng khớp!';msg.className='fmsg error';return;}
+        const users=getUsers();
+        if(users.some(u=>u.email===em)){msg.textContent='Email này đã được đăng ký!';msg.className='fmsg error';return;}
+        const nu={id:'user-'+Date.now(),fullName:fn,email:em,accountType:role,grade,course,password:pw,registeredAt:new Date().toLocaleDateString('vi-VN')};
+        users.push(nu);saveUsers(users);setCurrentUser(nu);
+        msg.className='fmsg';msg.textContent='';
+        showSuccess('🎉','Chào mừng '+fn+' gia nhập EduNova!','Đang chuyển về trang chủ...');
+      }
+      // PARTICLE GRID
+      (function(){
+        const cv=document.getElementById('authParticleCanvas');
+        if(!cv||!cv.getContext)return;
+        const cx=cv.getContext('2d');
+        let W=cv.width=window.innerWidth,H=cv.height=window.innerHeight;
+        const mouse={x:null,y:null,radius:160};
+        window.addEventListener('mousemove',e=>{mouse.x=e.clientX;mouse.y=e.clientY;});
+        window.addEventListener('mouseleave',()=>{mouse.x=null;mouse.y=null;});
+        window.addEventListener('resize',()=>{W=cv.width=window.innerWidth;H=cv.height=window.innerHeight;});
+        const N=Math.min(100,Math.max(50,Math.floor((W*H)/14000)));
+        const ps=Array.from({length:N},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.9,vy:(Math.random()-.5)*.9,r:Math.random()*2.2+1.4}));
+        function draw(){
+          cx.clearRect(0,0,W,H);
+          for(let i=0;i<ps.length;i++){
+            const p=ps[i];
+            p.x+=p.vx;p.y+=p.vy;
+            if(p.x<0||p.x>W)p.vx*=-1;
+            if(p.y<0||p.y>H)p.vy*=-1;
+            if(mouse.x!==null){const dx=mouse.x-p.x,dy=mouse.y-p.y,d=Math.sqrt(dx*dx+dy*dy);if(d<mouse.radius){const f=(mouse.radius-d)/mouse.radius;p.x-=(dx/d)*f*1.8;p.y-=(dy/d)*f*1.8;}}
+            cx.beginPath();cx.arc(p.x,p.y,p.r,0,Math.PI*2);cx.fillStyle='rgba(109,40,217,0.75)';cx.fill();
+            for(let j=i+1;j<ps.length;j++){const p2=ps[j],dx=p.x-p2.x,dy=p.y-p2.y,d=Math.sqrt(dx*dx+dy*dy);if(d<130){const a=(1-d/130)*0.45;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(p2.x,p2.y);cx.strokeStyle=`rgba(109,40,217,${a})`;cx.lineWidth=1.2;cx.stroke();}}
+            if(mouse.x!==null){const dx=p.x-mouse.x,dy=p.y-mouse.y,d=Math.sqrt(dx*dx+dy*dy);if(d<mouse.radius){const a=(1-d/mouse.radius)*0.55;cx.beginPath();cx.moveTo(p.x,p.y);cx.lineTo(mouse.x,mouse.y);cx.strokeStyle=`rgba(99,102,241,${a})`;cx.lineWidth=1.4;cx.stroke();}}
+          }
+          requestAnimationFrame(draw);
+        }
+        draw();
+      })();
+    </script>
+  </body>
+</html>

@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
       window.addEventListener("resize", handleResize);
 
       // Create particles for grid
-      const particleCount = Math.min(75, Math.max(35, Math.floor((width * height) / 18000)));
+      const particleCount = Math.min(110, Math.max(55, Math.floor((width * height) / 12000)));
       const particles = [];
 
       for (let i = 0; i < particleCount; i++) {
@@ -98,8 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
           y: Math.random() * height,
           vx: (Math.random() - 0.5) * 0.8,
           vy: (Math.random() - 0.5) * 0.8,
-          radius: Math.random() * 1.6 + 1.2,
-          baseColor: "rgba(124, 58, 237, ", // Violet/purple
+          radius: Math.random() * 2.0 + 1.5,
+          baseColor: "rgba(109, 40, 217, ", // Deeper violet
         });
       }
 
@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", () => {
           // Draw particle dot
           ctx.beginPath();
           ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-          ctx.fillStyle = p.baseColor + "0.65)";
+          ctx.fillStyle = p.baseColor + "0.85)";
           ctx.fill();
 
           // Connect with nearby particles to form grid network
@@ -141,15 +141,15 @@ document.addEventListener("DOMContentLoaded", () => {
             const dx = p.x - p2.x;
             const dy = p.y - p2.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
-            const maxDist = 115;
+            const maxDist = 135;
 
             if (dist < maxDist) {
-              const alpha = (1 - dist / maxDist) * 0.22;
+              const alpha = (1 - dist / maxDist) * 0.5;
               ctx.beginPath();
               ctx.moveTo(p.x, p.y);
               ctx.lineTo(p2.x, p2.y);
-              ctx.strokeStyle = `rgba(124, 58, 237, ${alpha})`;
-              ctx.lineWidth = 0.9;
+              ctx.strokeStyle = `rgba(109, 40, 217, ${alpha})`;
+              ctx.lineWidth = 1.2;
               ctx.stroke();
             }
           }
@@ -160,12 +160,12 @@ document.addEventListener("DOMContentLoaded", () => {
             const dy = p.y - mouse.y;
             const dist = Math.sqrt(dx * dx + dy * dy);
             if (dist < mouse.radius) {
-              const alpha = (1 - dist / mouse.radius) * 0.35;
+              const alpha = (1 - dist / mouse.radius) * 0.65;
               ctx.beginPath();
               ctx.moveTo(p.x, p.y);
               ctx.lineTo(mouse.x, mouse.y);
               ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
-              ctx.lineWidth = 1.2;
+              ctx.lineWidth = 1.5;
               ctx.stroke();
             }
           }
@@ -202,7 +202,7 @@ document.addEventListener("DOMContentLoaded", () => {
       height = mainMenuCanvas.height = window.innerHeight;
     });
 
-    const count = Math.min(65, Math.max(30, Math.floor((width * height) / 22000)));
+    const count = Math.min(100, Math.max(50, Math.floor((width * height) / 14000)));
     const particles = [];
 
     for (let i = 0; i < count; i++) {
@@ -211,8 +211,8 @@ document.addEventListener("DOMContentLoaded", () => {
         y: Math.random() * height,
         vx: (Math.random() - 0.5) * 0.6,
         vy: (Math.random() - 0.5) * 0.6,
-        radius: Math.random() * 1.5 + 1,
-        baseColor: "rgba(124, 58, 237, ",
+        radius: Math.random() * 2.0 + 1.4,
+        baseColor: "rgba(109, 40, 217, ",
       });
     }
 
@@ -240,7 +240,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
-        ctx.fillStyle = p.baseColor + "0.45)";
+        ctx.fillStyle = p.baseColor + "0.80)";
         ctx.fill();
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -248,15 +248,15 @@ document.addEventListener("DOMContentLoaded", () => {
           const dx = p.x - p2.x;
           const dy = p.y - p2.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
-          const maxDist = 110;
+          const maxDist = 130;
 
           if (dist < maxDist) {
-            const alpha = (1 - dist / maxDist) * 0.15;
+            const alpha = (1 - dist / maxDist) * 0.42;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(p2.x, p2.y);
-            ctx.strokeStyle = `rgba(124, 58, 237, ${alpha})`;
-            ctx.lineWidth = 0.8;
+            ctx.strokeStyle = `rgba(109, 40, 217, ${alpha})`;
+            ctx.lineWidth = 1.1;
             ctx.stroke();
           }
         }
@@ -266,12 +266,12 @@ document.addEventListener("DOMContentLoaded", () => {
           const dy = p.y - mouse.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           if (dist < mouse.radius) {
-            const alpha = (1 - dist / mouse.radius) * 0.25;
+            const alpha = (1 - dist / mouse.radius) * 0.6;
             ctx.beginPath();
             ctx.moveTo(p.x, p.y);
             ctx.lineTo(mouse.x, mouse.y);
             ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
-            ctx.lineWidth = 1;
+            ctx.lineWidth = 1.4;
             ctx.stroke();
           }
         }
