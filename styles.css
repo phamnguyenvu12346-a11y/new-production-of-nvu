@@ -1,4 +1,4 @@
-﻿/* ==========================================================================
+/* ==========================================================================
    EduNova Design System - Modern, Clean & Minimal UI
    ========================================================================== */
 
@@ -1326,4 +1326,331 @@ button, input, select, textarea {
     flex-direction: column;
     text-align: center;
   }
+}
+
+/* ==========================================================================
+   EduNova Splash Screen Styles (White Dominant & Purple/Violet Accents)
+   ========================================================================== */
+
+/* Splash Screen Container */
+.splash-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: radial-gradient(circle at 50% 30%, #ffffff 0%, #fbfaff 65%, #f5f3ff 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  transition: opacity 0.75s cubic-bezier(0.16, 1, 0.3, 1), transform 0.75s cubic-bezier(0.16, 1, 0.3, 1), filter 0.75s ease;
+}
+
+/* Smooth transition when exiting splash screen */
+.splash-screen.splash-fade-out {
+  opacity: 0;
+  transform: scale(1.06);
+  filter: blur(8px);
+  pointer-events: none;
+}
+
+.splash-screen.splash-gone {
+  display: none !important;
+}
+
+/* Interactive Particle Grid Canvas */
+.splash-particle-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: auto;
+}
+
+/* Ambient glow spheres (subtle violet on crisp white) */
+.splash-glow-sphere {
+  position: absolute;
+  border-radius: 50%;
+  pointer-events: none;
+  filter: blur(60px);
+  z-index: 1;
+}
+
+.splash-glow-sphere.top-right {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(124, 58, 237, 0.12) 0%, rgba(99, 102, 241, 0.05) 50%, transparent 70%);
+  top: -120px;
+  right: -100px;
+  animation: spherePulse 4s ease-in-out infinite alternate;
+}
+
+.splash-glow-sphere.bottom-left {
+  width: 450px;
+  height: 450px;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.1) 0%, rgba(192, 132, 252, 0.04) 50%, transparent 70%);
+  bottom: -100px;
+  left: -80px;
+  animation: spherePulse 5s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes spherePulse {
+  0% { transform: scale(1); opacity: 0.8; }
+  100% { transform: scale(1.12); opacity: 1; }
+}
+
+/* Splash center content */
+.splash-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 16px;
+  max-width: 540px;
+  padding: 32px 24px;
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(124, 58, 237, 0.12);
+  border-radius: 28px;
+  box-shadow: 0 20px 50px rgba(124, 58, 237, 0.08), 0 1px 3px rgba(0,0,0,0.02);
+  animation: splashContentIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+@keyframes splashContentIn {
+  from { opacity: 0; transform: translateY(30px) scale(0.96); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+/* Splash logo */
+.splash-logo-box {
+  position: relative;
+  width: 76px;
+  height: 76px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, #7c3aed, #6366f1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 14px 36px rgba(124, 58, 237, 0.32);
+  animation: logoFloat 3s ease-in-out infinite;
+}
+
+@keyframes logoFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.splash-brand-mark {
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: #ffffff;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  line-height: 1;
+}
+
+.splash-logo-pulse {
+  position: absolute;
+  inset: -6px;
+  border-radius: 26px;
+  border: 2px solid rgba(124, 58, 237, 0.35);
+  animation: logoPulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes logoPulse {
+  0% { transform: scale(0.98); opacity: 0.8; }
+  50% { transform: scale(1.08); opacity: 0; }
+  100% { transform: scale(0.98); opacity: 0; }
+}
+
+/* Splash title & badge */
+.splash-title-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+}
+
+.splash-title {
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  color: #1e1b4b;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  line-height: 1;
+  background: linear-gradient(135deg, #1e1b4b 30%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.splash-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 12px;
+  background: rgba(124, 58, 237, 0.08);
+  border: 1px solid rgba(124, 58, 237, 0.18);
+  border-radius: 9999px;
+  color: #7c3aed;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+}
+
+.splash-subtitle {
+  font-size: 0.95rem;
+  color: #64748b;
+  font-weight: 500;
+  max-width: 400px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+/* Loading bar */
+.splash-loading-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+}
+
+.splash-loading-bar {
+  width: 220px;
+  height: 5px;
+  background: rgba(124, 58, 237, 0.1);
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.splash-loading-progress {
+  width: 0%;
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  transition: width 0.1s linear;
+}
+
+.splash-skip-hint {
+  font-size: 0.76rem;
+  color: #94a3b8;
+  font-weight: 500;
+}
+
+/* Button to enter main menu */
+.splash-enter-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 28px;
+  margin-top: 6px;
+  border-radius: 9999px;
+  border: none;
+  background: linear-gradient(135deg, #7c3aed 0%, #6366f1 100%);
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  font-family: inherit;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(124, 58, 237, 0.32);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.splash-enter-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(124, 58, 237, 0.45);
+  background: linear-gradient(135deg, #6d28d9 0%, #4f46e5 100%);
+}
+
+.splash-enter-btn:active {
+  transform: translateY(0);
+}
+
+.splash-enter-icon {
+  transition: transform 0.2s ease;
+}
+
+.splash-enter-btn:hover .splash-enter-icon {
+  transform: translateX(4px);
+}
+
+/* ==========================================================================
+   Quiz Full Screen Mode Styles
+   ========================================================================== */
+
+/* Full Screen top banner bar */
+.quiz-fullscreen-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 20px;
+  background: linear-gradient(90deg, #f5f3ff, #ede9fe);
+  border-bottom: 1px solid rgba(124, 58, 237, 0.15);
+  border-radius: var(--radius-md, 16px) var(--radius-md, 16px) 0 0;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+.fullscreen-indicator {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #5b21b6;
+}
+
+/* Animated pulse dot */
+.pulse-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #7c3aed;
+  display: inline-block;
+  flex-shrink: 0;
+  animation: pulseDotAnim 1.5s ease-in-out infinite;
+}
+
+@keyframes pulseDotAnim {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(124, 58, 237, 0.5); }
+  50% { box-shadow: 0 0 0 6px rgba(124, 58, 237, 0); }
+}
+
+.fullscreen-toggle-btn {
+  padding: 6px 14px;
+  border-radius: var(--radius-full, 9999px);
+  border: 1px solid rgba(124, 58, 237, 0.3);
+  background: #ffffff;
+  color: #7c3aed;
+  font-weight: 700;
+  font-size: 0.83rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.fullscreen-toggle-btn:hover {
+  background: #7c3aed;
+  color: #ffffff;
+  border-color: #7c3aed;
+}
+
+/* Full screen dialog expands to cover whole screen */
+.quiz-fullscreen-dialog {
+  max-height: 98vh !important;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style when actually in browser fullscreen */
+:fullscreen .quiz-fullscreen-dialog,
+:-webkit-full-screen .quiz-fullscreen-dialog {
+  border-radius: 0 !important;
+  max-width: 100vw !important;
+  width: 100vw !important;
+  max-height: 100vh !important;
+  height: 100vh !important;
+  margin: 0 !important;
+  overflow-y: auto;
 }

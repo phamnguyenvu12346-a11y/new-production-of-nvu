@@ -1,8 +1,181 @@
-﻿document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", () => {
   // ============ Year in Footer ============
   const year = document.getElementById("year");
   if (year) {
     year.textContent = new Date().getFullYear();
+  }
+
+  // ============ Splash Screen & Interactive Particle Grid ============
+  const splashScreen = document.getElementById("splashScreen");
+  const splashCanvas = document.getElementById("splashParticleCanvas");
+  let particleAnimId = null;
+  let splashTimerInterval = null;
+  let splashExitTriggered = false;
+
+  const exitSplashScreen = () => {
+    if (splashExitTriggered || !splashScreen) return;
+    splashExitTriggered = true;
+
+    if (splashTimerInterval) clearInterval(splashTimerInterval);
+
+    // Smooth exit animation (transition to main page)
+    splashScreen.classList.add("splash-fade-out");
+    document.body.style.overflow = "";
+
+    setTimeout(() => {
+      splashScreen.classList.add("splash-gone");
+      if (particleAnimId) cancelAnimationFrame(particleAnimId);
+    }, 750);
+  };
+
+  if (splashScreen) {
+    document.body.style.overflow = "hidden";
+
+    // Button to go directly to main menu
+    const btnEnterMainMenu = document.getElementById("btnEnterMainMenu");
+    if (btnEnterMainMenu) {
+      btnEnterMainMenu.addEventListener("click", exitSplashScreen);
+    }
+
+    // Auto progress bar & countdown (3.2 seconds)
+    const progressBar = document.getElementById("splashProgressBar");
+    const timerHint = document.getElementById("splashTimerHint");
+    const totalDuration = 3200;
+    const intervalStep = 40;
+    let elapsed = 0;
+
+    splashTimerInterval = setInterval(() => {
+      elapsed += intervalStep;
+      const progressPercent = Math.min(100, (elapsed / totalDuration) * 100);
+      if (progressBar) progressBar.style.width = `${progressPercent}%`;
+
+      const remainingSec = Math.max(1, Math.ceil((totalDuration - elapsed) / 1000));
+      if (timerHint && remainingSec > 0) {
+        timerHint.textContent = `Tự động chuyển tiếp sau ${remainingSec}s...`;
+      }
+
+      if (elapsed >= totalDuration) {
+        clearInterval(splashTimerInterval);
+        exitSplashScreen();
+      }
+    }, intervalStep);
+
+    // Initialize Interactive Particle Grid Canvas
+    if (splashCanvas && splashCanvas.getContext) {
+      const ctx = splashCanvas.getContext("2d");
+      let width = (splashCanvas.width = window.innerWidth);
+      let height = (splashCanvas.height = window.innerHeight);
+
+      const mouse = { x: null, y: null, radius: 150 };
+
+      const onMouseMove = (e) => {
+        mouse.x = e.clientX;
+        mouse.y = e.clientY;
+      };
+
+      const onMouseLeave = () => {
+        mouse.x = null;
+        mouse.y = null;
+      };
+
+      window.addEventListener("mousemove", onMouseMove);
+      window.addEventListener("mouseleave", onMouseLeave);
+
+      const handleResize = () => {
+        if (!splashScreen || splashScreen.classList.contains("splash-gone")) return;
+        width = splashCanvas.width = window.innerWidth;
+        height = splashCanvas.height = window.innerHeight;
+      };
+      window.addEventListener("resize", handleResize);
+
+      // Create particles for grid
+      const particleCount = Math.min(75, Math.max(35, Math.floor((width * height) / 18000)));
+      const particles = [];
+
+      for (let i = 0; i < particleCount; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.8,
+          vy: (Math.random() - 0.5) * 0.8,
+          radius: Math.random() * 1.6 + 1.2,
+          baseColor: "rgba(124, 58, 237, ", // Violet/purple
+        });
+      }
+
+      const animateParticles = () => {
+        if (splashExitTriggered && splashScreen.classList.contains("splash-gone")) return;
+
+        ctx.clearRect(0, 0, width, height);
+
+        // Update & Draw particles
+        for (let i = 0; i < particles.length; i++) {
+          const p = particles[i];
+          p.x += p.vx;
+          p.y += p.vy;
+
+          if (p.x < 0 || p.x > width) p.vx *= -1;
+          if (p.y < 0 || p.y > height) p.vy *= -1;
+
+          // Mouse interaction (gentle repulsion/attraction)
+          if (mouse.x !== null && mouse.y !== null) {
+            const dx = mouse.x - p.x;
+            const dy = mouse.y - p.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.radius) {
+              const force = (mouse.radius - dist) / mouse.radius;
+              p.x -= (dx / dist) * force * 1.5;
+              p.y -= (dy / dist) * force * 1.5;
+            }
+          }
+
+          // Draw particle dot
+          ctx.beginPath();
+          ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+          ctx.fillStyle = p.baseColor + "0.65)";
+          ctx.fill();
+
+          // Connect with nearby particles to form grid network
+          for (let j = i + 1; j < particles.length; j++) {
+            const p2 = particles[j];
+            const dx = p.x - p2.x;
+            const dy = p.y - p2.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            const maxDist = 115;
+
+            if (dist < maxDist) {
+              const alpha = (1 - dist / maxDist) * 0.22;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(p2.x, p2.y);
+              ctx.strokeStyle = `rgba(124, 58, 237, ${alpha})`;
+              ctx.lineWidth = 0.9;
+              ctx.stroke();
+            }
+          }
+
+          // Connect with mouse cursor
+          if (mouse.x !== null && mouse.y !== null) {
+            const dx = p.x - mouse.x;
+            const dy = p.y - mouse.y;
+            const dist = Math.sqrt(dx * dx + dy * dy);
+            if (dist < mouse.radius) {
+              const alpha = (1 - dist / mouse.radius) * 0.35;
+              ctx.beginPath();
+              ctx.moveTo(p.x, p.y);
+              ctx.lineTo(mouse.x, mouse.y);
+              ctx.strokeStyle = `rgba(99, 102, 241, ${alpha})`;
+              ctx.lineWidth = 1.2;
+              ctx.stroke();
+            }
+          }
+        }
+
+        particleAnimId = requestAnimationFrame(animateParticles);
+      };
+
+      particleAnimId = requestAnimationFrame(animateParticles);
+    }
   }
 
   // ============ 9 Môn Học Phổ Biến: Toán, Lý, Hóa, Sinh, Văn, Anh, Sử, Địa, Tin ============
@@ -1155,7 +1328,7 @@
     if (quizResultBox) quizResultBox.classList.add("hidden");
     if (quizFooterActions) quizFooterActions.style.display = "block";
 
-    // Render questions
+    // Render questions — NO EXPLANATIONS shown during quiz
     if (quizQuestionsContainer) {
       quizQuestionsContainer.innerHTML = (activeQuiz.questions || [])
         .map((q, qIndex) => `
@@ -1172,9 +1345,6 @@
                   `
                 )
                 .join("")}
-            </div>
-            <div class="quiz-explanation-box hidden" id="explanation_${q.id}">
-              <strong>💡 Lời giải chi tiết:</strong> ${q.explanation || "Chưa có giải thích"}
             </div>
           </div>
         `)
@@ -1206,7 +1376,43 @@
     }, 1000);
 
     openModalElement(takeQuizModal);
+
+    // Request Fullscreen after modal opens
+    setTimeout(() => {
+      const quizDialog = document.querySelector(".quiz-fullscreen-dialog");
+      if (quizDialog && quizDialog.requestFullscreen) {
+        quizDialog.requestFullscreen().catch(() => {});
+      } else if (document.documentElement.requestFullscreen) {
+        document.documentElement.requestFullscreen().catch(() => {});
+      }
+      updateFullscreenBtn();
+    }, 300);
   };
+
+  // Fullscreen toggle for quiz
+  const updateFullscreenBtn = () => {
+    const btn = document.getElementById("btnToggleFullscreenQuiz");
+    if (!btn) return;
+    if (document.fullscreenElement) {
+      btn.innerHTML = "🖥️ Thoát toàn màn hình";
+    } else {
+      btn.innerHTML = "🖥️ Toàn màn hình";
+    }
+  };
+
+  const btnToggleFullscreenQuiz = document.getElementById("btnToggleFullscreenQuiz");
+  if (btnToggleFullscreenQuiz) {
+    btnToggleFullscreenQuiz.addEventListener("click", () => {
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+      } else {
+        const quizDialog = document.querySelector(".quiz-fullscreen-dialog") || document.documentElement;
+        quizDialog.requestFullscreen().catch(() => {});
+      }
+    });
+  }
+
+  document.addEventListener("fullscreenchange", updateFullscreenBtn);
 
   const updateQuizTimerDisplay = () => {
     const quizTimerText = document.getElementById("quizTimerText");
@@ -1223,24 +1429,9 @@
     let correctCount = 0;
     const totalCount = (activeQuiz.questions || []).length || 1;
 
+    // Only count correct answers — DO NOT reveal explanations or highlight answers
     (activeQuiz.questions || []).forEach((q) => {
       const chosen = userQuizAnswers[q.id];
-      const qCard = document.getElementById(`quizQuestion_${q.id}`);
-      const explBox = document.getElementById(`explanation_${q.id}`);
-
-      if (explBox) explBox.classList.remove("hidden");
-
-      if (qCard) {
-        qCard.querySelectorAll(".quiz-option-label").forEach((lbl) => {
-          const optIdx = parseInt(lbl.dataset.optindex);
-          if (optIdx === q.answerIndex) {
-            lbl.classList.add("correct");
-          } else if (optIdx === chosen) {
-            lbl.classList.add("incorrect");
-          }
-        });
-      }
-
       if (chosen === q.answerIndex) {
         correctCount++;
       }
@@ -1259,12 +1450,12 @@
       maxScore: "10",
       grade: activeQuiz.grade || "12",
       subject: activeQuiz.course || "Trắc nghiệm",
-      feedback: score10 >= 8 ? "Rất xuất sắc! Nắm vững toàn bộ kiến thức cốt lõi." : score10 >= 6.5 ? "Khá tốt! Cần xem lại các câu giải thích để tối ưu điểm số." : "Cần ôn tập lại lý thuyết chuyên đề này.",
+      feedback: score10 >= 8 ? "Rất xuất sắc! Nắm vững toàn bộ kiến thức trọng tâm." : score10 >= 6.5 ? "Khá tốt! Tiếp tục rèn luyện để đạt điểm tối đa." : "Cần ôn tập thêm lý thuyết chuyên đề này.",
       date: new Date().toLocaleDateString("vi-VN")
     });
     saveStoredGrades(grades);
 
-    // Show Result Box
+    // Show Result Box (No explanations or solution keys shown)
     const quizResultBox = document.getElementById("quizResultBox");
     const quizResultScore = document.getElementById("quizResultScore");
     const quizResultPercentage = document.getElementById("quizResultPercentage");
@@ -1285,17 +1476,21 @@
 
   const closeTakeQuiz = () => {
     clearInterval(quizTimerInterval);
+    if (document.fullscreenElement) {
+      document.exitFullscreen().catch(() => {});
+    }
     closeModalElement(takeQuizModal);
   };
 
   const btnSubmitQuiz = document.getElementById("btnSubmitQuiz");
   if (btnSubmitQuiz) btnSubmitQuiz.addEventListener("click", submitQuiz);
 
-  const btnReviewQuizAnswers = document.getElementById("btnReviewQuizAnswers");
-  if (btnReviewQuizAnswers) {
-    btnReviewQuizAnswers.addEventListener("click", () => {
-      const container = document.getElementById("quizQuestionsContainer");
-      if (container) container.scrollIntoView({ behavior: "smooth" });
+  const btnViewGradebookFromQuiz = document.getElementById("btnViewGradebookFromQuiz");
+  if (btnViewGradebookFromQuiz) {
+    btnViewGradebookFromQuiz.addEventListener("click", () => {
+      closeTakeQuiz();
+      const gradebookTabBtn = document.querySelector('.student-tab-btn[data-target-tab="tabStudentGradebook"]');
+      if (gradebookTabBtn) gradebookTabBtn.click();
     });
   }
 

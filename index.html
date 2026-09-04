@@ -18,6 +18,47 @@
     <link rel="stylesheet" href="account-styles.css" />
   </head>
   <body>
+    <!-- Intro / Splash Screen (White & Violet/Purple Theme with Interactive Particle Grid) -->
+    <div id="splashScreen" class="splash-screen" aria-label="Màn hình khởi động EduNova">
+      <!-- Interactive Particle Grid Canvas -->
+      <canvas id="splashParticleCanvas" class="splash-particle-canvas"></canvas>
+      
+      <!-- Ambient Glow Spheres (White dominant, purple accents) -->
+      <div class="splash-glow-sphere top-right"></div>
+      <div class="splash-glow-sphere bottom-left"></div>
+
+      <div class="splash-content">
+        <div class="splash-logo-box">
+          <span class="splash-brand-mark">E</span>
+          <div class="splash-logo-pulse"></div>
+        </div>
+        
+        <div class="splash-title-wrap">
+          <h1 class="splash-title">EduNova</h1>
+          <div class="splash-badge">✨ NỀN TẢNG HỌC TẬP TƯƠNG LAI</div>
+        </div>
+        
+        <p class="splash-subtitle">Hệ sinh thái luyện thi, bài tập & phát triển năng lực toàn diện</p>
+
+        <!-- Loading Progress -->
+        <div class="splash-loading-wrap">
+          <div class="splash-loading-bar">
+            <div class="splash-loading-progress" id="splashProgressBar"></div>
+          </div>
+          <span class="splash-skip-hint" id="splashTimerHint">Tự động chuyển tiếp sau 3s...</span>
+        </div>
+
+        <!-- Button to go directly to main menu -->
+        <button type="button" class="splash-enter-btn" id="btnEnterMainMenu" aria-label="Chuyển đến trang chính">
+          <span>Vào menu chính</span>
+          <svg class="splash-enter-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"></line>
+            <polyline points="12 5 19 12 12 19"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+
     <header class="site-header">
       <div class="container nav">
         <div class="brand">
@@ -843,10 +884,22 @@
       </div>
     </div>
 
-    <!-- Take Quiz Modal (Interactive Player) -->
+    <!-- Take Quiz Modal (Interactive Player with Full Screen Mode) -->
     <div class="modal-overlay hidden" id="takeQuizModal" aria-hidden="true">
-      <div class="modal-dialog modal-large" role="dialog" aria-modal="true" aria-labelledby="takeQuizTitle">
-        <button class="modal-close" type="button" aria-label="Đóng bài thi" data-close-take-quiz>×</button>
+      <div class="modal-dialog modal-large quiz-fullscreen-dialog" role="dialog" aria-modal="true" aria-labelledby="takeQuizTitle">
+        <button class="modal-close" type="button" aria-label="Đóng bài thi" data-close-take-quiz title="Thoát bài thi">×</button>
+        
+        <!-- Full Screen Security & Status Header -->
+        <div class="quiz-fullscreen-bar" id="quizFullscreenBanner">
+          <div class="fullscreen-indicator">
+            <span class="pulse-dot"></span>
+            <strong>🔒 Chế độ thi toàn màn hình bảo mật</strong>
+          </div>
+          <button type="button" class="fullscreen-toggle-btn" id="btnToggleFullscreenQuiz" title="Bật/Tắt chế độ toàn màn hình">
+            🖥️ Toàn màn hình
+          </button>
+        </div>
+
         <div class="modal-header quiz-modal-header">
           <div>
             <span class="eyebrow" id="takeQuizCategoryBadge">⚡ Bài kiểm tra trực tuyến</span>
@@ -860,20 +913,20 @@
         </div>
 
         <div class="quiz-body" id="quizQuestionsContainer">
-          <!-- Question cards dynamically rendered by JS -->
+          <!-- Question cards dynamically rendered by JS (No explanations) -->
         </div>
 
-        <!-- Quiz Result Summary (Shown after submit) -->
+        <!-- Quiz Result Summary (Shown after submit - No solutions revealed) -->
         <div class="quiz-result-card hidden" id="quizResultBox">
           <div class="quiz-result-score-circle">
             <span class="score-number" id="quizResultScore">0/10</span>
             <span class="score-label" id="quizResultPercentage">0%</span>
           </div>
-          <h4 id="quizResultTitle">Kết quả bài làm</h4>
+          <h4 id="quizResultTitle">Đã nộp bài kiểm tra thành công!</h4>
           <p id="quizResultFeedback" style="color: var(--text-muted); font-size: 0.92rem;"></p>
           <div class="quiz-result-actions">
-            <button class="btn btn-secondary small-btn" type="button" id="btnReviewQuizAnswers">🔍 Xem đáp án chi tiết</button>
-            <button class="btn btn-primary small-btn" type="button" data-close-take-quiz>Đóng</button>
+            <button class="btn btn-primary small-btn" type="button" id="btnViewGradebookFromQuiz">📊 Xem Bảng điểm</button>
+            <button class="btn btn-secondary small-btn" type="button" data-close-take-quiz>Đóng & Thoát</button>
           </div>
         </div>
 
