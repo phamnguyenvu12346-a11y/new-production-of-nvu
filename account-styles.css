@@ -984,3 +984,511 @@
   background: var(--primary-subtle, rgba(67, 97, 238, 0.08));
   border-color: var(--primary, #4361ee);
 }
+
+/* ==========================================================================
+   Revamped Auth Modals (Đăng ký / Đăng nhập)
+   ========================================================================== */
+.auth-dialog {
+  max-width: 480px !important;
+  border-radius: 24px !important;
+  padding: 28px 24px !important;
+  border: 1px solid rgba(124, 58, 237, 0.15) !important;
+  box-shadow: 0 20px 60px rgba(124, 58, 237, 0.12) !important;
+}
+
+.auth-mode-tabs {
+  display: flex;
+  background: #f1f5f9;
+  border-radius: 12px;
+  padding: 4px;
+  gap: 4px;
+  margin-bottom: 20px;
+}
+
+.auth-mode-tab {
+  flex: 1;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-weight: 700;
+  font-size: 0.92rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: center;
+}
+
+.auth-mode-tab.active {
+  background: #ffffff;
+  color: #7c3aed;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.auth-modal-header {
+  text-align: center;
+  margin-bottom: 16px;
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+
+.auth-modal-header h3 {
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #1e1b4b;
+  margin: 0 0 6px;
+}
+
+.auth-subtitle {
+  font-size: 0.88rem;
+  color: #64748b;
+  margin: 0;
+}
+
+/* Quick Demo Auth Box */
+.quick-demo-auth-box {
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  border: 1px solid rgba(124, 58, 237, 0.2);
+  border-radius: 14px;
+  padding: 12px 14px;
+  margin-bottom: 18px;
+}
+
+.quick-demo-label {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: #6d28d9;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.quick-demo-btns {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.btn-demo-quick {
+  flex: 1;
+  padding: 8px 12px;
+  background: #ffffff;
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  color: #6d28d9;
+  font-weight: 700;
+  font-size: 0.84rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-demo-quick:hover {
+  background: #7c3aed;
+  color: #ffffff;
+  border-color: #7c3aed;
+  transform: translateY(-1px);
+}
+
+.auth-divider {
+  position: relative;
+  text-align: center;
+  margin: 14px 0 18px;
+}
+
+.auth-divider::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.auth-divider span {
+  position: relative;
+  background: #ffffff;
+  padding: 0 12px;
+  font-size: 0.78rem;
+  color: #94a3b8;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   Quiz Subject Filters & Question Palette
+   ========================================================================== */
+.quiz-subject-filter-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  scrollbar-width: thin;
+}
+
+.quiz-filter-chip {
+  padding: 7px 16px;
+  border-radius: 9999px;
+  border: 1px solid #e2e8f0;
+  background: #ffffff;
+  color: #475569;
+  font-weight: 700;
+  font-size: 0.85rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+}
+
+.quiz-filter-chip:hover {
+  border-color: #7c3aed;
+  color: #7c3aed;
+}
+
+.quiz-filter-chip.active {
+  background: linear-gradient(135deg, #7c3aed, #6366f1);
+  color: #ffffff;
+  border-color: transparent;
+  box-shadow: 0 4px 12px rgba(124, 58, 237, 0.25);
+}
+
+/* Quiz Navigation Palette Bar */
+.quiz-nav-palette-bar {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 14px;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.quiz-answered-count {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.88rem;
+  color: #475569;
+}
+
+.quiz-mini-progress {
+  width: 100px;
+  height: 6px;
+  background: #e2e8f0;
+  border-radius: 9999px;
+  overflow: hidden;
+}
+
+.quiz-mini-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #7c3aed, #a855f7);
+  border-radius: 9999px;
+  transition: width 0.25s ease;
+}
+
+.quiz-question-pills {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.q-pill {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  border: 1.5px solid #cbd5e1;
+  background: #ffffff;
+  color: #475569;
+  font-weight: 800;
+  font-size: 0.82rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.q-pill:hover {
+  border-color: #7c3aed;
+  color: #7c3aed;
+}
+
+.q-pill.answered {
+  background: #7c3aed;
+  color: #ffffff;
+  border-color: #7c3aed;
+  box-shadow: 0 2px 6px rgba(124, 58, 237, 0.3);
+}
+
+/* Enhanced Question & Choices */
+.quiz-question-card {
+  background: #ffffff !important;
+  border: 1.5px solid #e2e8f0 !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.03) !important;
+  transition: border-color 0.2s ease;
+}
+
+.quiz-question-card:hover {
+  border-color: rgba(124, 58, 237, 0.4) !important;
+}
+
+.quiz-question-title {
+  font-size: 1.05rem !important;
+  line-height: 1.45 !important;
+  color: #0f172a !important;
+}
+
+.quiz-option-label {
+  padding: 13px 18px !important;
+  border-radius: 12px !important;
+  border: 1.5px solid #e2e8f0 !important;
+  font-size: 0.95rem !important;
+  font-weight: 500 !important;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.quiz-option-label:hover {
+  background: #fbfaff !important;
+  border-color: #7c3aed !important;
+  transform: translateX(3px);
+}
+
+.quiz-option-label.selected {
+  background: #f5f3ff !important;
+  border-color: #7c3aed !important;
+  box-shadow: 0 0 0 1px #7c3aed, 0 4px 12px rgba(124, 58, 237, 0.12) !important;
+  color: #5b21b6 !important;
+  font-weight: 700 !important;
+}
+
+/* ==========================================================================
+   Leaderboard (Bảng Xếp Hạng)
+   ========================================================================== */
+.leaderboard-scope-toggle {
+  display: flex;
+  background: #f1f5f9;
+  border-radius: 10px;
+  padding: 3px;
+  gap: 4px;
+}
+
+.scope-btn {
+  padding: 6px 14px;
+  border: none;
+  background: transparent;
+  color: #64748b;
+  font-weight: 700;
+  font-size: 0.84rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.scope-btn.active {
+  background: #ffffff;
+  color: #7c3aed;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* Top 3 Podium */
+.leaderboard-podium {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: 16px;
+  margin: 28px 0 32px;
+  padding: 0 10px;
+}
+
+.podium-column {
+  flex: 1;
+  max-width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.podium-avatar-wrap {
+  position: relative;
+  margin-bottom: 10px;
+}
+
+.podium-avatar {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  background: #f8fafc;
+  border: 3px solid #e2e8f0;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+}
+
+.podium-1 .podium-avatar {
+  width: 82px;
+  height: 82px;
+  font-size: 2.4rem;
+  border-color: #f59e0b;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.3);
+}
+
+.podium-crown {
+  position: absolute;
+  top: -16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 1.4rem;
+}
+
+.podium-medal {
+  position: absolute;
+  bottom: -6px;
+  right: -4px;
+  font-size: 1.3rem;
+}
+
+.podium-name {
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #0f172a;
+  margin-bottom: 2px;
+}
+
+.podium-grade {
+  font-size: 0.78rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.podium-block {
+  width: 100%;
+  border-radius: 16px 16px 0 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 18px 10px;
+  margin-top: 10px;
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.podium-1 .podium-block {
+  height: 140px;
+  background: linear-gradient(180deg, #f59e0b, #d97706);
+  box-shadow: 0 10px 25px rgba(245, 158, 11, 0.25);
+}
+
+.podium-2 .podium-block {
+  height: 110px;
+  background: linear-gradient(180deg, #94a3b8, #64748b);
+  box-shadow: 0 8px 20px rgba(100, 116, 139, 0.2);
+}
+
+.podium-3 .podium-block {
+  height: 90px;
+  background: linear-gradient(180deg, #d97706, #b45309);
+  box-shadow: 0 8px 20px rgba(180, 83, 9, 0.2);
+}
+
+.podium-rank-number {
+  font-size: 1.8rem;
+  line-height: 1;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  opacity: 0.95;
+}
+
+.podium-score-pill {
+  margin-top: 6px;
+  background: rgba(255, 255, 255, 0.25);
+  padding: 3px 10px;
+  border-radius: 9999px;
+  font-size: 0.8rem;
+}
+
+/* User rank banner */
+.leaderboard-user-rank-banner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  border-radius: 14px;
+  margin-bottom: 20px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.user-rank-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.user-rank-badge {
+  background: #7c3aed;
+  color: #ffffff;
+  padding: 6px 12px;
+  border-radius: 8px;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+
+/* Leaderboard Table */
+.leaderboard-table-container {
+  overflow-x: auto;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+}
+
+.leaderboard-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.leaderboard-table th {
+  padding: 14px 18px;
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  background: #f8fafc;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.leaderboard-table td {
+  padding: 14px 18px;
+  font-size: 0.9rem;
+  border-bottom: 1px solid #f1f5f9;
+  color: #1e293b;
+}
+
+.leaderboard-table tr:hover td {
+  background: #faf5ff;
+}
+
+.leaderboard-table tr.is-current-user td {
+  background: #f5f3ff !important;
+  font-weight: 700;
+}
+
+.rank-medal-cell {
+  font-weight: 800;
+  font-size: 1.05rem;
+  width: 60px;
+}

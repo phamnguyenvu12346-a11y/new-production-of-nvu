@@ -1324,9 +1324,80 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Signup Form Handler
+  // ============ Enhanced Auth System (Đăng ký / Đăng nhập) ============
+
+  // Auth Switch Tabs between Signup and Login Modals
+  const tabBtnToSignup = document.getElementById("tabBtnToSignup");
+  const tabBtnToLogin = document.getElementById("tabBtnToLogin");
+  const tabBtnLoginActive = document.getElementById("tabBtnLoginActive");
+  const tabBtnSignupSwitch = document.getElementById("tabBtnSignupSwitch");
+
+  if (tabBtnToLogin) {
+    tabBtnToLogin.addEventListener("click", () => {
+      closeModalElement(signupModal);
+      openModalElement(loginModal);
+    });
+  }
+  if (tabBtnSignupSwitch) {
+    tabBtnSignupSwitch.addEventListener("click", () => {
+      closeModalElement(loginModal);
+      openModalElement(signupModal);
+    });
+  }
+
+  // One-Click Quick Demo Login (Dành cho kiểm thử nhanh)
+  const btnQuickLoginStudent = document.getElementById("btnQuickLoginStudent");
+  if (btnQuickLoginStudent) {
+    btnQuickLoginStudent.addEventListener("click", () => {
+      const demoStudent = {
+        id: "user-demo-student",
+        fullName: "Minh Anh",
+        email: "minhanh@edunova.vn",
+        accountType: "student",
+        grade: "12",
+        course: "Toán học - Đại số & Hình học không gian",
+        registeredAt: new Date().toLocaleDateString("vi-VN")
+      };
+      setCurrentUser(demoStudent);
+      closeModalElement(loginModal);
+      updateAuthUI();
+      updateSchedule(demoStudent.course);
+      showToast("🎉 Đăng nhập thành công với tài khoản Học sinh (Lớp 12)!");
+    });
+  }
+
+  const btnQuickLoginTeacher = document.getElementById("btnQuickLoginTeacher");
+  if (btnQuickLoginTeacher) {
+    btnQuickLoginTeacher.addEventListener("click", () => {
+      const demoTeacher = {
+        id: "user-demo-teacher",
+        fullName: "Thầy Tuấn (Vật lý EduNova)",
+        email: "thaytuan@edunova.vn",
+        accountType: "teacher",
+        course: "Vật lý - Cơ học & Sóng điện từ",
+        registeredAt: new Date().toLocaleDateString("vi-VN")
+      };
+      setCurrentUser(demoTeacher);
+      closeModalElement(loginModal);
+      updateAuthUI();
+      updateSchedule(demoTeacher.course);
+      showToast("🎉 Đăng nhập thành công với tài khoản Giáo viên!");
+    });
+  }
+
+  // Signup Form Role Toggle
   const signupForm = document.getElementById("signupForm");
   if (signupForm) {
+    signupForm.querySelectorAll('input[name="accountType"]').forEach((radio) => {
+      radio.addEventListener("change", (e) => {
+        const isTeacher = e.target.value === "teacher";
+        const gradeGroup = document.getElementById("signupGradeGroup");
+        const courseLabel = document.getElementById("signupCourseLabel");
+        if (gradeGroup) gradeGroup.style.display = isTeacher ? "none" : "block";
+        if (courseLabel) courseLabel.textContent = isTeacher ? "Môn học giảng dạy" : "Môn học trọng tâm";
+      });
+    });
+
     signupForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const fullName = document.getElementById("fullName").value.trim();
@@ -1375,7 +1446,8 @@ document.addEventListener("DOMContentLoaded", () => {
         formMessage.textContent = "";
         updateAuthUI();
         if (course) updateSchedule(course);
-      }, 1000);
+        showToast(`🎉 Chào mừng ${fullName} gia nhập EduNova!`);
+      }, 800);
     });
   }
 
@@ -1407,7 +1479,8 @@ document.addEventListener("DOMContentLoaded", () => {
         msg.textContent = "";
         updateAuthUI();
         if (user.course) updateSchedule(user.course);
-      }, 800);
+        showToast(`👋 Chào mừng bạn quay trở lại, ${user.fullName || "học viên"}!`);
+      }, 700);
     });
   }
 
@@ -1427,6 +1500,8 @@ document.addEventListener("DOMContentLoaded", () => {
   let quizTimeRemaining = 0;
   let userQuizAnswers = {};
 
+  let activeQuizFilterSubject = "all";
+
   const openTakeQuiz = (quizId) => {
     const quizzes = getStoredQuizzes();
     activeQuiz = quizzes.find((q) => q.id === quizId) || quizzes[0];
@@ -1439,13 +1514,41 @@ document.addEventListener("DOMContentLoaded", () => {
     const quizQuestionsContainer = document.getElementById("quizQuestionsContainer");
     const quizResultBox = document.getElementById("quizResultBox");
     const quizFooterActions = document.getElementById("quizFooterActions");
+    const quizQuestionPills = document.getElementById("quizQuestionPills");
+    const quizAnsweredCountText = document.getElementById("quizAnsweredCountText");
+    const quizMiniBar = document.getElementById("quizMiniBar");
+
+    const totalQuestions = (activeQuiz.questions || []).length || 1;
 
     if (takeQuizTitle) takeQuizTitle.textContent = activeQuiz.title;
     if (takeQuizCategoryBadge) takeQuizCategoryBadge.textContent = `⚡ ${activeQuiz.course || "Trắc nghiệm"}`;
-    if (takeQuizMetaText) takeQuizMetaText.textContent = `Khối lớp: Lớp ${activeQuiz.grade || "12"} · Thời gian: ${activeQuiz.duration || 15} phút · Số câu: ${activeQuiz.questions ? activeQuiz.questions.length : 5} câu`;
+    if (takeQuizMetaText) takeQuizMetaText.textContent = `Khối lớp: Lớp ${activeQuiz.grade || "12"} · Thời gian: ${activeQuiz.duration || 15} phút · Số câu: ${totalQuestions} câu`;
 
     if (quizResultBox) quizResultBox.classList.add("hidden");
     if (quizFooterActions) quizFooterActions.style.display = "block";
+
+    const updateQuestionProgress = () => {
+      const answeredCount = Object.keys(userQuizAnswers).length;
+      if (quizAnsweredCountText) quizAnsweredCountText.textContent = `${answeredCount}/${totalQuestions} câu`;
+      if (quizMiniBar) quizMiniBar.style.width = `${Math.round((answeredCount / totalQuestions) * 100)}%`;
+    };
+
+    // Render Question Navigation Pills
+    if (quizQuestionPills) {
+      quizQuestionPills.innerHTML = (activeQuiz.questions || [])
+        .map((_, idx) => `<button type="button" class="q-pill" data-target-q="quizQuestion_${activeQuiz.questions[idx].id}" title="Đến câu ${idx + 1}">${idx + 1}</button>`)
+        .join("");
+
+      quizQuestionPills.querySelectorAll(".q-pill").forEach((pill) => {
+        pill.addEventListener("click", (e) => {
+          const targetId = e.currentTarget.dataset.targetQ;
+          const targetCard = document.getElementById(targetId);
+          if (targetCard) targetCard.scrollIntoView({ behavior: "smooth", block: "center" });
+        });
+      });
+    }
+
+    updateQuestionProgress();
 
     // Render questions — NO EXPLANATIONS shown during quiz
     if (quizQuestionsContainer) {
@@ -1458,7 +1561,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 .map(
                   (opt, optIndex) => `
                     <label class="quiz-option-label" data-qid="${q.id}" data-optindex="${optIndex}">
-                      <input type="radio" name="quiz_opt_${q.id}" value="${optIndex}" style="accent-color: var(--primary, #4361ee);" />
+                      <input type="radio" name="quiz_opt_${q.id}" value="${optIndex}" style="accent-color: #7c3aed; width: 18px; height: 18px;" />
                       <span><strong>${String.fromCharCode(65 + optIndex)}.</strong> ${opt}</span>
                     </label>
                   `
@@ -1477,6 +1580,11 @@ document.addEventListener("DOMContentLoaded", () => {
           userQuizAnswers[qid] = optIdx;
           lbl.parentElement.querySelectorAll(".quiz-option-label").forEach((l) => l.classList.remove("selected"));
           lbl.classList.add("selected");
+
+          // Update pill status
+          const pill = quizQuestionPills?.querySelector(`[data-target-q="quizQuestion_${qid}"]`);
+          if (pill) pill.classList.add("answered");
+          updateQuestionProgress();
         });
       });
     }
@@ -1509,10 +1617,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const updateQuizTimerDisplay = () => {
     const quizTimerText = document.getElementById("quizTimerText");
+    const quizTimerBox = document.getElementById("quizTimerBox");
     if (!quizTimerText) return;
     const mins = Math.floor(quizTimeRemaining / 60);
     const secs = quizTimeRemaining % 60;
     quizTimerText.textContent = `${mins < 10 ? "0" + mins : mins}:${secs < 10 ? "0" + secs : secs}`;
+
+    // Alert color if less than 2 minutes
+    if (quizTimeRemaining < 120 && quizTimerBox) {
+      quizTimerBox.style.background = "#fee2e2";
+      quizTimerBox.style.color = "#b91c1c";
+    } else if (quizTimerBox) {
+      quizTimerBox.style.background = "#fef2f2";
+      quizTimerBox.style.color = "#dc2626";
+    }
   };
 
   const submitQuiz = () => {
@@ -1556,15 +1674,16 @@ document.addEventListener("DOMContentLoaded", () => {
     // Tự động thoát modal làm bài
     closeModalElement(takeQuizModal);
 
-    // Tự động chuyển sang tab Bảng điểm
+    // Tự động chuyển sang tab Bảng điểm & cập nhật
     renderStudentGradebook();
+    renderLeaderboard();
     const gradebookTabBtn = document.querySelector('.student-tab-btn[data-target-tab="tabStudentGradebook"]');
     if (gradebookTabBtn) {
       gradebookTabBtn.click();
     }
 
     // Hiển thị thông báo kết quả tức thì
-    showToast(`🎉 Nộp bài thành công! Điểm: ${score10}/10 (${percentage}%). Đã lưu vào Bảng điểm.`);
+    showToast(`🎉 Nộp bài thành công! Điểm: ${score10}/10 (${percentage}%). Bảng xếp hạng đã cập nhật!`);
 
     // Cuộn nhẹ tới góc học tập
     const studentDashboard = document.getElementById("studentDashboard");
@@ -1593,8 +1712,9 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Render Student Quizzes Tab (Gọn gàng, ít chữ, dễ thao tác)
-  const renderStudentQuizzes = () => {
+  // Render Student Quizzes Tab (Dễ nhìn, có lọc môn học, dễ thao tác)
+  const renderStudentQuizzes = (selectedSubject = activeQuizFilterSubject) => {
+    activeQuizFilterSubject = selectedSubject;
     const studentQuizList = document.getElementById("studentQuizList");
     if (!studentQuizList) return;
 
@@ -1602,8 +1722,34 @@ document.addEventListener("DOMContentLoaded", () => {
     const activeGrade = currentUser?.grade || document.getElementById("dashboardGradeSelect")?.value || "12";
     const quizzes = getStoredQuizzes();
 
+    // Filter by grade
     let filtered = quizzes.filter((q) => String(q.grade) === String(activeGrade));
     if (filtered.length === 0) filtered = quizzes;
+
+    // Filter by subject
+    if (selectedSubject !== "all") {
+      filtered = filtered.filter((q) => (q.course || "").toLowerCase().includes(selectedSubject.toLowerCase()));
+    }
+
+    // Wire up subject filter chips
+    const filterBar = document.getElementById("quizSubjectFilterBar");
+    if (filterBar) {
+      filterBar.querySelectorAll(".quiz-filter-chip").forEach((chip) => {
+        chip.classList.toggle("active", chip.dataset.subject === selectedSubject);
+        chip.onclick = () => renderStudentQuizzes(chip.dataset.subject);
+      });
+    }
+
+    if (filtered.length === 0) {
+      studentQuizList.innerHTML = `
+        <div style="grid-column: 1/-1; text-align: center; padding: 40px 20px; background: #f8fafc; border-radius: 16px; border: 1px dashed #cbd5e1;">
+          <span style="font-size: 2.2rem; display: block; margin-bottom: 8px;">📂</span>
+          <p style="font-weight: 700; color: #475569; margin: 0 0 4px;">Chưa có đề thi nào cho môn ${selectedSubject} ở Lớp ${activeGrade}.</p>
+          <small style="color: #94a3b8;">Vui lòng chọn môn khác hoặc chọn "Tất cả môn".</small>
+        </div>
+      `;
+      return;
+    }
 
     studentQuizList.innerHTML = filtered
       .map(
@@ -1618,7 +1764,7 @@ document.addEventListener("DOMContentLoaded", () => {
               <div class="quiz-meta-info">
                 <span>⏱ ${quiz.duration || 15} phút</span>
                 <span>•</span>
-                <span>📋 ${quiz.questions ? quiz.questions.length : 5} câu</span>
+                <span>📋 ${quiz.questions ? quiz.questions.length : 5} câu hỏi</span>
               </div>
             </div>
             <div class="quiz-card-footer">
@@ -1638,6 +1784,207 @@ document.addEventListener("DOMContentLoaded", () => {
       });
     });
   };
+
+  // ============ Leaderboard (Bảng Xếp Hạng Thi Đua) ============
+  let currentLeaderboardScope = "all";
+
+  const BASE_LEADERBOARD = [
+    { id: "lb-1", name: "Đặng Hoàng Long", grade: "12", avatar: "👨‍🎓", testsCount: 15, avgScore: 9.9, title: "🏆 Thủ khoa xuất sắc" },
+    { id: "lb-2", name: "Trần Bảo Ngọc", grade: "12", avatar: "👩‍🎓", testsCount: 13, avgScore: 9.7, title: "🌟 Á khoa tài năng" },
+    { id: "lb-3", name: "Nguyễn Quốc Huy", grade: "11", avatar: "👨‍🎓", testsCount: 12, avgScore: 9.5, title: "⚡ Chiến binh học tập" },
+    { id: "lb-4", name: "Lê Thùy Trang", grade: "12", avatar: "👩‍🎓", testsCount: 10, avgScore: 9.2, title: "🎓 Học sinh giỏi" },
+    { id: "lb-5", name: "Phạm Nhật Minh", grade: "10", avatar: "👨‍🎓", testsCount: 9, avgScore: 9.0, title: "🚀 Bứt phá ấn tượng" },
+    { id: "lb-6", name: "Vũ Hoàng Yến", grade: "12", avatar: "👩‍🎓", testsCount: 8, avgScore: 8.8, title: "⭐ Chăm chỉ xuất sắc" },
+    { id: "lb-7", name: "Ngô Gia Bảo", grade: "11", avatar: "👨‍🎓", testsCount: 8, avgScore: 8.5, title: "📚 Tích cực rèn luyện" },
+    { id: "lb-8", name: "Đỗ Khánh Linh", grade: "12", avatar: "👩‍🎓", testsCount: 7, avgScore: 8.3, title: "🎯 Nỗ lực vượt bậc" }
+  ];
+
+  const renderLeaderboard = (scope = currentLeaderboardScope) => {
+    currentLeaderboardScope = scope;
+    const podiumEl = document.getElementById("leaderboardPodium");
+    const userBannerEl = document.getElementById("leaderboardUserBanner");
+    const tableContainerEl = document.getElementById("leaderboardTableContainer");
+    if (!podiumEl || !tableContainerEl) return;
+
+    const currentUser = getCurrentUser();
+    const userGrades = getStoredGrades().filter((g) => g.type === "quiz");
+    const activeGrade = currentUser?.grade || document.getElementById("dashboardGradeSelect")?.value || "12";
+
+    // Clone base data
+    let list = JSON.parse(JSON.stringify(BASE_LEADERBOARD));
+
+    // Incorporate current user if student
+    if (currentUser && currentUser.accountType !== "teacher") {
+      let userAvg = 0;
+      let userCount = userGrades.length;
+      if (userCount > 0) {
+        const total = userGrades.reduce((sum, g) => sum + (parseFloat(g.score) || 0), 0);
+        userAvg = parseFloat((total / userCount).toFixed(1));
+      } else {
+        userAvg = 8.8; // starter average
+        userCount = 1;
+      }
+
+      const existingIdx = list.findIndex((u) => u.name === currentUser.fullName);
+      const userEntry = {
+        id: currentUser.id || "current-user",
+        name: currentUser.fullName || "Bạn (Học sinh)",
+        grade: String(currentUser.grade || activeGrade),
+        avatar: "⭐",
+        testsCount: userCount,
+        avgScore: userAvg,
+        title: userAvg >= 9 ? "🌟 Ngôi sao EduNova" : userAvg >= 8 ? "🚀 Tiến bộ vượt bậc" : "📖 Chăm chỉ học tập",
+        isCurrentUser: true
+      };
+
+      if (existingIdx !== -1) {
+        list[existingIdx] = userEntry;
+      } else {
+        list.push(userEntry);
+      }
+    }
+
+    // Filter by scope
+    if (scope === "grade") {
+      list = list.filter((u) => String(u.grade) === String(activeGrade));
+    }
+
+    // Sort by avgScore descending, then testsCount descending
+    list.sort((a, b) => b.avgScore - a.avgScore || b.testsCount - a.testsCount);
+
+    // Assign ranks
+    list.forEach((u, idx) => { u.rank = idx + 1; });
+
+    // Render Top 3 Podium
+    const top1 = list[0];
+    const top2 = list[1];
+    const top3 = list[2];
+
+    if (top1 && top2 && top3) {
+      podiumEl.innerHTML = `
+        <!-- Top 2 (Bạc) -->
+        <div class="podium-column podium-2">
+          <div class="podium-avatar-wrap">
+            <div class="podium-avatar">${top2.avatar}</div>
+            <span class="podium-medal">🥈</span>
+          </div>
+          <div class="podium-name">${top2.name}</div>
+          <div class="podium-grade">Lớp ${top2.grade} · ${top2.testsCount} bài</div>
+          <div class="podium-block">
+            <span class="podium-rank-number">2</span>
+            <span class="podium-score-pill">${top2.avgScore}đ TB</span>
+          </div>
+        </div>
+
+        <!-- Top 1 (Vàng) -->
+        <div class="podium-column podium-1">
+          <div class="podium-avatar-wrap">
+            <span class="podium-crown">👑</span>
+            <div class="podium-avatar">${top1.avatar}</div>
+            <span class="podium-medal">🥇</span>
+          </div>
+          <div class="podium-name">${top1.name}</div>
+          <div class="podium-grade">Lớp ${top1.grade} · ${top1.testsCount} bài</div>
+          <div class="podium-block">
+            <span class="podium-rank-number">1</span>
+            <span class="podium-score-pill">${top1.avgScore}đ TB</span>
+          </div>
+        </div>
+
+        <!-- Top 3 (Đồng) -->
+        <div class="podium-column podium-3">
+          <div class="podium-avatar-wrap">
+            <div class="podium-avatar">${top3.avatar}</div>
+            <span class="podium-medal">🥉</span>
+          </div>
+          <div class="podium-name">${top3.name}</div>
+          <div class="podium-grade">Lớp ${top3.grade} · ${top3.testsCount} bài</div>
+          <div class="podium-block">
+            <span class="podium-rank-number">3</span>
+            <span class="podium-score-pill">${top3.avgScore}đ TB</span>
+          </div>
+        </div>
+      `;
+    }
+
+    // Render Current User Banner
+    const myRankItem = list.find((u) => u.isCurrentUser);
+    if (userBannerEl) {
+      if (myRankItem) {
+        userBannerEl.style.display = "flex";
+        userBannerEl.innerHTML = `
+          <div class="user-rank-left">
+            <span class="user-rank-badge">Hạng #${myRankItem.rank}</span>
+            <div>
+              <strong>${myRankItem.name}</strong>
+              <div style="font-size: 0.82rem; color: #64748b;">Khối: Lớp ${myRankItem.grade} · Danh hiệu: <span style="color: #7c3aed; font-weight: 700;">${myRankItem.title}</span></div>
+            </div>
+          </div>
+          <div style="text-align: right;">
+            <span style="font-size: 1.15rem; font-weight: 800; color: #7c3aed;">${myRankItem.avgScore}/10</span>
+            <div style="font-size: 0.78rem; color: #64748b;">Đã làm ${myRankItem.testsCount} đề thi</div>
+          </div>
+        `;
+      } else {
+        userBannerEl.style.display = "none";
+      }
+    }
+
+    // Render Table
+    tableContainerEl.innerHTML = `
+      <table class="leaderboard-table">
+        <thead>
+          <tr>
+            <th>Thứ hạng</th>
+            <th>Học sinh</th>
+            <th>Khối lớp</th>
+            <th>Số bài làm</th>
+            <th>Điểm trung bình</th>
+            <th>Danh hiệu</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${list
+            .map((u) => {
+              const medal = u.rank === 1 ? "🥇" : u.rank === 2 ? "🥈" : u.rank === 3 ? "🥉" : `#${u.rank}`;
+              return `
+                <tr class="${u.isCurrentUser ? "is-current-user" : ""}">
+                  <td class="rank-medal-cell">${medal}</td>
+                  <td>
+                    <div style="display: flex; align-items: center; gap: 8px;">
+                      <span>${u.avatar}</span>
+                      <strong>${u.name}</strong>
+                      ${u.isCurrentUser ? '<span class="status-badge" style="background: #ede9fe; color: #7c3aed; font-size: 0.72rem;">Bạn</span>' : ""}
+                    </div>
+                  </td>
+                  <td>Lớp ${u.grade}</td>
+                  <td>${u.testsCount} đề thi</td>
+                  <td><strong style="color: #7c3aed; font-size: 1rem;">${u.avgScore}</strong></td>
+                  <td><span style="font-size: 0.82rem; color: #475569;">${u.title}</span></td>
+                </tr>
+              `;
+            })
+            .join("")}
+        </tbody>
+      </table>
+    `;
+  };
+
+  // Wire up scope toggle buttons
+  const btnLbScopeAll = document.getElementById("btnLbScopeAll");
+  const btnLbScopeGrade = document.getElementById("btnLbScopeGrade");
+  if (btnLbScopeAll && btnLbScopeGrade) {
+    btnLbScopeAll.addEventListener("click", () => {
+      btnLbScopeAll.classList.add("active");
+      btnLbScopeGrade.classList.remove("active");
+      renderLeaderboard("all");
+    });
+    btnLbScopeGrade.addEventListener("click", () => {
+      btnLbScopeGrade.classList.add("active");
+      btnLbScopeAll.classList.remove("active");
+      renderLeaderboard("grade");
+    });
+  }
 
   // Render Student Gradebook
   const renderStudentGradebook = () => {
@@ -1804,6 +2151,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       if (targetId === "tabStudentQuizzes") renderStudentQuizzes();
       if (targetId === "tabStudentGradebook") renderStudentGradebook();
+      if (targetId === "tabStudentLeaderboard") renderLeaderboard();
       if (targetId === "tabStudentQnA") renderQuestionBank();
       if (targetId === "tabStudentMaterials") renderStudentMaterials();
       if (targetId === "tabStudentAssignments") renderStudentAssignments();
@@ -1830,6 +2178,7 @@ document.addEventListener("DOMContentLoaded", () => {
       if (studentGradePill) studentGradePill.textContent = `🎓 Lớp ${selectedGrade}`;
 
       renderStudentQuizzes();
+      renderLeaderboard();
       renderStudentMaterials();
       renderStudentAssignments();
       renderQuestionBank();
@@ -2410,6 +2759,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         renderStudentQuizzes();
         renderStudentGradebook();
+        renderLeaderboard();
         renderQuestionBank();
         renderStudentMaterials();
         renderStudentAssignments();
@@ -2430,6 +2780,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
       renderStudentQuizzes();
       renderStudentGradebook();
+      renderLeaderboard();
       renderQuestionBank();
       renderStudentMaterials();
       renderStudentAssignments();

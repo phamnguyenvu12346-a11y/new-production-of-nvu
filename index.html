@@ -393,6 +393,9 @@
             <button class="student-tab-btn active" data-target-tab="tabStudentQuizzes">
               ⚡ Bài kiểm tra
             </button>
+            <button class="student-tab-btn" data-target-tab="tabStudentLeaderboard">
+              🏆 Bảng xếp hạng
+            </button>
             <button class="student-tab-btn" data-target-tab="tabStudentGradebook">
               📊 Bảng điểm
             </button>
@@ -412,10 +415,51 @@
             <div class="tab-panel-header">
               <div>
                 <h3>Đề thi & Luyện tập</h3>
-                <p>Làm bài trực tuyến, tính giờ và tự động chấm điểm</p>
+                <p>Chọn môn học và bắt đầu bài kiểm tra tính giờ trực tuyến</p>
               </div>
             </div>
+
+            <!-- Quiz Subject Quick Filter Bar -->
+            <div class="quiz-subject-filter-bar" id="quizSubjectFilterBar">
+              <button type="button" class="quiz-filter-chip active" data-subject="all">⚡ Tất cả môn</button>
+              <button type="button" class="quiz-filter-chip" data-subject="Toán">📐 Toán</button>
+              <button type="button" class="quiz-filter-chip" data-subject="Vật lý">⚡ Vật lý</button>
+              <button type="button" class="quiz-filter-chip" data-subject="Hóa học">🧪 Hóa học</button>
+              <button type="button" class="quiz-filter-chip" data-subject="Tiếng Anh">🌍 Tiếng Anh</button>
+              <button type="button" class="quiz-filter-chip" data-subject="Tin học">💻 Tin học</button>
+              <button type="button" class="quiz-filter-chip" data-subject="Sinh học">🧬 Sinh học</button>
+            </div>
+
             <div class="quiz-grid" id="studentQuizList">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- Tab Leaderboard: Bảng Xếp Hạng Thi Đua -->
+          <div class="student-tab-panel" id="tabStudentLeaderboard" style="display: none;">
+            <div class="tab-panel-header">
+              <div>
+                <h3>Bảng xếp hạng thi đua</h3>
+                <p>Vinh danh học sinh có thành tích xuất sắc và chăm chỉ nhất EduNova</p>
+              </div>
+              <div class="leaderboard-scope-toggle">
+                <button type="button" class="scope-btn active" id="btnLbScopeAll">Toàn trường</button>
+                <button type="button" class="scope-btn" id="btnLbScopeGrade">Khối của bạn</button>
+              </div>
+            </div>
+
+            <!-- Top 3 Podium (Bục vinh danh) -->
+            <div class="leaderboard-podium" id="leaderboardPodium">
+              <!-- Rendered by JS -->
+            </div>
+
+            <!-- User's current rank snippet -->
+            <div class="leaderboard-user-rank-banner" id="leaderboardUserBanner">
+              <!-- Rendered by JS -->
+            </div>
+
+            <!-- Leaderboard Table -->
+            <div class="leaderboard-table-container" id="leaderboardTableContainer">
               <!-- Rendered by JS -->
             </div>
           </div>
@@ -550,17 +594,24 @@
 
     <!-- Sign Up Modal -->
     <div class="modal-overlay hidden" id="signupModal" aria-hidden="true">
-      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
+      <div class="modal-dialog auth-dialog" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
         <button class="modal-close" type="button" aria-label="Đóng form đăng ký" data-close-signup>×</button>
-        <div class="modal-header">
-          <span class="eyebrow">Chào mừng</span>
-          <h3 id="signupTitle">Tạo tài khoản học tập</h3>
+        
+        <!-- Auth Switch Tabs -->
+        <div class="auth-mode-tabs">
+          <button type="button" class="auth-mode-tab active" id="tabBtnToSignup">✍️ Đăng ký</button>
+          <button type="button" class="auth-mode-tab" id="tabBtnToLogin">🔑 Đăng nhập</button>
         </div>
 
-        <form id="signupForm" class="signup-form">
+        <div class="modal-header auth-modal-header">
+          <h3 id="signupTitle">Tạo tài khoản EduNova</h3>
+          <p class="auth-subtitle">Bắt đầu hành trình học tập và luyện thi thông minh</p>
+        </div>
+
+        <form id="signupForm" class="signup-form auth-form">
           <div class="form-group">
             <label for="fullName">Họ và tên</label>
-            <input id="fullName" name="fullName" type="text" placeholder="Nhập họ tên" required />
+            <input id="fullName" name="fullName" type="text" placeholder="Nguyễn Văn A" required />
           </div>
 
           <div class="form-group">
@@ -569,8 +620,8 @@
           </div>
 
           <div class="form-group account-type">
-            <label>Loại tài khoản</label>
-            <div class="radio-group">
+            <label>Vai trò</label>
+            <div class="radio-group auth-radio-group">
               <label class="radio-label">
                 <input type="radio" name="accountType" value="student" required checked />
                 <span>👨‍🎓 Học sinh</span>
@@ -583,7 +634,7 @@
           </div>
 
           <div class="form-group" id="signupGradeGroup">
-            <label for="signupGrade">Khối lớp (Lớp 1 đến Lớp 12)</label>
+            <label for="signupGrade">Khối lớp</label>
             <select id="signupGrade" name="grade">
               <option value="12" selected>🎓 Lớp 12 (Luyện thi THPT)</option>
               <option value="11">📘 Lớp 11</option>
@@ -601,9 +652,8 @@
           </div>
 
           <div class="form-group" id="signupCourseGroup">
-            <label for="course" id="signupCourseLabel">Môn học quan tâm / phụ trách</label>
+            <label for="course" id="signupCourseLabel">Môn học trọng tâm</label>
             <select id="course" name="course">
-              <option value="">-- Chọn môn học (hoặc để trống) --</option>
               <option value="Toán học - Đại số & Hình học không gian">📐 Toán học</option>
               <option value="Vật lý - Cơ học & Sóng điện từ">⚡ Vật lý</option>
               <option value="Hóa học - Vô cơ & Hữu cơ trọng tâm">🧪 Hóa học</option>
@@ -620,41 +670,54 @@
             <label for="password">Mật khẩu</label>
             <div class="password-input-group">
               <input id="password" name="password" type="password" placeholder="Tối thiểu 6 ký tự" minlength="6" required />
-              <button type="button" class="toggle-password" data-target="password">👁</button>
+              <button type="button" class="toggle-password" data-target="password" title="Hiện/ẩn mật khẩu">👁</button>
             </div>
-            <div class="password-strength" id="passwordStrength"></div>
           </div>
 
           <div class="form-group">
             <label for="confirmPassword">Xác nhận mật khẩu</label>
             <div class="password-input-group">
               <input id="confirmPassword" name="confirmPassword" type="password" placeholder="Nhập lại mật khẩu" minlength="6" required />
-              <button type="button" class="toggle-password" data-target="confirmPassword">👁</button>
+              <button type="button" class="toggle-password" data-target="confirmPassword" title="Hiện/ẩn mật khẩu">👁</button>
             </div>
           </div>
 
-          <div class="form-group checkbox">
-            <input id="rememberMe" name="rememberMe" type="checkbox" />
-            <label for="rememberMe">Nhớ tôi trên máy này</label>
-          </div>
-
-          <button class="btn btn-primary submit-btn" type="submit">Đăng ký ngay</button>
+          <button class="btn btn-primary submit-btn" type="submit">Đăng ký tài khoản</button>
           <p class="form-message" id="formMessage" aria-live="polite"></p>
-          <p class="form-toggle">Đã có tài khoản? <button type="button" id="switchToLogin">Đăng nhập ngay</button></p>
         </form>
       </div>
     </div>
 
     <!-- Login Modal -->
     <div class="modal-overlay hidden" id="loginModal" aria-hidden="true">
-      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+      <div class="modal-dialog auth-dialog" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
         <button class="modal-close" type="button" aria-label="Đóng form" data-close-login>×</button>
-        <div class="modal-header">
-          <span class="eyebrow">Chào mừng trở lại</span>
-          <h3 id="loginTitle">Đăng nhập tài khoản</h3>
+        
+        <!-- Auth Switch Tabs -->
+        <div class="auth-mode-tabs">
+          <button type="button" class="auth-mode-tab active" id="tabBtnLoginActive">🔑 Đăng nhập</button>
+          <button type="button" class="auth-mode-tab" id="tabBtnSignupSwitch">✍️ Đăng ký</button>
         </div>
 
-        <form id="loginForm" class="signup-form">
+        <div class="modal-header auth-modal-header">
+          <h3 id="loginTitle">Đăng nhập tài khoản</h3>
+          <p class="auth-subtitle">Nhập thông tin hoặc chọn tài khoản mẫu để trải nghiệm nhanh</p>
+        </div>
+
+        <!-- One-Click Quick Demo Login -->
+        <div class="quick-demo-auth-box">
+          <span class="quick-demo-label">⚡ Đăng nhập nhanh một chạm:</span>
+          <div class="quick-demo-btns">
+            <button type="button" class="btn-demo-quick" id="btnQuickLoginStudent">👨‍🎓 Học sinh (Lớp 12)</button>
+            <button type="button" class="btn-demo-quick" id="btnQuickLoginTeacher">👨‍🏫 Thầy Tuấn (Giáo viên)</button>
+          </div>
+        </div>
+
+        <div class="auth-divider">
+          <span>hoặc dùng email cá nhân</span>
+        </div>
+
+        <form id="loginForm" class="signup-form auth-form">
           <div class="form-group">
             <label for="loginEmail">Email</label>
             <input id="loginEmail" name="loginEmail" type="email" placeholder="example@gmail.com" required />
@@ -664,18 +727,12 @@
             <label for="loginPassword">Mật khẩu</label>
             <div class="password-input-group">
               <input id="loginPassword" name="loginPassword" type="password" placeholder="Nhập mật khẩu" required />
-              <button type="button" class="toggle-password" data-target="loginPassword">👁</button>
+              <button type="button" class="toggle-password" data-target="loginPassword" title="Hiện/ẩn mật khẩu">👁</button>
             </div>
           </div>
 
-          <div class="form-group checkbox">
-            <input id="rememberLogin" name="rememberLogin" type="checkbox" />
-            <label for="rememberLogin">Nhớ tôi trên máy này</label>
-          </div>
-
-          <button class="btn btn-primary submit-btn" type="submit">Đăng nhập</button>
+          <button class="btn btn-primary submit-btn" type="submit">Đăng nhập ngay</button>
           <p class="form-message" id="loginFormMessage" aria-live="polite"></p>
-          <p class="form-toggle">Chưa có tài khoản? <button type="button" id="switchToSignup">Đăng ký ngay</button></p>
         </form>
       </div>
     </div>
@@ -912,6 +969,19 @@
           <div class="quiz-timer-box" id="quizTimerBox">
             <span class="timer-icon">⏱</span>
             <span class="timer-value" id="quizTimerText">15:00</span>
+          </div>
+        </div>
+
+        <!-- Question Navigation & Answered Progress Palette -->
+        <div class="quiz-nav-palette-bar" id="quizNavPaletteBar">
+          <div class="quiz-answered-count">
+            <span>Tiến độ làm bài: <strong id="quizAnsweredCountText">0/5 câu</strong></span>
+            <div class="quiz-mini-progress">
+              <div class="quiz-mini-bar" id="quizMiniBar"></div>
+            </div>
+          </div>
+          <div class="quiz-question-pills" id="quizQuestionPills">
+            <!-- Dynamically rendered: [1] [2] [3]... -->
           </div>
         </div>
 
