@@ -82,8 +82,8 @@
         </nav>
         <div class="nav-actions" id="authActions">
           <a class="btn btn-ghost" href="#courses">Môn học</a>
-          <a class="btn btn-primary" href="auth.html?tab=signup" id="signupBtn">Đăng ký</a>
-          <a class="btn btn-secondary" href="auth.html?tab=login" id="loginBtn">Đăng nhập</a>
+          <button class="btn btn-primary" type="button" data-open-signup id="signupBtn">Đăng ký</button>
+          <button class="btn btn-secondary" type="button" data-open-login id="loginBtn">Đăng nhập</button>
           <div class="user-profile" style="display: none;" id="userProfile">
             <span id="userRoleBadge" class="role-badge"></span>
             <span id="userName" class="user-name">Người dùng</span>
@@ -105,7 +105,7 @@
               Nền tảng học tập & luyện thi trực tuyến 9 môn phổ thông chuẩn hóa.
             </p>
             <div class="hero-actions">
-              <a class="btn btn-primary" href="auth.html?tab=signup">Bắt đầu ngay</a>
+              <button class="btn btn-primary" type="button" data-open-signup>Bắt đầu ngay</button>
               <a class="btn btn-secondary" href="#courses">Xem 9 môn học</a>
             </div>
             <ul class="hero-stats" aria-label="Thống kê nền tảng">
@@ -595,7 +595,10 @@
     <!-- Sign Up Modal -->
     <div class="modal-overlay hidden" id="signupModal" aria-hidden="true">
       <div class="modal-dialog auth-dialog" role="dialog" aria-modal="true" aria-labelledby="signupTitle">
-        <button class="modal-close" type="button" aria-label="Đóng form đăng ký" data-close-signup>×</button>
+        <div class="auth-dialog-top-actions">
+          <button class="btn-return-menu" type="button" data-return-menu aria-label="Quay lại menu chính">← Về menu chính</button>
+          <button class="modal-close" type="button" aria-label="Đóng form đăng ký" data-close-signup>×</button>
+        </div>
         
         <!-- Auth Switch Tabs -->
         <div class="auth-mode-tabs">
@@ -691,7 +694,10 @@
     <!-- Login Modal -->
     <div class="modal-overlay hidden" id="loginModal" aria-hidden="true">
       <div class="modal-dialog auth-dialog" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
-        <button class="modal-close" type="button" aria-label="Đóng form" data-close-login>×</button>
+        <div class="auth-dialog-top-actions">
+          <button class="btn-return-menu" type="button" data-return-menu aria-label="Quay lại menu chính">← Về menu chính</button>
+          <button class="modal-close" type="button" aria-label="Đóng form" data-close-login>×</button>
+        </div>
         
         <!-- Auth Switch Tabs -->
         <div class="auth-mode-tabs">

@@ -1154,6 +1154,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.querySelectorAll("[data-close-signup]").forEach((b) => b.addEventListener("click", () => closeModalElement(signupModal)));
   document.querySelectorAll("[data-close-login]").forEach((b) => b.addEventListener("click", () => closeModalElement(loginModal)));
+  document.querySelectorAll("[data-return-menu]").forEach((b) => {
+    b.addEventListener("click", () => {
+      closeModalElement(signupModal);
+      closeModalElement(loginModal);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+  });
   document.querySelectorAll("[data-close-create-course]").forEach((b) => b.addEventListener("click", () => closeModalElement(createCourseModal)));
   document.querySelectorAll("[data-close-create-assignment]").forEach((b) => b.addEventListener("click", () => closeModalElement(createAssignmentModal)));
   document.querySelectorAll("[data-close-submit-assignment]").forEach((b) => b.addEventListener("click", () => closeModalElement(submitAssignmentModal)));
@@ -1360,6 +1367,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
       setCurrentUser(demoStudent);
       closeModalElement(loginModal);
+      window.scrollTo({ top: 0, behavior: "smooth" });
       updateAuthUI();
       updateSchedule(demoStudent.course);
       showToast("🎉 Đăng nhập thành công với tài khoản Học sinh (Lớp 12)!");
@@ -1379,6 +1387,7 @@ document.addEventListener("DOMContentLoaded", () => {
       };
       setCurrentUser(demoTeacher);
       closeModalElement(loginModal);
+      window.scrollTo({ top: 0, behavior: "smooth" });
       updateAuthUI();
       updateSchedule(demoTeacher.course);
       showToast("🎉 Đăng nhập thành công với tài khoản Giáo viên!");
@@ -1444,6 +1453,7 @@ document.addEventListener("DOMContentLoaded", () => {
         closeModalElement(signupModal);
         signupForm.reset();
         formMessage.textContent = "";
+        window.scrollTo({ top: 0, behavior: "smooth" });
         updateAuthUI();
         if (course) updateSchedule(course);
         showToast(`🎉 Chào mừng ${fullName} gia nhập EduNova!`);
@@ -1477,6 +1487,7 @@ document.addEventListener("DOMContentLoaded", () => {
         closeModalElement(loginModal);
         loginForm.reset();
         msg.textContent = "";
+        window.scrollTo({ top: 0, behavior: "smooth" });
         updateAuthUI();
         if (user.course) updateSchedule(user.course);
         showToast(`👋 Chào mừng bạn quay trở lại, ${user.fullName || "học viên"}!`);

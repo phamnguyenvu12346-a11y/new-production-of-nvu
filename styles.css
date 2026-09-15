@@ -1671,9 +1671,30 @@ button, input, select, textarea {
 }
 
 /* Ensure page sections stay interactive and layered above particle canvas */
-.site-header, main, footer, .modal-overlay {
+.site-header, main, footer {
   position: relative;
   z-index: 1;
+}
+
+.modal-overlay {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99999 !important;
+  background: rgba(15, 23, 42, 0.65) !important;
+  backdrop-filter: blur(10px) !important;
+  -webkit-backdrop-filter: blur(10px) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  padding: 20px !important;
+  overflow-y: auto !important;
+}
+
+.modal-overlay.hidden {
+  display: none !important;
+  opacity: 0 !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
 }
 
 /* Global Toast Notification */
