@@ -301,7 +301,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const DEFAULT_COURSES = [
     {
       id: "course-math",
-      title: "Toán học - Đại số & Hình học không gian",
+      title: "Toán học",
       category: "natural",
       price: "499.000đ",
       rating: "4.9 ★",
@@ -312,7 +312,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: "course-physics",
-      title: "Vật lý - Cơ học & Sóng điện từ",
+      title: "Vật lý",
       category: "natural",
       price: "450.000đ",
       rating: "4.8 ★",
@@ -323,7 +323,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: "course-chemistry",
-      title: "Hóa học - Vô cơ & Hữu cơ trọng tâm",
+      title: "Hóa học",
       category: "natural",
       price: "450.000đ",
       rating: "4.9 ★",
@@ -334,7 +334,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: "course-biology",
-      title: "Sinh học - Di truyền & Quần thể sinh thái",
+      title: "Sinh học",
       category: "natural",
       price: "399.000đ",
       rating: "4.8 ★",
@@ -345,7 +345,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: "course-literature",
-      title: "Ngữ văn - Kỹ năng Đọc hiểu & Nghị luận xã hội",
+      title: "Ngữ văn",
       category: "social",
       price: "420.000đ",
       rating: "4.9 ★",
@@ -356,7 +356,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: "course-english",
-      title: "Tiếng Anh - Ngữ pháp & Luyện thi THPT / IELTS",
+      title: "Tiếng Anh",
       category: "tech_lang",
       price: "550.000đ",
       rating: "5.0 ★",
@@ -367,7 +367,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: "course-history",
-      title: "Lịch sử - Lịch sử Việt Nam & Thế giới hiện đại",
+      title: "Lịch sử",
       category: "social",
       price: "380.000đ",
       rating: "4.8 ★",
@@ -378,7 +378,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: "course-geography",
-      title: "Địa lý - Địa lý tự nhiên & Kinh tế Việt Nam",
+      title: "Địa lý",
       category: "social",
       price: "380.000đ",
       rating: "4.7 ★",
@@ -389,7 +389,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       id: "course-it",
-      title: "Tin học - Lập trình Python & Tư duy thuật toán",
+      title: "Tin học",
       category: "tech_lang",
       price: "499.000đ",
       rating: "4.9 ★",
@@ -405,7 +405,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "assign-math-1",
       title: "Giải phương trình lượng giác và khảo sát hàm bậc 3",
-      course: "Toán học - Đại số & Hình học không gian",
+      course: "Toán học",
       grade: "12",
       deadline: "2026-09-15",
       desc: "Làm bài tập trắc nghiệm 20 câu chương Hàm số và vẽ đồ thị hàm số bậc 3 trên vở, chụp ảnh hoặc nộp file PDF.",
@@ -415,7 +415,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "assign-eng-1",
       title: "Luyện đọc hiểu Reading Comprehension Unit 3",
-      course: "Tiếng Anh - Ngữ pháp & Luyện thi THPT / IELTS",
+      course: "Tiếng Anh",
       grade: "12",
       deadline: "2026-09-18",
       desc: "Hoàn thành 3 đoạn văn Reading Comprehension về chủ đề Môi trường và ghi chép tối thiểu 15 từ vựng mới.",
@@ -425,7 +425,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "assign-lit-1",
       title: "Viết đoạn văn 200 chữ: Tinh thần tự học trong kỷ nguyên số",
-      course: "Ngữ văn - Kỹ năng Đọc hiểu & Nghị luận xã hội",
+      course: "Ngữ văn",
       grade: "12",
       deadline: "2026-09-20",
       desc: "Viết đoạn văn nghị luận xã hội khoảng 200 chữ nêu suy nghĩ của em về tầm quan trọng của việc chủ động tự học.",
@@ -435,7 +435,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "assign-it-1",
       title: "Viết chương trình Python tìm số nguyên tố và sắp xếp mảng",
-      course: "Tin học - Lập trình Python & Tư duy thuật toán",
+      course: "Tin học",
       grade: "12",
       deadline: "2026-09-22",
       desc: "Sử dụng Python viết hàm kiểm tra số nguyên tố và hàm sắp xếp mảng tăng dần. Nộp link GitHub hoặc file .py.",
@@ -449,7 +449,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "mat-math-1",
       title: "Chuyên đề Video: Khảo sát sự biến thiên & Đồ thị hàm số",
-      course: "Toán học - Đại số & Hình học không gian",
+      course: "Toán học",
       grade: "12",
       type: "video",
       url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
@@ -460,7 +460,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "mat-phys-1",
       title: "Tài liệu Tổng hợp: 50 Công thức Dao động điều hòa & Sóng cơ",
-      course: "Vật lý - Cơ học & Sóng điện từ",
+      course: "Vật lý",
       grade: "12",
       type: "document",
       url: "https://drive.google.com",
@@ -471,7 +471,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "mat-lit-1",
       title: "Đề cương Ôn tập: 10 Dạng đề Nghị luận Xã hội 200 chữ đạt điểm cao",
-      course: "Ngữ văn - Kỹ năng Đọc hiểu & Nghị luận xã hội",
+      course: "Ngữ văn",
       grade: "12",
       type: "exam",
       url: "https://drive.google.com",
@@ -482,7 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "mat-eng-1",
       title: "Chuyên đề Video: Chinh phục 12 Thì trong Tiếng Anh & Mẹo làm bài",
-      course: "Tiếng Anh - Ngữ pháp & Luyện thi THPT / IELTS",
+      course: "Tiếng Anh",
       grade: "12",
       type: "video",
       url: "https://www.youtube.com/watch?v=kJQP7kiw5Fk",
@@ -493,7 +493,7 @@ document.addEventListener("DOMContentLoaded", () => {
     {
       id: "mat-it-1",
       title: "Slide Bài giảng: Cấu trúc Dữ liệu & Thuật toán cơ bản với Python",
-      course: "Tin học - Lập trình Python & Tư duy thuật toán",
+      course: "Tin học",
       grade: "12",
       type: "document",
       url: "https://github.com",
@@ -505,15 +505,64 @@ document.addEventListener("DOMContentLoaded", () => {
   // ============ Danh sách Đề Thi / Luyện Tập Trắc Nghiệm Online ============
   const DEFAULT_QUIZZES = [
     {
+      id: "quiz-lit-12-1",
+      title: "Khảo sát Ngữ văn: Đọc hiểu & Viết bài văn Nghị luận",
+      course: "Ngữ văn",
+      grade: "12",
+      duration: 45,
+      teacherName: "Cô Mai (Ngữ văn)",
+      questions: [
+        {
+          id: "qlit_1",
+          type: "multiple_choice",
+          question: "Trong bài thơ 'Tây Tiến' của Quang Dũng, hình tượng người lính Tây Tiến mang vẻ đẹp nổi bật nào?",
+          options: [
+            "Bi tráng, hào hoa, lãng mạn và giàu tinh thần quả cảm",
+            "Mộc mạc, chất phác, chân lấm tay bùn",
+            "Chỉ mang nét buồn thương, bi lụy",
+            "Mang đậm chất sử thi anh hùng thần thoại"
+          ],
+          answerIndex: 0,
+          explanation: "Quang Dũng khắc họa người lính Tây Tiến vừa lãng mạn hào hoa vừa bi tráng bất khuất."
+        },
+        {
+          id: "qlit_2",
+          type: "true_false",
+          question: "Trong bài văn nghị luận xã hội, thao tác chứng minh đòi hỏi phải chọn lọc những dẫn chứng tiêu biểu, xác thực và mang tính thời sự?",
+          correct: "Đúng",
+          explanation: "Dẫn chứng trong văn nghị luận xã hội phải chính xác, tiêu biểu và thuyết phục bạn đọc."
+        },
+        {
+          id: "qlit_3",
+          type: "short_answer",
+          question: "Ai là tác giả của tác phẩm 'Vợ chồng A Phủ' viết về số phận người dân nghèo Tây Bắc?",
+          correctAnswer: "Tô Hoài",
+          explanation: "Nhà văn Tô Hoài sáng tác truyện ngắn 'Vợ chồng A Phủ' (trích tập Truyện Tây Bắc, 1952)."
+        },
+        {
+          id: "qlit_4",
+          type: "essay_writing",
+          question: "Phần Viết bài văn (Nghị luận xã hội): Viết một bài văn hoàn chỉnh (tối thiểu 300 từ) bày tỏ suy nghĩ của em về đề tài: 'Khát vọng cống hiến và tinh thần tự lập của tuổi trẻ trong kỷ nguyên số'.",
+          outline: [
+            "1. Mở bài: Dẫn dắt vấn đề, nêu luận đề về khát vọng cống hiến và tính tự lập của thanh niên hiện nay.",
+            "2. Thân bài: Giải thích ý nghĩa của 'khát vọng cống hiến' và 'tự lập'; Phân tích vai trò, sức mạnh của người trẻ tự chủ công nghệ; Nêu dẫn chứng người thật việc thật; Phản đề thói ỷ lại, thụ động; Rút ra bài học hành động thiết thực.",
+            "3. Kết bài: Khẳng định lại giá trị của khát vọng sống đẹp và lời nhắn nhủ thế hệ tương lai."
+          ],
+          explanation: "Bài văn cần có kết cấu 3 phần rõ ràng: Mở bài - Thân bài - Kết bài, lập luận mạch lạc, cảm xúc chân thành."
+        }
+      ]
+    },
+    {
       id: "quiz-math-12-1",
       title: "Kiểm tra 15 phút: Cực trị & Sự biến thiên Hàm số",
-      course: "Toán học - Đại số & Hình học không gian",
+      course: "Toán học",
       grade: "12",
       duration: 15,
       teacherName: "Thầy Hùng (Chuyên Toán)",
       questions: [
         {
           id: "q1",
+          type: "multiple_choice",
           question: "Hàm số y = x³ - 3x² + 2 đạt cực đại tại điểm nào?",
           options: ["x = 0", "x = 2", "x = -1", "x = 1"],
           answerIndex: 0,
@@ -521,20 +570,21 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
           id: "q2",
-          question: "Đồ thị hàm số y = (2x - 1) / (x + 1) có đường tiệm cận ngang là:",
-          options: ["y = 2", "x = -1", "y = -1", "x = 2"],
-          answerIndex: 0,
+          type: "true_false",
+          question: "Đồ thị hàm số y = (2x - 1) / (x + 1) có đường tiệm cận ngang là đường thẳng y = 2?",
+          correct: "Đúng",
           explanation: "Tiệm cận ngang là y = lim(x->∞) (2x - 1)/(x + 1) = 2/1 = 2."
         },
         {
           id: "q3",
-          question: "Số điểm cực trị của hàm số y = x⁴ - 2x² + 3 là:",
-          options: ["3", "1", "2", "0"],
-          answerIndex: 0,
+          type: "short_answer",
+          question: "Số điểm cực trị của hàm số y = x⁴ - 2x² + 3 là bao nhiêu?",
+          correctAnswer: "3",
           explanation: "y' = 4x³ - 4x = 4x(x² - 1) = 0 có 3 nghiệm phân biệt x = 0, x = 1, x = -1."
         },
         {
           id: "q4",
+          type: "multiple_choice",
           question: "Giá trị lớn nhất của hàm số f(x) = x³ - 3x trên đoạn [0; 2] là:",
           options: ["2", "0", "-2", "4"],
           answerIndex: 0,
@@ -542,23 +592,23 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
           id: "q5",
-          question: "Khối đa diện đều loại {3; 3} có bao nhiêu mặt?",
-          options: ["4 mặt (Tứ diện đều)", "6 mặt (Lập phương)", "8 mặt (Bát diện)", "12 mặt"],
-          answerIndex: 0,
-          explanation: "Khối {3; 3} là tứ diện đều, gồm 4 mặt là các tam giác đều."
+          type: "essay",
+          question: "Nêu quy tắc 3 bước để tìm các khoảng đồng biến, nghịch biến và cực trị của một hàm số bất kỳ bằng đạo hàm cấp 1.",
+          explanation: "Bước 1: Tìm TXĐ và tính đạo hàm y'. Bước 2: Tìm nghiệm của y' = 0 hoặc điểm y' không xác định. Bước 3: Lập bảng xét dấu y' và kết luận khoảng đơn điệu, cực trị."
         }
       ]
     },
     {
       id: "quiz-eng-12-1",
       title: "Kiểm tra 15 phút: 12 Thì & Mệnh đề quan hệ",
-      course: "Tiếng Anh - Ngữ pháp & Luyện thi THPT / IELTS",
+      course: "Tiếng Anh",
       grade: "12",
       duration: 15,
       teacherName: "Cô Linh (Tiếng Anh)",
       questions: [
         {
           id: "q1",
+          type: "multiple_choice",
           question: "By the time we arrived at the cinema, the movie ______.",
           options: ["had already started", "has already started", "started", "was starting"],
           answerIndex: 0,
@@ -566,13 +616,14 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
           id: "q2",
-          question: "The teacher ______ lectures are always inspiring won the best educator award.",
-          options: ["whose", "who", "whom", "which"],
-          answerIndex: 0,
-          explanation: "Dùng 'whose' để chỉ sở hữu ('whose lectures' = các bài giảng của giáo viên đó)."
+          type: "true_false",
+          question: "Mệnh đề quan hệ bắt đầu bằng đại từ 'whose' dùng để chỉ sự sở hữu của cả người và vật?",
+          correct: "Đúng",
+          explanation: "'Whose' thay thế cho tính từ sở hữu hoặc sở hữu cách của cả người và vật."
         },
         {
           id: "q3",
+          type: "multiple_choice",
           question: "If I ______ harder last semester, I would have passed the scholarship exam.",
           options: ["had studied", "studied", "study", "would study"],
           answerIndex: 0,
@@ -580,30 +631,24 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
           id: "q4",
-          question: "She is the woman ______ I spoke to yesterday on the phone.",
-          options: ["whom", "whose", "which", "where"],
-          answerIndex: 0,
+          type: "short_answer",
+          question: "Điền đại từ quan hệ thích hợp: 'She is the woman ______ I spoke to yesterday on the phone.'",
+          correctAnswer: "whom",
           explanation: "'whom' làm tân ngữ chỉ người sau giới từ to (to whom / whom I spoke to)."
-        },
-        {
-          id: "q5",
-          question: "Look at those dark clouds! It ______ rain soon.",
-          options: ["is going to", "will", "is raining", "must"],
-          answerIndex: 0,
-          explanation: "Dự đoán có bằng chứng ở hiện tại (dark clouds) dùng cấu trúc 'be going to'."
         }
       ]
     },
     {
       id: "quiz-phys-12-1",
       title: "Luyện tập: Dao động điều hòa & Con lắc lò xo",
-      course: "Vật lý - Cơ học & Sóng điện từ",
+      course: "Vật lý",
       grade: "12",
       duration: 15,
       teacherName: "Thầy Tuấn (Vật lý)",
       questions: [
         {
           id: "q1",
+          type: "multiple_choice",
           question: "Công thức tính chu kỳ dao động của con lắc lò xo là:",
           options: ["T = 2π√(m/k)", "T = 2π√(k/m)", "T = 2π√(g/l)", "T = 2π√(l/g)"],
           answerIndex: 0,
@@ -611,30 +656,38 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
           id: "q2",
-          question: "Trong dao động điều hòa, gia tốc a biến thiên:",
-          options: ["Ngược pha với li độ x", "Cùng pha với li độ x", "Sớm pha π/2 so với vận tốc", "Trễ pha π so với vận tốc"],
-          answerIndex: 0,
-          explanation: "Ta có a = -ω²x, do đó gia tốc a luôn ngược pha với li độ x."
+          type: "true_false",
+          question: "Trong dao động điều hòa, gia tốc a luôn biến thiên cùng pha với li độ x?",
+          correct: "Sai",
+          explanation: "Gia tốc a = -ω²x luôn ngược pha với li độ x (lệch pha π rad)."
         },
         {
           id: "q3",
+          type: "multiple_choice",
           question: "Khi vật đi qua vị trí cân bằng thì:",
           options: ["Vận tốc đạt độ lớn cực đại, gia tốc bằng 0", "Vận tốc bằng 0, gia tốc cực đại", "Thế năng cực đại", "Cơ năng bằng 0"],
           answerIndex: 0,
           explanation: "Tại VTCB (x = 0): |v| = vmax = ωA, a = 0, thế năng Wt = 0, động năng Wd cực đại."
+        },
+        {
+          id: "q4",
+          type: "essay",
+          question: "Trình bày sự chuyển hóa qua lại giữa động năng và thế năng của con lắc lò xo trong một chu kỳ dao động khi bỏ qua ma sát.",
+          explanation: "Khi vật từ VTCB ra biên: thế năng tăng từ 0 lên cực đại, động năng giảm từ cực đại về 0. Khi từ biên về VTCB: thế năng giảm về 0, động năng tăng lên cực đại. Tổng cơ năng luôn được bảo toàn."
         }
       ]
     },
     {
       id: "quiz-math-9-1",
       title: "Ôn thi vào 10: Rút gọn biểu thức & Phương trình bậc 2",
-      course: "Toán học - Đại số & Hình học không gian",
+      course: "Toán học",
       grade: "9",
       duration: 15,
       teacherName: "Thầy Hùng (Toán THCS)",
       questions: [
         {
           id: "q1",
+          type: "multiple_choice",
           question: "Phương trình x² - 5x + 6 = 0 có hai nghiệm là:",
           options: ["x1 = 2, x2 = 3", "x1 = -2, x2 = -3", "x1 = 1, x2 = 6", "x1 = -1, x2 = -6"],
           answerIndex: 0,
@@ -642,9 +695,9 @@ document.addEventListener("DOMContentLoaded", () => {
         },
         {
           id: "q2",
-          question: "Biểu thức √(x - 3) xác định khi và chỉ khi:",
-          options: ["x ≥ 3", "x > 3", "x ≤ 3", "x < 3"],
-          answerIndex: 0,
+          type: "true_false",
+          question: "Biểu thức √(x - 3) xác định khi và chỉ khi x ≥ 3?",
+          correct: "Đúng",
           explanation: "Căn bậc hai xác định khi biểu thức dưới căn không âm: x - 3 ≥ 0 <=> x ≥ 3."
         }
       ]
@@ -748,12 +801,27 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  const cleanSubjectName = (name) => {
+    if (!name) return "Toán học";
+    return name.split(" - ")[0].trim();
+  };
+
   const getStoredCourses = () => {
-    const courses = safeGetJSON("edunovaCourses", null);
+    let courses = safeGetJSON("edunovaCourses", null);
     if (!courses || !Array.isArray(courses) || courses.length === 0) {
       safeSetJSON("edunovaCourses", DEFAULT_COURSES);
       return DEFAULT_COURSES;
     }
+    let updated = false;
+    courses = courses.map((c) => {
+      const shortTitle = cleanSubjectName(c.title);
+      if (c.title !== shortTitle) {
+        c.title = shortTitle;
+        updated = true;
+      }
+      return c;
+    });
+    if (updated) safeSetJSON("edunovaCourses", courses);
     return courses;
   };
 
@@ -762,11 +830,21 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const getStoredAssignments = () => {
-    const assignments = safeGetJSON("edunovaAssignments", null);
+    let assignments = safeGetJSON("edunovaAssignments", null);
     if (!assignments || !Array.isArray(assignments) || assignments.length === 0) {
       safeSetJSON("edunovaAssignments", DEFAULT_ASSIGNMENTS);
       return DEFAULT_ASSIGNMENTS;
     }
+    let updated = false;
+    assignments = assignments.map((a) => {
+      const shortCourse = cleanSubjectName(a.course);
+      if (a.course !== shortCourse) {
+        a.course = shortCourse;
+        updated = true;
+      }
+      return a;
+    });
+    if (updated) safeSetJSON("edunovaAssignments", assignments);
     return assignments;
   };
 
@@ -775,11 +853,21 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const getStoredMaterials = () => {
-    const materials = safeGetJSON("edunovaMaterials", null);
+    let materials = safeGetJSON("edunovaMaterials", null);
     if (!materials || !Array.isArray(materials) || materials.length === 0) {
       safeSetJSON("edunovaMaterials", DEFAULT_MATERIALS);
       return DEFAULT_MATERIALS;
     }
+    let updated = false;
+    materials = materials.map((m) => {
+      const shortCourse = cleanSubjectName(m.course);
+      if (m.course !== shortCourse) {
+        m.course = shortCourse;
+        updated = true;
+      }
+      return m;
+    });
+    if (updated) safeSetJSON("edunovaMaterials", materials);
     return materials;
   };
 
@@ -788,16 +876,67 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const getStoredQuizzes = () => {
-    const quizzes = safeGetJSON("edunovaQuizzes", null);
+    let quizzes = safeGetJSON("edunovaQuizzes", null);
     if (!quizzes || !Array.isArray(quizzes) || quizzes.length === 0) {
       safeSetJSON("edunovaQuizzes", DEFAULT_QUIZZES);
       return DEFAULT_QUIZZES;
     }
+    let updated = false;
+    quizzes = quizzes.map((q) => {
+      const shortCourse = cleanSubjectName(q.course);
+      if (q.course !== shortCourse) {
+        q.course = shortCourse;
+        updated = true;
+      }
+      return q;
+    });
+    if (updated) safeSetJSON("edunovaQuizzes", quizzes);
     return quizzes;
   };
 
   const saveStoredQuizzes = (quizzes) => {
     safeSetJSON("edunovaQuizzes", quizzes);
+  };
+
+  // ============ Các hàm Xóa (Môn học, Bài giảng, Bài kiểm tra) ============
+  const deleteCourse = (courseId) => {
+    const courses = getStoredCourses();
+    const course = courses.find((c) => c.id === courseId);
+    if (!course) return;
+    if (confirm(`Bạn có chắc chắn muốn xóa môn học "${course.title}"?`)) {
+      const remaining = courses.filter((c) => c.id !== courseId);
+      saveStoredCourses(remaining);
+      renderCourses();
+      populateCourseDropdowns();
+      renderTeacherDashboard();
+      showToast(`🗑️ Đã xóa môn học "${course.title}" thành công!`);
+    }
+  };
+
+  const deleteMaterial = (materialId) => {
+    const materials = getStoredMaterials();
+    const mat = materials.find((m) => m.id === materialId);
+    if (!mat) return;
+    if (confirm(`Bạn có chắc chắn muốn xóa bài giảng "${mat.title}"?`)) {
+      const remaining = materials.filter((m) => m.id !== materialId);
+      saveStoredMaterials(remaining);
+      renderTeacherDashboard();
+      renderStudentMaterials();
+      showToast(`🗑️ Đã xóa bài giảng "${mat.title}" thành công!`);
+    }
+  };
+
+  const deleteQuiz = (quizId) => {
+    const quizzes = getStoredQuizzes();
+    const quiz = quizzes.find((q) => q.id === quizId);
+    if (!quiz) return;
+    if (confirm(`Bạn có chắc chắn muốn xóa bài kiểm tra "${quiz.title}"?`)) {
+      const remaining = quizzes.filter((q) => q.id !== quizId);
+      saveStoredQuizzes(remaining);
+      renderTeacherDashboard();
+      renderStudentQuizzes();
+      showToast(`🗑️ Đã xóa bài kiểm tra "${quiz.title}" thành công!`);
+    }
   };
 
   const getStoredGrades = () => {
@@ -851,8 +990,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // ============ Schedule Map (Thời khóa biểu) ============
   const scheduleMap = {
-    "Toán học - Đại số & Hình học không gian": {
-      title: "Toán học - Đại số & Hình học không gian",
+    "Toán học": {
+      title: "Toán học",
       summary: [
         "⚡ 5 buổi học lý thuyết & phương pháp",
         "📘 3 buổi luyện giải đề thi thử",
@@ -869,8 +1008,8 @@ document.addEventListener("DOMContentLoaded", () => {
       nextLesson: "Khảo sát & Vẽ đồ thị hàm số",
       nextTime: "Thứ 2 · 08:00 - 10:00"
     },
-    "Vật lý - Cơ học & Sóng điện từ": {
-      title: "Vật lý - Cơ học & Sóng điện từ",
+    "Vật lý": {
+      title: "Vật lý",
       summary: [
         "⚡ 4 buổi phân tích hiện tượng",
         "📘 3 buổi thực hành giải đề",
@@ -887,8 +1026,8 @@ document.addEventListener("DOMContentLoaded", () => {
       nextLesson: "Dao động điều hòa & Con lắc",
       nextTime: "Thứ 2 · 08:00 - 10:00"
     },
-    "Hóa học - Vô cơ & Hữu cơ trọng tâm": {
-      title: "Hóa học - Vô cơ & Hữu cơ trọng tâm",
+    "Hóa học": {
+      title: "Hóa học",
       summary: [
         "⚡ 5 buổi sơ đồ chuyển hóa",
         "📘 3 buổi bài tập định lượng",
@@ -905,8 +1044,8 @@ document.addEventListener("DOMContentLoaded", () => {
       nextLesson: "Kim loại kiềm & Hợp chất",
       nextTime: "Thứ 2 · 08:00 - 09:30"
     },
-    "Ngữ văn - Kỹ năng Đọc hiểu & Nghị luận xã hội": {
-      title: "Ngữ văn - Kỹ năng Đọc hiểu & Nghị luận xã hội",
+    "Ngữ văn": {
+      title: "Ngữ văn",
       summary: [
         "⚡ 4 buổi kỹ năng làm bài",
         "📘 3 buổi luyện viết đoạn văn",
@@ -923,8 +1062,8 @@ document.addEventListener("DOMContentLoaded", () => {
       nextLesson: "Chiến thuật Đọc hiểu văn bản",
       nextTime: "Thứ 2 · 08:00 - 10:00"
     },
-    "Tiếng Anh - Ngữ pháp & Luyện thi THPT / IELTS": {
-      title: "Tiếng Anh - Ngữ pháp & Luyện thi THPT / IELTS",
+    "Tiếng Anh": {
+      title: "Tiếng Anh",
       summary: [
         "⚡ 5 buổi ngữ pháp & từ vựng",
         "📘 4 buổi luyện đề Reading/Listening",
@@ -941,8 +1080,8 @@ document.addEventListener("DOMContentLoaded", () => {
       nextLesson: "Tổng ôn 12 Thì & Mệnh đề",
       nextTime: "Thứ 2 · 18:00 - 19:30"
     },
-    "Tin học - Lập trình Python & Tư duy thuật toán": {
-      title: "Tin học - Lập trình Python & Tư duy thuật toán",
+    "Tin học": {
+      title: "Tin học",
       summary: [
         "⚡ 4 buổi cú pháp & mảng",
         "📘 3 buổi thuật toán & bài tập",
@@ -960,7 +1099,8 @@ document.addEventListener("DOMContentLoaded", () => {
   };
 
   const updateSchedule = (courseTitle) => {
-    const selectedCourse = scheduleMap[courseTitle] || scheduleMap["Toán học - Đại số & Hình học không gian"];
+    const shortName = cleanSubjectName(courseTitle);
+    const selectedCourse = scheduleMap[shortName] || scheduleMap[courseTitle] || scheduleMap["Toán học"];
     const scheduleCourseTitle = document.getElementById("scheduleCourseTitle");
     const scheduleSummary = document.getElementById("scheduleSummary");
     const scheduleTimetable = document.getElementById("scheduleTimetable");
@@ -1043,7 +1183,10 @@ document.addEventListener("DOMContentLoaded", () => {
               <p>${course.desc}</p>
               <div class="course-footer">
                 <strong>${course.price}</strong>
-                <a href="#contact" data-open-signup data-course="${course.title}">Đăng ký</a>
+                <div style="display: flex; gap: 6px; align-items: center;">
+                  <button type="button" class="btn-delete-item-sm delete-course-btn" data-id="${course.id}" title="Xóa môn học">🗑️ Xóa</button>
+                  <a href="#contact" data-open-signup data-course="${course.title}">Đăng ký</a>
+                </div>
               </div>
             </div>
           </article>
@@ -1053,6 +1196,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     courseGrid.querySelectorAll("[data-open-signup]").forEach((button) => {
       button.addEventListener("click", openSignupModal);
+    });
+
+    courseGrid.querySelectorAll(".delete-course-btn").forEach((button) => {
+      button.addEventListener("click", (e) => {
+        e.stopPropagation();
+        deleteCourse(button.dataset.id);
+      });
     });
   };
 
@@ -1114,8 +1264,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const teacherDashboard = document.getElementById("teacherDashboard");
   const studentDashboard = document.getElementById("studentDashboard");
+  const parentDashboard = document.getElementById("parentDashboard");
+  const schoolDashboard = document.getElementById("schoolDashboard");
   const navTeacherLink = document.getElementById("navTeacherLink");
   const navStudentLink = document.getElementById("navStudentLink");
+  const navParentLink = document.getElementById("navParentLink");
+  const navSchoolLink = document.getElementById("navSchoolLink");
 
   const openModalElement = (modal) => {
     if (!modal) return;
@@ -1189,19 +1343,36 @@ document.addEventListener("DOMContentLoaded", () => {
     const settingsCourse = document.getElementById("settingsCourse");
     const settingsJoinedDate = document.getElementById("settingsJoinedDate");
 
-    const isTeacher = user.accountType === "teacher";
-    if (settingsAvatar) settingsAvatar.textContent = isTeacher ? "👨‍🏫" : "👨‍🎓";
+    const role = user.accountType || "student";
+    let roleText = "Học sinh học tập";
+    let roleBadgeClass = "student";
+    let avatarIcon = "👨‍🎓";
+    if (role === "teacher") {
+      roleText = "Giáo viên giảng dạy";
+      roleBadgeClass = "teacher";
+      avatarIcon = "👨‍🏫";
+    } else if (role === "parent") {
+      roleText = "Phụ huynh học sinh";
+      roleBadgeClass = "parent";
+      avatarIcon = "👨‍👩‍👧";
+    } else if (role === "school") {
+      roleText = "Ban giám hiệu / Nhà trường";
+      roleBadgeClass = "school";
+      avatarIcon = "🏫";
+    }
+
+    if (settingsAvatar) settingsAvatar.textContent = avatarIcon;
     if (settingsDisplayFullName) settingsDisplayFullName.textContent = user.fullName || "Người dùng";
     if (settingsRoleBadge) {
-      settingsRoleBadge.textContent = isTeacher ? "Giáo viên giảng dạy" : "Học sinh học tập";
-      settingsRoleBadge.className = `role-badge ${isTeacher ? "teacher" : "student"}`;
+      settingsRoleBadge.textContent = roleText;
+      settingsRoleBadge.className = `role-badge ${roleBadgeClass}`;
     }
 
     const shortId = user.id ? `EDU-${user.id.replace(/\D/g, "").slice(-6) || "888666"}` : "EDU-888666";
     if (settingsUserId) settingsUserId.textContent = shortId;
     if (settingsFullName) settingsFullName.value = user.fullName || "";
     if (settingsEmail) settingsEmail.value = user.email || "";
-    if (settingsRole) settingsRole.value = isTeacher ? "Giáo viên giảng dạy" : "Học sinh học tập";
+    if (settingsRole) settingsRole.value = roleText;
     if (settingsGrade) settingsGrade.value = user.grade || "12";
     if (settingsCourse) settingsCourse.value = user.course || "";
     if (settingsJoinedDate) settingsJoinedDate.value = user.registeredAt || new Date().toLocaleDateString("vi-VN");
@@ -1394,16 +1565,79 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  const btnQuickLoginParent = document.getElementById("btnQuickLoginParent");
+  if (btnQuickLoginParent) {
+    btnQuickLoginParent.addEventListener("click", () => {
+      const demoParent = {
+        id: "user-demo-parent",
+        fullName: "Bác Nguyễn Văn Nam",
+        email: "phuhuynh@edunova.vn",
+        accountType: "parent",
+        studentName: "Nguyễn Minh Anh (Lớp 12A1)",
+        registeredAt: new Date().toLocaleDateString("vi-VN")
+      };
+      setCurrentUser(demoParent);
+      closeModalElement(loginModal);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      updateAuthUI();
+      showToast("🎉 Đăng nhập thành công với tài khoản Phụ huynh học sinh!");
+    });
+  }
+
+  const btnQuickLoginSchool = document.getElementById("btnQuickLoginSchool");
+  if (btnQuickLoginSchool) {
+    btnQuickLoginSchool.addEventListener("click", () => {
+      const demoSchool = {
+        id: "user-demo-school",
+        fullName: "Trường THPT Chuyên EduNova",
+        email: "bgh@edunova.vn",
+        accountType: "school",
+        schoolName: "Trường THPT Chuyên EduNova",
+        registeredAt: new Date().toLocaleDateString("vi-VN")
+      };
+      setCurrentUser(demoSchool);
+      closeModalElement(loginModal);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      updateAuthUI();
+      showToast("🎉 Đăng nhập thành công với Cổng Quản Trị Nhà Trường!");
+    });
+  }
+
   // Signup Form Role Toggle
   const signupForm = document.getElementById("signupForm");
   if (signupForm) {
     signupForm.querySelectorAll('input[name="accountType"]').forEach((radio) => {
       radio.addEventListener("change", (e) => {
-        const isTeacher = e.target.value === "teacher";
+        const val = e.target.value;
         const gradeGroup = document.getElementById("signupGradeGroup");
+        const courseGroup = document.getElementById("signupCourseGroup");
         const courseLabel = document.getElementById("signupCourseLabel");
-        if (gradeGroup) gradeGroup.style.display = isTeacher ? "none" : "block";
-        if (courseLabel) courseLabel.textContent = isTeacher ? "Môn học giảng dạy" : "Môn học trọng tâm";
+        const parentGroup = document.getElementById("signupParentGroup");
+        const schoolGroup = document.getElementById("signupSchoolGroup");
+
+        if (val === "student") {
+          if (gradeGroup) gradeGroup.style.display = "block";
+          if (courseGroup) courseGroup.style.display = "block";
+          if (courseLabel) courseLabel.textContent = "Môn học trọng tâm";
+          if (parentGroup) parentGroup.style.display = "none";
+          if (schoolGroup) schoolGroup.style.display = "none";
+        } else if (val === "teacher") {
+          if (gradeGroup) gradeGroup.style.display = "none";
+          if (courseGroup) courseGroup.style.display = "block";
+          if (courseLabel) courseLabel.textContent = "Môn học giảng dạy";
+          if (parentGroup) parentGroup.style.display = "none";
+          if (schoolGroup) schoolGroup.style.display = "none";
+        } else if (val === "parent") {
+          if (gradeGroup) gradeGroup.style.display = "none";
+          if (courseGroup) courseGroup.style.display = "none";
+          if (parentGroup) parentGroup.style.display = "block";
+          if (schoolGroup) schoolGroup.style.display = "none";
+        } else if (val === "school") {
+          if (gradeGroup) gradeGroup.style.display = "none";
+          if (courseGroup) courseGroup.style.display = "none";
+          if (parentGroup) parentGroup.style.display = "none";
+          if (schoolGroup) schoolGroup.style.display = "block";
+        }
       });
     });
 
@@ -1413,7 +1647,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const email = document.getElementById("email").value.trim().toLowerCase();
       const accountType = signupForm.querySelector('input[name="accountType"]:checked')?.value || "student";
       const grade = document.getElementById("signupGrade")?.value || "12";
-      const course = document.getElementById("course").value;
+      const course = document.getElementById("course")?.value || "Toán học";
+      const studentName = document.getElementById("signupStudentName")?.value.trim() || "";
+      const schoolName = document.getElementById("signupSchoolName")?.value.trim() || "";
       const password = document.getElementById("password").value;
       const confirmPassword = document.getElementById("confirmPassword").value;
       const formMessage = document.getElementById("formMessage");
@@ -1438,6 +1674,8 @@ document.addEventListener("DOMContentLoaded", () => {
         accountType,
         grade,
         course,
+        studentName,
+        schoolName,
         password,
         registeredAt: new Date().toLocaleDateString("vi-VN")
       };
@@ -1455,7 +1693,7 @@ document.addEventListener("DOMContentLoaded", () => {
         formMessage.textContent = "";
         window.scrollTo({ top: 0, behavior: "smooth" });
         updateAuthUI();
-        if (course) updateSchedule(course);
+        if (course && accountType === "student") updateSchedule(course);
         showToast(`🎉 Chào mừng ${fullName} gia nhập EduNova!`);
       }, 800);
     });
@@ -1564,26 +1802,99 @@ document.addEventListener("DOMContentLoaded", () => {
     // Render questions — NO EXPLANATIONS shown during quiz
     if (quizQuestionsContainer) {
       quizQuestionsContainer.innerHTML = (activeQuiz.questions || [])
-        .map((q, qIndex) => `
-          <div class="quiz-question-card" id="quizQuestion_${q.id}">
-            <h4 class="quiz-question-title">Câu ${qIndex + 1}: ${q.question}</h4>
-            <div class="quiz-options-group">
-              ${(q.options || [])
-                .map(
-                  (opt, optIndex) => `
-                    <label class="quiz-option-label" data-qid="${q.id}" data-optindex="${optIndex}">
-                      <input type="radio" name="quiz_opt_${q.id}" value="${optIndex}" style="accent-color: #7c3aed; width: 18px; height: 18px;" />
-                      <span><strong>${String.fromCharCode(65 + optIndex)}.</strong> ${opt}</span>
-                    </label>
-                  `
-                )
-                .join("")}
+        .map((q, qIndex) => {
+          const qType = q.type || "multiple_choice";
+          let badgeHtml = "";
+          let inputGroupHtml = "";
+
+          if (qType === "true_false") {
+            badgeHtml = `<span class="quiz-qtype-badge tf">⚖️ Đúng / Sai</span>`;
+            inputGroupHtml = `
+              <div class="quiz-tf-group" data-qid="${q.id}">
+                <button type="button" class="quiz-tf-btn" data-qid="${q.id}" data-val="Đúng">✓ Đúng</button>
+                <button type="button" class="quiz-tf-btn" data-qid="${q.id}" data-val="Sai">✗ Sai</button>
+              </div>
+            `;
+          } else if (qType === "short_answer") {
+            badgeHtml = `<span class="quiz-qtype-badge short">✍️ Trả lời ngắn</span>`;
+            inputGroupHtml = `
+              <div class="quiz-short-wrap">
+                <input type="text" class="quiz-short-input" data-qid="${q.id}" placeholder="Nhập câu trả lời ngắn của bạn vào đây..." />
+              </div>
+            `;
+          } else if (qType === "essay_writing") {
+            badgeHtml = `<span class="quiz-qtype-badge writing">🖋️ Phần Viết Bài Văn</span>`;
+            const outlineList = q.outline || [
+              "1. Mở bài: Dẫn dắt và giới thiệu vấn đề nghị luận.",
+              "2. Thân bài: Giải thích - Phân tích dẫn chứng thực tế - Bàn luận mở rộng & Phản đề.",
+              "3. Kết bài: Khẳng định lại ý nghĩa vấn đề và rút ra bài học nhận thức, hành động."
+            ];
+            inputGroupHtml = `
+              <div class="quiz-essay-writing-wrap" data-qid="${q.id}">
+                <div class="quiz-essay-toolbar">
+                  <div class="essay-tools-left">
+                    <button type="button" class="essay-tool-btn toggle-outline-btn" data-target="outline_${q.id}">💡 Dàn ý gợi ý</button>
+                    <button type="button" class="essay-tool-btn insert-intro-btn" data-qid="${q.id}">📋 Mở bài mẫu</button>
+                    <button type="button" class="essay-tool-btn insert-transition-btn" data-qid="${q.id}">🔗 Thêm từ nối</button>
+                  </div>
+                  <button type="button" class="essay-tool-btn clear-essay-btn" data-qid="${q.id}" style="color: #dc2626;">🧹 Xóa viết lại</button>
+                </div>
+                <div class="essay-outline-panel hidden" id="outline_${q.id}">
+                  <h5>📌 Gợi ý cấu trúc bài viết đạt điểm cao:</h5>
+                  <ul>
+                    ${outlineList.map((item) => `<li>${item}</li>`).join("")}
+                  </ul>
+                </div>
+                <textarea class="quiz-essay-writing-input" data-qid="${q.id}" rows="8" placeholder="Học sinh làm bài văn hoàn chỉnh tại đây (Mở bài - Thân bài - Kết bài)..."></textarea>
+                <div class="quiz-word-count-bar">
+                  <div class="word-stats">
+                    <span>Số từ: <strong class="word-stat-val word-count" id="wc_${q.id}">0</strong> từ</span>
+                    <span>Ký tự: <strong class="word-stat-val char-count" id="cc_${q.id}">0</strong></span>
+                    <span>Đoạn: <strong class="word-stat-val para-count" id="pc_${q.id}">0</strong></span>
+                  </div>
+                  <span style="color: #059669; font-weight: 700;">✓ Tự động lưu bài</span>
+                </div>
+              </div>
+            `;
+          } else if (qType === "essay") {
+            badgeHtml = `<span class="quiz-qtype-badge essay">📝 Tự luận</span>`;
+            inputGroupHtml = `
+              <div class="quiz-essay-wrap">
+                <textarea class="quiz-essay-input" rows="5" data-qid="${q.id}" placeholder="Trình bày chi tiết bài làm tự luận của bạn tại đây..."></textarea>
+              </div>
+            `;
+          } else {
+            // multiple_choice
+            badgeHtml = `<span class="quiz-qtype-badge mcq">⚡ Trắc nghiệm</span>`;
+            inputGroupHtml = `
+              <div class="quiz-options-group">
+                ${(q.options || [])
+                  .map(
+                    (opt, optIndex) => `
+                      <label class="quiz-option-label" data-qid="${q.id}" data-optindex="${optIndex}">
+                        <input type="radio" name="quiz_opt_${q.id}" value="${optIndex}" style="accent-color: #7c3aed; width: 18px; height: 18px;" />
+                        <span><strong>${String.fromCharCode(65 + optIndex)}.</strong> ${opt}</span>
+                      </label>
+                    `
+                  )
+                  .join("")}
+              </div>
+            `;
+          }
+
+          return `
+            <div class="quiz-question-card" id="quizQuestion_${q.id}">
+              <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                <h4 class="quiz-question-title" style="margin: 0;">Câu ${qIndex + 1}: ${q.question}</h4>
+                ${badgeHtml}
+              </div>
+              ${inputGroupHtml}
             </div>
-          </div>
-        `)
+          `;
+        })
         .join("");
 
-      // Radio selection events
+      // Radio selection events (Trắc nghiệm)
       quizQuestionsContainer.querySelectorAll(".quiz-option-label").forEach((lbl) => {
         lbl.addEventListener("click", () => {
           const qid = lbl.dataset.qid;
@@ -1592,10 +1903,142 @@ document.addEventListener("DOMContentLoaded", () => {
           lbl.parentElement.querySelectorAll(".quiz-option-label").forEach((l) => l.classList.remove("selected"));
           lbl.classList.add("selected");
 
-          // Update pill status
           const pill = quizQuestionPills?.querySelector(`[data-target-q="quizQuestion_${qid}"]`);
           if (pill) pill.classList.add("answered");
           updateQuestionProgress();
+        });
+      });
+
+      // Đúng / Sai button selection events
+      quizQuestionsContainer.querySelectorAll(".quiz-tf-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const qid = btn.dataset.qid;
+          const val = btn.dataset.val;
+          userQuizAnswers[qid] = val;
+          btn.parentElement.querySelectorAll(".quiz-tf-btn").forEach((b) => b.classList.remove("selected"));
+          btn.classList.add("selected");
+
+          const pill = quizQuestionPills?.querySelector(`[data-target-q="quizQuestion_${qid}"]`);
+          if (pill) pill.classList.add("answered");
+          updateQuestionProgress();
+        });
+      });
+
+      // Trả lời ngắn input events
+      quizQuestionsContainer.querySelectorAll(".quiz-short-input").forEach((inp) => {
+        inp.addEventListener("input", () => {
+          const qid = inp.dataset.qid;
+          const val = inp.value.trim();
+          const pill = quizQuestionPills?.querySelector(`[data-target-q="quizQuestion_${qid}"]`);
+          if (val) {
+            userQuizAnswers[qid] = val;
+            if (pill) pill.classList.add("answered");
+          } else {
+            delete userQuizAnswers[qid];
+            if (pill) pill.classList.remove("answered");
+          }
+          updateQuestionProgress();
+        });
+      });
+
+      // Tự luận ngắn textarea events
+      quizQuestionsContainer.querySelectorAll(".quiz-essay-input").forEach((txt) => {
+        txt.addEventListener("input", () => {
+          const qid = txt.dataset.qid;
+          const val = txt.value.trim();
+          const pill = quizQuestionPills?.querySelector(`[data-target-q="quizQuestion_${qid}"]`);
+          if (val) {
+            userQuizAnswers[qid] = val;
+            if (pill) pill.classList.add("answered");
+          } else {
+            delete userQuizAnswers[qid];
+            if (pill) pill.classList.remove("answered");
+          }
+          updateQuestionProgress();
+        });
+      });
+
+      // Viết bài văn chuyên sâu môn Ngữ văn (Essay Writing)
+      quizQuestionsContainer.querySelectorAll(".quiz-essay-writing-input").forEach((txt) => {
+        txt.addEventListener("input", () => {
+          const qid = txt.dataset.qid;
+          const val = txt.value;
+          const trimmed = val.trim();
+          const words = trimmed ? trimmed.split(/\s+/).filter(Boolean).length : 0;
+          const chars = val.length;
+          const paras = trimmed ? trimmed.split(/\n+/).filter(Boolean).length : 0;
+
+          const wcEl = document.getElementById(`wc_${qid}`);
+          const ccEl = document.getElementById(`cc_${qid}`);
+          const pcEl = document.getElementById(`pc_${qid}`);
+          if (wcEl) wcEl.textContent = words;
+          if (ccEl) ccEl.textContent = chars;
+          if (pcEl) pcEl.textContent = paras;
+
+          const pill = quizQuestionPills?.querySelector(`[data-target-q="quizQuestion_${qid}"]`);
+          if (words > 0) {
+            userQuizAnswers[qid] = val;
+            if (pill) pill.classList.add("answered");
+          } else {
+            delete userQuizAnswers[qid];
+            if (pill) pill.classList.remove("answered");
+          }
+          updateQuestionProgress();
+        });
+      });
+
+      // Toolbar: Toggle Dàn ý gợi ý
+      quizQuestionsContainer.querySelectorAll(".toggle-outline-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const targetId = btn.dataset.target;
+          const panel = document.getElementById(targetId);
+          if (panel) {
+            panel.classList.toggle("hidden");
+            btn.classList.toggle("active");
+          }
+        });
+      });
+
+      // Toolbar: Mở bài mẫu
+      quizQuestionsContainer.querySelectorAll(".insert-intro-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const qid = btn.dataset.qid;
+          const textarea = quizQuestionsContainer.querySelector(`.quiz-essay-writing-input[data-qid="${qid}"]`);
+          if (!textarea) return;
+          const sampleIntro = "Trong dòng chảy bất tận của thời gian và nhịp sống số hóa hiện đại, vấn đề được đặt ra mang một ý nghĩa vô cùng sâu sắc và thời sự: ";
+          if (!textarea.value.trim()) {
+            textarea.value = sampleIntro;
+          } else {
+            textarea.value += "\n" + sampleIntro;
+          }
+          textarea.focus();
+          textarea.dispatchEvent(new Event("input"));
+        });
+      });
+
+      // Toolbar: Từ nối đoạn
+      quizQuestionsContainer.querySelectorAll(".insert-transition-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const qid = btn.dataset.qid;
+          const textarea = quizQuestionsContainer.querySelector(`.quiz-essay-writing-input[data-qid="${qid}"]`);
+          if (!textarea) return;
+          const sampleTransition = "\nMặt khác, nhìn nhận từ góc độ thực tiễn đời sống hôm nay, chúng ta thấy rằng: ";
+          textarea.value += sampleTransition;
+          textarea.focus();
+          textarea.dispatchEvent(new Event("input"));
+        });
+      });
+
+      // Toolbar: Xóa viết lại
+      quizQuestionsContainer.querySelectorAll(".clear-essay-btn").forEach((btn) => {
+        btn.addEventListener("click", () => {
+          const qid = btn.dataset.qid;
+          const textarea = quizQuestionsContainer.querySelector(`.quiz-essay-writing-input[data-qid="${qid}"]`);
+          if (!textarea) return;
+          if (confirm("Bạn có chắc chắn muốn xóa bài viết văn này để viết lại từ đầu?")) {
+            textarea.value = "";
+            textarea.dispatchEvent(new Event("input"));
+          }
         });
       });
     }
@@ -1654,8 +2097,40 @@ document.addEventListener("DOMContentLoaded", () => {
     // Only count correct answers — NO solutions or answers revealed
     (activeQuiz.questions || []).forEach((q) => {
       const chosen = userQuizAnswers[q.id];
-      if (chosen === q.answerIndex) {
-        correctCount++;
+      const qType = q.type || "multiple_choice";
+
+      if (qType === "multiple_choice") {
+        if (chosen === q.answerIndex) {
+          correctCount++;
+        }
+      } else if (qType === "true_false") {
+        const correct = (q.correct || "Đúng").trim().toLowerCase();
+        if (typeof chosen === "string" && chosen.trim().toLowerCase() === correct) {
+          correctCount++;
+        }
+      } else if (qType === "short_answer") {
+        const correct = (q.correctAnswer || "").trim().toLowerCase();
+        if (typeof chosen === "string") {
+          const userText = chosen.trim().toLowerCase();
+          if (userText === correct || (correct.length > 0 && userText.includes(correct))) {
+            correctCount++;
+          }
+        }
+      } else if (qType === "essay") {
+        // Tự luận: học sinh hoàn thành bài làm được ghi nhận điểm
+        if (typeof chosen === "string" && chosen.trim().length > 0) {
+          correctCount++;
+        }
+      } else if (qType === "essay_writing") {
+        // Viết bài văn: học sinh hoàn thành bài làm (từ 10 từ trở lên) đạt trọn điểm câu hỏi, có viết bài nhận 0.8
+        if (typeof chosen === "string") {
+          const wordCount = chosen.trim().split(/\s+/).filter(Boolean).length;
+          if (wordCount >= 10) {
+            correctCount++;
+          } else if (wordCount > 0) {
+            correctCount += 0.8;
+          }
+        }
       }
     });
 
@@ -1778,10 +2253,11 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span>📋 ${quiz.questions ? quiz.questions.length : 5} câu hỏi</span>
               </div>
             </div>
-            <div class="quiz-card-footer">
-              <button class="btn btn-primary small-btn start-quiz-btn" data-id="${quiz.id}" style="width: 100%; justify-content: center;">
+            <div class="quiz-card-footer" style="display: flex; gap: 8px; align-items: center;">
+              <button class="btn btn-primary small-btn start-quiz-btn" data-id="${quiz.id}" style="flex: 1; justify-content: center;">
                 <span>⚡ Bắt đầu làm bài</span>
               </button>
+              <button type="button" class="btn-delete-item-sm delete-quiz-btn" data-id="${quiz.id}" title="Xóa bài kiểm tra">🗑️ Xóa</button>
             </div>
           </div>
         `
@@ -1792,6 +2268,13 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.addEventListener("click", (e) => {
         const qid = e.currentTarget.dataset.id;
         openTakeQuiz(qid);
+      });
+    });
+
+    studentQuizList.querySelectorAll(".delete-quiz-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        deleteQuiz(e.currentTarget.dataset.id);
       });
     });
   };
@@ -2202,12 +2685,41 @@ document.addEventListener("DOMContentLoaded", () => {
   if (openCreateQuizBtn) openCreateQuizBtn.addEventListener("click", () => openModalElement(createQuizModal));
   if (quickCreateQuizBtn) quickCreateQuizBtn.addEventListener("click", () => openModalElement(createQuizModal));
 
+  // Các nút chèn mẫu câu hỏi nhanh
+  const insertQuestionTemplate = (text) => {
+    const rawInput = document.getElementById("newQuizQuestionsRaw");
+    if (!rawInput) return;
+    const current = rawInput.value.trim();
+    rawInput.value = current ? current + "\n" + text : text;
+    rawInput.focus();
+    rawInput.scrollTop = rawInput.scrollHeight;
+  };
+
+  const btnTplMCQ = document.getElementById("btnTplMCQ");
+  if (btnTplMCQ) btnTplMCQ.addEventListener("click", () => insertQuestionTemplate("[TN] Câu hỏi trắc nghiệm mới | A: Phương án A | B: Phương án B | C: Phương án C | D: Phương án D | Đáp án: A"));
+
+  const btnTplTF = document.getElementById("btnTplTF");
+  if (btnTplTF) btnTplTF.addEventListener("click", () => insertQuestionTemplate("[DS] Khẳng định cần xác định tính đúng sai | Đáp án: Đúng"));
+
+  const btnTplShort = document.getElementById("btnTplShort");
+  if (btnTplShort) btnTplShort.addEventListener("click", () => insertQuestionTemplate("[TLN] Đạo hàm của hàm số y = sin(x) là gì? | Đáp án: cos(x)"));
+
+  const btnTplEssay = document.getElementById("btnTplEssay");
+  if (btnTplEssay) btnTplEssay.addEventListener("click", () => insertQuestionTemplate("[TL] Đề bài tự luận yêu cầu học sinh trình bày chi tiết các bước giải"));
+
+  const btnTplEssayWriting = document.getElementById("btnTplEssayWriting");
+  if (btnTplEssayWriting) {
+    btnTplEssayWriting.addEventListener("click", () => {
+      insertQuestionTemplate("[VBV] Viết một bài văn hoàn chỉnh (khoảng 400 - 600 từ) bàn về: 'Lý tưởng sống và trách nhiệm của tuổi trẻ đối với quê hương đất nước' | Dàn ý: 1. Mở bài: Dẫn dắt vấn đề nghị luận... 2. Thân bài: Giải thích ý nghĩa, phân tích dẫn chứng thực tế, phản đề... 3. Kết bài: Bài học hành động và thông điệp tương lai.");
+    });
+  }
+
   const createQuizForm = document.getElementById("createQuizForm");
   if (createQuizForm) {
     createQuizForm.addEventListener("submit", (e) => {
       e.preventDefault();
       const title = document.getElementById("newQuizTitle")?.value.trim();
-      const course = document.getElementById("newQuizCourse")?.value;
+      const course = cleanSubjectName(document.getElementById("newQuizCourse")?.value);
       const grade = document.getElementById("newQuizGrade")?.value || "12";
       const duration = parseInt(document.getElementById("newQuizDuration")?.value) || 15;
       const raw = document.getElementById("newQuizQuestionsRaw")?.value.trim();
@@ -2218,22 +2730,103 @@ document.addEventListener("DOMContentLoaded", () => {
 
       const lines = raw.split("\n").filter((l) => l.trim().length > 0);
       const questions = lines.map((line, idx) => {
-        const parts = line.split("|").map((p) => p.trim());
-        const qText = parts[0] || `Câu hỏi ${idx + 1}`;
-        const options = parts.slice(1, 5).map((p) => p.replace(/^[A-D]:\s*/, "")) || ["Đáp án A", "Đáp án B", "Đáp án C", "Đáp án D"];
-        while (options.length < 4) options.push(`Đáp án ${String.fromCharCode(65 + options.length)}`);
-        return {
-          id: `q_${Date.now()}_${idx}`,
-          question: qText,
-          options,
-          answerIndex: 0,
-          explanation: "Lời giải chi tiết do giáo viên hướng dẫn."
-        };
+        let cleanLine = line.trim();
+        let qType = "multiple_choice";
+
+        if (/^\[(DS|ĐÚNG SAI|DUNG SAI)\]/i.test(cleanLine) || /đáp án:\s*(đúng|sai)/i.test(cleanLine)) {
+          qType = "true_false";
+          cleanLine = cleanLine.replace(/^\[(DS|ĐÚNG SAI|DUNG SAI)\]/i, "").trim();
+          const parts = cleanLine.split("|").map((p) => p.trim());
+          const qText = parts[0] || `Khẳng định ${idx + 1}`;
+          const ansPart = parts.find((p) => /đáp án:/i.test(p)) || "";
+          const isTrue = !/sai/i.test(ansPart);
+          return {
+            id: `q_${Date.now()}_${idx}`,
+            type: "true_false",
+            question: qText,
+            correct: isTrue ? "Đúng" : "Sai",
+            explanation: "Khẳng định được giáo viên định nghĩa tính Đúng / Sai."
+          };
+        } else if (/^\[(TLN|TRẢ LỜI NGẮN|TRA LOI NGAN|NGẮN)\]/i.test(cleanLine)) {
+          qType = "short_answer";
+          cleanLine = cleanLine.replace(/^\[(TLN|TRẢ LỜI NGẮN|TRA LOI NGAN|NGẮN)\]/i, "").trim();
+          const parts = cleanLine.split("|").map((p) => p.trim());
+          const qText = parts[0] || `Câu hỏi ngắn ${idx + 1}`;
+          let correctAns = "";
+          const ansPart = parts.find((p) => /đáp án:/i.test(p));
+          if (ansPart) {
+            correctAns = ansPart.replace(/đáp án:\s*/i, "").trim();
+          } else if (parts[1]) {
+            correctAns = parts[1].trim();
+          }
+          return {
+            id: `q_${Date.now()}_${idx}`,
+            type: "short_answer",
+            question: qText,
+            correctAnswer: correctAns || "đáp án",
+            explanation: `Đáp án chính xác: ${correctAns}`
+          };
+        } else if (/^\[(VBV|VIẾT VĂN|VIET VAN|BÀI VĂN|BAI VAN)\]/i.test(cleanLine)) {
+          qType = "essay_writing";
+          cleanLine = cleanLine.replace(/^\[(VBV|VIẾT VĂN|VIET VAN|BÀI VĂN|BAI VAN)\]/i, "").trim();
+          const parts = cleanLine.split("|").map((p) => p.trim());
+          const qText = parts[0] || `Phần viết bài văn ${idx + 1}`;
+          const outlinePart = parts.find((p) => /dàn ý:/i.test(p));
+          const outline = outlinePart
+            ? [outlinePart.replace(/dàn ý:\s*/i, "").trim()]
+            : [
+                "1. Mở bài: Dẫn dắt vấn đề và nêu luận điểm chính.",
+                "2. Thân bài: Giải thích - Phân tích dẫn chứng thực tế - Phản đề và bàn luận mở rộng.",
+                "3. Kết bài: Khái quát tầm quan trọng và rút ra bài học cho bản thân."
+              ];
+          return {
+            id: `q_${Date.now()}_${idx}`,
+            type: "essay_writing",
+            question: qText,
+            outline,
+            explanation: "Bài văn hoàn chỉnh do giáo viên chấm và nhận xét chi tiết."
+          };
+        } else if (/^\[(TL|TỰ LUẬN|TU LUAN)\]/i.test(cleanLine)) {
+          qType = "essay";
+          cleanLine = cleanLine.replace(/^\[(TL|TỰ LUẬN|TU LUAN)\]/i, "").trim();
+          const parts = cleanLine.split("|").map((p) => p.trim());
+          const qText = parts[0] || `Bài tập tự luận ${idx + 1}`;
+          return {
+            id: `q_${Date.now()}_${idx}`,
+            type: "essay",
+            question: qText,
+            explanation: "Bài làm tự luận do giáo viên chấm và nhận xét chi tiết."
+          };
+        } else {
+          // Trắc nghiệm nhiều lựa chọn
+          cleanLine = cleanLine.replace(/^\[(TN|TRẮC NGHIỆM|TRAC NGHIEM)\]/i, "").trim();
+          const parts = cleanLine.split("|").map((p) => p.trim());
+          const qText = parts[0] || `Câu hỏi ${idx + 1}`;
+          const options = parts.slice(1, 5).map((p) => p.replace(/^[A-D]:\s*/, "")) || ["Đáp án A", "Đáp án B", "Đáp án C", "Đáp án D"];
+          while (options.length < 4) options.push(`Đáp án ${String.fromCharCode(65 + options.length)}`);
+
+          let answerIndex = 0;
+          const ansPart = parts.find((p) => /đáp án:\s*[A-D]/i.test(p));
+          if (ansPart) {
+            const letter = ansPart.replace(/.*đáp án:\s*([A-D]).*/i, "$1").toUpperCase();
+            answerIndex = Math.max(0, letter.charCodeAt(0) - 65);
+          }
+
+          return {
+            id: `q_${Date.now()}_${idx}`,
+            type: "multiple_choice",
+            question: qText,
+            options,
+            answerIndex,
+            explanation: "Lời giải chi tiết do giáo viên hướng dẫn."
+          };
+        }
       });
 
       if (questions.length === 0) {
         questions.push({
           id: `q_${Date.now()}_0`,
+          type: "multiple_choice",
           question: "Khảo sát hàm số đạt cực trị khi đạo hàm đổi dấu?",
           options: ["Đúng", "Sai", "Chỉ đúng với hàm bậc 2", "Chỉ đúng với hàm bậc 3"],
           answerIndex: 0,
@@ -2256,7 +2849,7 @@ document.addEventListener("DOMContentLoaded", () => {
       saveStoredQuizzes(quizzes);
 
       if (msg) {
-        msg.textContent = "✓ Đã tạo đề kiểm tra trắc nghiệm thành công!";
+        msg.textContent = "✓ Đã xuất bản đề kiểm tra đa dạng thành công!";
         msg.className = "form-message success";
       }
 
@@ -2265,7 +2858,9 @@ document.addEventListener("DOMContentLoaded", () => {
         createQuizForm.reset();
         if (msg) msg.textContent = "";
         renderTeacherDashboard();
-      }, 1000);
+        renderStudentQuizzes();
+        showToast(`🎉 Đã xuất bản đề kiểm tra "${title}" thành công!`);
+      }, 900);
     });
   }
 
@@ -2570,20 +3165,27 @@ document.addEventListener("DOMContentLoaded", () => {
       teacherQuizList.innerHTML = quizzes
         .map(
           (q) => `
-            <div class="assignment-item">
-              <div class="assignment-top">
-                <h4 class="assignment-title">${q.title}</h4>
-                <span class="type-chip exam">Lớp ${q.grade || "12"}</span>
+            <div class="assignment-item" style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div class="assignment-top">
+                  <h4 class="assignment-title">${q.title}</h4>
+                  <span class="type-chip exam">Lớp ${q.grade || "12"}</span>
+                </div>
+                <div class="assignment-meta">
+                  <span class="badge-course">${q.course ? cleanSubjectName(q.course) : "Môn học"}</span>
+                  <span>⏱ ${q.duration || 15} phút</span>
+                  <span>• ${q.questions ? q.questions.length : 5} câu hỏi</span>
+                </div>
               </div>
-              <div class="assignment-meta">
-                <span class="badge-course">${q.course ? q.course.split("-")[0].trim() : "Môn học"}</span>
-                <span>⏱ ${q.duration || 15} phút</span>
-                <span>• ${q.questions ? q.questions.length : 5} câu hỏi</span>
-              </div>
+              <button type="button" class="btn-delete-item delete-teacher-quiz-btn" data-id="${q.id}" title="Xóa bài kiểm tra">🗑️ Xóa</button>
             </div>
           `
         )
         .join("");
+
+      teacherQuizList.querySelectorAll(".delete-teacher-quiz-btn").forEach((btn) => {
+        btn.addEventListener("click", () => deleteQuiz(btn.dataset.id));
+      });
     }
 
     // Render Materials in Teacher View
@@ -2591,19 +3193,26 @@ document.addEventListener("DOMContentLoaded", () => {
       teacherMaterialList.innerHTML = materials
         .map(
           (mat) => `
-            <div class="material-item">
-              <div class="material-top">
-                <h4 class="material-title">${mat.title}</h4>
-                <span class="type-chip ${mat.type}">${mat.type === "video" ? "🎥 Video" : mat.type === "exam" ? "📝 Đề thi" : "📄 Tài liệu"}</span>
+            <div class="material-item" style="display: flex; justify-content: space-between; align-items: center;">
+              <div>
+                <div class="material-top">
+                  <h4 class="material-title">${mat.title}</h4>
+                  <span class="type-chip ${mat.type}">${mat.type === "video" ? "🎥 Video" : mat.type === "exam" ? "📝 Đề thi" : "📄 Tài liệu"}</span>
+                </div>
+                <div class="assignment-meta">
+                  <span class="badge-course">${mat.course ? cleanSubjectName(mat.course) : "Môn học"}</span>
+                  <span>${mat.createdAt || "Gần đây"}</span>
+                </div>
               </div>
-              <div class="assignment-meta">
-                <span class="badge-course">${mat.course ? mat.course.split("-")[0].trim() : "Môn học"}</span>
-                <span>${mat.createdAt || "Gần đây"}</span>
-              </div>
+              <button type="button" class="btn-delete-item delete-teacher-mat-btn" data-id="${mat.id}" title="Xóa bài giảng">🗑️ Xóa</button>
             </div>
           `
         )
         .join("");
+
+      teacherMaterialList.querySelectorAll(".delete-teacher-mat-btn").forEach((btn) => {
+        btn.addEventListener("click", () => deleteMaterial(btn.dataset.id));
+      });
     }
 
     // Render Assignments in Teacher View
@@ -2617,7 +3226,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="badge-deadline active">Hạn: ${assign.deadline || "Không giới hạn"}</span>
               </div>
               <div class="assignment-meta">
-                <span class="badge-course">${assign.course ? assign.course.split("-")[0].trim() : "Môn học"}</span>
+                <span class="badge-course">${assign.course ? cleanSubjectName(assign.course) : "Môn học"}</span>
               </div>
             </div>
           `
@@ -2638,11 +3247,18 @@ document.addEventListener("DOMContentLoaded", () => {
                   <small style="color: var(--text-muted);">${c.author || "EduNova"} · ${c.price}</small>
                 </div>
               </div>
-              <span class="badge-course">${c.category === "natural" ? "Tự nhiên" : c.category === "social" ? "Xã hội" : "Ngoại ngữ & Tin"}</span>
+              <div style="display: flex; align-items: center; gap: 8px;">
+                <span class="badge-course">${c.category === "natural" ? "Tự nhiên" : c.category === "social" ? "Xã hội" : "Ngoại ngữ & Tin"}</span>
+                <button type="button" class="btn-delete-item delete-teacher-course-btn" data-id="${c.id}" title="Xóa môn học">🗑️ Xóa</button>
+              </div>
             </div>
           `
         )
         .join("");
+
+      teacherCourseList.querySelectorAll(".delete-teacher-course-btn").forEach((btn) => {
+        btn.addEventListener("click", () => deleteCourse(btn.dataset.id));
+      });
     }
   };
 
@@ -2656,7 +3272,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let filtered = materials;
     if (currentUser && currentUser.course) {
-      const match = materials.filter((m) => m.course === currentUser.course);
+      const match = materials.filter((m) => cleanSubjectName(m.course) === cleanSubjectName(currentUser.course));
       if (match.length > 0) filtered = match;
     }
 
@@ -2671,7 +3287,10 @@ document.addEventListener("DOMContentLoaded", () => {
             <p style="margin: 0; font-size: 0.85rem; color: var(--text-muted);">${mat.summary ? mat.summary.slice(0, 90) + "..." : "Tóm tắt bài học"}</p>
             <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 4px;">
               <span style="font-size: 0.78rem; color: var(--text-muted);">GV: ${mat.teacherName || "EduNova"}</span>
-              <button class="btn btn-secondary small-btn view-mat-btn" data-id="${mat.id}">Học ngay</button>
+              <div style="display: flex; gap: 6px; align-items: center;">
+                <button class="btn btn-secondary small-btn view-mat-btn" data-id="${mat.id}">Học ngay</button>
+                <button type="button" class="btn-delete-item-sm delete-student-mat-btn" data-id="${mat.id}" title="Xóa bài giảng">🗑️ Xóa</button>
+              </div>
             </div>
           </div>
         `
@@ -2682,6 +3301,12 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.addEventListener("click", (e) => {
         const mid = e.currentTarget.dataset.id;
         openViewMaterial(mid);
+      });
+    });
+
+    studentMaterialList.querySelectorAll(".delete-student-mat-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        deleteMaterial(e.currentTarget.dataset.id);
       });
     });
   };
@@ -2739,29 +3364,52 @@ document.addEventListener("DOMContentLoaded", () => {
       if (userProfile) userProfile.style.display = "flex";
       if (userName) userName.textContent = currentUser.fullName;
 
-      const isTeacher = currentUser.accountType === "teacher";
+      const role = currentUser.accountType || "student";
 
       if (userRoleBadge) {
         userRoleBadge.style.display = "inline-flex";
-        if (isTeacher) {
+        if (role === "teacher") {
           userRoleBadge.textContent = "👨‍🏫 Giảng viên";
           userRoleBadge.className = "role-badge teacher";
+        } else if (role === "parent") {
+          userRoleBadge.textContent = "👨‍👩‍👧 Phụ huynh";
+          userRoleBadge.className = "role-badge parent";
+        } else if (role === "school") {
+          userRoleBadge.textContent = "🏫 Nhà trường";
+          userRoleBadge.className = "role-badge school";
         } else {
           userRoleBadge.textContent = "👨‍🎓 Học sinh";
           userRoleBadge.className = "role-badge student";
         }
       }
 
-      if (isTeacher) {
+      // Hide all dashboards and navs by default
+      if (teacherDashboard) teacherDashboard.style.display = "none";
+      if (studentDashboard) studentDashboard.style.display = "none";
+      if (parentDashboard) parentDashboard.style.display = "none";
+      if (schoolDashboard) schoolDashboard.style.display = "none";
+      if (navTeacherLink) navTeacherLink.style.display = "none";
+      if (navStudentLink) navStudentLink.style.display = "none";
+      if (navParentLink) navParentLink.style.display = "none";
+      if (navSchoolLink) navSchoolLink.style.display = "none";
+
+      if (role === "teacher") {
         if (teacherDashboard) teacherDashboard.style.display = "block";
-        if (studentDashboard) studentDashboard.style.display = "none";
         if (navTeacherLink) navTeacherLink.style.display = "inline-block";
-        if (navStudentLink) navStudentLink.style.display = "none";
         renderTeacherDashboard();
+      } else if (role === "parent") {
+        if (parentDashboard) parentDashboard.style.display = "block";
+        if (navParentLink) navParentLink.style.display = "inline-block";
+        const parentGreeting = document.getElementById("parentGreetingName");
+        if (parentGreeting) parentGreeting.textContent = `Phụ huynh: ${currentUser.fullName}`;
+      } else if (role === "school") {
+        if (schoolDashboard) schoolDashboard.style.display = "block";
+        if (navSchoolLink) navSchoolLink.style.display = "inline-block";
+        const schoolGreeting = document.getElementById("schoolGreetingName");
+        if (schoolGreeting) schoolGreeting.textContent = currentUser.schoolName || currentUser.fullName || "Trường THPT Chuyên EduNova";
       } else {
-        if (teacherDashboard) teacherDashboard.style.display = "none";
+        // student
         if (studentDashboard) studentDashboard.style.display = "block";
-        if (navTeacherLink) navTeacherLink.style.display = "none";
         if (navStudentLink) navStudentLink.style.display = "inline-block";
         if (dashboardStudentName) dashboardStudentName.textContent = currentUser.fullName;
         if (studentGradePill) studentGradePill.textContent = `🎓 Lớp ${currentUser.grade || "12"}`;
@@ -2781,9 +3429,13 @@ document.addEventListener("DOMContentLoaded", () => {
       if (userProfile) userProfile.style.display = "none";
       if (userRoleBadge) userRoleBadge.style.display = "none";
       if (teacherDashboard) teacherDashboard.style.display = "none";
+      if (parentDashboard) parentDashboard.style.display = "none";
+      if (schoolDashboard) schoolDashboard.style.display = "none";
       if (studentDashboard) studentDashboard.style.display = "block";
       if (navTeacherLink) navTeacherLink.style.display = "none";
       if (navStudentLink) navStudentLink.style.display = "none";
+      if (navParentLink) navParentLink.style.display = "none";
+      if (navSchoolLink) navSchoolLink.style.display = "none";
       if (dashboardStudentName) dashboardStudentName.textContent = "Học sinh EduNova";
       if (studentGradePill) studentGradePill.textContent = "🎓 Lớp 12";
       if (studentCoursePill) studentCoursePill.textContent = "Tất cả môn";

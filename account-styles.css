@@ -1524,3 +1524,312 @@
   font-size: 1.05rem;
   width: 60px;
 }
+
+/* ==========================================================================
+   Question Types (Đúng/Sai, Trả lời ngắn, Tự luận) & Delete Buttons
+   ========================================================================== */
+.btn-quick-template {
+  background: #ede9fe;
+  color: #6d28d9;
+  border: 1px solid #ddd6fe;
+  border-radius: 6px;
+  padding: 4px 9px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btn-quick-template:hover {
+  background: #7c3aed;
+  color: #ffffff;
+  border-color: #7c3aed;
+}
+
+.quiz-qtype-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+
+.quiz-qtype-badge.mcq { background: #e0e7ff; color: #3730a3; }
+.quiz-qtype-badge.tf { background: #dbeafe; color: #1e40af; }
+.quiz-qtype-badge.short { background: #fef3c7; color: #92400e; }
+.quiz-qtype-badge.essay { background: #dcfce7; color: #166534; }
+
+/* Đúng / Sai selection buttons */
+.quiz-tf-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.quiz-tf-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 20px;
+  border-radius: 12px;
+  border: 2px solid #e2e8f0;
+  background: #ffffff;
+  color: #1e293b;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  font-family: inherit;
+}
+
+.quiz-tf-btn:hover {
+  border-color: #7c3aed;
+  background: #fdfcff;
+  transform: translateY(-2px);
+}
+
+.quiz-tf-btn.selected {
+  border-color: #7c3aed !important;
+  background: #f5f3ff !important;
+  color: #6d28d9 !important;
+  box-shadow: 0 0 0 1px #7c3aed, 0 4px 14px rgba(124, 58, 237, 0.15) !important;
+}
+
+/* Trả lời ngắn input */
+.quiz-short-wrap {
+  margin-top: 10px;
+}
+
+.quiz-short-input {
+  width: 100%;
+  padding: 13px 18px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 0.96rem;
+  font-family: inherit;
+  color: #1e293b;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  box-sizing: border-box;
+}
+
+.quiz-short-input:focus {
+  border-color: #7c3aed;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+/* Tự luận textarea */
+.quiz-essay-wrap {
+  margin-top: 10px;
+}
+
+.quiz-essay-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1.5px solid #cbd5e1;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-family: inherit;
+  color: #1e293b;
+  background: #ffffff;
+  transition: all 0.2s ease;
+  resize: vertical;
+  min-height: 100px;
+  box-sizing: border-box;
+}
+
+.quiz-essay-input:focus {
+  border-color: #7c3aed;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+/* Nút xóa item (Môn, Bài giảng, Bài kiểm tra) */
+.btn-delete-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: #fee2e2;
+  color: #dc2626;
+  border: 1px solid #fecaca;
+  border-radius: 8px;
+  padding: 6px 12px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btn-delete-item:hover {
+  background: #dc2626;
+  color: #ffffff;
+  border-color: #dc2626;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 10px rgba(220, 38, 38, 0.2);
+}
+
+.btn-delete-item-sm {
+  background: transparent;
+  color: #94a3b8;
+  border: none;
+  padding: 4px 8px;
+  border-radius: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.btn-delete-item-sm:hover {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+/* ==========================================================================
+   Phần Viết Bài Văn Môn Ngữ Văn (Essay Writing UI)
+   ========================================================================== */
+.quiz-qtype-badge.writing {
+  background: #fef3c7;
+  color: #b45309;
+  border: 1px solid #fde68a;
+}
+
+.quiz-essay-writing-wrap {
+  margin-top: 14px;
+  background: #ffffff;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+}
+
+.quiz-essay-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  padding: 8px 14px;
+  border-bottom: 1px solid #e2e8f0;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.essay-tools-left {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.essay-tool-btn {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+  border-radius: 6px;
+  padding: 4px 10px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: inherit;
+}
+
+.essay-tool-btn:hover {
+  background: #f1f5f9;
+  color: #1e293b;
+  border-color: #94a3b8;
+}
+
+.essay-tool-btn.active {
+  background: #fef3c7;
+  color: #b45309;
+  border-color: #fcd34d;
+}
+
+.essay-outline-panel {
+  background: #fffbeb;
+  border-bottom: 1px solid #fef3c7;
+  padding: 12px 16px;
+  font-size: 0.85rem;
+  color: #78350f;
+  line-height: 1.6;
+}
+
+.essay-outline-panel h5 {
+  margin: 0 0 6px 0;
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: #92400e;
+}
+
+.essay-outline-panel ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.quiz-essay-writing-input {
+  width: 100%;
+  border: none;
+  padding: 18px 20px;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #1e293b;
+  font-family: inherit;
+  box-sizing: border-box;
+  min-height: 240px;
+  resize: vertical;
+  background: #ffffff;
+}
+
+.quiz-essay-writing-input:focus {
+  outline: none;
+  background: #fffdfa;
+}
+
+.quiz-word-count-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f8fafc;
+  padding: 8px 16px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 0.82rem;
+  color: #64748b;
+  font-weight: 600;
+}
+
+.quiz-word-count-bar .word-stats {
+  display: flex;
+  gap: 14px;
+}
+
+.quiz-word-count-bar .word-stat-val {
+  color: #7c3aed;
+  font-weight: 800;
+}
+
+/* ==========================================================================
+   Vai trò mới: Phụ huynh & Nhà trường (Badges)
+   ========================================================================== */
+.role-badge.parent {
+  background: #dbeafe !important;
+  color: #1e40af !important;
+}
+
+.role-badge.school {
+  background: #ede9fe !important;
+  color: #6d28d9 !important;
+}
+
+

@@ -78,6 +78,8 @@
           <a href="#schedule">Lịch học</a>
           <a href="#teacherDashboard" id="navTeacherLink" style="display: none;">Quản lý Dạy học</a>
           <a href="#studentDashboard" id="navStudentLink" style="display: none;">Góc học tập</a>
+          <a href="#parentDashboard" id="navParentLink" style="display: none;">Sổ liên lạc Phụ huynh</a>
+          <a href="#schoolDashboard" id="navSchoolLink" style="display: none;">Cổng Nhà trường</a>
           <a href="#reviews">Đánh giá</a>
         </nav>
         <div class="nav-actions" id="authActions">
@@ -344,6 +346,267 @@
             </div>
             <div class="teacher-course-list" id="teacherCourseList">
               <!-- Rendered by JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Parent Dashboard Section (Sổ liên lạc điện tử Phụ huynh) -->
+      <section id="parentDashboard" class="parent-dashboard-section" style="display: none; padding: 40px 0; background: #fdfcfe;">
+        <div class="container">
+          <div class="student-profile-banner" style="background: linear-gradient(135deg, #eff6ff 0%, #dbeafe 100%); border-color: #bfdbfe;">
+            <div class="student-profile-left">
+              <div class="student-avatar-badge" style="background: #3b82f6; color: white;">👨‍👩‍👧</div>
+              <div class="student-info-text">
+                <div class="student-name-row">
+                  <h2 id="parentGreetingName" style="color: #1e3a8a;">Phụ huynh: Bác Nguyễn Văn Nam</h2>
+                  <span class="status-badge" style="background: #2563eb; color: white;">Sổ liên lạc kết nối</span>
+                </div>
+                <div class="student-meta-tags">
+                  <span class="student-grade-pill" style="background: #dbeafe; color: #1e40af;">Con em: Nguyễn Minh Anh (Lớp 12A1)</span>
+                  <span class="student-course-pill" style="background: #e0e7ff; color: #3730a3;">GVCN: Cô Mai (0912.345.678)</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Parent Stats -->
+          <div class="teacher-stats-grid" style="margin-top: 24px;">
+            <div class="stat-card">
+              <div class="stat-icon">📊</div>
+              <div class="stat-info">
+                <strong style="color: #2563eb;">9.2 / 10</strong>
+                <span>Điểm trung bình các bài thi</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🏆</div>
+              <div class="stat-info">
+                <strong style="color: #059669;">Xuất sắc</strong>
+                <span>Xếp loại học lực</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">📝</div>
+              <div class="stat-info">
+                <strong>16 bài</strong>
+                <span>Bài kiểm tra đã nộp</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">⏰</div>
+              <div class="stat-info">
+                <strong style="color: #7c3aed;">98%</strong>
+                <span>Tỷ lệ chuyên cần học tập</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Parent Details Layout -->
+          <div class="teacher-grid-layout" style="margin-top: 28px;">
+            <!-- Child Recent Grades & Exams -->
+            <div class="teacher-panel">
+              <div class="panel-header">
+                <div>
+                  <h3>Kết quả học tập & Bài thi của con</h3>
+                  <p>Theo dõi điểm thi thử, trắc nghiệm và bài viết văn</p>
+                </div>
+                <span class="type-chip" style="background: #dbeafe; color: #1e40af;">Cập nhật tức thì</span>
+              </div>
+              <div class="quiz-list" id="parentChildGradesList">
+                <div class="assignment-item">
+                  <div class="assignment-top">
+                    <h4 class="assignment-title">Đề thi khảo sát Ngữ văn: Đọc hiểu & Viết bài văn Nghị luận</h4>
+                    <span class="type-chip" style="background: #dcfce7; color: #166534; font-weight: 800;">Điểm: 9.5</span>
+                  </div>
+                  <div class="assignment-meta">
+                    <span class="badge-course">Ngữ văn</span>
+                    <span>Hôm nay</span>
+                    <span style="color: #059669;">• Nhận xét: Bài viết văn lập luận sắc bén, bố cục rõ ràng</span>
+                  </div>
+                </div>
+                <div class="assignment-item">
+                  <div class="assignment-top">
+                    <h4 class="assignment-title">Kiểm tra 15 phút: Cực trị & Sự biến thiên Hàm số</h4>
+                    <span class="type-chip" style="background: #dcfce7; color: #166534; font-weight: 800;">Điểm: 9.0</span>
+                  </div>
+                  <div class="assignment-meta">
+                    <span class="badge-course">Toán học</span>
+                    <span>15/09/2026</span>
+                    <span style="color: #059669;">• Nhận xét: Nắm vững phương pháp giải nhanh đạo hàm</span>
+                  </div>
+                </div>
+                <div class="assignment-item">
+                  <div class="assignment-top">
+                    <h4 class="assignment-title">Luyện tập: Dao động điều hòa & Con lắc lò xo</h4>
+                    <span class="type-chip" style="background: #dcfce7; color: #166534; font-weight: 800;">Điểm: 9.0</span>
+                  </div>
+                  <div class="assignment-meta">
+                    <span class="badge-course">Vật lý</span>
+                    <span>12/09/2026</span>
+                    <span style="color: #059669;">• Nhận xét: Hoàn thành bài tập đúng hạn</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Parent Communication with Teachers -->
+            <div class="teacher-panel">
+              <div class="panel-header">
+                <div>
+                  <h3>Trao đổi với Thầy Cô & Nhà trường</h3>
+                  <p>Hòm thư tương tác trực tiếp với giáo viên chủ nhiệm</p>
+                </div>
+              </div>
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                <div style="margin-bottom: 12px; padding-bottom: 12px; border-bottom: 1px solid #f1f5f9;">
+                  <strong style="color: #1e293b; font-size: 0.92rem;">Lời nhắn từ Cô Mai (GVCN Lớp 12A1):</strong>
+                  <p style="margin: 4px 0 0; font-size: 0.88rem; color: #475569; line-height: 1.5;">
+                    "Chào bác Nam, tuần qua em Minh Anh học rất tập trung, đặc biệt bài viết văn nghị luận xã hội đạt 9.5 điểm cao nhất lớp. Gia đình tiếp tục động viên em giữ vững phong độ nhé!"
+                  </p>
+                </div>
+                <form id="parentMessageForm" onsubmit="event.preventDefault(); alert('Cảm ơn bác! Tin nhắn đã được gửi trực tiếp tới cô giáo chủ nhiệm.'); document.getElementById('parentReplyInput').value = '';">
+                  <label for="parentReplyInput" style="font-size: 0.85rem; font-weight: 700; color: #64748b; margin-bottom: 6px; display: block;">Gửi tin nhắn hoặc đơn xin phép cho con:</label>
+                  <textarea id="parentReplyInput" rows="3" class="quiz-short-input" placeholder="Vd: Chào cô, gia đình xin phép cho cháu nghỉ sáng thứ 7 để đi khám sức khỏe..." required style="margin-bottom: 8px;"></textarea>
+                  <button type="submit" class="btn btn-primary small-btn" style="width: 100%; justify-content: center;">✉️ Gửi phản hồi tới Giáo viên</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- School Dashboard Section (Cổng Quản trị Nhà trường) -->
+      <section id="schoolDashboard" class="school-dashboard-section" style="display: none; padding: 40px 0; background: #faf5ff;">
+        <div class="container">
+          <div class="student-profile-banner" style="background: linear-gradient(135deg, #faf5ff 0%, #ede9fe 100%); border-color: #ddd6fe;">
+            <div class="student-profile-left">
+              <div class="student-avatar-badge" style="background: #7c3aed; color: white;">🏫</div>
+              <div class="student-info-text">
+                <div class="student-name-row">
+                  <h2 id="schoolGreetingName" style="color: #4c1d95;">Trường THPT Chuyên EduNova</h2>
+                  <span class="status-badge" style="background: #7c3aed; color: white;">Cổng Quản Trị Nhà Trường</span>
+                </div>
+                <div class="student-meta-tags">
+                  <span class="student-grade-pill" style="background: #ede9fe; color: #6d28d9;">Ban Giám Hiệu & Quản Trị Hệ Thống</span>
+                  <span class="student-course-pill" style="background: #f3e8ff; color: #581c87;">Năm học 2026 - 2027</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- School Stats -->
+          <div class="teacher-stats-grid" style="margin-top: 24px;">
+            <div class="stat-card">
+              <div class="stat-icon">👨‍🎓</div>
+              <div class="stat-info">
+                <strong style="color: #7c3aed;">1.280</strong>
+                <span>Học sinh toàn trường</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">👨‍🏫</div>
+              <div class="stat-info">
+                <strong style="color: #0284c7;">72</strong>
+                <span>Cán bộ & Giáo viên</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">📈</div>
+              <div class="stat-info">
+                <strong style="color: #059669;">8.52 / 10</strong>
+                <span>Điểm thi khảo sát trung bình</span>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">🎯</div>
+              <div class="stat-info">
+                <strong style="color: #dc2626;">99.2%</strong>
+                <span>Tỷ lệ hoàn thành chương trình</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- School Management Panels Layout -->
+          <div class="teacher-grid-layout" style="margin-top: 28px;">
+            <!-- Class Ranking & Statistics -->
+            <div class="teacher-panel">
+              <div class="panel-header">
+                <div>
+                  <h3>Thi đua & Kết quả các khối lớp</h3>
+                  <p>Xếp hạng thành tích học tập các khối lớp năm học 2026-2027</p>
+                </div>
+                <span class="type-chip exam">Toàn trường</span>
+              </div>
+              <div class="quiz-list">
+                <div class="assignment-item" style="display: flex; justify-content: space-between; align-items: center;">
+                  <div>
+                    <div class="assignment-top">
+                      <h4 class="assignment-title">🥇 Lớp 12A1 (Chuyên Tự Nhiên & Ngữ Văn)</h4>
+                      <span class="badge-course">42 học sinh</span>
+                    </div>
+                    <div class="assignment-meta">
+                      <span>GVCN: Cô Mai</span>
+                      <span style="color: #059669; font-weight: 700;">• ĐTB: 9.35</span>
+                      <span>• Tỷ lệ đạt điểm 9-10: 88%</span>
+                    </div>
+                  </div>
+                  <span class="badge-deadline active" style="background: #ecfdf5; color: #059669; border-color: #a7f3d0;">Dẫn đầu</span>
+                </div>
+
+                <div class="assignment-item" style="display: flex; justify-content: space-between; align-items: center;">
+                  <div>
+                    <div class="assignment-top">
+                      <h4 class="assignment-title">🥈 Lớp 12A2 (Chuyên Toán & Tin Học)</h4>
+                      <span class="badge-course">40 học sinh</span>
+                    </div>
+                    <div class="assignment-meta">
+                      <span>GVCN: Thầy Hùng</span>
+                      <span style="color: #059669; font-weight: 700;">• ĐTB: 9.12</span>
+                      <span>• Tỷ lệ đạt điểm 9-10: 82%</span>
+                    </div>
+                  </div>
+                  <span class="badge-deadline active" style="background: #eff6ff; color: #2563eb; border-color: #bfdbfe;">Hạng nhì</span>
+                </div>
+
+                <div class="assignment-item" style="display: flex; justify-content: space-between; align-items: center;">
+                  <div>
+                    <div class="assignment-top">
+                      <h4 class="assignment-title">🥉 Lớp 11A1 (Khối 11 Tiên Phong)</h4>
+                      <span class="badge-course">45 học sinh</span>
+                    </div>
+                    <div class="assignment-meta">
+                      <span>GVCN: Thầy Tuấn</span>
+                      <span style="color: #059669; font-weight: 700;">• ĐTB: 8.85</span>
+                      <span>• Tỷ lệ đạt điểm 9-10: 76%</span>
+                    </div>
+                  </div>
+                  <span class="badge-deadline active" style="background: #fdf2f8; color: #db2777; border-color: #fbcfe8;">Hạng ba</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- School Announcement Publishing -->
+            <div class="teacher-panel">
+              <div class="panel-header">
+                <div>
+                  <h3>Ban hành Thông báo Toàn trường</h3>
+                  <p>Gửi thông báo tới toàn thể học sinh, phụ huynh và giáo viên</p>
+                </div>
+              </div>
+              <div style="background: #ffffff; border: 1px solid #e2e8f0; border-radius: 12px; padding: 16px;">
+                <form id="schoolAnnouncementForm" onsubmit="event.preventDefault(); alert('✓ Ban giám hiệu đã ban hành thông báo thành công tới toàn thể học sinh và phụ huynh!'); document.getElementById('schoolAnnounceTitle').value = ''; document.getElementById('schoolAnnounceContent').value = '';">
+                  <div class="form-group" style="margin-bottom: 12px;">
+                    <label for="schoolAnnounceTitle" style="font-size: 0.85rem; font-weight: 700; color: #475569;">Tiêu đề thông báo:</label>
+                    <input id="schoolAnnounceTitle" class="quiz-short-input" type="text" placeholder="Vd: Lịch thi thử THPT Quốc gia lần 2 và Ngày hội Tư vấn Tuyển sinh" required />
+                  </div>
+                  <div class="form-group" style="margin-bottom: 12px;">
+                    <label for="schoolAnnounceContent" style="font-size: 0.85rem; font-weight: 700; color: #475569;">Nội dung ban hành:</label>
+                    <textarea id="schoolAnnounceContent" class="quiz-short-input" rows="3" placeholder="Nhập nội dung chi tiết thông báo..." required></textarea>
+                  </div>
+                  <button type="submit" class="btn btn-primary small-btn" style="width: 100%; justify-content: center;">📢 Ban hành thông báo chính thức</button>
+                </form>
+              </div>
             </div>
           </div>
         </div>
@@ -623,8 +886,8 @@
           </div>
 
           <div class="form-group account-type">
-            <label>Vai trò</label>
-            <div class="radio-group auth-radio-group">
+            <label>Vai trò tài khoản</label>
+            <div class="radio-group auth-radio-group" style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
               <label class="radio-label">
                 <input type="radio" name="accountType" value="student" required checked />
                 <span>👨‍🎓 Học sinh</span>
@@ -633,9 +896,18 @@
                 <input type="radio" name="accountType" value="teacher" required />
                 <span>👨‍🏫 Giáo viên</span>
               </label>
+              <label class="radio-label">
+                <input type="radio" name="accountType" value="parent" required />
+                <span>👨‍👩‍👧 Phụ huynh</span>
+              </label>
+              <label class="radio-label">
+                <input type="radio" name="accountType" value="school" required />
+                <span>🏫 Nhà trường</span>
+              </label>
             </div>
           </div>
 
+          <!-- Dành riêng cho Học sinh -->
           <div class="form-group" id="signupGradeGroup">
             <label for="signupGrade">Khối lớp</label>
             <select id="signupGrade" name="grade">
@@ -657,16 +929,28 @@
           <div class="form-group" id="signupCourseGroup">
             <label for="course" id="signupCourseLabel">Môn học trọng tâm</label>
             <select id="course" name="course">
-              <option value="Toán học - Đại số & Hình học không gian">📐 Toán học</option>
-              <option value="Vật lý - Cơ học & Sóng điện từ">⚡ Vật lý</option>
-              <option value="Hóa học - Vô cơ & Hữu cơ trọng tâm">🧪 Hóa học</option>
-              <option value="Sinh học - Di truyền & Quần thể sinh thái">🧬 Sinh học</option>
-              <option value="Ngữ văn - Kỹ năng Đọc hiểu & Nghị luận xã hội">📖 Ngữ văn</option>
-              <option value="Tiếng Anh - Ngữ pháp & Luyện thi THPT / IELTS">🌍 Tiếng Anh</option>
-              <option value="Lịch sử - Lịch sử Việt Nam & Thế giới hiện đại">🏛️ Lịch sử</option>
-              <option value="Địa lý - Địa lý tự nhiên & Kinh tế Việt Nam">🗺️ Địa lý</option>
-              <option value="Tin học - Lập trình Python & Tư duy thuật toán">💻 Tin học</option>
+              <option value="Toán học">📐 Toán học</option>
+              <option value="Vật lý">⚡ Vật lý</option>
+              <option value="Hóa học">🧪 Hóa học</option>
+              <option value="Sinh học">🧬 Sinh học</option>
+              <option value="Ngữ văn">📖 Ngữ văn</option>
+              <option value="Tiếng Anh">🌍 Tiếng Anh</option>
+              <option value="Lịch sử">🏛️ Lịch sử</option>
+              <option value="Địa lý">🗺️ Địa lý</option>
+              <option value="Tin học">💻 Tin học</option>
             </select>
+          </div>
+
+          <!-- Dành riêng cho Phụ huynh -->
+          <div class="form-group" id="signupParentGroup" style="display: none;">
+            <label for="signupStudentName">Họ tên học sinh (Con em đang theo học)</label>
+            <input id="signupStudentName" name="studentName" type="text" placeholder="Vd: Nguyễn Minh Anh - Lớp 12A1" />
+          </div>
+
+          <!-- Dành riêng cho Nhà trường -->
+          <div class="form-group" id="signupSchoolGroup" style="display: none;">
+            <label for="signupSchoolName">Tên trường học / Cơ sở đào tạo</label>
+            <input id="signupSchoolName" name="schoolName" type="text" placeholder="Vd: Trường THPT Chuyên EduNova" />
           </div>
 
           <div class="form-group">
@@ -714,8 +998,10 @@
         <div class="quick-demo-auth-box">
           <span class="quick-demo-label">⚡ Đăng nhập nhanh một chạm:</span>
           <div class="quick-demo-btns">
-            <button type="button" class="btn-demo-quick" id="btnQuickLoginStudent">👨‍🎓 Học sinh (Lớp 12)</button>
+            <button type="button" class="btn-demo-quick" id="btnQuickLoginStudent">👨‍🎓 Học sinh (Minh Anh)</button>
             <button type="button" class="btn-demo-quick" id="btnQuickLoginTeacher">👨‍🏫 Thầy Tuấn (Giáo viên)</button>
+            <button type="button" class="btn-demo-quick" id="btnQuickLoginParent">👨‍👩‍👧 Phụ huynh (Bác Nam)</button>
+            <button type="button" class="btn-demo-quick" id="btnQuickLoginSchool">🏫 Nhà trường (THPT EduNova)</button>
           </div>
         </div>
 
@@ -1021,7 +1307,8 @@
         <button class="modal-close" type="button" aria-label="Đóng" data-close-create-quiz>×</button>
         <div class="modal-header">
           <span class="eyebrow">Giảng viên EduNova</span>
-          <h3 id="createQuizTitle">Tạo đề kiểm tra / Luyện tập trắc nghiệm</h3>
+          <h3 id="createQuizTitle">Tạo đề kiểm tra đa dạng dạng bài</h3>
+          <p style="font-size: 0.88rem; color: var(--text-muted); margin-top: 4px;">Hỗ trợ Trắc nghiệm, Đúng/Sai, Trả lời ngắn & Tự luận</p>
         </div>
 
         <form id="createQuizForm" class="signup-form">
@@ -1061,9 +1348,25 @@
           </div>
 
           <div class="form-group">
-            <label>Danh sách câu hỏi mẫu (JSON hoặc định dạng câu hỏi)</label>
-            <textarea id="newQuizQuestionsRaw" rows="6" placeholder="Câu 1: ... | A: ... | B: ... | C: ... | D: ... | Đáp án: A&#10;Câu 2: ... | A: ... | B: ... | C: ... | D: ... | Đáp án: B" required></textarea>
-            <small style="color: var(--text-muted); font-size: 0.8rem;">Hệ thống sẽ tự động phân tích và tạo bài trắc nghiệm.</small>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; flex-wrap: wrap; gap: 6px;">
+              <label style="margin-bottom: 0;">Danh sách câu hỏi theo dạng bài</label>
+              <div class="quiz-template-buttons" style="display: flex; gap: 6px; flex-wrap: wrap;">
+                <button type="button" class="btn-quick-template" id="btnTplMCQ" title="Thêm câu trắc nghiệm">+ Trắc nghiệm</button>
+                <button type="button" class="btn-quick-template" id="btnTplTF" title="Thêm câu Đúng / Sai">+ Đúng / Sai</button>
+                <button type="button" class="btn-quick-template" id="btnTplShort" title="Thêm câu Trả lời ngắn">+ Trả lời ngắn</button>
+                <button type="button" class="btn-quick-template" id="btnTplEssay" title="Thêm câu Tự luận">+ Tự luận</button>
+                <button type="button" class="btn-quick-template" id="btnTplEssayWriting" style="background: #fef3c7; color: #b45309; border-color: #fde68a;" title="Thêm phần viết bài văn môn Ngữ văn">🖋️ + Viết bài văn (Văn)</button>
+              </div>
+            </div>
+            <textarea id="newQuizQuestionsRaw" rows="8" placeholder="Bấm các nút phía trên để chèn nhanh mẫu câu hỏi, hoặc gõ theo cú pháp:&#10;[TN] Câu hỏi trắc nghiệm | A: ... | B: ... | C: ... | D: ... | Đáp án: A&#10;[DS] Câu khẳng định đúng sai | Đáp án: Đúng&#10;[TLN] Câu hỏi cần trả lời ngắn | Đáp án: Từ khóa đáp án&#10;[TL] Đề bài tự luận yêu cầu học sinh trình bày chi tiết&#10;[VBV] Đề bài viết bài văn nghị luận môn Ngữ văn | Dàn ý: 1. Mở bài... 2. Thân bài... 3. Kết bài..." required></textarea>
+            <div style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 12px; margin-top: 6px; font-size: 0.8rem; color: #64748b; line-height: 1.5;">
+              💡 <strong>Quy ước dạng bài:</strong><br/>
+              • <strong>[TN]</strong> Trắc nghiệm 4 đáp án (A, B, C, D)<br/>
+              • <strong>[DS]</strong> Đúng / Sai (Học sinh chọn nút Đúng hoặc Sai)<br/>
+              • <strong>[TLN]</strong> Trả lời ngắn (Học sinh gõ từ/số vào ô trả lời)<br/>
+              • <strong>[TL]</strong> Tự luận ngắn (Học sinh trả lời tóm tắt)<br/>
+              • <strong>[VBV]</strong> Viết bài văn (Môn Ngữ văn: Trình bày bài văn hoàn chỉnh, đếm từ thời gian thực, có dàn ý mở bài - thân bài - kết bài)
+            </div>
           </div>
 
           <button class="btn btn-primary submit-btn" type="submit">Xuất bản đề thi</button>
@@ -1292,7 +1595,6 @@
           <a href="#" title="Facebook" aria-label="Facebook">📘 Facebook</a>
           <a href="#" title="YouTube" aria-label="YouTube">▶️ YouTube</a>
           <a href="#" title="TikTok" aria-label="TikTok">🎵 TikTok</a>
-          <a href="https://github.com/phamnguyenvu12346-a11y/new-production-of-nvu.git" target="_blank" rel="noopener" title="GitHub" aria-label="GitHub">🐙 GitHub</a>
         </div>
       </div>
     </footer>
