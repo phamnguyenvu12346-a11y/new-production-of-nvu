@@ -75,7 +75,7 @@
           <a href="#courses">Môn học</a>
           <a href="#about">Ưu điểm</a>
           <a href="#roadmap">Lộ trình</a>
-          <a href="#schedule">Lịch học</a>
+          <a href="#schedule" id="navLiveClassLink" class="nav-live-pill"><span class="live-dot-pulse"></span>🎥 Lớp học Online</a>
           <a href="#teacherDashboard" id="navTeacherLink" style="display: none;">Quản lý Dạy học</a>
           <a href="#studentDashboard" id="navStudentLink" style="display: none;">Góc học tập</a>
           <a href="#parentDashboard" id="navParentLink" style="display: none;">Sổ liên lạc Phụ huynh</a>
@@ -219,21 +219,85 @@
         </div>
       </section>
 
-      <!-- Schedule Section -->
-      <section id="schedule" class="schedule">
-        <div class="container section-heading">
-          <span class="eyebrow">Lịch học</span>
-          <h2>Thời khóa biểu trong tuần</h2>
+      <!-- Schedule & Live Classroom Section -->
+      <section id="schedule" class="schedule live-schedule-section">
+        <div class="container section-heading inline" style="margin-bottom: 24px;">
+          <div>
+            <div style="display: inline-flex; align-items: center; gap: 8px; margin-bottom: 6px;">
+              <span class="eyebrow" style="margin: 0;">Lịch học trực tuyến & TKB</span>
+              <span class="live-status-pill">
+                <span class="live-dot-pulse"></span> TRỰC TIẾP
+              </span>
+            </div>
+            <h2>Thời khóa biểu & Phòng học Online Live</h2>
+            <p style="color: var(--muted); margin: 6px 0 0 0; font-size: 0.95rem;">
+              Tham gia lớp học trực tuyến qua phòng học ảo mô phỏng Zoom, trao đổi trực tiếp cùng giáo viên bộ môn
+            </p>
+          </div>
+          <div class="schedule-actions-bar">
+            <button class="btn btn-secondary" type="button" id="openCreateLiveSessionBtn" style="display: none;">
+              <span>➕</span> Lên lịch học online
+            </button>
+            <button class="btn btn-warning" type="button" id="btnQuickJoinLive" style="background: linear-gradient(135deg, #ef4444, #dc2626); color: white; border: none; font-weight: 700; box-shadow: 0 4px 14px rgba(239, 68, 68, 0.35);">
+              <span>🎥</span> Vào phòng đang Live ngay
+            </button>
+          </div>
         </div>
 
-        <div class="container schedule-layout">
-          <div class="schedule-card overview-card">
-            <p class="card-label">Tuần này</p>
-            <h3 id="scheduleCourseTitle">Toán học - Đại số & Hình học</h3>
-            <ul id="scheduleSummary"></ul>
+        <!-- Schedule Filter Controls -->
+        <div class="container schedule-filter-wrap">
+          <div class="schedule-filter-group days-group">
+            <span class="filter-label">Thứ:</span>
+            <div class="filter-pills" id="scheduleDayFilters">
+              <button type="button" class="sched-pill active" data-day="all">Tất cả</button>
+              <button type="button" class="sched-pill" data-day="today">🔥 Hôm nay</button>
+              <button type="button" class="sched-pill" data-day="Thứ 2">Thứ 2</button>
+              <button type="button" class="sched-pill" data-day="Thứ 3">Thứ 3</button>
+              <button type="button" class="sched-pill" data-day="Thứ 4">Thứ 4</button>
+              <button type="button" class="sched-pill" data-day="Thứ 5">Thứ 5</button>
+              <button type="button" class="sched-pill" data-day="Thứ 6">Thứ 6</button>
+              <button type="button" class="sched-pill" data-day="Thứ 7">Thứ 7</button>
+              <button type="button" class="sched-pill" data-day="Chủ nhật">Chủ nhật</button>
+            </div>
           </div>
 
-          <div class="schedule-card timetable" id="scheduleTimetable"></div>
+          <div class="schedule-filter-dropdowns">
+            <div class="filter-select-wrap">
+              <label for="filterLiveGrade">Khối lớp:</label>
+              <select id="filterLiveGrade" class="filter-select">
+                <option value="all">Tất cả khối</option>
+                <option value="12">Khối 12</option>
+                <option value="11">Khối 11</option>
+                <option value="10">Khối 10</option>
+              </select>
+            </div>
+
+            <div class="filter-select-wrap">
+              <label for="filterLiveSubject">Môn học:</label>
+              <select id="filterLiveSubject" class="filter-select">
+                <option value="all">Tất cả môn học</option>
+                <option value="Toán">Toán</option>
+                <option value="Ngữ văn">Ngữ văn</option>
+                <option value="Vật lí">Vật lí</option>
+                <option value="Hóa học">Hóa học</option>
+                <option value="Tiếng Anh">Tiếng Anh</option>
+                <option value="Sinh học">Sinh học</option>
+                <option value="Lịch sử">Lịch sử</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- Live Sessions Grid Cards -->
+        <div class="container live-sessions-grid" id="liveSessionsGrid">
+          <!-- Populated dynamically by JS -->
+        </div>
+
+        <!-- Hidden backward-compatibility elements -->
+        <div style="display: none;">
+          <h3 id="scheduleCourseTitle"></h3>
+          <ul id="scheduleSummary"></ul>
+          <div id="scheduleTimetable"></div>
         </div>
       </section>
 
@@ -1252,6 +1316,270 @@
             </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <!-- Zoom Virtual Classroom Modal (Phòng học trực tuyến EduNova Live) -->
+    <div class="modal-overlay hidden zoom-modal-overlay" id="liveClassroomModal" aria-hidden="true">
+      <div class="zoom-classroom-window" role="dialog" aria-modal="true" aria-labelledby="zoomRoomTitle">
+        <!-- Zoom Top Bar -->
+        <header class="zoom-top-bar">
+          <div class="zoom-top-left">
+            <span class="zoom-live-badge"><span class="live-dot-pulse"></span> TRỰC TIẾP</span>
+            <span class="zoom-subject-pill" id="zoomSubjectPill">Ngữ văn 12</span>
+            <h3 class="zoom-room-title" id="zoomRoomTitle">Chuyên đề: Phân tích bài thơ Tây Tiến - Quang Dũng</h3>
+          </div>
+          <div class="zoom-top-center">
+            <div class="zoom-meeting-meta">
+              <span>Phòng: <strong id="zoomMeetingId">889-423-668</strong></span>
+              <span>Pass: <strong id="zoomMeetingPass">123456</strong></span>
+              <span class="zoom-timer-badge">⏱ <strong id="zoomTimer">00:45:18</strong></span>
+            </div>
+          </div>
+          <div class="zoom-top-right">
+            <div class="zoom-view-switch">
+              <button type="button" class="zoom-view-btn active" id="btnViewSlide" title="Chế độ Màn hình bài giảng">🖥️ Bài giảng</button>
+              <button type="button" class="zoom-view-btn" id="btnViewWhiteboard" title="Chế độ Bảng trắng viết phấn">🎨 Bảng phấn</button>
+              <button type="button" class="zoom-view-btn" id="btnViewGallery" title="Chế độ Lưới Camera lớp học">👥 Lưới Video</button>
+            </div>
+            <button type="button" class="zoom-fullscreen-btn" id="btnToggleZoomFullscreen" title="Toàn màn hình">⛶</button>
+            <button class="modal-close zoom-close-x" type="button" aria-label="Rời phòng" data-close-live-classroom>×</button>
+          </div>
+        </header>
+
+        <!-- Zoom Main Content Layout -->
+        <div class="zoom-main-layout">
+          <!-- Center Stage Area -->
+          <main class="zoom-stage-area">
+            <!-- 1. Slide Presentation Stage View -->
+            <div class="zoom-view-panel active" id="zoomSlideView">
+              <div class="zoom-slide-container">
+                <div class="zoom-slide-header">
+                  <div class="slide-nav-left">
+                    <span class="slide-badge" id="zoomSlideSubject">BÀI GIẢNG ĐIỆN TỬ</span>
+                    <h4 class="slide-title" id="zoomSlideTitle">Phần 1: Giới thiệu tác giả Quang Dũng và Hoàn cảnh sáng tác</h4>
+                  </div>
+                  <div class="slide-nav-controls">
+                    <button type="button" class="slide-ctrl-btn" id="btnPrevSlide" title="Trang trước">◀ Trang trước</button>
+                    <span class="slide-page-num" id="slidePageNum">Trang 1 / 4</span>
+                    <button type="button" class="slide-ctrl-btn" id="btnNextSlide" title="Trang sau">Trang sau ▶</button>
+                  </div>
+                </div>
+
+                <div class="zoom-slide-body" id="zoomSlideBody">
+                  <!-- Dynamic slide content with bullet points, quotes, diagrams -->
+                </div>
+              </div>
+            </div>
+
+            <!-- 2. Interactive Whiteboard (Chalkboard) Stage View -->
+            <div class="zoom-view-panel" id="zoomWhiteboardView">
+              <div class="zoom-whiteboard-container">
+                <div class="whiteboard-toolbar">
+                  <span class="chalk-board-title">🖍️ Bảng xanh giảng dạy trực tuyến</span>
+                  <div class="chalk-colors">
+                    <button type="button" class="color-dot active" data-color="#ffffff" style="background: #ffffff;" title="Phấn trắng"></button>
+                    <button type="button" class="color-dot" data-color="#fef08a" style="background: #fef08a;" title="Phấn vàng"></button>
+                    <button type="button" class="color-dot" data-color="#7dd3fc" style="background: #7dd3fc;" title="Phấn xanh dương"></button>
+                    <button type="button" class="color-dot" data-color="#86efac" style="background: #86efac;" title="Phấn xanh lá"></button>
+                    <button type="button" class="color-dot" data-color="#fca5a5" style="background: #fca5a5;" title="Phấn đỏ hồng"></button>
+                  </div>
+                  <div class="chalk-sizes">
+                    <button type="button" class="size-btn active" data-size="3">Nét thanh</button>
+                    <button type="button" class="size-btn" data-size="6">Nét vừa</button>
+                    <button type="button" class="size-btn" data-size="12">Nét đậm</button>
+                  </div>
+                  <button type="button" class="btn-clear-board" id="btnClearWhiteboard">🧹 Lau bảng</button>
+                </div>
+                <div class="whiteboard-canvas-wrap">
+                  <canvas id="zoomWhiteboardCanvas" width="920" height="520"></canvas>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3. Gallery Video Grid View -->
+            <div class="zoom-view-panel" id="zoomGalleryView">
+              <div class="zoom-gallery-grid" id="zoomGalleryGrid">
+                <!-- 6-8 video tiles -->
+              </div>
+            </div>
+
+            <!-- Floating Video Strip (shown on Slide and Whiteboard modes) -->
+            <aside class="zoom-floating-filmstrip" id="zoomFloatingFilmstrip">
+              <!-- Teacher tile + key student tiles -->
+            </aside>
+
+            <!-- Screen Share Toast / Alert Overlay -->
+            <div class="zoom-announcement-toast" id="zoomHandRaiseNotice" style="display: none;">
+              ✋ <strong>Em Nguyễn Văn A</strong> đang giơ tay phát biểu!
+            </div>
+          </main>
+
+          <!-- Right Sidebar (Collapsible: Participants / Chat) -->
+          <aside class="zoom-sidebar" id="zoomSidebar">
+            <div class="zoom-sidebar-tabs">
+              <button type="button" class="zoom-tab-btn active" data-zoom-tab="participants" id="tabBtnParticipants">
+                👥 Danh sách (<span id="zoomParticipantCount">36</span>)
+              </button>
+              <button type="button" class="zoom-tab-btn" data-zoom-tab="chat" id="tabBtnChat">
+                💬 Trò chuyện (<span id="zoomChatBadge">4</span>)
+              </button>
+            </div>
+
+            <!-- Tab 1: Participants List -->
+            <div class="zoom-tab-content active" id="zoomTabParticipants">
+              <div class="zoom-participants-actions">
+                <input type="text" id="inputSearchParticipants" placeholder="Tìm tên học sinh..." class="zoom-search-input" />
+                <button type="button" class="btn-mute-all" id="btnMuteAllParticipants">🔇 Tắt mic tất cả</button>
+              </div>
+              <div class="zoom-participants-list" id="zoomParticipantsList">
+                <!-- Rendered by JS -->
+              </div>
+            </div>
+
+            <!-- Tab 2: Live Chat -->
+            <div class="zoom-tab-content" id="zoomTabChat">
+              <div class="zoom-chat-messages" id="zoomChatMessages">
+                <!-- Rendered by JS -->
+              </div>
+              <div class="zoom-chat-reactions">
+                <button type="button" class="quick-react-btn" data-emoji="❤️">❤️</button>
+                <button type="button" class="quick-react-btn" data-emoji="👏">👏</button>
+                <button type="button" class="quick-react-btn" data-emoji="🙋‍♂️">🙋‍♂️</button>
+                <button type="button" class="quick-react-btn" data-emoji="💡">💡</button>
+                <button type="button" class="quick-react-btn" data-emoji="💯">💯</button>
+              </div>
+              <form id="zoomChatForm" class="zoom-chat-form">
+                <input type="text" id="zoomChatInput" placeholder="Nhắn tin với cả lớp..." autocomplete="off" required />
+                <button type="submit" class="btn-send-chat">Gửi</button>
+              </form>
+            </div>
+          </aside>
+        </div>
+
+        <!-- Zoom Bottom Control Toolbar -->
+        <footer class="zoom-bottom-bar">
+          <div class="zoom-controls-left">
+            <button type="button" class="zoom-ctrl-btn" id="zoomBtnMic">
+              <span class="ctrl-icon" id="zoomMicIcon">🎙️</span>
+              <span class="ctrl-label" id="zoomMicLabel">Tắt tiếng</span>
+            </button>
+            <button type="button" class="zoom-ctrl-btn" id="zoomBtnCam">
+              <span class="ctrl-icon" id="zoomCamIcon">📹</span>
+              <span class="ctrl-label" id="zoomCamLabel">Tắt Cam</span>
+            </button>
+          </div>
+
+          <div class="zoom-controls-center">
+            <button type="button" class="zoom-ctrl-btn active" id="zoomBtnShare">
+              <span class="ctrl-icon">🖥️</span>
+              <span class="ctrl-label">Chia sẻ bài giảng</span>
+            </button>
+            <button type="button" class="zoom-ctrl-btn" id="zoomBtnWhiteboard">
+              <span class="ctrl-icon">🎨</span>
+              <span class="ctrl-label">Bảng trắng</span>
+            </button>
+            <button type="button" class="zoom-ctrl-btn" id="zoomBtnParticipants">
+              <span class="ctrl-icon">👥</span>
+              <span class="ctrl-label">Người tham gia</span>
+            </button>
+            <button type="button" class="zoom-ctrl-btn" id="zoomBtnChat">
+              <span class="ctrl-icon">💬</span>
+              <span class="ctrl-label">Trò chuyện</span>
+            </button>
+            <button type="button" class="zoom-ctrl-btn" id="zoomBtnRaiseHand">
+              <span class="ctrl-icon">✋</span>
+              <span class="ctrl-label" id="zoomHandLabel">Giơ tay</span>
+            </button>
+            <button type="button" class="zoom-ctrl-btn" id="zoomBtnRecord">
+              <span class="ctrl-icon recording-dot">🔴</span>
+              <span class="ctrl-label">Ghi hình</span>
+            </button>
+          </div>
+
+          <div class="zoom-controls-right">
+            <button type="button" class="zoom-btn-leave" id="zoomBtnLeave">
+              <span>🚪</span> Rời phòng học
+            </button>
+          </div>
+        </footer>
+      </div>
+    </div>
+
+    <!-- Modal Lên Lịch Giờ Học Online Mới (Giáo viên) -->
+    <div class="modal-overlay hidden" id="createLiveSessionModal" aria-hidden="true">
+      <div class="modal-dialog" role="dialog" aria-modal="true" aria-labelledby="createLiveSessionTitle">
+        <button class="modal-close" type="button" aria-label="Đóng" data-close-create-live>×</button>
+        <div class="modal-header">
+          <span class="eyebrow">Giảng dạy Trực tuyến EduNova</span>
+          <h3 id="createLiveSessionTitle">Lên lịch Buổi học Online Zoom</h3>
+        </div>
+
+        <form id="createLiveSessionForm" class="signup-form">
+          <div class="form-group">
+            <label for="liveSessionSubject">Môn học</label>
+            <select id="liveSessionSubject" required>
+              <option value="Toán">Toán</option>
+              <option value="Ngữ văn">Ngữ văn</option>
+              <option value="Vật lí">Vật lí</option>
+              <option value="Hóa học">Hóa học</option>
+              <option value="Tiếng Anh">Tiếng Anh</option>
+              <option value="Sinh học">Sinh học</option>
+              <option value="Lịch sử">Lịch sử</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="liveSessionTitle">Tiêu đề bài học / Chuyên đề</label>
+            <input id="liveSessionTitle" type="text" placeholder="Vd: Chuyên đề Cực trị & Tương giao đồ thị hàm số" required />
+          </div>
+
+          <div class="form-group">
+            <label for="liveSessionTeacher">Giáo viên phụ trách</label>
+            <input id="liveSessionTeacher" type="text" placeholder="Thầy Nguyễn - Chuyên Toán" required />
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="form-group">
+              <label for="liveSessionGrade">Khối lớp</label>
+              <select id="liveSessionGrade" required>
+                <option value="12">Khối 12</option>
+                <option value="11">Khối 11</option>
+                <option value="10">Khối 10</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="liveSessionDay">Thứ trong tuần</label>
+              <select id="liveSessionDay" required>
+                <option value="Thứ 2">Thứ 2</option>
+                <option value="Thứ 3">Thứ 3</option>
+                <option value="Thứ 4">Thứ 4</option>
+                <option value="Thứ 5">Thứ 5</option>
+                <option value="Thứ 6">Thứ 6</option>
+                <option value="Thứ 7">Thứ 7</option>
+                <option value="Chủ nhật">Chủ nhật</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-row" style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+            <div class="form-group">
+              <label for="liveSessionTime">Khung giờ học</label>
+              <input id="liveSessionTime" type="text" placeholder="19:30 - 21:00" required />
+            </div>
+            <div class="form-group">
+              <label for="liveSessionPass">Mật khẩu phòng (Passcode)</label>
+              <input id="liveSessionPass" type="text" value="123456" required />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="liveSessionDesc">Mô tả tóm tắt nội dung buổi học</label>
+            <textarea id="liveSessionDesc" rows="3" placeholder="Tóm tắt trọng tâm kiến thức sẽ giảng dạy và chuẩn bị của học sinh..."></textarea>
+          </div>
+
+          <button class="btn btn-primary submit-btn" type="submit">Tạo lịch học & Mở phòng</button>
+        </form>
       </div>
     </div>
 

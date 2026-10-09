@@ -1254,6 +1254,973 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   };
 
+  // ============ LIVE TIMETABLE & ZOOM VIRTUAL CLASSROOM SYSTEM ============
+  const DEFAULT_LIVE_SESSIONS = [
+    {
+      id: "live-session-1",
+      subject: "Ngữ văn",
+      title: "Chuyên đề: Cảm hứng lãng mạn & Tinh thần bi tráng trong Tây Tiến (Quang Dũng)",
+      teacher: "Cô Mai (Tổ trưởng Ngữ văn)",
+      teacherAvatar: "👩‍🏫",
+      grade: "12",
+      day: "Thứ 6",
+      isToday: true,
+      time: "19:30 - 21:00",
+      meetingId: "889-423-668",
+      passcode: "123456",
+      status: "live", // "live" | "upcoming"
+      studentsCount: 38,
+      slides: [
+        {
+          subject: "NGỮ VĂN 12 · TÂY TIẾN",
+          title: "Phần 1: Hoàn cảnh sáng tác & Cảm hứng lãng mạn",
+          quote: "« Tây Tiến người đi không hẹn ước / Đường lên thăm thẳm một chia phôi... »",
+          points: [
+            { icon: "📍", text: "<strong>Hoàn cảnh ra đời:</strong> Sáng tác năm 1948 tại làng Phù Lưu Chanh khi Quang Dũng rời xa đơn vị Tây Tiến chưa bao lâu." },
+            { icon: "✨", text: "<strong>Cảm hứng lãng mạn:</strong> Khắc họa vẻ đẹp tâm hồn trẻ trung, mộng mơ và lý tưởng cống hiến vì độc lập của thế hệ trẻ Hà thành." },
+            { icon: "⛰️", text: "<strong>Địa bàn hoạt động:</strong> Núi rừng Tây Bắc và biên giới Việt - Lào hiểm trở, hùng vĩ mà thơ mộng." }
+          ]
+        },
+        {
+          subject: "NGỮ VĂN 12 · TÂY TIẾN",
+          title: "Phần 2: Hình tượng Người Lính vượt gian khổ hiểm nguy",
+          quote: "« Dốc lên khúc khuỷu dốc thăm thẳm / Heo hút cồn mây súng ngửi trời »",
+          points: [
+            { icon: "⚡", text: "<strong>Thiên nhiên dữ dội:</strong> Những con dốc cheo leo, vực sâu thăm thẳm được đặc tả bằng nhịp thơ gân guốc, giàu thanh trắc." },
+            { icon: "🎖️", text: "<strong>Tư thế hiên ngang:</strong> 'Súng ngửi trời' thể hiện độ cao của dốc núi lẫn khí phách tếu táo, lạc quan của người lính." },
+            { icon: "🌙", text: "<strong>Nét hào hoa:</strong> 'Mắt trừng gửi mộng qua biên giới / Đêm mơ Hà Nội dáng kiều thơm' — tình yêu quê hương tiếp thêm sức mạnh." }
+          ]
+        },
+        {
+          subject: "NGỮ VĂN 12 · TÂY TIẾN",
+          title: "Phần 3: Bức tượng đài Bi Tráng & Sự hi sinh bất tử",
+          quote: "« Áo bào thay chiếu anh về đất / Sông Mã gầm lên khúc độc hành »",
+          points: [
+            { icon: "🛡️", text: "<strong>Hiện thực khốc liệt:</strong> Bệnh tật sốt rét rừng, thiếu thốn quân trang nhưng tác giả dùng từ trang trọng 'áo bào' để trân trọng sự hi sinh." },
+            { icon: "🌊", text: "<strong>Âm hưởng bi tráng:</strong> 'Sông Mã gầm lên khúc độc hành' — thiên nhiên tấu lên bản tráng ca tiễn đưa các anh vào cõi bất tử." },
+            { icon: "💎", text: "<strong>Khúc vĩ thanh:</strong> Tác phẩm bất hủ kết tinh chủ nghĩa yêu nước và vẻ đẹp tâm hồn người lính thời đại Hồ Chí Minh." }
+          ]
+        },
+        {
+          subject: "NGỮ VĂN 12 · TÂY TIẾN",
+          title: "Phần 4: Tổng kết & Bài tập rèn luyện kỹ năng viết",
+          quote: "« Hướng dẫn viết đoạn văn nghị luận 200 chữ về vẻ đẹp bi tráng »",
+          points: [
+            { icon: "📝", text: "<strong>Yêu cầu bài tập:</strong> Viết đoạn văn 200 chữ phân tích vẻ đẹp bi tráng trong 8 câu thơ đầu của bài thơ Tây Tiến." },
+            { icon: "⏰", text: "<strong>Hạn nộp bài:</strong> Trước 22:00 Chủ nhật tuần này trên mục Nộp bài tập hệ thống EduNova." },
+            { icon: "🎯", text: "<strong>Tiết học tới:</strong> Chữa bài chi tiết và luyện đề đọc hiểu mở rộng tác phẩm Việt Bắc." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "live-session-2",
+      subject: "Toán",
+      title: "Tổng ôn Cực trị, Điểm uốn & Tương giao Đồ thị Hàm số 12",
+      teacher: "Thầy Nguyễn (Chuyên Toán THPT)",
+      teacherAvatar: "👨‍🏫",
+      grade: "12",
+      day: "Thứ 6",
+      isToday: true,
+      time: "20:00 - 21:30",
+      meetingId: "672-918-335",
+      passcode: "654321",
+      status: "live",
+      studentsCount: 45,
+      slides: [
+        {
+          subject: "TOÁN HỌC 12 · HÀM SỐ",
+          title: "Phần 1: Điều kiện cần và đủ của Cực trị Hàm số",
+          quote: "« Định lý 1: Đạo hàm đổi dấu qua điểm x0 — Định lý 2: Sử dụng đạo hàm cấp 2 »",
+          points: [
+            { icon: "📐", text: "<strong>Điều kiện cần:</strong> Nếu hàm số đạt cực trị tại x0 và có đạo hàm thì f'(x0) = 0." },
+            { icon: "🔄", text: "<strong>Quy tắc 1:</strong> f'(x) đổi dấu từ dương sang âm qua x0 ➔ cực đại; từ âm sang dương ➔ cực tiểu." },
+            { icon: "⚡", text: "<strong>Quy tắc 2:</strong> f'(x0) = 0 và f''(x0) < 0 ➔ cực đại; f''(x0) > 0 ➔ cực tiểu." }
+          ]
+        },
+        {
+          subject: "TOÁN HỌC 12 · HÀM SỐ",
+          title: "Phần 2: Công thức giải nhanh Cực trị Hàm bậc ba & Trùng phương",
+          quote: "« y = ax³ + bx² + cx + d có 2 điểm cực trị khi và chỉ khi b² - 3ac > 0 »",
+          points: [
+            { icon: "🎯", text: "<strong>Đường thẳng đi qua 2 cực trị:</strong> y = (2/3)(c - b²/3a)x + (d - bc/9a)." },
+            { icon: "🔺", text: "<strong>Hàm trùng phương:</strong> Có 3 điểm cực trị khi a.b < 0; 3 điểm tạo tam giác vuông khi b³ + 8a = 0." },
+            { icon: "💡", text: "<strong>Tam giác đều:</strong> Có 3 điểm cực trị tạo tam giác đều khi b³ + 24a = 0." }
+          ]
+        },
+        {
+          subject: "TOÁN HỌC 12 · HÀM SỐ",
+          title: "Phần 3: Bài tập ví dụ trắc nghiệm chuyên sâu",
+          quote: "« Tìm tất cả giá trị thực của tham số m để hàm số có 3 điểm cực trị »",
+          points: [
+            { icon: "🔍", text: "<strong>Ví dụ 1:</strong> Cho y = x⁴ - 2mx² + m - 1. Tìm m để tam giác tạo bởi 3 điểm cực trị có diện tích S = 32." },
+            { icon: "⚙️", text: "<strong>Phương pháp giải:</strong> Tọa độ 3 đỉnh: A(0; m-1), B(-√m; -m²+m-1), C(√m; -m²+m-1). Áp dụng S = √m⁵ = 32 ➔ m = 4." },
+            { icon: "✨", text: "<strong>Kỹ năng Casio:</strong> Sử dụng chức năng Table (Mode 8) để quét nhanh khoảng nghiệm tham số m." }
+          ]
+        },
+        {
+          subject: "TOÁN HỌC 12 · HÀM SỐ",
+          title: "Phần 4: Tổng kết & Đề thi thử kiểm tra kiến thức",
+          quote: "« Hệ thống hóa toàn bộ công thức và phương pháp phân tích bảng biến thiên »",
+          points: [
+            { icon: "📊", text: "<strong>Luyện đề:</strong> Truy cập mục 'Làm bài kiểm tra' trên EduNova để làm đề 15 phút Toán cực trị." },
+            { icon: "🏆", text: "<strong>Đua bảng xếp hạng:</strong> Điểm số bài thi sẽ được cộng trực tiếp vào Bảng xếp hạng tuần!" }
+          ]
+        }
+      ]
+    },
+    {
+      id: "live-session-3",
+      subject: "Vật lí",
+      title: "Khảo sát Mạch RLC nối tiếp, Hiện tượng Cộng hưởng & Bài toán Cực trị",
+      teacher: "Thầy Hoàng (Chuyên Lý)",
+      teacherAvatar: "👨‍🏫",
+      grade: "12",
+      day: "Thứ 7",
+      isToday: false,
+      time: "08:00 - 09:30",
+      meetingId: "331-892-104",
+      passcode: "112233",
+      status: "upcoming",
+      studentsCount: 32,
+      slides: [
+        {
+          subject: "VẬT LÍ 12 · ĐIỆN XOAY CHIỀU",
+          title: "Hiện tượng Cộng hưởng điện trong mạch RLC",
+          quote: "« Điều kiện cộng hưởng: ZL = ZC hay ω = 1/√(LC) »",
+          points: [
+            { icon: "⚡", text: "Khi cộng hưởng, trở kháng mạch đạt cực tiểu: Zmin = R." },
+            { icon: "📈", text: "Cường độ dòng điện hiệu dụng đạt cực đại: Imax = U/R." },
+            { icon: "💡", text: "Điện áp cùng pha với dòng điện: φ = 0, hệ số công suất cosφ = 1." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "live-session-4",
+      subject: "Tiếng Anh",
+      title: "Mastering Inversion & Advanced Conditional Sentences in THPT",
+      teacher: "Cô Jessica (GV Tiếng Anh)",
+      teacherAvatar: "👩‍🏫",
+      grade: "12",
+      day: "Thứ 7",
+      isToday: false,
+      time: "14:00 - 15:30",
+      meetingId: "512-443-890",
+      passcode: "998877",
+      status: "upcoming",
+      studentsCount: 40,
+      slides: [
+        {
+          subject: "TIẾNG ANH 12 · ADVANCED GRAMMAR",
+          title: "Inversion with Negative Adverbials",
+          quote: "« Seldom / Never / Hardly had S + V3 when S + V2 »",
+          points: [
+            { icon: "📌", text: "Hardly / Scarcely had I arrived home when the storm broke out." },
+            { icon: "📌", text: "No sooner had we finished the exam than the bell rang." },
+            { icon: "📌", text: "Only when / Only after + clause + Auxiliary + S + V." }
+          ]
+        }
+      ]
+    },
+    {
+      id: "live-session-5",
+      subject: "Hóa học",
+      title: "Phân dạng Bài toán Este đa chức & Phương pháp Quy đổi Đồng đẳng hóa",
+      teacher: "Thầy Đức (GV Hóa học)",
+      teacherAvatar: "👨‍🏫",
+      grade: "12",
+      day: "Chủ nhật",
+      isToday: false,
+      time: "09:00 - 10:30",
+      meetingId: "782-120-994",
+      passcode: "123123",
+      status: "upcoming",
+      studentsCount: 29,
+      slides: [
+        {
+          subject: "HÓA HỌC 12 · HỢP CHẤT HỮU CƠ",
+          title: "Phương pháp Quy đổi Este đa chức",
+          quote: "« Quy đổi hỗn hợp về: HCOOH, CH2 và H2 (nếu không no) »",
+          points: [
+            { icon: "🧪", text: "Bảo toàn nguyên tố C, H, O và bảo toàn liên kết pi." },
+            { icon: "⚖️", text: "Xác định nhanh số mol nhóm chức -COO- từ phản ứng thủy phân NaOH." }
+          ]
+        }
+      ]
+    }
+  ];
+
+  const getStoredLiveSessions = () => {
+    const data = safeGetJSON("edunovaLiveSessions", DEFAULT_LIVE_SESSIONS);
+    return Array.isArray(data) && data.length > 0 ? data : DEFAULT_LIVE_SESSIONS;
+  };
+
+  const saveStoredLiveSessions = (sessions) => {
+    safeSetJSON("edunovaLiveSessions", sessions);
+  };
+
+  // Live Timetable Filters State
+  let liveFilterDay = "all";
+  let liveFilterGrade = "all";
+  let liveFilterSubject = "all";
+
+  const renderLiveSessionsGrid = () => {
+    const grid = document.getElementById("liveSessionsGrid");
+    if (!grid) return;
+
+    const sessions = getStoredLiveSessions();
+    const filtered = sessions.filter((s) => {
+      if (liveFilterDay === "today" && !s.isToday && s.day !== "Thứ 6") return false;
+      if (liveFilterDay !== "all" && liveFilterDay !== "today" && s.day !== liveFilterDay) return false;
+      if (liveFilterGrade !== "all" && s.grade !== liveFilterGrade) return false;
+      if (liveFilterSubject !== "all" && cleanSubjectName(s.subject) !== cleanSubjectName(liveFilterSubject)) return false;
+      return true;
+    });
+
+    if (filtered.length === 0) {
+      grid.innerHTML = `
+        <div style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; background: #ffffff; border-radius: 18px; border: 1.5px dashed #cbd5e1; color: #64748b;">
+          <span style="font-size: 2.8rem; display: block; margin-bottom: 12px;">📅</span>
+          <h4 style="margin: 0 0 6px 0; color: #1e293b; font-size: 1.1rem;">Chưa có lịch học online nào phù hợp với bộ lọc</h4>
+          <p style="margin: 0; font-size: 0.9rem;">Thầy/Cô và học sinh có thể chọn ngày hoặc môn học khác để xem lịch trực tiếp.</p>
+        </div>
+      `;
+      return;
+    }
+
+    grid.innerHTML = filtered
+      .map((s) => {
+        const isLive = s.status === "live";
+        const subjectClean = cleanSubjectName(s.subject);
+        return `
+          <div class="live-session-card ${isLive ? "is-live" : ""}">
+            <div class="live-card-top-bar">
+              <span class="card-subject-pill">${subjectClean} · Khối ${s.grade || "12"}</span>
+              ${
+                isLive
+                  ? `<span class="card-status-badge live"><span class="live-dot-pulse"></span> Đang trực tiếp (${s.studentsCount || 36} HS)</span>`
+                  : `<span class="card-status-badge upcoming">⏳ Sắp diễn ra</span>`
+              }
+            </div>
+            <div class="live-card-body">
+              <h3 class="live-card-title">${s.title}</h3>
+              <div class="live-card-teacher">
+                <div class="teacher-avatar-sm">${s.teacherAvatar || "👨‍🏫"}</div>
+                <div class="teacher-name-sm">${s.teacher}</div>
+              </div>
+              <div class="live-card-meta">
+                <div class="meta-row">
+                  <span>Lịch học:</span>
+                  <strong>${s.day} · ${s.time}</strong>
+                </div>
+                <div class="meta-row">
+                  <span>Phòng Zoom ID:</span>
+                  <strong>${s.meetingId}</strong>
+                </div>
+                <div class="meta-row">
+                  <span>Mật mã (Pass):</span>
+                  <strong>${s.passcode}</strong>
+                </div>
+              </div>
+            </div>
+            <div class="live-card-footer">
+              <button type="button" class="btn-join-live ${isLive ? "active-live" : "secondary-live"} btn-trigger-join-room" data-session-id="${s.id}">
+                <span>${isLive ? "🚀 Vào phòng học ngay" : "🚪 Xem phòng học"}</span>
+              </button>
+            </div>
+          </div>
+        `;
+      })
+      .join("");
+
+    grid.querySelectorAll(".btn-trigger-join-room").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        openLiveClassroom(btn.dataset.sessionId);
+      });
+    });
+  };
+
+  // Filter day pills
+  document.querySelectorAll("#scheduleDayFilters .sched-pill").forEach((pill) => {
+    pill.addEventListener("click", () => {
+      document.querySelectorAll("#scheduleDayFilters .sched-pill").forEach((p) => p.classList.remove("active"));
+      pill.classList.add("active");
+      liveFilterDay = pill.dataset.day || "all";
+      renderLiveSessionsGrid();
+    });
+  });
+
+  // Filter dropdowns
+  const filterLiveGrade = document.getElementById("filterLiveGrade");
+  if (filterLiveGrade) {
+    filterLiveGrade.addEventListener("change", (e) => {
+      liveFilterGrade = e.target.value;
+      renderLiveSessionsGrid();
+    });
+  }
+
+  const filterLiveSubject = document.getElementById("filterLiveSubject");
+  if (filterLiveSubject) {
+    filterLiveSubject.addEventListener("change", (e) => {
+      liveFilterSubject = e.target.value;
+      renderLiveSessionsGrid();
+    });
+  }
+
+  // Quick join first live class
+  if (btnQuickJoinLive) {
+    btnQuickJoinLive.addEventListener("click", () => {
+      const sessions = getStoredLiveSessions();
+      const liveOne = sessions.find((s) => s.status === "live") || sessions[0];
+      if (liveOne) {
+        openLiveClassroom(liveOne.id);
+      }
+    });
+  }
+
+  // Teacher Schedule new online live session
+  if (openCreateLiveSessionBtn) {
+    openCreateLiveSessionBtn.addEventListener("click", () => {
+      openModalElement(createLiveSessionModal);
+    });
+  }
+
+  const createLiveSessionForm = document.getElementById("createLiveSessionForm");
+  if (createLiveSessionForm) {
+    createLiveSessionForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const subject = document.getElementById("liveSessionSubject")?.value || "Toán";
+      const title = document.getElementById("liveSessionTitle")?.value || "Chuyên đề ôn tập";
+      const teacher = document.getElementById("liveSessionTeacher")?.value || "Giáo viên EduNova";
+      const grade = document.getElementById("liveSessionGrade")?.value || "12";
+      const day = document.getElementById("liveSessionDay")?.value || "Thứ 2";
+      const time = document.getElementById("liveSessionTime")?.value || "19:30 - 21:00";
+      const passcode = document.getElementById("liveSessionPass")?.value || "123456";
+      const desc = document.getElementById("liveSessionDesc")?.value || "";
+
+      const randomMeetingId = `${Math.floor(100 + Math.random() * 900)}-${Math.floor(100 + Math.random() * 900)}-${Math.floor(100 + Math.random() * 900)}`;
+
+      const newSession = {
+        id: `live-session-${Date.now()}`,
+        subject,
+        title,
+        teacher,
+        teacherAvatar: "👨‍🏫",
+        grade,
+        day,
+        isToday: false,
+        time,
+        meetingId: randomMeetingId,
+        passcode,
+        status: "upcoming",
+        studentsCount: 30,
+        slides: [
+          {
+            subject: `${subject.toUpperCase()} ${grade}`,
+            title: `Bài giảng: ${title}`,
+            quote: `« Giáo viên: ${teacher} — Khung giờ: ${time} »`,
+            points: [
+              { icon: "📌", text: desc || "Nắm vững lý thuyết trọng tâm và phương pháp giải các bài toán hay gặp." },
+              { icon: "💡", text: "Học sinh chuẩn bị vở ghi và tập trung theo dõi bài giảng trực tuyến." }
+            ]
+          }
+        ]
+      };
+
+      const sessions = getStoredLiveSessions();
+      sessions.unshift(newSession);
+      saveStoredLiveSessions(sessions);
+
+      closeModalElement(createLiveSessionModal);
+      createLiveSessionForm.reset();
+      renderLiveSessionsGrid();
+      showToast(`🎉 Đã lên lịch thành công buổi học trực tuyến môn ${subject}! Phòng: ${randomMeetingId}`);
+    });
+  }
+
+  // ============ ZOOM VIRTUAL CLASSROOM STATE & LOGIC ============
+  let activeLiveSession = null;
+  let zoomTimerInterval = null;
+  let zoomElapsedSeconds = 45 * 60 + 18;
+  let isZoomMicOn = true;
+  let isZoomCamOn = true;
+  let isZoomHandRaised = false;
+  let isZoomRecording = true;
+  let zoomCurrentSlideIdx = 0;
+  let zoomCurrentView = "slide"; // "slide" | "whiteboard" | "gallery"
+
+  // Whiteboard drawing variables
+  let chalkColor = "#ffffff";
+  let chalkSize = 3;
+  let isDrawingChalk = false;
+  let lastChalkX = 0;
+  let lastChalkY = 0;
+
+  // Mock participants (36 members)
+  const ZOOM_PARTICIPANTS = [
+    { name: "Thầy Nguyễn (Chủ tọa / GV)", role: "host", avatar: "👨‍🏫", isMic: true, isCam: true, hand: false },
+    { name: "Cô Mai (Đồng chủ tọa)", role: "co-host", avatar: "👩‍🏫", isMic: true, isCam: true, hand: false },
+    { name: "Nguyễn Văn A (Lớp 12A1)", role: "student", avatar: "👨‍🎓", isMic: false, isCam: true, hand: false },
+    { name: "Trần Thị Mai (Lớp 12A2)", role: "student", avatar: "👩‍🎓", isMic: false, isCam: true, hand: false },
+    { name: "Lê Hoàng Long (Lớp 12A1)", role: "student", avatar: "👨‍🎓", isMic: true, isCam: true, hand: false },
+    { name: "Phạm Minh Đức (Lớp 12A3)", role: "student", avatar: "👨‍🎓", isMic: false, isCam: false, hand: false },
+    { name: "Đỗ Bảo Trâm (Lớp 12A1)", role: "student", avatar: "👩‍🎓", isMic: false, isCam: true, hand: false },
+    { name: "Vũ Hải Đăng (Lớp 12A2)", role: "student", avatar: "👨‍🎓", isMic: false, isCam: true, hand: false },
+    { name: "Hoàng Gia Huy (Lớp 12A1)", role: "student", avatar: "👨‍🎓", isMic: false, isCam: false, hand: false },
+    { name: "Nguyễn Thùy Linh (Lớp 12A3)", role: "student", avatar: "👩‍🎓", isMic: false, isCam: true, hand: false },
+    { name: "Bùi Tuấn Kiệt (Lớp 12A2)", role: "student", avatar: "👨‍🎓", isMic: false, isCam: true, hand: false },
+    { name: "Dương Quỳnh Anh (Lớp 12A1)", role: "student", avatar: "👩‍🎓", isMic: false, isCam: true, hand: false }
+  ];
+
+  // Mock chat messages
+  const ZOOM_CHAT_HISTORY = [
+    { author: "Thầy Nguyễn", time: "19:35", text: "Chào cả lớp, các em chuẩn bị vở ghi và mở tài liệu chuyên đề nhé!" },
+    { author: "Nguyễn Văn A", time: "19:36", text: "Dạ em nghe rõ và đã sẵn sàng rồi ạ thầy!" },
+    { author: "Trần Thị Mai", time: "19:38", text: "Thầy ơi cho em hỏi phần slide 2 đoạn luận điểm thứ 2 có ghi lại không ạ?" },
+    { author: "Thầy Nguyễn", time: "19:40", text: "Có nhé em, cuối buổi thầy gửi slide và video ghi hình đầy đủ lên lớp học." },
+    { author: "Lê Hoàng Long", time: "19:45", text: "Phần này hay quá thầy ơi! 👍" }
+  ];
+
+  const formatZoomTimer = (secs) => {
+    const h = Math.floor(secs / 3600);
+    const m = Math.floor((secs % 3600) / 60);
+    const s = secs % 60;
+    return `${h > 0 ? String(h).padStart(2, "0") + ":" : ""}${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
+  };
+
+  const openLiveClassroom = (sessionId) => {
+    const sessions = getStoredLiveSessions();
+    const session = sessions.find((s) => s.id === sessionId) || sessions[0];
+    if (!session) return;
+
+    activeLiveSession = session;
+    zoomCurrentSlideIdx = 0;
+    zoomElapsedSeconds = 45 * 60 + 18;
+
+    // Header info
+    const zoomSubjectPill = document.getElementById("zoomSubjectPill");
+    const zoomRoomTitle = document.getElementById("zoomRoomTitle");
+    const zoomMeetingId = document.getElementById("zoomMeetingId");
+    const zoomMeetingPass = document.getElementById("zoomMeetingPass");
+    const zoomTimer = document.getElementById("zoomTimer");
+
+    if (zoomSubjectPill) zoomSubjectPill.textContent = `${cleanSubjectName(session.subject)} ${session.grade || "12"}`;
+    if (zoomRoomTitle) zoomRoomTitle.textContent = session.title;
+    if (zoomMeetingId) zoomMeetingId.textContent = session.meetingId;
+    if (zoomMeetingPass) zoomMeetingPass.textContent = session.passcode;
+
+    // Start live timer
+    clearInterval(zoomTimerInterval);
+    if (zoomTimer) zoomTimer.textContent = formatZoomTimer(zoomElapsedSeconds);
+    zoomTimerInterval = setInterval(() => {
+      zoomElapsedSeconds++;
+      if (zoomTimer) zoomTimer.textContent = formatZoomTimer(zoomElapsedSeconds);
+    }, 1000);
+
+    // Render initial views
+    renderZoomSlide(0);
+    renderZoomGallery();
+    renderZoomFloatingFilmstrip();
+    renderZoomParticipantsList();
+    renderZoomChatList();
+    initWhiteboardCanvas();
+    switchZoomView("slide");
+
+    // Open modal window
+    openModalElement(liveClassroomModal);
+    showToast(`🔴 Đã kết nối vào phòng học trực tuyến: ${session.meetingId}!`);
+  };
+
+  const leaveLiveClassroom = () => {
+    if (confirm("Bạn có chắc chắn muốn rời khỏi phòng học trực tuyến này?")) {
+      clearInterval(zoomTimerInterval);
+      if (document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+      }
+      closeModalElement(liveClassroomModal);
+      showToast("🚪 Bạn đã rời khỏi phòng học trực tuyến.");
+    }
+  };
+
+  const switchZoomView = (viewMode) => {
+    zoomCurrentView = viewMode;
+    const btnViewSlide = document.getElementById("btnViewSlide");
+    const btnViewWhiteboard = document.getElementById("btnViewWhiteboard");
+    const btnViewGallery = document.getElementById("btnViewGallery");
+    const zoomSlideView = document.getElementById("zoomSlideView");
+    const zoomWhiteboardView = document.getElementById("zoomWhiteboardView");
+    const zoomGalleryView = document.getElementById("zoomGalleryView");
+    const filmstrip = document.getElementById("zoomFloatingFilmstrip");
+
+    [btnViewSlide, btnViewWhiteboard, btnViewGallery].forEach((b) => b && b.classList.remove("active"));
+    [zoomSlideView, zoomWhiteboardView, zoomGalleryView].forEach((v) => v && v.classList.remove("active"));
+
+    if (viewMode === "slide") {
+      if (btnViewSlide) btnViewSlide.classList.add("active");
+      if (zoomSlideView) zoomSlideView.classList.add("active");
+      if (filmstrip) filmstrip.style.display = "flex";
+    } else if (viewMode === "whiteboard") {
+      if (btnViewWhiteboard) btnViewWhiteboard.classList.add("active");
+      if (zoomWhiteboardView) zoomWhiteboardView.classList.add("active");
+      if (filmstrip) filmstrip.style.display = "flex";
+      resizeWhiteboardCanvas();
+    } else if (viewMode === "gallery") {
+      if (btnViewGallery) btnViewGallery.classList.add("active");
+      if (zoomGalleryView) zoomGalleryView.classList.add("active");
+      if (filmstrip) filmstrip.style.display = "none";
+    }
+  };
+
+  const renderZoomSlide = (idx) => {
+    if (!activeLiveSession || !Array.isArray(activeLiveSession.slides) || activeLiveSession.slides.length === 0) return;
+    const slides = activeLiveSession.slides;
+    zoomCurrentSlideIdx = Math.max(0, Math.min(idx, slides.length - 1));
+    const cur = slides[zoomCurrentSlideIdx];
+
+    const zoomSlideSubject = document.getElementById("zoomSlideSubject");
+    const zoomSlideTitle = document.getElementById("zoomSlideTitle");
+    const slidePageNum = document.getElementById("slidePageNum");
+    const zoomSlideBody = document.getElementById("zoomSlideBody");
+
+    if (zoomSlideSubject) zoomSlideSubject.textContent = cur.subject || "BÀI GIẢNG ĐIỆN TỬ";
+    if (zoomSlideTitle) zoomSlideTitle.textContent = cur.title;
+    if (slidePageNum) slidePageNum.textContent = `Trang ${zoomCurrentSlideIdx + 1} / ${slides.length}`;
+
+    if (zoomSlideBody) {
+      zoomSlideBody.innerHTML = `
+        ${cur.quote ? `<div class="slide-hero-quote">${cur.quote}</div>` : ""}
+        <div class="slide-content-points">
+          ${(cur.points || [])
+            .map(
+              (p) => `
+              <div class="slide-point-item">
+                <span class="slide-point-icon">${p.icon || "•"}</span>
+                <div>${p.text}</div>
+              </div>
+            `
+            )
+            .join("")}
+        </div>
+      `;
+    }
+  };
+
+  // Slide navigation buttons
+  const btnPrevSlide = document.getElementById("btnPrevSlide");
+  const btnNextSlide = document.getElementById("btnNextSlide");
+  if (btnPrevSlide) btnPrevSlide.addEventListener("click", () => renderZoomSlide(zoomCurrentSlideIdx - 1));
+  if (btnNextSlide) btnNextSlide.addEventListener("click", () => renderZoomSlide(zoomCurrentSlideIdx + 1));
+
+  // Gallery Grid rendering
+  const renderZoomGallery = () => {
+    const grid = document.getElementById("zoomGalleryGrid");
+    if (!grid) return;
+
+    grid.innerHTML = ZOOM_PARTICIPANTS.slice(0, 8)
+      .map((p, idx) => {
+        const isSpeaker = idx === 0;
+        return `
+          <div class="zoom-video-tile ${isSpeaker ? "active-speaker" : ""}">
+            <div class="zoom-tile-avatar">${p.avatar}</div>
+            <div class="zoom-tile-name-tag">
+              <span>${p.name}</span>
+              ${p.role === "host" ? `<span class="zoom-tile-role-badge">Host</span>` : ""}
+              <span>${p.isMic ? "🎙️" : "🔇"}</span>
+            </div>
+          </div>
+        `;
+      })
+      .join("");
+  };
+
+  // Floating Filmstrip rendering
+  const renderZoomFloatingFilmstrip = () => {
+    const strip = document.getElementById("zoomFloatingFilmstrip");
+    if (!strip) return;
+
+    strip.innerHTML = ZOOM_PARTICIPANTS.slice(0, 3)
+      .map((p, idx) => `
+        <div class="filmstrip-tile ${idx === 0 ? "active-speaker" : ""}">
+          <div class="tile-avatar-mini">${p.avatar}</div>
+          <div class="tile-name-mini">${p.name.split(" ")[0]} ${p.isMic ? "🎙️" : "🔇"}</div>
+        </div>
+      `)
+      .join("");
+  };
+
+  // Participants list rendering
+  const renderZoomParticipantsList = (query = "") => {
+    const list = document.getElementById("zoomParticipantsList");
+    const count = document.getElementById("zoomParticipantCount");
+    if (!list) return;
+
+    const filtered = ZOOM_PARTICIPANTS.filter((p) => p.name.toLowerCase().includes(query.toLowerCase()));
+    if (count) count.textContent = ZOOM_PARTICIPANTS.length;
+
+    list.innerHTML = filtered
+      .map(
+        (p) => `
+        <div class="zoom-participant-item">
+          <div class="part-info-left">
+            <span class="part-avatar">${p.avatar}</span>
+            <span class="part-name">${p.name}</span>
+          </div>
+          <div class="part-icons-right">
+            ${p.hand ? `<span>✋</span>` : ""}
+            <span>${p.isMic ? "🎙️" : "🔇"}</span>
+            <span>${p.isCam ? "📹" : "🚫"}</span>
+          </div>
+        </div>
+      `
+      )
+      .join("");
+  };
+
+  const inputSearchParticipants = document.getElementById("inputSearchParticipants");
+  if (inputSearchParticipants) {
+    inputSearchParticipants.addEventListener("input", (e) => {
+      renderZoomParticipantsList(e.target.value.trim());
+    });
+  }
+
+  const btnMuteAllParticipants = document.getElementById("btnMuteAllParticipants");
+  if (btnMuteAllParticipants) {
+    btnMuteAllParticipants.addEventListener("click", () => {
+      ZOOM_PARTICIPANTS.forEach((p) => {
+        if (p.role !== "host") p.isMic = false;
+      });
+      renderZoomParticipantsList();
+      showToast("🔇 Đã tắt tiếng tất cả học sinh trong phòng học.");
+    });
+  }
+
+  // Live Chat rendering
+  const renderZoomChatList = () => {
+    const messages = document.getElementById("zoomChatMessages");
+    const badge = document.getElementById("zoomChatBadge");
+    if (!messages) return;
+
+    if (badge) badge.textContent = ZOOM_CHAT_HISTORY.length;
+
+    messages.innerHTML = ZOOM_CHAT_HISTORY
+      .map(
+        (m) => `
+        <div class="zoom-chat-msg">
+          <div class="chat-msg-header">
+            <span class="chat-author">${m.author}</span>
+            <span class="chat-time">${m.time}</span>
+          </div>
+          <div class="chat-text">${m.text}</div>
+        </div>
+      `
+      )
+      .join("");
+
+    messages.scrollTop = messages.scrollHeight;
+  };
+
+  const zoomChatForm = document.getElementById("zoomChatForm");
+  const zoomChatInput = document.getElementById("zoomChatInput");
+  if (zoomChatForm && zoomChatInput) {
+    zoomChatForm.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const txt = zoomChatInput.value.trim();
+      if (!txt) return;
+
+      const user = getCurrentUser();
+      const author = user ? user.fullName : "Học viên (Bạn)";
+      const now = new Date();
+      const timeStr = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+
+      ZOOM_CHAT_HISTORY.push({ author, time: timeStr, text: txt });
+      zoomChatInput.value = "";
+      renderZoomChatList();
+    });
+  }
+
+  // Quick Emoji Reactions
+  document.querySelectorAll(".quick-react-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const emoji = btn.dataset.emoji;
+      const user = getCurrentUser();
+      const author = user ? user.fullName : "Bạn";
+      const now = new Date();
+      const timeStr = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+
+      ZOOM_CHAT_HISTORY.push({ author, time: timeStr, text: `Đã thả biểu cảm ${emoji}` });
+      renderZoomChatList();
+      showToast(`✨ Đã gửi phản ứng ${emoji} đến lớp học!`);
+    });
+  });
+
+  // Whiteboard Canvas Interaction
+  const initWhiteboardCanvas = () => {
+    const canvas = document.getElementById("zoomWhiteboardCanvas");
+    if (!canvas) return;
+
+    const ctx = canvas.getContext("2d");
+    if (!ctx) return;
+
+    // Chalkboard drawing listeners
+    const startDraw = (e) => {
+      isDrawingChalk = true;
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+      const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+      lastChalkX = (clientX - rect.left) * (canvas.width / rect.width);
+      lastChalkY = (clientY - rect.top) * (canvas.height / rect.height);
+    };
+
+    const draw = (e) => {
+      if (!isDrawingChalk) return;
+      const rect = canvas.getBoundingClientRect();
+      const clientX = e.clientX || (e.touches && e.touches[0].clientX);
+      const clientY = e.clientY || (e.touches && e.touches[0].clientY);
+      const currentX = (clientX - rect.left) * (canvas.width / rect.width);
+      const currentY = (clientY - rect.top) * (canvas.height / rect.height);
+
+      ctx.beginPath();
+      ctx.moveTo(lastChalkX, lastChalkY);
+      ctx.lineTo(currentX, currentY);
+      ctx.strokeStyle = chalkColor;
+      ctx.lineWidth = chalkSize;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+      ctx.shadowBlur = 1.5;
+      ctx.shadowColor = chalkColor;
+      ctx.stroke();
+
+      lastChalkX = currentX;
+      lastChalkY = currentY;
+    };
+
+    const stopDraw = () => {
+      isDrawingChalk = false;
+    };
+
+    canvas.onmousedown = startDraw;
+    canvas.onmousemove = draw;
+    canvas.onmouseup = stopDraw;
+    canvas.onmouseleave = stopDraw;
+
+    canvas.ontouchstart = startDraw;
+    canvas.ontouchmove = draw;
+    canvas.ontouchend = stopDraw;
+  };
+
+  const resizeWhiteboardCanvas = () => {
+    const canvas = document.getElementById("zoomWhiteboardCanvas");
+    if (!canvas) return;
+    const wrap = canvas.parentElement;
+    if (wrap && wrap.clientWidth > 0) {
+      canvas.width = wrap.clientWidth;
+      canvas.height = wrap.clientHeight;
+    }
+  };
+
+  // Chalk color dots
+  document.querySelectorAll(".color-dot").forEach((dot) => {
+    dot.addEventListener("click", () => {
+      document.querySelectorAll(".color-dot").forEach((d) => d.classList.remove("active"));
+      dot.classList.add("active");
+      chalkColor = dot.dataset.color || "#ffffff";
+    });
+  });
+
+  // Chalk size buttons
+  document.querySelectorAll(".chalk-sizes .size-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".chalk-sizes .size-btn").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      chalkSize = parseInt(btn.dataset.size || "3", 10);
+    });
+  });
+
+  // Clear whiteboard button
+  const btnClearWhiteboard = document.getElementById("btnClearWhiteboard");
+  if (btnClearWhiteboard) {
+    btnClearWhiteboard.addEventListener("click", () => {
+      const canvas = document.getElementById("zoomWhiteboardCanvas");
+      if (!canvas) return;
+      const ctx = canvas.getContext("2d");
+      if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+  }
+
+  // Zoom View Mode Switching Buttons
+  const btnViewSlide = document.getElementById("btnViewSlide");
+  const btnViewWhiteboard = document.getElementById("btnViewWhiteboard");
+  const btnViewGallery = document.getElementById("btnViewGallery");
+  if (btnViewSlide) btnViewSlide.addEventListener("click", () => switchZoomView("slide"));
+  if (btnViewWhiteboard) btnViewWhiteboard.addEventListener("click", () => switchZoomView("whiteboard"));
+  if (btnViewGallery) btnViewGallery.addEventListener("click", () => switchZoomView("gallery"));
+
+  // Zoom Fullscreen Toggle
+  const btnToggleZoomFullscreen = document.getElementById("btnToggleZoomFullscreen");
+  if (btnToggleZoomFullscreen) {
+    btnToggleZoomFullscreen.addEventListener("click", () => {
+      const win = document.querySelector(".zoom-classroom-window");
+      if (!win) return;
+      if (!document.fullscreenElement) {
+        win.requestFullscreen().catch(() => {});
+      } else {
+        document.exitFullscreen().catch(() => {});
+      }
+    });
+  }
+
+  // Zoom Bottom Toolbar Buttons
+  const zoomBtnMic = document.getElementById("zoomBtnMic");
+  const zoomMicIcon = document.getElementById("zoomMicIcon");
+  const zoomMicLabel = document.getElementById("zoomMicLabel");
+  if (zoomBtnMic) {
+    zoomBtnMic.addEventListener("click", () => {
+      isZoomMicOn = !isZoomMicOn;
+      if (isZoomMicOn) {
+        if (zoomMicIcon) zoomMicIcon.textContent = "🎙️";
+        if (zoomMicLabel) zoomMicLabel.textContent = "Tắt tiếng";
+        zoomBtnMic.classList.remove("danger-muted");
+        showToast("🎙️ Micro của bạn đã được BẬT.");
+      } else {
+        if (zoomMicIcon) zoomMicIcon.textContent = "🔇";
+        if (zoomMicLabel) zoomMicLabel.textContent = "Bật tiếng";
+        zoomBtnMic.classList.add("danger-muted");
+        showToast("🔇 Micro của bạn đã được TẮT.");
+      }
+    });
+  }
+
+  const zoomBtnCam = document.getElementById("zoomBtnCam");
+  const zoomCamIcon = document.getElementById("zoomCamIcon");
+  const zoomCamLabel = document.getElementById("zoomCamLabel");
+  if (zoomBtnCam) {
+    zoomBtnCam.addEventListener("click", () => {
+      isZoomCamOn = !isZoomCamOn;
+      if (isZoomCamOn) {
+        if (zoomCamIcon) zoomCamIcon.textContent = "📹";
+        if (zoomCamLabel) zoomCamLabel.textContent = "Tắt Cam";
+        zoomBtnCam.classList.remove("danger-muted");
+        showToast("📹 Camera đã được BẬT.");
+      } else {
+        if (zoomCamIcon) zoomCamIcon.textContent = "🚫";
+        if (zoomCamLabel) zoomCamLabel.textContent = "Bật Cam";
+        zoomBtnCam.classList.add("danger-muted");
+        showToast("🚫 Camera đã được TẮT.");
+      }
+    });
+  }
+
+  const zoomBtnShare = document.getElementById("zoomBtnShare");
+  if (zoomBtnShare) {
+    zoomBtnShare.addEventListener("click", () => {
+      switchZoomView("slide");
+      showToast("🖥️ Đang trình chiếu màn hình bài giảng điện tử.");
+    });
+  }
+
+  const zoomBtnWhiteboard = document.getElementById("zoomBtnWhiteboard");
+  if (zoomBtnWhiteboard) {
+    zoomBtnWhiteboard.addEventListener("click", () => {
+      switchZoomView("whiteboard");
+      showToast("🎨 Đã mở bảng trắng viết phấn giảng dạy.");
+    });
+  }
+
+  const zoomSidebar = document.getElementById("zoomSidebar");
+  const tabBtnParticipants = document.getElementById("tabBtnParticipants");
+  const tabBtnChat = document.getElementById("tabBtnChat");
+  const zoomTabParticipants = document.getElementById("zoomTabParticipants");
+  const zoomTabChat = document.getElementById("zoomTabChat");
+
+  const switchZoomSidebarTab = (tabName) => {
+    if (!zoomSidebar) return;
+    zoomSidebar.classList.remove("collapsed");
+
+    if (tabName === "participants") {
+      if (tabBtnParticipants) tabBtnParticipants.classList.add("active");
+      if (tabBtnChat) tabBtnChat.classList.remove("active");
+      if (zoomTabParticipants) zoomTabParticipants.classList.add("active");
+      if (zoomTabChat) zoomTabChat.classList.remove("active");
+    } else {
+      if (tabBtnChat) tabBtnChat.classList.add("active");
+      if (tabBtnParticipants) tabBtnParticipants.classList.remove("active");
+      if (zoomTabChat) zoomTabChat.classList.add("active");
+      if (zoomTabParticipants) zoomTabParticipants.classList.remove("active");
+    }
+  };
+
+  if (tabBtnParticipants) tabBtnParticipants.addEventListener("click", () => switchZoomSidebarTab("participants"));
+  if (tabBtnChat) tabBtnChat.addEventListener("click", () => switchZoomSidebarTab("chat"));
+
+  const zoomBtnParticipants = document.getElementById("zoomBtnParticipants");
+  if (zoomBtnParticipants) {
+    zoomBtnParticipants.addEventListener("click", () => {
+      if (zoomSidebar && !zoomSidebar.classList.contains("collapsed") && zoomTabParticipants && zoomTabParticipants.classList.contains("active")) {
+        zoomSidebar.classList.add("collapsed");
+      } else {
+        switchZoomSidebarTab("participants");
+      }
+    });
+  }
+
+  const zoomBtnChat = document.getElementById("zoomBtnChat");
+  if (zoomBtnChat) {
+    zoomBtnChat.addEventListener("click", () => {
+      if (zoomSidebar && !zoomSidebar.classList.contains("collapsed") && zoomTabChat && zoomTabChat.classList.contains("active")) {
+        zoomSidebar.classList.add("collapsed");
+      } else {
+        switchZoomSidebarTab("chat");
+      }
+    });
+  }
+
+  const zoomBtnRaiseHand = document.getElementById("zoomBtnRaiseHand");
+  const zoomHandLabel = document.getElementById("zoomHandLabel");
+  const zoomHandRaiseNotice = document.getElementById("zoomHandRaiseNotice");
+  if (zoomBtnRaiseHand) {
+    zoomBtnRaiseHand.addEventListener("click", () => {
+      isZoomHandRaised = !isZoomHandRaised;
+      const user = getCurrentUser();
+      const userName = user ? user.fullName : "Bạn";
+
+      if (isZoomHandRaised) {
+        if (zoomHandLabel) zoomHandLabel.textContent = "Hạ tay";
+        zoomBtnRaiseHand.classList.add("active");
+        if (zoomHandRaiseNotice) {
+          zoomHandRaiseNotice.innerHTML = `✋ <strong>${userName}</strong> đang giơ tay xin phát biểu!`;
+          zoomHandRaiseNotice.style.display = "block";
+          setTimeout(() => { if (zoomHandRaiseNotice) zoomHandRaiseNotice.style.display = "none"; }, 4000);
+        }
+        showToast("✋ Bạn đã giơ tay xin phát biểu trong lớp học!");
+      } else {
+        if (zoomHandLabel) zoomHandLabel.textContent = "Giơ tay";
+        zoomBtnRaiseHand.classList.remove("active");
+        if (zoomHandRaiseNotice) zoomHandRaiseNotice.style.display = "none";
+        showToast("Bạn đã hạ tay.");
+      }
+    });
+  }
+
+  const zoomBtnRecord = document.getElementById("zoomBtnRecord");
+  if (zoomBtnRecord) {
+    zoomBtnRecord.addEventListener("click", () => {
+      isZoomRecording = !isZoomRecording;
+      if (isZoomRecording) {
+        zoomBtnRecord.classList.add("active");
+        showToast("🔴 Đang ghi hình buổi học trực tuyến trên đám mây.");
+      } else {
+        zoomBtnRecord.classList.remove("active");
+        showToast("⏹ Đã dừng ghi hình buổi học.");
+      }
+    });
+  }
+
+  const zoomBtnLeave = document.getElementById("zoomBtnLeave");
+  if (zoomBtnLeave) {
+    zoomBtnLeave.addEventListener("click", leaveLiveClassroom);
+  }
+
   // ============ Render Courses Dynamically ============
   let currentCategoryFilter = "all";
 
@@ -1385,6 +2352,11 @@ document.addEventListener("DOMContentLoaded", () => {
   const btnSaveGrading = document.getElementById("btnSaveGrading");
   const gradingSubmissionsList = document.getElementById("gradingSubmissionsList");
 
+  const liveClassroomModal = document.getElementById("liveClassroomModal");
+  const createLiveSessionModal = document.getElementById("createLiveSessionModal");
+  const openCreateLiveSessionBtn = document.getElementById("openCreateLiveSessionBtn");
+  const btnQuickJoinLive = document.getElementById("btnQuickJoinLive");
+
   const signupBtn = document.getElementById("signupBtn");
   const loginBtn = document.getElementById("loginBtn");
   const userProfile = document.getElementById("userProfile");
@@ -1457,6 +2429,8 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-close-create-quiz]").forEach((b) => b.addEventListener("click", () => closeModalElement(createQuizModal)));
   document.querySelectorAll("[data-close-settings]").forEach((b) => b.addEventListener("click", () => closeModalElement(settingsModal)));
   document.querySelectorAll("[data-close-grade-exam]").forEach((b) => b.addEventListener("click", () => closeModalElement(gradeExamModal)));
+  document.querySelectorAll("[data-close-live-classroom]").forEach((b) => b.addEventListener("click", () => leaveLiveClassroom()));
+  document.querySelectorAll("[data-close-create-live]").forEach((b) => b.addEventListener("click", () => closeModalElement(createLiveSessionModal)));
 
   // Open Settings Modal
   const openSettingsModal = () => {
@@ -3932,19 +4906,23 @@ document.addEventListener("DOMContentLoaded", () => {
       if (role === "teacher") {
         if (teacherDashboard) teacherDashboard.style.display = "block";
         if (navTeacherLink) navTeacherLink.style.display = "inline-block";
+        if (openCreateLiveSessionBtn) openCreateLiveSessionBtn.style.display = "inline-flex";
         renderTeacherDashboard();
       } else if (role === "parent") {
+        if (openCreateLiveSessionBtn) openCreateLiveSessionBtn.style.display = "none";
         if (parentDashboard) parentDashboard.style.display = "block";
         if (navParentLink) navParentLink.style.display = "inline-block";
         const parentGreeting = document.getElementById("parentGreetingName");
         if (parentGreeting) parentGreeting.textContent = `Phụ huynh: ${currentUser.fullName}`;
       } else if (role === "school") {
+        if (openCreateLiveSessionBtn) openCreateLiveSessionBtn.style.display = "none";
         if (schoolDashboard) schoolDashboard.style.display = "block";
         if (navSchoolLink) navSchoolLink.style.display = "inline-block";
         const schoolGreeting = document.getElementById("schoolGreetingName");
         if (schoolGreeting) schoolGreeting.textContent = currentUser.schoolName || currentUser.fullName || "Trường THPT Chuyên EduNova";
       } else {
         // student
+        if (openCreateLiveSessionBtn) openCreateLiveSessionBtn.style.display = "none";
         if (studentDashboard) studentDashboard.style.display = "block";
         if (navStudentLink) navStudentLink.style.display = "inline-block";
         if (dashboardStudentName) dashboardStudentName.textContent = currentUser.fullName;
@@ -3960,6 +4938,7 @@ document.addEventListener("DOMContentLoaded", () => {
         renderStudentAssignments();
       }
     } else {
+      if (openCreateLiveSessionBtn) openCreateLiveSessionBtn.style.display = "none";
       if (signupBtn) signupBtn.style.display = "";
       if (loginBtn) loginBtn.style.display = "";
       if (userProfile) userProfile.style.display = "none";
@@ -4013,10 +4992,14 @@ document.addEventListener("DOMContentLoaded", () => {
         takeQuizModal,
         createQuizModal,
         settingsModal,
-        gradeExamModal
+        gradeExamModal,
+        liveClassroomModal,
+        createLiveSessionModal
       ].forEach((m) => {
         if (m === takeQuizModal) {
           closeTakeQuiz();
+        } else if (m === liveClassroomModal) {
+          leaveLiveClassroom();
         } else if (m) {
           closeModalElement(m);
         }
@@ -4027,6 +5010,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // ============ Initialize App ============
   renderCourses();
   populateCourseDropdowns();
+  renderLiveSessionsGrid();
   updateAuthUI();
 
   const savedUser = getCurrentUser();
