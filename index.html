@@ -245,6 +245,9 @@
             <h2>Bảng điều khiển & Quản lý dạy học</h2>
           </div>
           <div class="teacher-actions">
+            <button class="btn btn-warning" type="button" id="openGradeExamsBtn" style="background: linear-gradient(135deg, #f59e0b, #d97706); color: white; border: none; box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3); font-weight: 700;">
+              <span>✍️</span> Chấm bài thi <span class="badge-pending" id="teacherPendingBadge" style="background: #ffffff; color: #d97706; padding: 2px 8px; border-radius: 999px; font-size: 0.75rem; margin-left: 4px; font-weight: 800;">0</span>
+            </button>
             <button class="btn btn-primary" type="button" id="openCreateQuizBtn">
               <span>⚡</span> Tạo đề trắc nghiệm
             </button>
@@ -293,6 +296,28 @@
         </div>
 
         <div class="container teacher-grid-layout">
+          <!-- Exam Grading & Evaluation Management Panel (Full Width) -->
+          <div class="teacher-panel grading-panel-card" id="teacherGradingPanel" style="grid-column: 1 / -1; margin-bottom: 8px;">
+            <div class="panel-header" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 14px;">
+              <div>
+                <div style="display: flex; align-items: center; gap: 10px;">
+                  <span style="font-size: 1.5rem;">✍️</span>
+                  <h3 style="margin: 0; font-size: 1.25rem;">Sổ Chấm Bài Thi & Đánh Giá Học Sinh</h3>
+                </div>
+                <p style="margin: 4px 0 0 0; color: var(--muted); font-size: 0.9rem;">
+                  Chấm điểm bài thi trắc nghiệm, tự luận, viết văn môn Ngữ văn và gửi lời nhận xét trực tiếp cho học sinh & phụ huynh
+                </p>
+              </div>
+              <div class="grading-filter-tabs">
+                <button type="button" class="btn-filter-grading active" data-grade-filter="all">Tất cả bài thi</button>
+                <button type="button" class="btn-filter-grading" data-grade-filter="pending">⏳ Chờ chấm (<span id="filterPendingCount">0</span>)</button>
+                <button type="button" class="btn-filter-grading" data-grade-filter="graded">✅ Đã chấm xong</button>
+              </div>
+            </div>
+            <div class="grading-submissions-list" id="gradingSubmissionsList">
+              <!-- Rendered dynamically by JS -->
+            </div>
+          </div>
           <!-- Quizzes Management Panel -->
           <div class="teacher-panel">
             <div class="panel-header">
@@ -1157,6 +1182,75 @@
 
         <div class="submissions-container" id="submissionsListContainer">
           <!-- Populated by JS -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Grade Exam Modal (Teacher - Chấm bài thi) -->
+    <div class="modal-overlay hidden" id="gradeExamModal" aria-hidden="true">
+      <div class="modal-dialog modal-xlarge grade-modal-dialog" role="dialog" aria-modal="true" aria-labelledby="gradeExamTitle">
+        <button class="modal-close" type="button" aria-label="Đóng" data-close-grade-exam>×</button>
+        <div class="modal-header grade-modal-header">
+          <div class="grade-header-top">
+            <span class="eyebrow">Hệ thống Đánh giá & Chấm thi EduNova</span>
+            <span class="grade-status-pill" id="modalGradeStatusPill">⏳ Chờ chấm điểm</span>
+          </div>
+          <h3 id="gradeExamTitle">Chấm bài thi học sinh</h3>
+          <div class="grade-student-bar" id="gradeStudentBar">
+            <!-- Populated by JS -->
+          </div>
+        </div>
+
+        <div class="grade-modal-body">
+          <!-- Left: Questions & Student Answers Inspection -->
+          <div class="grade-exam-content">
+            <div class="grade-section-title">
+              <h4>📝 Chi tiết bài làm của học sinh</h4>
+              <span id="gradeQuestionCountInfo" style="color: var(--muted); font-size: 0.85rem;"></span>
+            </div>
+            <div id="gradeExamQuestionsContainer" class="grade-questions-container">
+              <!-- Rendered dynamically by JS -->
+            </div>
+          </div>
+
+          <!-- Right: Evaluation, Scoring & Feedback Panel -->
+          <div class="grade-evaluation-sidebar">
+            <div class="grade-score-card">
+              <div class="grade-score-header">
+                <h4>📊 Điểm số bài thi</h4>
+                <span class="grade-scale-badge">Thang 10</span>
+              </div>
+              <div class="grade-score-input-wrap">
+                <input type="number" id="inputTeacherScore" min="0" max="10" step="0.1" value="8.5" class="grade-score-input" />
+                <span class="grade-score-total-unit">/ 10</span>
+              </div>
+              <div class="grade-rank-tag-wrap">
+                <span class="grade-rank-tag" id="gradeRankTag">Xếp loại: Giỏi</span>
+                <span class="grade-auto-hint" id="gradeAutoHint">Hệ thống tính: 8.0/10</span>
+              </div>
+            </div>
+
+            <div class="grade-feedback-card">
+              <h4>💬 Lời nhận xét của Giáo viên</h4>
+              <p class="grade-feedback-tip">Chọn nhanh nhận xét mẫu hoặc viết lời nhắn chi tiết gửi học sinh & phụ huynh:</p>
+              <div class="quick-comments-list" id="quickCommentsList">
+                <button type="button" class="quick-comment-tag" data-comment="👏 Bài viết sâu sắc, lập luận chặt chẽ, dẫn chứng xác đáng.">👏 Bài viết sâu sắc, chặt chẽ</button>
+                <button type="button" class="quick-comment-tag" data-comment="💡 Văn phong truyền cảm, diễn đạt trôi chảy, bài làm chỉn chu.">💡 Văn phong truyền cảm</button>
+                <button type="button" class="quick-comment-tag" data-comment="⚡ Nắm vững kiến thức trọng tâm, phương pháp làm bài tốt.">⚡ Nắm vững kiến thức</button>
+                <button type="button" class="quick-comment-tag" data-comment="✍️ Cần chú ý phân tích sâu hơn ở phần thân bài và mở rộng liên hệ thực tế.">✍️ Cần mở rộng liên hệ</button>
+                <button type="button" class="quick-comment-tag" data-comment="⚠️ Cần cẩn thận hơn ở các bước tính toán và đọc kỹ câu hỏi.">⚠️ Cẩn thận tính toán</button>
+                <button type="button" class="quick-comment-tag" data-comment="🌟 Có nhiều tiến bộ vượt bậc, tiếp tục duy trì và phát huy nhé!">🌟 Tiến bộ vượt bậc</button>
+              </div>
+              <textarea id="teacherFeedbackText" class="teacher-feedback-textarea" rows="4" placeholder="Nhập lời nhận xét, góp ý của thầy/cô gửi đến học sinh và phụ huynh..."></textarea>
+            </div>
+
+            <div class="grade-modal-actions">
+              <button type="button" class="btn btn-secondary" data-close-grade-exam>Đóng</button>
+              <button type="button" class="btn btn-primary" id="btnSaveGrading">
+                <span>💾</span> Lưu điểm & Gửi nhận xét
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

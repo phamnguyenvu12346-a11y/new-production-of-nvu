@@ -967,6 +967,128 @@ document.addEventListener("DOMContentLoaded", () => {
     safeSetJSON("edunovaSubmissions", submissions);
   };
 
+  const getStoredExamSubmissions = () => {
+    const data = safeGetJSON("edunovaExamSubmissions", [
+      {
+        id: "sub-exam-1",
+        gradeId: "grade-sub-1",
+        quizId: "quiz-lit-12-1",
+        quizTitle: "Kiểm tra 1 tiết: Nghị luận văn học & Phân tích thơ hiện đại",
+        course: "Ngữ văn",
+        grade: "12",
+        studentName: "Nguyễn Văn A",
+        studentEmail: "nguyenvana@gmail.com",
+        submittedAt: "01/10/2026, 14:35",
+        status: "pending",
+        autoScore: "8.0",
+        teacherScore: "",
+        feedback: "",
+        gradedBy: "",
+        gradedAt: "",
+        questions: [
+          {
+            id: "lit-q1",
+            type: "multiple_choice",
+            prompt: "Hình tượng nhân vật trung tâm trong bài thơ Tây Tiến của Quang Dũng là ai?",
+            options: ["Người lính Tây Tiến hào hoa, bi tráng", "Người nông dân lam lũ", "Hình ảnh thiên nhiên Tây Bắc", "Người mẹ Việt Nam anh hùng"],
+            answerIndex: 0
+          },
+          {
+            id: "lit-q2",
+            type: "true_false",
+            prompt: "Bài thơ Tây Tiến được sáng tác năm 1948 tại làng Phù Lưu Chanh?",
+            correct: "Đúng"
+          },
+          {
+            id: "lit-q3",
+            type: "essay_writing",
+            prompt: "Phân tích vẻ đẹp hào hùng và hào hoa của người lính trong bài thơ Tây Tiến của Quang Dũng.",
+            outline: [
+              "Gợi ý mở bài: Giới thiệu tác giả Quang Dũng, hoàn cảnh ra đời bài thơ Tây Tiến và cảm hứng lãng mạn, bi tráng.",
+              "Gợi ý thân bài: Vẻ đẹp người lính vượt muôn vàn gian nan 'súng ngửi trời'; nét hào hoa, lãng mạn 'mộng qua biên giới', 'dáng kiều thơm'; sự hi sinh bất tử.",
+              "Gợi ý kết bài: Khẳng định vị thế bất hủ của tượng đài người lính trong nền thi ca kháng chiến Việt Nam."
+            ]
+          }
+        ],
+        answers: {
+          "lit-q1": 0,
+          "lit-q2": "Đúng",
+          "lit-q3": "Trong nền thi ca kháng chiến chống Pháp, bài thơ Tây Tiến của Quang Dũng là một kiệt tác bất hủ kết tinh vẻ đẹp lãng mạn và tinh thần bi tráng. Tác phẩm đã tạc nên một tượng đài nghệ thuật tuyệt đẹp về người lính vệ quốc trong những năm tháng gian nan mà anh dũng.\n\nTrước hết, vẻ đẹp của người lính Tây Tiến gắn liền với chặng đường hành quân đầy thử thách khắc nghiệt giữa núi rừng Tây Bắc hiểm trở: 'Dốc lên khúc khuỷu dốc thăm thẳm / Heo hút cồn mây súng ngửi trời'. Dù đối mặt với muôn vàn gian khổ, thiếu thốn, bệnh tật hiểm nghèo, các anh vẫn giữ vững tinh thần lạc quan, kiên cường và khí phách hiên ngang.\n\nKhông chỉ có chất thép kiên cường, tâm hồn người lính còn ngời sáng chất thơ hào hoa của những chàng trai đất Hà thành: 'Mắt trừng gửi mộng qua biên giới / Đêm mơ Hà Nội dáng kiều thơm'. Giấc mơ về quê hương, về hình bóng người thương không làm nhụt đi ý chí chiến đấu mà trái lại, trở thành nguồn động lực tinh thần to lớn nâng bước các anh trên đường tiến quân.\n\nĐặc biệt, sự hi sinh của người lính Tây Tiến được tác giả miêu tả bằng những ngôn từ trang trọng, bi tráng mà không bi lụy: 'Áo bào thay chiếu anh về đất / Sông Mã gầm lên khúc độc hành'. Dù ngã xuống nơi chiến trường xa xôi, các anh đã hóa thân vào non sông đất nước, bất tử cùng thời gian.\n\nTây Tiến mãi mãi là một bài ca kiêu hãnh về một thế hệ thanh niên Việt Nam sẵn sàng hiến dâng tuổi thanh xuân vì độc lập tự do của Tổ quốc."
+        }
+      },
+      {
+        id: "sub-exam-2",
+        gradeId: "grade-sub-2",
+        quizId: "quiz-math-12-1",
+        quizTitle: "Kiểm tra 15 phút: Cực trị & Sự biến thiên Hàm số",
+        course: "Toán",
+        grade: "12",
+        studentName: "Trần Thị Mai",
+        studentEmail: "tranmai@gmail.com",
+        submittedAt: "01/10/2026, 15:20",
+        status: "pending",
+        autoScore: "9.0",
+        teacherScore: "",
+        feedback: "",
+        gradedBy: "",
+        gradedAt: "",
+        questions: [
+          {
+            id: "math-q1",
+            type: "multiple_choice",
+            prompt: "Cho hàm số y = f(x) có đạo hàm f'(x) = x(x-1)^2. Số điểm cực trị của hàm số là:",
+            options: ["1 điểm cực trị", "2 điểm cực trị", "3 điểm cực trị", "0 điểm cực trị"],
+            answerIndex: 0
+          },
+          {
+            id: "math-q2",
+            type: "short_answer",
+            prompt: "Tìm giá trị cực tiểu của hàm số y = x^3 - 3x + 2 trên R.",
+            correctAnswer: "0"
+          }
+        ],
+        answers: {
+          "math-q1": 0,
+          "math-q2": "0"
+        }
+      },
+      {
+        id: "sub-exam-3",
+        gradeId: "grade-sub-3",
+        quizId: "quiz-phys-12-1",
+        quizTitle: "Khảo sát Dao động cơ & Con lắc lò xo",
+        course: "Vật lí",
+        grade: "12",
+        studentName: "Lê Hoàng Long",
+        studentEmail: "lelong@gmail.com",
+        submittedAt: "30/09/2026, 09:15",
+        status: "graded",
+        autoScore: "8.5",
+        teacherScore: "9.0",
+        feedback: "Làm bài rất tốt! Phương pháp lập luận định luật bảo toàn năng lượng chuẩn xác, bài làm sạch sẽ.",
+        gradedBy: "Thầy Nguyễn (Bộ môn Tự nhiên)",
+        gradedAt: "30/09/2026, 10:00",
+        questions: [
+          {
+            id: "phy-q1",
+            type: "multiple_choice",
+            prompt: "Chu kỳ dao động điều hòa của con lắc lò xo phụ thuộc vào yếu tố nào?",
+            options: ["Khối lượng vật và độ cứng lò xo", "Biên độ dao động", "Gia tốc trọng trường", "Vận tốc ban đầu"],
+            answerIndex: 0
+          }
+        ],
+        answers: {
+          "phy-q1": 0
+        }
+      }
+    ]);
+    return Array.isArray(data) ? data : [];
+  };
+
+  const saveStoredExamSubmissions = (submissions) => {
+    safeSetJSON("edunovaExamSubmissions", submissions);
+  };
+
   const getStoredUsers = () => {
     const data = safeGetJSON("edunovaStudents", []);
     return Array.isArray(data) ? data : [];
@@ -1252,6 +1374,16 @@ document.addEventListener("DOMContentLoaded", () => {
   const takeQuizModal = document.getElementById("takeQuizModal");
   const createQuizModal = document.getElementById("createQuizModal");
   const settingsModal = document.getElementById("settingsModal");
+  const gradeExamModal = document.getElementById("gradeExamModal");
+  const openGradeExamsBtn = document.getElementById("openGradeExamsBtn");
+  const teacherPendingBadge = document.getElementById("teacherPendingBadge");
+  const filterPendingCount = document.getElementById("filterPendingCount");
+  const inputTeacherScore = document.getElementById("inputTeacherScore");
+  const gradeRankTag = document.getElementById("gradeRankTag");
+  const gradeAutoHint = document.getElementById("gradeAutoHint");
+  const teacherFeedbackText = document.getElementById("teacherFeedbackText");
+  const btnSaveGrading = document.getElementById("btnSaveGrading");
+  const gradingSubmissionsList = document.getElementById("gradingSubmissionsList");
 
   const signupBtn = document.getElementById("signupBtn");
   const loginBtn = document.getElementById("loginBtn");
@@ -1324,6 +1456,7 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll("[data-close-take-quiz]").forEach((b) => b.addEventListener("click", () => closeTakeQuiz()));
   document.querySelectorAll("[data-close-create-quiz]").forEach((b) => b.addEventListener("click", () => closeModalElement(createQuizModal)));
   document.querySelectorAll("[data-close-settings]").forEach((b) => b.addEventListener("click", () => closeModalElement(settingsModal)));
+  document.querySelectorAll("[data-close-grade-exam]").forEach((b) => b.addEventListener("click", () => closeModalElement(gradeExamModal)));
 
   // Open Settings Modal
   const openSettingsModal = () => {
@@ -2137,20 +2270,53 @@ document.addEventListener("DOMContentLoaded", () => {
     const score10 = ((correctCount / totalCount) * 10).toFixed(1);
     const percentage = Math.round((correctCount / totalCount) * 100);
 
+    const newGradeId = `grade-${Date.now()}`;
+    const user = getCurrentUser();
+    const studentName = user ? user.fullName : "Nguyễn Văn A";
+    const studentEmail = user ? user.email : "nguyenvana@gmail.com";
+    const studentGrade = (user && user.grade) || activeQuiz.grade || "12";
+
     // Save to Gradebook
     const grades = getStoredGrades();
     grades.unshift({
-      id: `grade-${Date.now()}`,
+      id: newGradeId,
       quizTitle: activeQuiz.title,
       type: "quiz",
       score: score10,
       maxScore: "10",
-      grade: activeQuiz.grade || "12",
-      subject: activeQuiz.course || "Trắc nghiệm",
+      grade: studentGrade,
+      subject: activeQuiz.course ? cleanSubjectName(activeQuiz.course) : "Trắc nghiệm",
       feedback: score10 >= 8 ? "Xuất sắc! Nắm vững toàn bộ kiến thức trọng tâm." : score10 >= 6.5 ? "Khá tốt! Tiếp tục rèn luyện để đạt điểm tối đa." : "Cần ôn tập thêm lý thuyết chuyên đề này.",
-      date: new Date().toLocaleDateString("vi-VN")
+      date: new Date().toLocaleDateString("vi-VN"),
+      studentName,
+      studentEmail
     });
     saveStoredGrades(grades);
+
+    // Save to Exam Submissions for Teacher Grading Hub
+    const hasSubjective = (activeQuiz.questions || []).some((q) => q.type === "essay" || q.type === "essay_writing");
+    const examSubs = getStoredExamSubmissions();
+    const newExamSub = {
+      id: `sub-exam-${Date.now()}`,
+      gradeId: newGradeId,
+      quizId: activeQuiz.id,
+      quizTitle: activeQuiz.title,
+      course: activeQuiz.course ? cleanSubjectName(activeQuiz.course) : "Tổng hợp",
+      grade: studentGrade,
+      studentName,
+      studentEmail,
+      submittedAt: new Date().toLocaleString("vi-VN"),
+      status: hasSubjective ? "pending" : "graded",
+      autoScore: score10,
+      teacherScore: hasSubjective ? "" : score10,
+      feedback: hasSubjective ? "" : (score10 >= 8 ? "Làm bài tốt! Nắm vững kiến thức trọng tâm." : "Cần ôn tập thêm chuyên đề này."),
+      gradedBy: hasSubjective ? "" : "Hệ thống tự động",
+      gradedAt: hasSubjective ? "" : new Date().toLocaleString("vi-VN"),
+      questions: activeQuiz.questions || [],
+      answers: { ...userQuizAnswers }
+    };
+    examSubs.unshift(newExamSub);
+    saveStoredExamSubmissions(examSubs);
 
     // Tự động thoát toàn màn hình
     if (document.fullscreenElement) {
@@ -3138,6 +3304,370 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // ============ Teacher Exam Grading Hub & Modal ============
+  let currentGradingFilter = "all";
+  let activeGradingSubId = null;
+
+  const calculateGradeRank = (num) => {
+    if (isNaN(num)) return { text: "Chưa xác định", color: "#64748b", bg: "#f1f5f9" };
+    if (num >= 9.0) return { text: "Xếp loại: Xuất sắc", color: "#15803d", bg: "#dcfce7" };
+    if (num >= 8.0) return { text: "Xếp loại: Giỏi", color: "#1d4ed8", bg: "#dbeafe" };
+    if (num >= 6.5) return { text: "Xếp loại: Khá", color: "#b45309", bg: "#fef3c7" };
+    if (num >= 5.0) return { text: "Xếp loại: Trung bình", color: "#854d0e", bg: "#fef9c3" };
+    return { text: "Xếp loại: Yếu / Cần cố gắng", color: "#b91c1c", bg: "#fee2e2" };
+  };
+
+  const updateGradeRankDisplay = (scoreNum) => {
+    if (!gradeRankTag) return;
+    const rank = calculateGradeRank(scoreNum);
+    gradeRankTag.textContent = rank.text;
+    gradeRankTag.style.color = rank.color;
+    gradeRankTag.style.background = rank.bg;
+  };
+
+  const renderTeacherGradingPanel = (filter = currentGradingFilter) => {
+    if (!gradingSubmissionsList) return;
+    const subs = getStoredExamSubmissions();
+    const pendingSubs = subs.filter((s) => s.status === "pending");
+
+    if (teacherPendingBadge) teacherPendingBadge.textContent = pendingSubs.length;
+    if (filterPendingCount) filterPendingCount.textContent = pendingSubs.length;
+
+    let displayList = subs;
+    if (filter === "pending") {
+      displayList = subs.filter((s) => s.status === "pending");
+    } else if (filter === "graded") {
+      displayList = subs.filter((s) => s.status === "graded");
+    }
+
+    if (displayList.length === 0) {
+      gradingSubmissionsList.innerHTML = `
+        <div style="text-align: center; padding: 36px 20px; color: #64748b; background: #f8fafc; border-radius: 12px; border: 1.5px dashed #cbd5e1;">
+          <span style="font-size: 2.2rem; display: block; margin-bottom: 8px;">📂</span>
+          <p style="margin: 0; font-weight: 600;">Không có bài thi nào trong mục này</p>
+        </div>
+      `;
+      return;
+    }
+
+    gradingSubmissionsList.innerHTML = displayList
+      .map((sub) => {
+        const isPending = sub.status === "pending";
+        const hasEssay = (sub.questions || []).some((q) => q.type === "essay_writing" || q.type === "essay");
+        const statusHtml = isPending
+          ? `<span class="grading-status-badge pending">⏳ Chờ chấm (Tạm tính: ${sub.autoScore || "0"}/10)</span>`
+          : `<span class="grading-status-badge graded">✅ Đã chấm: ${sub.teacherScore || sub.autoScore || "10"}/10</span>`;
+
+        const btnHtml = isPending
+          ? `<button type="button" class="btn-grade-action primary btn-trigger-grade" data-sub-id="${sub.id}"><span>✍️</span> Chấm bài ngay</button>`
+          : `<button type="button" class="btn-grade-action secondary btn-trigger-grade" data-sub-id="${sub.id}"><span>👁️</span> Xem & Sửa điểm</button>`;
+
+        return `
+          <div class="grading-sub-item">
+            <div class="grading-sub-left">
+              <div class="grading-sub-avatar">👨‍🎓</div>
+              <div class="grading-sub-info">
+                <h4>${sub.studentName || "Học sinh"} ${hasEssay ? '<span style="font-size: 0.78rem; background: #fef3c7; color: #b45309; padding: 2px 7px; border-radius: 6px; margin-left: 6px; font-weight: 800;">🖋️ Có bài viết văn</span>' : ''}</h4>
+                <div class="grading-sub-meta">
+                  <span class="grading-sub-meta-pill">Lớp ${sub.grade || "12"}</span>
+                  <span class="grading-sub-meta-pill" style="background: #e0e7ff; color: #3730a3;">${sub.course || "Môn học"}</span>
+                  <span style="color: #1e293b; font-weight: 600;">${sub.quizTitle || "Bài kiểm tra"}</span>
+                  <span>• 🕒 ${sub.submittedAt || "Vừa nộp"}</span>
+                </div>
+              </div>
+            </div>
+            <div class="grading-sub-right">
+              ${statusHtml}
+              ${btnHtml}
+            </div>
+          </div>
+        `;
+      })
+      .join("");
+
+    gradingSubmissionsList.querySelectorAll(".btn-trigger-grade").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        openGradeExamModal(btn.dataset.subId);
+      });
+    });
+  };
+
+  const openGradeExamModal = (subId) => {
+    const subs = getStoredExamSubmissions();
+    const sub = subs.find((s) => s.id === subId);
+    if (!sub) return;
+
+    activeGradingSubId = subId;
+
+    const modalGradeStatusPill = document.getElementById("modalGradeStatusPill");
+    const gradeExamTitle = document.getElementById("gradeExamTitle");
+    const gradeStudentBar = document.getElementById("gradeStudentBar");
+    const gradeQuestionCountInfo = document.getElementById("gradeQuestionCountInfo");
+    const gradeExamQuestionsContainer = document.getElementById("gradeExamQuestionsContainer");
+
+    const isPending = sub.status === "pending";
+    if (modalGradeStatusPill) {
+      modalGradeStatusPill.textContent = isPending ? "⏳ Chờ chấm điểm" : `✅ Đã chấm xong (${sub.teacherScore || sub.autoScore}/10)`;
+      modalGradeStatusPill.className = `grade-status-pill ${isPending ? "" : "graded"}`;
+    }
+
+    if (gradeExamTitle) {
+      gradeExamTitle.textContent = `Chấm bài thi: ${sub.quizTitle || "Đề kiểm tra"}`;
+    }
+
+    if (gradeStudentBar) {
+      gradeStudentBar.innerHTML = `
+        <span style="font-size: 1.3rem;">👨‍🎓</span>
+        <strong style="color: #0f172a;">${sub.studentName || "Học sinh"}</strong>
+        <span style="color: #64748b;">(${sub.studentEmail || "nguyenvana@gmail.com"})</span>
+        <span style="margin: 0 4px; color: #cbd5e1;">|</span>
+        <span class="grading-sub-meta-pill">Lớp ${sub.grade || "12"}</span>
+        <span class="grading-sub-meta-pill" style="background: #e0e7ff; color: #3730a3;">Môn ${sub.course || "Tổng hợp"}</span>
+        <span style="margin: 0 4px; color: #cbd5e1;">|</span>
+        <span style="color: #64748b; font-size: 0.85rem;">Nộp bài lúc: <strong>${sub.submittedAt || "Hôm nay"}</strong></span>
+      `;
+    }
+
+    const questions = sub.questions || [];
+    const answers = sub.answers || {};
+
+    if (gradeQuestionCountInfo) {
+      gradeQuestionCountInfo.textContent = `Tổng cộng ${questions.length} câu hỏi`;
+    }
+
+    if (gradeExamQuestionsContainer) {
+      gradeExamQuestionsContainer.innerHTML = questions
+        .map((q, idx) => {
+          const qType = q.type || "multiple_choice";
+          const chosen = answers[q.id];
+
+          let typeLabel = "Trắc nghiệm";
+          let badgeClass = "mcq";
+          if (qType === "true_false") { typeLabel = "Đúng / Sai"; badgeClass = "tf"; }
+          else if (qType === "short_answer") { typeLabel = "Trả lời ngắn"; badgeClass = "short"; }
+          else if (qType === "essay") { typeLabel = "Tự luận"; badgeClass = "essay"; }
+          else if (qType === "essay_writing") { typeLabel = "Viết bài văn (Ngữ văn)"; badgeClass = "writing"; }
+
+          let studentAnsHtml = "";
+
+          if (qType === "multiple_choice") {
+            const options = q.options || [];
+            const chosenText = chosen !== undefined && options[chosen] ? options[chosen] : "Chưa chọn";
+            const isCorrect = chosen === q.answerIndex;
+            studentAnsHtml = `
+              <div class="grade-q-student-answer" style="border-left: 4px solid ${isCorrect ? '#10b981' : '#f59e0b'};">
+                <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+                  <strong style="color: #1e293b;">Đáp án học sinh chọn:</strong>
+                  <span style="font-weight: 800; font-size: 0.82rem; color: ${isCorrect ? '#15803d' : '#b45309'};">
+                    ${isCorrect ? '✓ Đúng (+điểm)' : '⚡ Cần xem xét'}
+                  </span>
+                </div>
+                <div style="font-weight: 600; color: #0f172a;">${chosen !== undefined ? `[${String.fromCharCode(65 + chosen)}] ` : ''}${chosenText}</div>
+              </div>
+            `;
+          } else if (qType === "true_false") {
+            const userChoice = typeof chosen === "string" ? chosen : "Chưa chọn";
+            const correctChoice = q.correct || "Đúng";
+            const isCorrect = userChoice.trim().toLowerCase() === correctChoice.trim().toLowerCase();
+            studentAnsHtml = `
+              <div class="grade-q-student-answer" style="border-left: 4px solid ${isCorrect ? '#10b981' : '#f59e0b'};">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <div>Học sinh chọn: <strong style="color: #0f172a; font-size: 1rem;">${userChoice}</strong></div>
+                  <span style="font-weight: 800; font-size: 0.82rem; color: ${isCorrect ? '#15803d' : '#b45309'};">
+                    ${isCorrect ? '✓ Trùng khớp' : '⚡ Không khớp đáp án mẫu'}
+                  </span>
+                </div>
+              </div>
+            `;
+          } else if (qType === "short_answer") {
+            const userText = typeof chosen === "string" && chosen.trim() ? chosen.trim() : "(Chưa nhập câu trả lời)";
+            studentAnsHtml = `
+              <div class="grade-q-student-answer" style="border-left: 4px solid #3b82f6;">
+                <div style="margin-bottom: 4px; font-size: 0.82rem; color: #64748b;">Nội dung câu trả lời của học sinh:</div>
+                <div style="font-weight: 700; color: #1e293b; font-size: 1.02rem;">${userText}</div>
+                ${q.correctAnswer ? `<div style="margin-top: 6px; font-size: 0.82rem; color: #10b981;">Đáp án chuẩn của đề: <strong>${q.correctAnswer}</strong></div>` : ''}
+              </div>
+            `;
+          } else if (qType === "essay") {
+            const essayText = typeof chosen === "string" && chosen.trim() ? chosen.trim() : "(Học sinh để trống câu này)";
+            studentAnsHtml = `
+              <div class="grade-q-student-answer" style="border-left: 4px solid #8b5cf6;">
+                <div style="margin-bottom: 6px; font-weight: 700; color: #6d28d9;">Nội dung bài làm tự luận của học sinh:</div>
+                <div style="white-space: pre-wrap; line-height: 1.7; color: #1e293b;">${essayText}</div>
+              </div>
+            `;
+          } else if (qType === "essay_writing") {
+            const essayContent = typeof chosen === "string" && chosen.trim() ? chosen.trim() : "(Chưa có bài văn nộp)";
+            const words = essayContent.split(/\s+/).filter(Boolean).length;
+            const chars = essayContent.length;
+            const paragraphs = essayContent.split(/\n+/).filter(Boolean).length;
+
+            let outlineHtml = "";
+            if (Array.isArray(q.outline) && q.outline.length > 0) {
+              outlineHtml = `
+                <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 10px; padding: 12px 16px; margin-bottom: 12px; font-size: 0.85rem; color: #78350f;">
+                  <strong style="color: #92400e; display: block; margin-bottom: 4px;">📋 Dàn ý hướng dẫn chấm của đề bài:</strong>
+                  <ul style="margin: 0; padding-left: 18px; line-height: 1.5;">
+                    ${q.outline.map((item) => `<li>${item}</li>`).join("")}
+                  </ul>
+                </div>
+              `;
+            }
+
+            studentAnsHtml = `
+              <div style="margin-top: 8px;">
+                ${outlineHtml}
+                <div style="font-size: 0.85rem; font-weight: 700; color: #b45309; margin-bottom: 4px;">
+                  🖋️ Toàn văn bài viết văn của học sinh:
+                </div>
+                <div class="grade-essay-paper">${essayContent}</div>
+                <div class="grade-essay-stats">
+                  <span>📊 Thống kê bài viết: <strong>${words} từ</strong> | <strong>${chars} ký tự</strong> | <strong>${paragraphs} đoạn văn</strong></span>
+                  <span style="color: #059669;">Độ hoàn thiện: ${words >= 150 ? "Đầy đủ dung lượng" : words >= 50 ? "Đạt yêu cầu cơ bản" : "Ngắn / Thiếu ý"}</span>
+                </div>
+              </div>
+            `;
+          }
+
+          return `
+            <div class="grade-question-card">
+              <div class="grade-q-header">
+                <span class="quiz-qtype-badge ${badgeClass}">${typeLabel}</span>
+                <span style="font-size: 0.82rem; font-weight: 700; color: #64748b;">Câu ${idx + 1}</span>
+              </div>
+              <div class="grade-q-title"><strong>Câu ${idx + 1}:</strong> ${q.prompt || "Câu hỏi"}</div>
+              ${studentAnsHtml}
+            </div>
+          `;
+        })
+        .join("");
+    }
+
+    // Set score
+    const currentScore = sub.teacherScore !== "" && sub.teacherScore !== undefined ? sub.teacherScore : sub.autoScore || "8.5";
+    if (inputTeacherScore) {
+      inputTeacherScore.value = currentScore;
+    }
+    if (gradeAutoHint) {
+      gradeAutoHint.textContent = `Hệ thống tính: ${sub.autoScore || "0"}/10`;
+    }
+
+    updateGradeRankDisplay(parseFloat(currentScore));
+
+    // Set feedback
+    if (teacherFeedbackText) {
+      teacherFeedbackText.value = sub.feedback || "";
+    }
+
+    openModalElement(gradeExamModal);
+  };
+
+  // Score input change
+  if (inputTeacherScore) {
+    inputTeacherScore.addEventListener("input", () => {
+      const val = parseFloat(inputTeacherScore.value);
+      updateGradeRankDisplay(val);
+    });
+  }
+
+  // Quick comments
+  document.querySelectorAll(".quick-comment-tag").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const comment = btn.dataset.comment;
+      if (!comment || !teacherFeedbackText) return;
+      if (teacherFeedbackText.value.trim().length > 0) {
+        teacherFeedbackText.value = teacherFeedbackText.value.trim() + " " + comment;
+      } else {
+        teacherFeedbackText.value = comment;
+      }
+      teacherFeedbackText.focus();
+    });
+  });
+
+  // Save grading
+  if (btnSaveGrading) {
+    btnSaveGrading.addEventListener("click", () => {
+      if (!activeGradingSubId) return;
+      const subs = getStoredExamSubmissions();
+      const subIndex = subs.findIndex((s) => s.id === activeGradingSubId);
+      if (subIndex === -1) return;
+
+      const scoreVal = parseFloat(inputTeacherScore.value);
+      if (isNaN(scoreVal) || scoreVal < 0 || scoreVal > 10) {
+        showToast("⚠️ Vui lòng nhập điểm số hợp lệ từ 0 đến 10");
+        return;
+      }
+
+      const formattedScore = scoreVal.toFixed(1);
+      const feedbackVal = teacherFeedbackText.value.trim() || (scoreVal >= 8 ? "Làm bài rất tốt! Tiếp tục phát huy." : "Cần rèn luyện thêm kỹ năng làm bài.");
+      const currentUser = getCurrentUser();
+      const teacherName = currentUser ? currentUser.fullName : "Thầy Nguyễn (Giảng viên)";
+
+      // Update in edunovaExamSubmissions
+      subs[subIndex].status = "graded";
+      subs[subIndex].teacherScore = formattedScore;
+      subs[subIndex].feedback = feedbackVal;
+      subs[subIndex].gradedBy = teacherName;
+      subs[subIndex].gradedAt = new Date().toLocaleString("vi-VN");
+      saveStoredExamSubmissions(subs);
+
+      // Synchronize into edunovaGrades
+      const grades = getStoredGrades();
+      let matchedGrade = grades.find((g) => g.id === subs[subIndex].gradeId);
+      if (!matchedGrade) {
+        matchedGrade = grades.find((g) => g.quizTitle === subs[subIndex].quizTitle && (g.studentEmail === subs[subIndex].studentEmail || g.studentName === subs[subIndex].studentName));
+      }
+
+      if (matchedGrade) {
+        matchedGrade.score = formattedScore;
+        matchedGrade.feedback = feedbackVal;
+        matchedGrade.teacherName = teacherName;
+      } else {
+        grades.unshift({
+          id: subs[subIndex].gradeId || `grade-${Date.now()}`,
+          quizTitle: subs[subIndex].quizTitle,
+          type: "quiz",
+          score: formattedScore,
+          maxScore: "10",
+          grade: subs[subIndex].grade || "12",
+          subject: subs[subIndex].course || "Tổng hợp",
+          feedback: feedbackVal,
+          date: new Date().toLocaleDateString("vi-VN"),
+          studentName: subs[subIndex].studentName,
+          studentEmail: subs[subIndex].studentEmail
+        });
+      }
+      saveStoredGrades(grades);
+
+      closeModalElement(gradeExamModal);
+      renderTeacherDashboard();
+      renderStudentGradebook();
+      renderLeaderboard();
+
+      showToast(`🎉 Đã lưu kết quả bài thi em ${subs[subIndex].studentName || "học sinh"}! Điểm: ${formattedScore}/10.`);
+    });
+  }
+
+  // Filter tabs
+  document.querySelectorAll(".btn-filter-grading").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".btn-filter-grading").forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+      currentGradingFilter = btn.dataset.gradeFilter || "all";
+      renderTeacherGradingPanel(currentGradingFilter);
+    });
+  });
+
+  // Open Grading Hub button
+  if (openGradeExamsBtn) {
+    openGradeExamsBtn.addEventListener("click", () => {
+      const panel = document.getElementById("teacherGradingPanel");
+      if (panel) {
+        panel.scrollIntoView({ behavior: "smooth" });
+      }
+    });
+  }
+
   // ============ Render Teacher Dashboard ============
   const renderTeacherDashboard = () => {
     const teacherCoursesCount = document.getElementById("teacherCoursesCount");
@@ -3153,12 +3683,18 @@ document.addEventListener("DOMContentLoaded", () => {
     const quizzes = getStoredQuizzes();
     const materials = getStoredMaterials();
     const assignments = getStoredAssignments();
-    const submissions = getStoredSubmissions();
+    const examSubs = getStoredExamSubmissions();
+    const pendingSubs = examSubs.filter((s) => s.status === "pending");
 
     if (teacherCoursesCount) teacherCoursesCount.textContent = courses.length;
     if (teacherQuizzesCount) teacherQuizzesCount.textContent = quizzes.length;
     if (teacherMaterialsCount) teacherMaterialsCount.textContent = materials.length;
-    if (teacherSubmissionsCount) teacherSubmissionsCount.textContent = submissions.length;
+    if (teacherSubmissionsCount) teacherSubmissionsCount.textContent = `${examSubs.length} (${pendingSubs.length} chờ chấm)`;
+    if (teacherPendingBadge) teacherPendingBadge.textContent = pendingSubs.length;
+    if (filterPendingCount) filterPendingCount.textContent = pendingSubs.length;
+
+    // Render Sổ chấm bài thi
+    renderTeacherGradingPanel(currentGradingFilter);
 
     // Render Quizzes in Teacher View
     if (teacherQuizList) {
@@ -3476,7 +4012,8 @@ document.addEventListener("DOMContentLoaded", () => {
         viewMaterialModal,
         takeQuizModal,
         createQuizModal,
-        settingsModal
+        settingsModal,
+        gradeExamModal
       ].forEach((m) => {
         if (m === takeQuizModal) {
           closeTakeQuiz();
